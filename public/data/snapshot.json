@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-04-21T15:02:56.828Z",
+  "instagram": {
+    "handle": "stemplayer",
+    "followers": 90000,
+    "reels": []
+  },
+  "tiktok": {
+    "handle": "stemplayer",
+    "followers": 83400,
+    "videos": []
+  },
+  "mailchimp": {
+    "cumulativeRaw": 587815,
+    "cumulativeDisjoint": 458641,
+    "audiences": [
+      {
+        "key": "inferred_kano",
+        "label": "Inferred Kano subscribers",
+        "count": 329467,
+        "side": "kano",
+        "inferred": true,
+        "derivation": "458,641 - (84,114 + 8,224 + 9,507 + 27,329)"
+      },
+      {
+        "key": "kano_stemplayer_combined",
+        "label": "Kano + Stemplayer subscribers (raw list)",
+        "count": 458641,
+        "side": "combined"
+      },
+      {
+        "key": "stemplayer_purchasers",
+        "label": "Stemplayer Purchasers",
+        "count": 84114,
+        "side": "stemplayer"
+      },
+      {
+        "key": "stem2_high_spenders",
+        "label": "Stem 2 High spenders (no projector buyers)",
+        "count": 9507,
+        "side": "stemplayer"
+      },
+      {
+        "key": "stemplayer_no_purchase",
+        "label": "Stemplayer Subscribed, no purchase",
+        "count": 8224,
+        "side": "stemplayer"
+      },
+      {
+        "key": "stem2_product_interest",
+        "label": "Stem 2 Product interest",
+        "count": 27329,
+        "side": "stemplayer"
+      }
+    ]
+  }
+}
