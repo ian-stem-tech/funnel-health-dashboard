@@ -137,12 +137,12 @@ a {
   font-family: "DeepSeaBold", sans-serif;
   letter-spacing: 0.012em;
   font-size: clamp(1.35rem, 2.4vw, 1.85rem);
-  color: var(--gray-900);
+  color: var(--gray-300);
 }
 
 .dash-header p {
   margin: 0;
-  color: var(--gray-700);
+  color: var(--gray-500);
   font-family: "DeepSeaRegular", sans-serif;
   font-size: clamp(0.88rem, 1.1vw, 0.98rem);
 }
