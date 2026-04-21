@@ -1,0 +1,470 @@
+{
+  "generatedAt": "2026-04-21T15:04:31.888Z",
+  "lists": [
+    {
+      "id": "0725c8f3be",
+      "name": "Journalists",
+      "member_count": 229,
+      "tags": [
+        {
+          "id": 7006767,
+          "name": "Fam and friends"
+        },
+        {
+          "id": 7006765,
+          "name": "press"
+        }
+      ],
+      "segments": [
+        {
+          "id": 7006765,
+          "name": "press",
+          "type": "static",
+          "member_count": 198
+        },
+        {
+          "id": 7006767,
+          "name": "Fam and friends",
+          "type": "static",
+          "member_count": 31
+        }
+      ],
+      "merge_fields": [
+        {
+          "tag": "ADDRESS",
+          "name": "Address",
+          "type": "address"
+        },
+        {
+          "tag": "FNAME",
+          "name": "First Name",
+          "type": "text"
+        },
+        {
+          "tag": "LNAME",
+          "name": "Last Name",
+          "type": "text"
+        },
+        {
+          "tag": "PHONE",
+          "name": "Phone Number",
+          "type": "phone"
+        }
+      ]
+    },
+    {
+      "id": "7f6fa1b57b",
+      "name": "STEM TECH",
+      "member_count": 458641,
+      "tags": [
+        {
+          "id": 7006803,
+          "name": "chunk_1"
+        },
+        {
+          "id": 7006813,
+          "name": "chunk_10"
+        },
+        {
+          "id": 7006805,
+          "name": "chunk_2"
+        },
+        {
+          "id": 7006806,
+          "name": "chunk_3"
+        },
+        {
+          "id": 7006807,
+          "name": "chunk_4"
+        },
+        {
+          "id": 7006808,
+          "name": "chunk_5"
+        },
+        {
+          "id": 7006809,
+          "name": "chunk_6"
+        },
+        {
+          "id": 7006810,
+          "name": "chunk_7"
+        },
+        {
+          "id": 7006811,
+          "name": "chunk_8"
+        },
+        {
+          "id": 7006812,
+          "name": "chunk_9"
+        }
+      ],
+      "segments": [
+        {
+          "id": 10933,
+          "name": "cognito_email_verified",
+          "type": "static",
+          "member_count": 0
+        },
+        {
+          "id": 7006802,
+          "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
+          "type": "static",
+          "member_count": 9233
+        },
+        {
+          "id": 7006803,
+          "name": "chunk_1",
+          "type": "static",
+          "member_count": 5892
+        },
+        {
+          "id": 7006805,
+          "name": "chunk_2",
+          "type": "static",
+          "member_count": 925
+        },
+        {
+          "id": 7006806,
+          "name": "chunk_3",
+          "type": "static",
+          "member_count": 920
+        },
+        {
+          "id": 7006807,
+          "name": "chunk_4",
+          "type": "static",
+          "member_count": 932
+        },
+        {
+          "id": 7006808,
+          "name": "chunk_5",
+          "type": "static",
+          "member_count": 927
+        },
+        {
+          "id": 7006809,
+          "name": "chunk_6",
+          "type": "static",
+          "member_count": 947
+        },
+        {
+          "id": 7006810,
+          "name": "chunk_7",
+          "type": "static",
+          "member_count": 899
+        },
+        {
+          "id": 7006811,
+          "name": "chunk_8",
+          "type": "static",
+          "member_count": 950
+        },
+        {
+          "id": 7006812,
+          "name": "chunk_9",
+          "type": "static",
+          "member_count": 945
+        },
+        {
+          "id": 7006813,
+          "name": "chunk_10",
+          "type": "static",
+          "member_count": 872
+        },
+        {
+          "id": 7006824,
+          "name": "projector purchasers",
+          "type": "static",
+          "member_count": 121
+        },
+        {
+          "id": 7006827,
+          "name": "Product interest notifications",
+          "type": "static",
+          "member_count": 27328
+        },
+        {
+          "id": 7006858,
+          "name": "Test",
+          "type": "static",
+          "member_count": 0
+        },
+        {
+          "id": 7006859,
+          "name": "Campaign Pasted Segment - 16 Jan 2026 03:10:55 pm",
+          "type": "campaign_static",
+          "member_count": 1
+        },
+        {
+          "id": 7006860,
+          "name": "Campaign Pasted Segment - 16 Jan 2026 03:15:45 pm",
+          "type": "campaign_static",
+          "member_count": 1
+        },
+        {
+          "id": 7006865,
+          "name": "top spenders stem",
+          "type": "static",
+          "member_count": 0
+        },
+        {
+          "id": 7006929,
+          "name": "Mailing list",
+          "type": "static",
+          "member_count": 8224
+        },
+        {
+          "id": 7006930,
+          "name": "No_Spend",
+          "type": "static",
+          "member_count": 0
+        },
+        {
+          "id": 7006931,
+          "name": "Spent",
+          "type": "static",
+          "member_count": 10354
+        },
+        {
+          "id": 7007300,
+          "name": "Firmware_Updates",
+          "type": "static",
+          "member_count": 360
+        },
+        {
+          "id": 7007325,
+          "name": "Product interest no stem2 device owners",
+          "type": "static",
+          "member_count": 18521
+        }
+      ],
+      "merge_fields": [
+        {
+          "tag": "ADDRESS",
+          "name": "Address",
+          "type": "address"
+        },
+        {
+          "tag": "CGVERIFIED",
+          "name": "CognitoEmailVerified",
+          "type": "text"
+        },
+        {
+          "tag": "FNAME",
+          "name": "First Name",
+          "type": "text"
+        },
+        {
+          "tag": "LNAME",
+          "name": "Last Name",
+          "type": "text"
+        },
+        {
+          "tag": "MMERGE4",
+          "name": "Full Name",
+          "type": "text"
+        },
+        {
+          "tag": "MMERGE5",
+          "name": "LAST_CHANGED",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "id": "b44aa91868",
+      "name": "First 10K Stem2 no projector",
+      "member_count": 0,
+      "tags": [],
+      "segments": [],
+      "merge_fields": [
+        {
+          "tag": "ADDRESS",
+          "name": "Address",
+          "type": "address"
+        },
+        {
+          "tag": "FNAME",
+          "name": "First Name",
+          "type": "text"
+        },
+        {
+          "tag": "LNAME",
+          "name": "Last Name",
+          "type": "text"
+        },
+        {
+          "tag": "PHONE",
+          "name": "Phone Number",
+          "type": "phone"
+        }
+      ]
+    },
+    {
+      "id": "c5cfa9fc3c",
+      "name": "STEM 2 CUSTOMERS",
+      "member_count": 32,
+      "tags": [
+        {
+          "id": 7006815,
+          "name": "Customer"
+        },
+        {
+          "id": 7006816,
+          "name": "Login with Shop"
+        },
+        {
+          "id": 7006817,
+          "name": "Shop"
+        }
+      ],
+      "segments": [
+        {
+          "id": 7006815,
+          "name": "Customer",
+          "type": "static",
+          "member_count": 32
+        },
+        {
+          "id": 7006816,
+          "name": "Login with Shop",
+          "type": "static",
+          "member_count": 7
+        },
+        {
+          "id": 7006817,
+          "name": "Shop",
+          "type": "static",
+          "member_count": 7
+        }
+      ],
+      "merge_fields": [
+        {
+          "tag": "ADDRESS",
+          "name": "Address",
+          "type": "address"
+        },
+        {
+          "tag": "FNAME",
+          "name": "First Name",
+          "type": "text"
+        },
+        {
+          "tag": "LNAME",
+          "name": "Last Name",
+          "type": "text"
+        },
+        {
+          "tag": "MMERGE5",
+          "name": "Customer ID",
+          "type": "number"
+        },
+        {
+          "tag": "MMERGE6",
+          "name": "Total Spent",
+          "type": "number"
+        },
+        {
+          "tag": "MMERGE7",
+          "name": "Total Orders",
+          "type": "number"
+        },
+        {
+          "tag": "PHONE",
+          "name": "Phone Number",
+          "type": "phone"
+        }
+      ]
+    },
+    {
+      "id": "d8ea578c2e",
+      "name": "Affiliates",
+      "member_count": 383,
+      "tags": [
+        {
+          "id": 7006663,
+          "name": "Login with Shop"
+        },
+        {
+          "id": 7006836,
+          "name": "newsletter"
+        },
+        {
+          "id": 7006664,
+          "name": "Shop"
+        }
+      ],
+      "segments": [
+        {
+          "id": 7006663,
+          "name": "Login with Shop",
+          "type": "static",
+          "member_count": 35
+        },
+        {
+          "id": 7006664,
+          "name": "Shop",
+          "type": "static",
+          "member_count": 35
+        },
+        {
+          "id": 7006836,
+          "name": "newsletter",
+          "type": "static",
+          "member_count": 1
+        }
+      ],
+      "merge_fields": [
+        {
+          "tag": "ADDRESS",
+          "name": "Address",
+          "type": "address"
+        },
+        {
+          "tag": "FNAME",
+          "name": "First Name",
+          "type": "text"
+        },
+        {
+          "tag": "LNAME",
+          "name": "Last Name",
+          "type": "text"
+        },
+        {
+          "tag": "PHONE",
+          "name": "Phone Number",
+          "type": "phone"
+        }
+      ]
+    },
+    {
+      "id": "d9dde7fb06",
+      "name": "Stem Tech product interest notifications",
+      "member_count": 27378,
+      "tags": [],
+      "segments": [],
+      "merge_fields": [
+        {
+          "tag": "ADDRESS",
+          "name": "Address",
+          "type": "address"
+        },
+        {
+          "tag": "FNAME",
+          "name": "First Name",
+          "type": "text"
+        },
+        {
+          "tag": "LNAME",
+          "name": "Last Name",
+          "type": "text"
+        },
+        {
+          "tag": "PHONE",
+          "name": "Phone Number",
+          "type": "phone"
+        }
+      ]
+    }
+  ]
+}
