@@ -1,9 +1,10 @@
 {
-  "generatedAt": "2026-04-26T07:16:25.731Z",
+  "generatedAt": "2026-04-27T08:04:35.562Z",
   "instagram": {
     "handle": "stemplayer",
     "followers": 90000,
-    "reels": []
+    "reels": [],
+    "error": "HTTP 429 Too Many Requests for https://www.instagram.com/stemplayer/"
   },
   "tiktok": {
     "handle": "stemplayer",
