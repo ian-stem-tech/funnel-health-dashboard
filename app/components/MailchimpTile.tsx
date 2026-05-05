@@ -16,10 +16,20 @@ function loadSelected(): string | null {
 }
 
 export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
-  const disjoint = useMemo(
-    () => data.audiences.filter((a) => a.key !== 'kano_stemplayer_combined'),
-    [data.audiences],
-  );
+  // All audiences including the raw combined list
+  const allAudiences = data.audiences;
+
+  // The combined list is the default / first option
+  const combinedAudience = allAudiences.find((a) => a.key === 'kano_stemplayer_combined');
+
+  // Segment chips: combined first, then the rest
+  const chipAudiences = useMemo(() => {
+    const combined = allAudiences.filter((a) => a.key === 'kano_stemplayer_combined');
+    const rest = allAudiences.filter(
+      (a) => a.key !== 'kano_stemplayer_combined',
+    );
+    return [...combined, ...rest];
+  }, [allAudiences]);
 
   const [selected, setSelected] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
@@ -47,16 +57,17 @@ export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
   }
 
   const selectedSegment = selected
-    ? disjoint.find((a) => a.key === selected)
+    ? allAudiences.find((a) => a.key === selected)
     : null;
 
+  // Default view: show the raw combined total
   const displayValue = selectedSegment
     ? selectedSegment.count
-    : data.cumulativeDisjoint;
+    : combinedAudience?.count ?? data.cumulativeDisjoint;
 
   const caption = selectedSegment
     ? `Showing: ${selectedSegment.label}`
-    : 'Showing: all segments combined';
+    : 'Showing: Stemplayer + Kano combined list';
 
   return (
     <BentoCard
@@ -84,14 +95,14 @@ export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
     >
       <div className="hero-stat">
         <span className="hero-stat-label">
-          {selectedSegment ? 'Segment subscribers' : 'Cumulative subscribers'}
+          {selectedSegment ? selectedSegment.label : 'Total subscribers'}
         </span>
         <span className="hero-stat-value">{formatNumber(displayValue)}</span>
         <span className="hero-stat-caption">{caption}</span>
       </div>
 
       <div className="segment-filter" role="group" aria-label="Segment filters">
-        {disjoint.map((segment) => {
+        {chipAudiences.map((segment) => {
           const on = selected === segment.key;
           return (
             <button
@@ -109,22 +120,20 @@ export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
       </div>
 
       <div className="audience-grid">
-        {data.audiences.map((segment) => {
-          const inDisjoint = segment.key !== 'kano_stemplayer_combined';
-          const isHighlighted = !selected || segment.key === selected || !inDisjoint;
+        {allAudiences.map((segment) => {
+          const isHighlighted = !selected || segment.key === selected;
           const classes = ['audience-card'];
           if (segment.inferred) classes.push('inferred');
-          if (inDisjoint && !isHighlighted) classes.push('inactive');
+          if (selected && !isHighlighted) classes.push('inactive');
           if (selected === segment.key) classes.push('selected');
           return (
             <div
               key={segment.key}
               className={classes.join(' ')}
-              onClick={() => inDisjoint && handleChipClick(segment.key)}
-              role={inDisjoint ? 'button' : undefined}
-              tabIndex={inDisjoint ? 0 : undefined}
+              onClick={() => handleChipClick(segment.key)}
+              role="button"
+              tabIndex={0}
               onKeyDown={(e) => {
-                if (!inDisjoint) return;
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
                   handleChipClick(segment.key);
@@ -169,6 +178,8 @@ export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
 
 function shortLabel(segment: Audience): string {
   switch (segment.key) {
+    case 'kano_stemplayer_combined':
+      return 'Stemplayer + Kano';
     case 'inferred_kano':
       return 'Kano (inferred)';
     case 'stemplayer_purchasers':

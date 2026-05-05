@@ -33,6 +33,10 @@ jobs:
           MAILCHIMP_SERVER_PREFIX: ${{ vars.MAILCHIMP_SERVER_PREFIX || 'us4' }}
           IG_HANDLE: ${{ vars.IG_HANDLE || 'stemplayer' }}
           TIKTOK_HANDLE: ${{ vars.TIKTOK_HANDLE || 'stemplayer' }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
         run: node scripts/refresh-snapshot.mjs
 
       - name: Commit snapshot if changed

@@ -2,15 +2,15 @@
 /**
  * refresh-snapshot.mjs
  *
- * Daily refresh script run by GitHub Actions. Uses Playwright to scrape
- * Instagram + TikTok public profiles, calls Mailchimp for audience counts,
- * and writes:
- *   - public/data/snapshot.json          (consumed by the static dashboard)
- *   - public/data/history.json           (accumulated daily entries for charts)
- *   - public/data/mailchimp-discovery.json (lists/tags/segments dump)
+ * Daily refresh script run by GitHub Actions.
+ *   - Instagram: Playwright headless browser (reels page)
+ *   - TikTok:    Official Display API v2 (/v2/video/list/)
+ *   - Mailchimp: REST API with rate-limit-aware retries
  *
- * Graceful fallback: if any source fails we keep the previous snapshot's
- * value for that source and surface the error in the JSON.
+ * Writes:
+ *   - public/data/snapshot.json
+ *   - public/data/history.json
+ *   - public/data/mailchimp-discovery.json
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
@@ -23,11 +23,46 @@ const DISCOVERY_PATH = path.join(ROOT, 'public', 'data', 'mailchimp-discovery.js
 
 const IG_HANDLE = process.env.IG_HANDLE || 'stemplayer';
 const TIKTOK_HANDLE = process.env.TIKTOK_HANDLE || 'stemplayer';
+
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX || 'us4';
 
+const TIKTOK_CLIENT_KEY = process.env.TIKTOK_CLIENT_KEY;
+const TIKTOK_CLIENT_SECRET = process.env.TIKTOK_CLIENT_SECRET;
+const TIKTOK_ACCESS_TOKEN = process.env.TIKTOK_ACCESS_TOKEN;
+const TIKTOK_REFRESH_TOKEN = process.env.TIKTOK_REFRESH_TOKEN;
+
 const HISTORY_MAX_DAYS = 90;
 
+/* ============================================================
+ * Retry helper with exponential backoff (handles 429)
+ * ============================================================ */
+async function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchWithRetry(url, options = {}, { maxRetries = 3, baseDelay = 2000 } = {}) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    const res = await fetch(url, options);
+
+    if (res.status === 429) {
+      const retryAfter = res.headers.get('retry-after');
+      const waitMs = retryAfter
+        ? parseInt(retryAfter, 10) * 1000
+        : baseDelay * Math.pow(2, attempt);
+      console.warn(`[429] Rate limited on ${url}, waiting ${waitMs}ms (attempt ${attempt + 1}/${maxRetries + 1})`);
+      await sleep(waitMs);
+      continue;
+    }
+
+    return res;
+  }
+  throw new Error(`Rate limited after ${maxRetries + 1} attempts: ${url}`);
+}
+
+/* ============================================================
+ * File helpers
+ * ============================================================ */
 async function readPrevious() {
   try {
     const raw = await fs.readFile(SNAPSHOT_PATH, 'utf-8');
@@ -47,7 +82,7 @@ async function readHistory() {
 }
 
 /* ============================================================
- * Shared browser instance
+ * Shared browser instance (Instagram only)
  * ============================================================ */
 let _browser = null;
 
@@ -80,13 +115,11 @@ async function scrapeInstagram(handle, previous) {
 
     await page.goto(`https://www.instagram.com/${handle}/reels/`, {
       waitUntil: 'networkidle',
-      timeout: 30000,
+      timeout: 45000,
     });
 
-    // Wait for some content to render
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(4000);
 
-    // Extract followers from the meta tag or page content
     let followers = previous?.followers ?? 0;
     try {
       const ogDesc = await page.$eval(
@@ -96,21 +129,18 @@ async function scrapeInstagram(handle, previous) {
       const followerMatch = ogDesc.match(/([\d.,KMB]+)\s+Followers/i);
       if (followerMatch) followers = parseAbbreviated(followerMatch[1]);
     } catch {
-      // Try alternative: look in page text
       const bodyText = await page.textContent('body');
       const match = bodyText?.match(/([\d.,KMB]+)\s+followers/i);
       if (match) followers = parseAbbreviated(match[1]);
     }
 
-    // Extract reels from the page
-    const reels = await page.evaluate((profileHandle) => {
+    const reels = await page.evaluate(() => {
       const results = [];
-      // Instagram renders reel links as anchor tags with /reel/ in href
       const reelLinks = document.querySelectorAll('a[href*="/reel/"]');
       const seen = new Set();
 
       for (const link of reelLinks) {
-        if (results.length >= 6) break;
+        if (results.length >= 20) break;
         const href = link.getAttribute('href') || '';
         const shortcodeMatch = href.match(/\/reel\/([A-Za-z0-9_-]+)/);
         if (!shortcodeMatch) continue;
@@ -118,19 +148,16 @@ async function scrapeInstagram(handle, previous) {
         if (seen.has(shortcode)) continue;
         seen.add(shortcode);
 
-        // Try to find view count text within the reel card
         let views = 0;
         const viewText = link.querySelector('[aria-label]')?.getAttribute('aria-label') || '';
         const viewMatch = viewText.match(/([\d,]+)\s*(views|plays)/i);
         if (viewMatch) {
           views = parseInt(viewMatch[1].replace(/,/g, ''), 10) || 0;
         }
-        // Alternative: look for text nodes with numbers
         if (!views) {
           const spans = link.querySelectorAll('span');
           for (const span of spans) {
             const txt = span.textContent?.trim() || '';
-            // Match patterns like "1.2M", "45.3K", "12,345"
             const numMatch = txt.match(/^([\d.,]+[KMB]?)$/i);
             if (numMatch && !txt.includes('@') && !txt.includes('/')) {
               const parsed = parseFloat(txt.replace(/,/g, ''));
@@ -144,7 +171,6 @@ async function scrapeInstagram(handle, previous) {
           }
         }
 
-        // Try to get thumbnail from img inside the link
         const img = link.querySelector('img');
         const thumbnail = img?.getAttribute('src') || '';
 
@@ -156,7 +182,7 @@ async function scrapeInstagram(handle, previous) {
         });
       }
       return results;
-    }, handle);
+    });
 
     await context.close();
 
@@ -177,112 +203,123 @@ async function scrapeInstagram(handle, previous) {
 }
 
 /* ============================================================
- * TikTok public profile scrape (Playwright)
+ * TikTok Display API v2
+ *
+ * Uses the official /v2/video/list/ endpoint (requires OAuth).
+ * Falls back to previous data if credentials are missing.
+ *
+ * Required env vars:
+ *   TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET,
+ *   TIKTOK_ACCESS_TOKEN, TIKTOK_REFRESH_TOKEN
  * ============================================================ */
-async function scrapeTikTok(handle, previous) {
+
+async function refreshTikTokToken() {
+  if (!TIKTOK_CLIENT_KEY || !TIKTOK_CLIENT_SECRET || !TIKTOK_REFRESH_TOKEN) {
+    return null;
+  }
   try {
-    const browser = await getBrowser();
-    const context = await browser.newContext({
-      userAgent:
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15',
-      locale: 'en-US',
+    const res = await fetchWithRetry('https://open.tiktokapis.com/v2/oauth/token/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_key: TIKTOK_CLIENT_KEY,
+        client_secret: TIKTOK_CLIENT_SECRET,
+        grant_type: 'refresh_token',
+        refresh_token: TIKTOK_REFRESH_TOKEN,
+      }),
     });
-    const page = await context.newPage();
+    const data = await res.json();
+    if (data.access_token) {
+      console.log('[tiktok] Token refreshed successfully');
+      return data.access_token;
+    }
+    console.warn('[tiktok] Token refresh response:', JSON.stringify(data).slice(0, 200));
+    return null;
+  } catch (err) {
+    console.warn('[tiktok] Token refresh failed:', err.message);
+    return null;
+  }
+}
 
-    await page.goto(`https://www.tiktok.com/@${handle}`, {
-      waitUntil: 'networkidle',
-      timeout: 30000,
-    });
+async function fetchTikTok(handle, previous) {
+  // Try to get a valid access token
+  let accessToken = TIKTOK_ACCESS_TOKEN;
 
-    await page.waitForTimeout(3000);
+  if (!accessToken && TIKTOK_REFRESH_TOKEN) {
+    accessToken = await refreshTikTokToken();
+  }
 
-    // Try extracting from the rehydration JSON blob first (most reliable)
+  if (!accessToken) {
+    console.warn('[tiktok] No TikTok API credentials, using previous data');
+    return {
+      handle,
+      followers: previous?.followers ?? 0,
+      videos: previous?.videos ?? [],
+      error: 'No TikTok API credentials configured',
+    };
+  }
+
+  try {
+    // Try refreshing the token first in case the current one expired
+    const refreshedToken = await refreshTikTokToken();
+    if (refreshedToken) accessToken = refreshedToken;
+
+    // Fetch user info for follower count
     let followers = previous?.followers ?? 0;
-    let videos = [];
-
     try {
-      const blobContent = await page.$eval(
-        'script#__UNIVERSAL_DATA_FOR_REHYDRATION__',
-        (el) => el.textContent || '',
+      const userRes = await fetchWithRetry(
+        'https://open.tiktokapis.com/v2/user/info/?fields=follower_count,display_name',
+        { headers: { Authorization: `Bearer ${accessToken}` } },
       );
-      if (blobContent) {
-        const blob = JSON.parse(blobContent);
-        const scope = blob?.__DEFAULT_SCOPE__ ?? {};
-        const userDetail = scope['webapp.user-detail'];
-        const userPostList = scope['webapp.user-post'];
-
-        followers = userDetail?.userInfo?.stats?.followerCount ?? followers;
-
-        const items = userPostList?.itemList ?? userDetail?.userInfo?.itemList ?? [];
-        videos = items.slice(0, 6).map((item) => ({
-          id: String(item.id),
-          thumbnail: item?.video?.cover ?? item?.video?.originCover ?? '',
-          views: item?.stats?.playCount ?? 0,
-          url: `https://www.tiktok.com/@${handle}/video/${item.id}`,
-        }));
+      const userData = await userRes.json();
+      if (userData?.data?.user?.follower_count) {
+        followers = userData.data.user.follower_count;
       }
-    } catch {
-      // Blob not available, fall through to DOM extraction
+    } catch (userErr) {
+      console.warn('[tiktok] user/info failed:', userErr.message);
     }
 
-    // Fallback: extract from rendered DOM
-    if (videos.length === 0) {
-      const domData = await page.evaluate((profileHandle) => {
-        const results = [];
-        const videoLinks = document.querySelectorAll('a[href*="/video/"]');
-        const seen = new Set();
+    await sleep(500);
 
-        for (const link of videoLinks) {
-          if (results.length >= 6) break;
-          const href = link.getAttribute('href') || '';
-          const idMatch = href.match(/\/video\/(\d+)/);
-          if (!idMatch) continue;
-          const id = idMatch[1];
-          if (seen.has(id)) continue;
-          seen.add(id);
+    // Fetch 20 most recent videos
+    const videoFields = [
+      'id', 'title', 'video_description', 'duration',
+      'cover_image_url', 'share_url', 'view_count',
+      'like_count', 'comment_count', 'share_count', 'create_time',
+    ].join(',');
 
-          let views = 0;
-          const strongEl = link.querySelector('strong');
-          if (strongEl) {
-            const txt = strongEl.textContent?.trim() || '';
-            const parsed = parseFloat(txt.replace(/,/g, ''));
-            const suffix = txt.slice(-1).toUpperCase();
-            if (suffix === 'K') views = Math.round(parsed * 1000);
-            else if (suffix === 'M') views = Math.round(parsed * 1000000);
-            else if (suffix === 'B') views = Math.round(parsed * 1000000000);
-            else if (!isNaN(parsed)) views = Math.round(parsed);
-          }
+    const videoRes = await fetchWithRetry(
+      `https://open.tiktokapis.com/v2/video/list/?fields=${videoFields}`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ max_count: 20 }),
+      },
+    );
 
-          const img = link.querySelector('img');
-          const thumbnail = img?.getAttribute('src') || '';
+    const videoData = await videoRes.json();
 
-          results.push({
-            id,
-            thumbnail,
-            views,
-            url: `https://www.tiktok.com/@${profileHandle}/video/${id}`,
-          });
-        }
-        return results;
-      }, handle);
-
-      if (domData.length > 0) videos = domData;
+    if (videoData?.error?.code && videoData.error.code !== 'ok') {
+      throw new Error(`TikTok API: ${videoData.error.code} - ${videoData.error.message}`);
     }
 
-    // Try to get follower count from DOM if not from blob
-    if (followers === (previous?.followers ?? 0)) {
-      try {
-        const followerText = await page.$eval(
-          '[data-e2e="followers-count"]',
-          (el) => el.textContent || '',
-        );
-        if (followerText) followers = parseAbbreviated(followerText.trim());
-      } catch {
-        // Keep previous value
-      }
-    }
+    const videoList = videoData?.data?.videos ?? [];
+    const videos = videoList.map((v) => ({
+      id: String(v.id),
+      thumbnail: v.cover_image_url ?? '',
+      views: v.view_count ?? 0,
+      likes: v.like_count ?? 0,
+      comments: v.comment_count ?? 0,
+      shares: v.share_count ?? 0,
+      title: v.title ?? '',
+      url: v.share_url ?? `https://www.tiktok.com/@${handle}/video/${v.id}`,
+      createdAt: v.create_time ? new Date(v.create_time * 1000).toISOString() : '',
+    }));
 
-    await context.close();
+    console.log(`[tiktok] API returned ${videos.length} videos`);
 
     return {
       handle,
@@ -301,7 +338,7 @@ async function scrapeTikTok(handle, previous) {
 }
 
 /* ============================================================
- * Mailchimp
+ * Mailchimp (with rate-limit retries)
  * ============================================================ */
 
 const SEED_AUDIENCES = [
@@ -346,7 +383,7 @@ async function mailchimpGet(reqPath, query = {}) {
   const base = `https://${MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0`;
   const qs = new URLSearchParams(query).toString();
   const url = `${base}${reqPath}${qs ? `?${qs}` : ''}`;
-  const res = await fetch(url, { headers: mailchimpAuthHeaders() });
+  const res = await fetchWithRetry(url, { headers: mailchimpAuthHeaders() });
   if (!res.ok) {
     const body = await res.text();
     throw new Error(`Mailchimp ${res.status} ${res.statusText}: ${body.slice(0, 200)}`);
@@ -367,7 +404,10 @@ async function fetchMailchimp(previous) {
     ]);
 
     const discovery = { generatedAt: new Date().toISOString(), lists: [] };
+
+    // Process lists sequentially with a small delay to avoid rate limits
     for (const list of lists.lists ?? []) {
+      await sleep(300);
       const [tags, segments, mergeFields] = await Promise.all([
         mailchimpGet(`/lists/${list.id}/tag-search`).catch(() => ({ tags: [] })),
         mailchimpGet(`/lists/${list.id}/segments`, { count: 100 }).catch(() => ({
@@ -407,9 +447,10 @@ async function fetchMailchimp(previous) {
       }
     }
 
-    // Fetch subscriber locations aggregated by country
+    // Fetch subscriber locations (with delay between lists)
     let mailchimpLocations = [];
     for (const list of lists.lists ?? []) {
+      await sleep(300);
       try {
         const locData = await mailchimpGet(`/lists/${list.id}/locations`);
         const locs = (locData.locations ?? locData ?? [])
@@ -420,12 +461,11 @@ async function fetchMailchimp(previous) {
             count: l.total ?? l.member_count ?? 0,
             percent: l.percent ?? 0,
           }));
-        // Merge across lists (sum counts for same country)
         for (const loc of locs) {
           const existing = mailchimpLocations.find((e) => e.cc === loc.cc);
           if (existing) {
             existing.count += loc.count;
-            existing.percent = 0; // percent is per-list, not meaningful when merged
+            existing.percent = 0;
           } else {
             mailchimpLocations.push({ ...loc });
           }
@@ -537,11 +577,9 @@ async function appendHistory(instagram, tiktok) {
     },
   };
 
-  // Deduplicate by date (replace if same day)
   const existing = history.entries.filter((e) => e.date !== today);
   existing.push(entry);
 
-  // Sort by date ascending and cap at HISTORY_MAX_DAYS
   existing.sort((a, b) => a.date.localeCompare(b.date));
   const trimmed = existing.slice(-HISTORY_MAX_DAYS);
 
@@ -558,12 +596,12 @@ async function main() {
 
   console.log('Refreshing Instagram, TikTok, Mailchimp...');
 
-  // Run scrapes sequentially to share the browser, Mailchimp in parallel
+  // Mailchimp runs in parallel; IG uses the browser; TikTok uses the API
   const mailchimpPromise = fetchMailchimp(previous);
+  const tiktokPromise = fetchTikTok(TIKTOK_HANDLE, previous?.tiktok);
   const instagram = await scrapeInstagram(IG_HANDLE, previous?.instagram);
-  const tiktok = await scrapeTikTok(TIKTOK_HANDLE, previous?.tiktok);
   await closeBrowser();
-  const mailchimp = await mailchimpPromise;
+  const [tiktok, mailchimp] = await Promise.all([tiktokPromise, mailchimpPromise]);
 
   const snapshot = {
     generatedAt: new Date().toISOString(),
@@ -585,7 +623,6 @@ async function main() {
     `  Mailchimp combined: ${snapshot.mailchimp.cumulativeDisjoint}, audiences: ${snapshot.mailchimp.audiences.length}`,
   );
 
-  // Accumulate daily history for charts
   await appendHistory(instagram, tiktok);
 }
 

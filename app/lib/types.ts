@@ -10,6 +10,11 @@ export type TikTokVideo = {
   thumbnail: string;
   views: number;
   url: string;
+  likes?: number;
+  comments?: number;
+  shares?: number;
+  title?: string;
+  createdAt?: string;
 };
 
 export type AudienceSide = 'kano' | 'stemplayer' | 'combined';
