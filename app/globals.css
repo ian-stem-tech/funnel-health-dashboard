@@ -343,6 +343,17 @@ a {
   gap: 0.55rem;
 }
 
+.reels-strip--featured {
+  grid-template-columns: 1fr;
+  max-width: 180px;
+}
+
+@media (max-width: 880px) {
+  .reels-strip--featured {
+    max-width: 140px;
+  }
+}
+
 .reel-thumb {
   position: relative;
   aspect-ratio: 9 / 16;

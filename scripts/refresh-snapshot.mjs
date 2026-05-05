@@ -108,61 +108,119 @@ async function closeBrowser() {
 
 const IG_APP_ID = '936619743392459';
 
-// Strategy 1: hit Instagram's web profile API directly (no browser needed)
-async function igWebProfileApi(handle) {
-  console.log('[instagram] Strategy 1: web profile API');
-  const res = await fetchWithRetry(
+const IG_API_HEADERS = {
+  'User-Agent':
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
+  'X-IG-App-ID': IG_APP_ID,
+  'X-Requested-With': 'XMLHttpRequest',
+  Accept: '*/*',
+  'Sec-Fetch-Site': 'same-origin',
+  'Sec-Fetch-Mode': 'cors',
+  'Sec-Fetch-Dest': 'empty',
+  Referer: 'https://www.instagram.com/',
+};
+
+// Strategy 1: Instagram web APIs (no browser needed)
+//   Step A: web_profile_info for followers + user ID + initial view counts
+//   Step B: feed/user paginated for all videos with real-time view counts
+async function igWebApis(handle) {
+  console.log('[instagram] Strategy 1: web APIs');
+
+  // Step A: profile info for followers, user ID, and baseline view counts
+  const profileRes = await fetchWithRetry(
     `https://www.instagram.com/api/v1/users/web_profile_info/?username=${handle}`,
-    {
-      headers: {
-        'User-Agent':
-          'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
-        'X-IG-App-ID': IG_APP_ID,
-        'X-Requested-With': 'XMLHttpRequest',
-        Accept: '*/*',
-        'Sec-Fetch-Site': 'same-origin',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Dest': 'empty',
-        Referer: 'https://www.instagram.com/',
-      },
-    },
+    { headers: IG_API_HEADERS },
     { maxRetries: 2, baseDelay: 3000 },
   );
-  if (!res.ok) throw new Error(`Web profile API ${res.status}`);
-  const json = await res.json();
-  const user = json?.data?.user;
-  if (!user) throw new Error('No user object in API response');
+  if (!profileRes.ok) throw new Error(`Profile API ${profileRes.status}`);
+  const profileJson = await profileRes.json();
+  const user = profileJson?.data?.user;
+  if (!user) throw new Error('No user object in profile API response');
 
+  const userId = user.id;
   const followers = user.edge_followed_by?.count ?? 0;
 
-  // Collect reels from the dedicated reels timeline
-  const reelEdges = user.edge_felix_video_timeline?.edges ?? [];
-  // Also collect videos from the main timeline
-  const mediaEdges = user.edge_owner_to_timeline_media?.edges ?? [];
-  const videoMedia = mediaEdges.filter((e) => e.node?.is_video);
+  // Build a map of shortcode -> view count from the profile response
+  // (the profile API returns view counts for older videos that the feed API misses)
+  const profileViewCounts = new Map();
+  for (const edges of [
+    user.edge_felix_video_timeline?.edges ?? [],
+    (user.edge_owner_to_timeline_media?.edges ?? []).filter((e) => e.node?.is_video),
+  ]) {
+    for (const e of edges) {
+      const sc = e.node?.shortcode;
+      const views = e.node?.video_view_count;
+      if (sc && views) profileViewCounts.set(sc, views);
+    }
+  }
 
-  // Merge both sources, deduplicate by shortcode
-  const seen = new Set();
-  const allReels = [];
-  for (const e of [...reelEdges, ...videoMedia]) {
-    const node = e.node;
-    if (!node?.shortcode) continue;
-    if (seen.has(node.shortcode)) continue;
-    seen.add(node.shortcode);
-    allReels.push({
-      shortcode: node.shortcode,
-      thumbnail: node.thumbnail_src ?? node.display_url ?? '',
-      views: node.video_view_count ?? 0,
-      timestamp: node.taken_at_timestamp ?? 0,
-      url: `https://www.instagram.com/reel/${node.shortcode}/`,
+  await sleep(1000);
+
+  // Step B: paginate feed/user to get all video posts with real-time view counts
+  const allVideos = [];
+  let maxId = '';
+  let page = 0;
+
+  while (page < 5 && allVideos.length < 30) {
+    const feedUrl =
+      `https://www.instagram.com/api/v1/feed/user/${userId}/?count=30` +
+      (maxId ? `&max_id=${maxId}` : '');
+    const feedRes = await fetchWithRetry(
+      feedUrl,
+      { headers: { ...IG_API_HEADERS, Referer: `https://www.instagram.com/${handle}/` } },
+    );
+    if (!feedRes.ok) {
+      console.warn(`[instagram] Feed page ${page + 1} returned ${feedRes.status}`);
+      break;
+    }
+    const feedJson = await feedRes.json();
+    const items = feedJson.items ?? [];
+
+    for (const item of items) {
+      if (item.media_type !== 2) continue; // only videos
+      const shortcode = item.code;
+      if (!shortcode) continue;
+      if (allVideos.some((v) => v.shortcode === shortcode)) continue;
+
+      // Prefer feed play_count (real-time), fall back to profile view count
+      const views = item.play_count ?? profileViewCounts.get(shortcode) ?? 0;
+      const thumb =
+        item.image_versions2?.candidates?.[0]?.url ??
+        item.carousel_media?.[0]?.image_versions2?.candidates?.[0]?.url ??
+        '';
+
+      allVideos.push({
+        shortcode,
+        thumbnail: thumb,
+        views,
+        timestamp: item.taken_at ?? 0,
+        url: `https://www.instagram.com/reel/${shortcode}/`,
+      });
+    }
+
+    page++;
+    if (!feedJson.more_available || !feedJson.next_max_id) break;
+    maxId = feedJson.next_max_id;
+    await sleep(1000);
+  }
+
+  // Also add any reels from the profile API that the feed missed
+  for (const [sc, views] of profileViewCounts) {
+    if (allVideos.some((v) => v.shortcode === sc)) continue;
+    allVideos.push({
+      shortcode: sc,
+      thumbnail: '',
+      views,
+      timestamp: 0,
+      url: `https://www.instagram.com/reel/${sc}/`,
     });
   }
 
-  // Sort by timestamp descending (most recent first), take top 20
-  allReels.sort((a, b) => b.timestamp - a.timestamp);
-  const reels = allReels.slice(0, 20).map(({ timestamp, ...rest }) => rest);
+  // Sort newest first
+  allVideos.sort((a, b) => b.timestamp - a.timestamp);
+  const reels = allVideos.slice(0, 30).map(({ timestamp, ...rest }) => rest);
 
-  console.log(`[instagram] Web profile API: ${followers} followers, ${reels.length} reels`);
+  console.log(`[instagram] Web APIs: ${followers} followers, ${reels.length} reels (${page} feed pages)`);
   return { followers, reels };
 }
 
@@ -398,9 +456,9 @@ async function scrapeInstagram(handle, previous) {
   let reels = [];
   const errors = [];
 
-  // Strategy 1: Web profile API (fastest, no browser needed)
+  // Strategy 1: Web APIs (profile + paginated feed, no browser needed)
   try {
-    const result = await igWebProfileApi(handle);
+    const result = await igWebApis(handle);
     if (result.followers > 0) followers = result.followers;
     if (result.reels.length > 0) reels = result.reels;
   } catch (err) {
