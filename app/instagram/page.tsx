@@ -1,10 +1,10 @@
-import { loadHistory } from '../lib/snapshot';
+import { loadHistory, loadSnapshot } from '../lib/snapshot';
 import { formatNumber } from '../lib/types';
 import { BackLink } from '../components/BackLink';
 import { InstagramDetail } from './InstagramDetail';
 
 export default async function InstagramPage() {
-  const history = await loadHistory();
+  const [history, snapshot] = await Promise.all([loadHistory(), loadSnapshot()]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   const chartData = history.entries.map((e) => ({
@@ -13,7 +13,6 @@ export default async function InstagramPage() {
     followers: e.instagram.followers,
   }));
 
-  // Collect all unique reels across the entire history with first-seen dates
   const reelMap = new Map<string, {
     id: string;
     thumbnail: string;
@@ -41,8 +40,8 @@ export default async function InstagramPage() {
   }
 
   const reels = Array.from(reelMap.values());
-  const latestEntry = history.entries[history.entries.length - 1];
-  const followers = latestEntry?.instagram.followers ?? 0;
+  const followers = snapshot.instagram.followers;
+  const currentReels = snapshot.instagram.reels;
 
   return (
     <main className="shell">
@@ -59,7 +58,7 @@ export default async function InstagramPage() {
           </div>
         </header>
 
-        <InstagramDetail chartData={chartData} reels={reels} />
+        <InstagramDetail chartData={chartData} reels={reels} currentReels={currentReels} />
       </div>
     </main>
   );

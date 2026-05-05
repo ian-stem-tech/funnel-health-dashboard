@@ -3,6 +3,7 @@ export type Reel = {
   thumbnail: string;
   views: number;
   url: string;
+  title?: string;
 };
 
 export type TikTokVideo = {
