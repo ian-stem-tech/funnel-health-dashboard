@@ -4,7 +4,7 @@
  *
  * Daily refresh script run by GitHub Actions.
  *   - Instagram: Playwright headless browser (reels page)
- *   - TikTok:    Official Display API v2 (/v2/video/list/)
+ *   - TikTok:    Playwright headless browser (profile page)
  *   - Mailchimp: REST API with rate-limit-aware retries
  *
  * Writes:
@@ -26,11 +26,6 @@ const TIKTOK_HANDLE = process.env.TIKTOK_HANDLE || 'stemplayer';
 
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX || 'us4';
-
-const TIKTOK_CLIENT_KEY = process.env.TIKTOK_CLIENT_KEY;
-const TIKTOK_CLIENT_SECRET = process.env.TIKTOK_CLIENT_SECRET;
-const TIKTOK_ACCESS_TOKEN = process.env.TIKTOK_ACCESS_TOKEN;
-const TIKTOK_REFRESH_TOKEN = process.env.TIKTOK_REFRESH_TOKEN;
 
 const HISTORY_MAX_DAYS = 90;
 
@@ -203,123 +198,112 @@ async function scrapeInstagram(handle, previous) {
 }
 
 /* ============================================================
- * TikTok Display API v2
- *
- * Uses the official /v2/video/list/ endpoint (requires OAuth).
- * Falls back to previous data if credentials are missing.
- *
- * Required env vars:
- *   TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET,
- *   TIKTOK_ACCESS_TOKEN, TIKTOK_REFRESH_TOKEN
+ * TikTok public profile scrape (Playwright)
  * ============================================================ */
-
-async function refreshTikTokToken() {
-  if (!TIKTOK_CLIENT_KEY || !TIKTOK_CLIENT_SECRET || !TIKTOK_REFRESH_TOKEN) {
-    return null;
-  }
+async function scrapeTikTok(handle, previous) {
   try {
-    const res = await fetchWithRetry('https://open.tiktokapis.com/v2/oauth/token/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        client_key: TIKTOK_CLIENT_KEY,
-        client_secret: TIKTOK_CLIENT_SECRET,
-        grant_type: 'refresh_token',
-        refresh_token: TIKTOK_REFRESH_TOKEN,
-      }),
+    const browser = await getBrowser();
+    const context = await browser.newContext({
+      userAgent:
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15',
+      locale: 'en-US',
     });
-    const data = await res.json();
-    if (data.access_token) {
-      console.log('[tiktok] Token refreshed successfully');
-      return data.access_token;
-    }
-    console.warn('[tiktok] Token refresh response:', JSON.stringify(data).slice(0, 200));
-    return null;
-  } catch (err) {
-    console.warn('[tiktok] Token refresh failed:', err.message);
-    return null;
-  }
-}
+    const page = await context.newPage();
 
-async function fetchTikTok(handle, previous) {
-  // Try to get a valid access token
-  let accessToken = TIKTOK_ACCESS_TOKEN;
+    await page.goto(`https://www.tiktok.com/@${handle}`, {
+      waitUntil: 'networkidle',
+      timeout: 45000,
+    });
 
-  if (!accessToken && TIKTOK_REFRESH_TOKEN) {
-    accessToken = await refreshTikTokToken();
-  }
+    await page.waitForTimeout(4000);
 
-  if (!accessToken) {
-    console.warn('[tiktok] No TikTok API credentials, using previous data');
-    return {
-      handle,
-      followers: previous?.followers ?? 0,
-      videos: previous?.videos ?? [],
-      error: 'No TikTok API credentials configured',
-    };
-  }
-
-  try {
-    // Try refreshing the token first in case the current one expired
-    const refreshedToken = await refreshTikTokToken();
-    if (refreshedToken) accessToken = refreshedToken;
-
-    // Fetch user info for follower count
     let followers = previous?.followers ?? 0;
+    let videos = [];
+
+    // Primary: extract from the rehydration JSON blob
     try {
-      const userRes = await fetchWithRetry(
-        'https://open.tiktokapis.com/v2/user/info/?fields=follower_count,display_name',
-        { headers: { Authorization: `Bearer ${accessToken}` } },
+      const blobContent = await page.$eval(
+        'script#__UNIVERSAL_DATA_FOR_REHYDRATION__',
+        (el) => el.textContent || '',
       );
-      const userData = await userRes.json();
-      if (userData?.data?.user?.follower_count) {
-        followers = userData.data.user.follower_count;
+      if (blobContent) {
+        const blob = JSON.parse(blobContent);
+        const scope = blob?.__DEFAULT_SCOPE__ ?? {};
+        const userDetail = scope['webapp.user-detail'];
+        const userPostList = scope['webapp.user-post'];
+
+        followers = userDetail?.userInfo?.stats?.followerCount ?? followers;
+
+        const items = userPostList?.itemList ?? userDetail?.userInfo?.itemList ?? [];
+        videos = items.slice(0, 20).map((item) => ({
+          id: String(item.id),
+          thumbnail: item?.video?.cover ?? item?.video?.originCover ?? '',
+          views: item?.stats?.playCount ?? 0,
+          url: `https://www.tiktok.com/@${handle}/video/${item.id}`,
+        }));
       }
-    } catch (userErr) {
-      console.warn('[tiktok] user/info failed:', userErr.message);
+    } catch {
+      // Blob not available, fall through to DOM extraction
     }
 
-    await sleep(500);
+    // Fallback: extract from the rendered DOM
+    if (videos.length === 0) {
+      const domData = await page.evaluate((profileHandle) => {
+        const results = [];
+        const videoLinks = document.querySelectorAll('a[href*="/video/"]');
+        const seen = new Set();
 
-    // Fetch 20 most recent videos
-    const videoFields = [
-      'id', 'title', 'video_description', 'duration',
-      'cover_image_url', 'share_url', 'view_count',
-      'like_count', 'comment_count', 'share_count', 'create_time',
-    ].join(',');
+        for (const link of videoLinks) {
+          if (results.length >= 20) break;
+          const href = link.getAttribute('href') || '';
+          const idMatch = href.match(/\/video\/(\d+)/);
+          if (!idMatch) continue;
+          const id = idMatch[1];
+          if (seen.has(id)) continue;
+          seen.add(id);
 
-    const videoRes = await fetchWithRetry(
-      `https://open.tiktokapis.com/v2/video/list/?fields=${videoFields}`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ max_count: 20 }),
-      },
-    );
+          let views = 0;
+          const strongEl = link.querySelector('strong');
+          if (strongEl) {
+            const txt = strongEl.textContent?.trim() || '';
+            const parsed = parseFloat(txt.replace(/,/g, ''));
+            const suffix = txt.slice(-1).toUpperCase();
+            if (suffix === 'K') views = Math.round(parsed * 1000);
+            else if (suffix === 'M') views = Math.round(parsed * 1000000);
+            else if (suffix === 'B') views = Math.round(parsed * 1000000000);
+            else if (!isNaN(parsed)) views = Math.round(parsed);
+          }
 
-    const videoData = await videoRes.json();
+          const img = link.querySelector('img');
+          const thumbnail = img?.getAttribute('src') || '';
 
-    if (videoData?.error?.code && videoData.error.code !== 'ok') {
-      throw new Error(`TikTok API: ${videoData.error.code} - ${videoData.error.message}`);
+          results.push({
+            id,
+            thumbnail,
+            views,
+            url: `https://www.tiktok.com/@${profileHandle}/video/${id}`,
+          });
+        }
+        return results;
+      }, handle);
+
+      if (domData.length > 0) videos = domData;
     }
 
-    const videoList = videoData?.data?.videos ?? [];
-    const videos = videoList.map((v) => ({
-      id: String(v.id),
-      thumbnail: v.cover_image_url ?? '',
-      views: v.view_count ?? 0,
-      likes: v.like_count ?? 0,
-      comments: v.comment_count ?? 0,
-      shares: v.share_count ?? 0,
-      title: v.title ?? '',
-      url: v.share_url ?? `https://www.tiktok.com/@${handle}/video/${v.id}`,
-      createdAt: v.create_time ? new Date(v.create_time * 1000).toISOString() : '',
-    }));
+    // Try follower count from DOM if the blob didn't have it
+    if (followers === (previous?.followers ?? 0)) {
+      try {
+        const followerText = await page.$eval(
+          '[data-e2e="followers-count"]',
+          (el) => el.textContent || '',
+        );
+        if (followerText) followers = parseAbbreviated(followerText.trim());
+      } catch {
+        // Keep previous value
+      }
+    }
 
-    console.log(`[tiktok] API returned ${videos.length} videos`);
+    await context.close();
 
     return {
       handle,
@@ -596,12 +580,13 @@ async function main() {
 
   console.log('Refreshing Instagram, TikTok, Mailchimp...');
 
-  // Mailchimp runs in parallel; IG uses the browser; TikTok uses the API
+  // Mailchimp runs in parallel; IG + TikTok share the browser sequentially
   const mailchimpPromise = fetchMailchimp(previous);
-  const tiktokPromise = fetchTikTok(TIKTOK_HANDLE, previous?.tiktok);
   const instagram = await scrapeInstagram(IG_HANDLE, previous?.instagram);
+  await sleep(2000);
+  const tiktok = await scrapeTikTok(TIKTOK_HANDLE, previous?.tiktok);
   await closeBrowser();
-  const [tiktok, mailchimp] = await Promise.all([tiktokPromise, mailchimpPromise]);
+  const mailchimp = await mailchimpPromise;
 
   const snapshot = {
     generatedAt: new Date().toISOString(),
