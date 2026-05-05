@@ -141,22 +141,26 @@ async function igWebProfileApi(handle) {
   const mediaEdges = user.edge_owner_to_timeline_media?.edges ?? [];
   const videoMedia = mediaEdges.filter((e) => e.node?.is_video);
 
-  // Merge both sources, deduplicate by shortcode, reels first
+  // Merge both sources, deduplicate by shortcode
   const seen = new Set();
-  const reels = [];
+  const allReels = [];
   for (const e of [...reelEdges, ...videoMedia]) {
-    if (reels.length >= 20) break;
     const node = e.node;
     if (!node?.shortcode) continue;
     if (seen.has(node.shortcode)) continue;
     seen.add(node.shortcode);
-    reels.push({
+    allReels.push({
       shortcode: node.shortcode,
       thumbnail: node.thumbnail_src ?? node.display_url ?? '',
       views: node.video_view_count ?? 0,
+      timestamp: node.taken_at_timestamp ?? 0,
       url: `https://www.instagram.com/reel/${node.shortcode}/`,
     });
   }
+
+  // Sort by timestamp descending (most recent first), take top 20
+  allReels.sort((a, b) => b.timestamp - a.timestamp);
+  const reels = allReels.slice(0, 20).map(({ timestamp, ...rest }) => rest);
 
   console.log(`[instagram] Web profile API: ${followers} followers, ${reels.length} reels`);
   return { followers, reels };
