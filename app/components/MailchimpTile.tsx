@@ -4,69 +4,59 @@ import { useEffect, useMemo, useState } from 'react';
 import { BentoCard } from './BentoCard';
 import { formatNumber, type Snapshot, type Audience } from '../lib/types';
 
-const STORAGE_KEY = 'fhd:active-segments';
+const STORAGE_KEY = 'fhd:selected-segment';
 
-function loadActive(defaults: string[]): string[] {
-  if (typeof window === 'undefined') return defaults;
+function loadSelected(): string | null {
+  if (typeof window === 'undefined') return null;
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaults;
-    const parsed = JSON.parse(raw) as string[];
-    if (!Array.isArray(parsed)) return defaults;
-    return parsed;
+    return window.localStorage.getItem(STORAGE_KEY);
   } catch {
-    return defaults;
+    return null;
   }
 }
 
 export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
-  // Disjoint buckets used for the filterable cumulative number.
-  // The "raw combined" list is intentionally excluded so the math stays clean.
   const disjoint = useMemo(
     () => data.audiences.filter((a) => a.key !== 'kano_stemplayer_combined'),
     [data.audiences],
   );
 
-  const defaultActive = useMemo(() => disjoint.map((a) => a.key), [disjoint]);
-  const [active, setActive] = useState<string[]>(defaultActive);
+  const [selected, setSelected] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    setActive(loadActive(defaultActive));
+    setSelected(loadSelected());
     setHydrated(true);
-  }, [defaultActive]);
+  }, []);
 
   useEffect(() => {
     if (!hydrated) return;
     try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(active));
+      if (selected) {
+        window.localStorage.setItem(STORAGE_KEY, selected);
+      } else {
+        window.localStorage.removeItem(STORAGE_KEY);
+      }
     } catch {
       /* ignore */
     }
-  }, [active, hydrated]);
+  }, [selected, hydrated]);
 
-  function toggle(key: string) {
-    setActive((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key],
-    );
+  function handleChipClick(key: string) {
+    setSelected((prev) => (prev === key ? null : key));
   }
 
-  const cumulative = useMemo(
-    () =>
-      disjoint
-        .filter((a) => active.includes(a.key))
-        .reduce((sum, a) => sum + a.count, 0),
-    [disjoint, active],
-  );
+  const selectedSegment = selected
+    ? disjoint.find((a) => a.key === selected)
+    : null;
 
-  const allActive = active.length === defaultActive.length;
-  const noneActive = active.length === 0;
+  const displayValue = selectedSegment
+    ? selectedSegment.count
+    : data.cumulativeDisjoint;
 
-  const caption = noneActive
-    ? 'No segments selected'
-    : allActive
-    ? 'Showing: all segments (Inferred Kano + Stemplayer side)'
-    : `Showing: ${active.length} segment${active.length === 1 ? '' : 's'}`;
+  const caption = selectedSegment
+    ? `Showing: ${selectedSegment.label}`
+    : 'Showing: all segments combined';
 
   return (
     <BentoCard
@@ -74,37 +64,41 @@ export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
       subtitle="us4"
       iconLetter="MC"
       headerExtra={
-        <button
-          type="button"
-          onClick={() => setActive(allActive ? [] : defaultActive)}
-          style={{
-            background: 'transparent',
-            color: 'var(--gray-900)',
-            border: '1px solid rgb(31 31 31 / 0.24)',
-            minHeight: 0,
-            padding: '0.34rem 0.7rem',
-            fontSize: '0.78rem',
-          }}
-        >
-          {allActive ? 'Clear all' : 'Select all'}
-        </button>
+        selected ? (
+          <button
+            type="button"
+            onClick={() => setSelected(null)}
+            style={{
+              background: 'transparent',
+              color: 'var(--gray-900)',
+              border: '1px solid rgb(31 31 31 / 0.24)',
+              minHeight: 0,
+              padding: '0.34rem 0.7rem',
+              fontSize: '0.78rem',
+            }}
+          >
+            Show all
+          </button>
+        ) : null
       }
     >
       <div className="hero-stat">
-        <span className="hero-stat-label">Cumulative subscribers (filtered)</span>
-        <span className="hero-stat-value">{formatNumber(cumulative)}</span>
+        <span className="hero-stat-label">
+          {selectedSegment ? 'Segment subscribers' : 'Cumulative subscribers'}
+        </span>
+        <span className="hero-stat-value">{formatNumber(displayValue)}</span>
         <span className="hero-stat-caption">{caption}</span>
       </div>
 
       <div className="segment-filter" role="group" aria-label="Segment filters">
         {disjoint.map((segment) => {
-          const on = active.includes(segment.key);
+          const on = selected === segment.key;
           return (
             <button
               key={segment.key}
               type="button"
               className={`segment-chip${on ? ' active' : ''}`}
-              onClick={() => toggle(segment.key)}
+              onClick={() => handleChipClick(segment.key)}
               aria-pressed={on}
             >
               <span>{shortLabel(segment)}</span>
@@ -117,22 +111,23 @@ export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
       <div className="audience-grid">
         {data.audiences.map((segment) => {
           const inDisjoint = segment.key !== 'kano_stemplayer_combined';
-          const isActive = inDisjoint ? active.includes(segment.key) : true;
+          const isHighlighted = !selected || segment.key === selected || !inDisjoint;
           const classes = ['audience-card'];
           if (segment.inferred) classes.push('inferred');
-          if (inDisjoint && !isActive) classes.push('inactive');
+          if (inDisjoint && !isHighlighted) classes.push('inactive');
+          if (selected === segment.key) classes.push('selected');
           return (
             <div
               key={segment.key}
               className={classes.join(' ')}
-              onClick={() => inDisjoint && toggle(segment.key)}
+              onClick={() => inDisjoint && handleChipClick(segment.key)}
               role={inDisjoint ? 'button' : undefined}
               tabIndex={inDisjoint ? 0 : undefined}
               onKeyDown={(e) => {
                 if (!inDisjoint) return;
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  toggle(segment.key);
+                  handleChipClick(segment.key);
                 }
               }}
               title={segment.derivation}
@@ -148,6 +143,20 @@ export function MailchimpTile({ data }: { data: Snapshot['mailchimp'] }) {
           );
         })}
       </div>
+
+      {data.mailchimpLocations && data.mailchimpLocations.length > 0 && (
+        <div className="location-section">
+          <span className="stat-label">Top countries</span>
+          <div className="location-grid">
+            {data.mailchimpLocations.slice(0, 10).map((loc) => (
+              <div key={loc.country} className="location-row">
+                <span className="location-country">{loc.country}</span>
+                <span className="location-count">{formatNumber(loc.count)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {data.error && (
         <p className="card-subtitle" style={{ color: '#a16207' }}>

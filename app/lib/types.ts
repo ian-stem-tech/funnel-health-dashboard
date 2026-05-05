@@ -23,6 +23,13 @@ export type Audience = {
   derivation?: string;
 };
 
+export type MailchimpLocation = {
+  country: string;
+  cc: string;
+  count: number;
+  percent: number;
+};
+
 export type Snapshot = {
   generatedAt: string;
   instagram: {
@@ -41,8 +48,27 @@ export type Snapshot = {
     cumulativeRaw: number;
     cumulativeDisjoint: number;
     audiences: Audience[];
+    mailchimpLocations?: MailchimpLocation[];
     error?: string;
   };
+};
+
+export type HistoryEntry = {
+  date: string;
+  instagram: {
+    followers: number;
+    totalReelViews: number;
+    reels: Reel[];
+  };
+  tiktok: {
+    followers: number;
+    totalVideoViews: number;
+    videos: TikTokVideo[];
+  };
+};
+
+export type History = {
+  entries: HistoryEntry[];
 };
 
 export function formatNumber(n: number): string {

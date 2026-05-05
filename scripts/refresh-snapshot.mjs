@@ -2,20 +2,23 @@
 /**
  * refresh-snapshot.mjs
  *
- * Daily refresh script run by GitHub Actions. Scrapes Instagram + TikTok
- * public profiles, calls Mailchimp for audience counts, and writes
- *   - public/data/snapshot.json     (consumed by the static dashboard)
- *   - public/data/mailchimp-discovery.json (lists/tags/segments dump for
- *     promoting the inferred Kano figure to a direct query later)
+ * Daily refresh script run by GitHub Actions. Uses Playwright to scrape
+ * Instagram + TikTok public profiles, calls Mailchimp for audience counts,
+ * and writes:
+ *   - public/data/snapshot.json          (consumed by the static dashboard)
+ *   - public/data/history.json           (accumulated daily entries for charts)
+ *   - public/data/mailchimp-discovery.json (lists/tags/segments dump)
  *
  * Graceful fallback: if any source fails we keep the previous snapshot's
  * value for that source and surface the error in the JSON.
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { chromium } from 'playwright';
 
 const ROOT = process.cwd();
 const SNAPSHOT_PATH = path.join(ROOT, 'public', 'data', 'snapshot.json');
+const HISTORY_PATH = path.join(ROOT, 'public', 'data', 'history.json');
 const DISCOVERY_PATH = path.join(ROOT, 'public', 'data', 'mailchimp-discovery.json');
 
 const IG_HANDLE = process.env.IG_HANDLE || 'stemplayer';
@@ -23,14 +26,7 @@ const TIKTOK_HANDLE = process.env.TIKTOK_HANDLE || 'stemplayer';
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX || 'us4';
 
-const UA =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15';
-
-const COMMON_HEADERS = {
-  'User-Agent': UA,
-  'Accept-Language': 'en-US,en;q=0.9',
-  Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-};
+const HISTORY_MAX_DAYS = 90;
 
 async function readPrevious() {
   try {
@@ -41,56 +37,128 @@ async function readPrevious() {
   }
 }
 
-async function fetchText(url, extraHeaders = {}) {
-  const res = await fetch(url, {
-    headers: { ...COMMON_HEADERS, ...extraHeaders },
-    redirect: 'follow',
-  });
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status} ${res.statusText} for ${url}`);
+async function readHistory() {
+  try {
+    const raw = await fs.readFile(HISTORY_PATH, 'utf-8');
+    return JSON.parse(raw);
+  } catch {
+    return { entries: [] };
   }
-  return await res.text();
 }
 
 /* ============================================================
- * Instagram public profile scrape
+ * Shared browser instance
+ * ============================================================ */
+let _browser = null;
+
+async function getBrowser() {
+  if (!_browser) {
+    _browser = await chromium.launch({ headless: true });
+  }
+  return _browser;
+}
+
+async function closeBrowser() {
+  if (_browser) {
+    await _browser.close();
+    _browser = null;
+  }
+}
+
+/* ============================================================
+ * Instagram public profile scrape (Playwright)
  * ============================================================ */
 async function scrapeInstagram(handle, previous) {
   try {
-    const html = await fetchText(`https://www.instagram.com/${handle}/`);
+    const browser = await getBrowser();
+    const context = await browser.newContext({
+      userAgent:
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15',
+      locale: 'en-US',
+    });
+    const page = await context.newPage();
 
-    // og:description usually looks like:
-    //   "1,234 Followers, 567 Following, 89 Posts - See Instagram photos and videos from..."
-    const ogMatch = html.match(/<meta property="og:description" content="([^"]+)"/);
+    await page.goto(`https://www.instagram.com/${handle}/reels/`, {
+      waitUntil: 'networkidle',
+      timeout: 30000,
+    });
+
+    // Wait for some content to render
+    await page.waitForTimeout(3000);
+
+    // Extract followers from the meta tag or page content
     let followers = previous?.followers ?? 0;
-    if (ogMatch) {
-      const followerMatch = ogMatch[1].match(/([\d.,KMB]+)\s+Followers/i);
+    try {
+      const ogDesc = await page.$eval(
+        'meta[property="og:description"]',
+        (el) => el.getAttribute('content') || '',
+      );
+      const followerMatch = ogDesc.match(/([\d.,KMB]+)\s+Followers/i);
       if (followerMatch) followers = parseAbbreviated(followerMatch[1]);
+    } catch {
+      // Try alternative: look in page text
+      const bodyText = await page.textContent('body');
+      const match = bodyText?.match(/([\d.,KMB]+)\s+followers/i);
+      if (match) followers = parseAbbreviated(match[1]);
     }
 
-    // Try to extract recent reels from inline JSON. Instagram serves a
-    // big inline blob with edges; this regex is best-effort.
-    const reels = [];
-    const shortcodeMatches = [...html.matchAll(/"shortcode":"([A-Za-z0-9_-]+)"/g)];
-    const playCountMatches = [...html.matchAll(/"play_count":(\d+)/g)];
-    const thumbMatches = [...html.matchAll(/"display_url":"([^"]+)"/g)];
+    // Extract reels from the page
+    const reels = await page.evaluate((profileHandle) => {
+      const results = [];
+      // Instagram renders reel links as anchor tags with /reel/ in href
+      const reelLinks = document.querySelectorAll('a[href*="/reel/"]');
+      const seen = new Set();
 
-    const seen = new Set();
-    for (let i = 0; i < shortcodeMatches.length && reels.length < 3; i++) {
-      const shortcode = shortcodeMatches[i][1];
-      if (seen.has(shortcode)) continue;
-      seen.add(shortcode);
-      const views = playCountMatches[i] ? Number(playCountMatches[i][1]) : 0;
-      const thumbnail = thumbMatches[i]
-        ? thumbMatches[i][1].replace(/\\u0026/g, '&').replace(/\\\//g, '/')
-        : '';
-      reels.push({
-        shortcode,
-        thumbnail,
-        views,
-        url: `https://www.instagram.com/reel/${shortcode}/`,
-      });
-    }
+      for (const link of reelLinks) {
+        if (results.length >= 6) break;
+        const href = link.getAttribute('href') || '';
+        const shortcodeMatch = href.match(/\/reel\/([A-Za-z0-9_-]+)/);
+        if (!shortcodeMatch) continue;
+        const shortcode = shortcodeMatch[1];
+        if (seen.has(shortcode)) continue;
+        seen.add(shortcode);
+
+        // Try to find view count text within the reel card
+        let views = 0;
+        const viewText = link.querySelector('[aria-label]')?.getAttribute('aria-label') || '';
+        const viewMatch = viewText.match(/([\d,]+)\s*(views|plays)/i);
+        if (viewMatch) {
+          views = parseInt(viewMatch[1].replace(/,/g, ''), 10) || 0;
+        }
+        // Alternative: look for text nodes with numbers
+        if (!views) {
+          const spans = link.querySelectorAll('span');
+          for (const span of spans) {
+            const txt = span.textContent?.trim() || '';
+            // Match patterns like "1.2M", "45.3K", "12,345"
+            const numMatch = txt.match(/^([\d.,]+[KMB]?)$/i);
+            if (numMatch && !txt.includes('@') && !txt.includes('/')) {
+              const parsed = parseFloat(txt.replace(/,/g, ''));
+              const suffix = txt.slice(-1).toUpperCase();
+              if (suffix === 'K') views = Math.round(parsed * 1000);
+              else if (suffix === 'M') views = Math.round(parsed * 1000000);
+              else if (suffix === 'B') views = Math.round(parsed * 1000000000);
+              else if (!isNaN(parsed)) views = Math.round(parsed);
+              if (views > 0) break;
+            }
+          }
+        }
+
+        // Try to get thumbnail from img inside the link
+        const img = link.querySelector('img');
+        const thumbnail = img?.getAttribute('src') || '';
+
+        results.push({
+          shortcode,
+          thumbnail,
+          views,
+          url: `https://www.instagram.com/reel/${shortcode}/`,
+        });
+      }
+      return results;
+    }, handle);
+
+    await context.close();
 
     return {
       handle,
@@ -109,33 +177,112 @@ async function scrapeInstagram(handle, previous) {
 }
 
 /* ============================================================
- * TikTok public profile scrape
+ * TikTok public profile scrape (Playwright)
  * ============================================================ */
 async function scrapeTikTok(handle, previous) {
   try {
-    const html = await fetchText(`https://www.tiktok.com/@${handle}`);
+    const browser = await getBrowser();
+    const context = await browser.newContext({
+      userAgent:
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15',
+      locale: 'en-US',
+    });
+    const page = await context.newPage();
 
-    // TikTok ships state as <script id="__UNIVERSAL_DATA_FOR_REHYDRATION__" type="application/json">{...}</script>
-    const blobMatch = html.match(
-      /<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"[^>]*>([\s\S]*?)<\/script>/,
-    );
-    if (!blobMatch) {
-      throw new Error('Could not find rehydration data blob');
+    await page.goto(`https://www.tiktok.com/@${handle}`, {
+      waitUntil: 'networkidle',
+      timeout: 30000,
+    });
+
+    await page.waitForTimeout(3000);
+
+    // Try extracting from the rehydration JSON blob first (most reliable)
+    let followers = previous?.followers ?? 0;
+    let videos = [];
+
+    try {
+      const blobContent = await page.$eval(
+        'script#__UNIVERSAL_DATA_FOR_REHYDRATION__',
+        (el) => el.textContent || '',
+      );
+      if (blobContent) {
+        const blob = JSON.parse(blobContent);
+        const scope = blob?.__DEFAULT_SCOPE__ ?? {};
+        const userDetail = scope['webapp.user-detail'];
+        const userPostList = scope['webapp.user-post'];
+
+        followers = userDetail?.userInfo?.stats?.followerCount ?? followers;
+
+        const items = userPostList?.itemList ?? userDetail?.userInfo?.itemList ?? [];
+        videos = items.slice(0, 6).map((item) => ({
+          id: String(item.id),
+          thumbnail: item?.video?.cover ?? item?.video?.originCover ?? '',
+          views: item?.stats?.playCount ?? 0,
+          url: `https://www.tiktok.com/@${handle}/video/${item.id}`,
+        }));
+      }
+    } catch {
+      // Blob not available, fall through to DOM extraction
     }
-    const blob = JSON.parse(blobMatch[1]);
-    const scope = blob?.__DEFAULT_SCOPE__ ?? {};
-    const userDetail = scope['webapp.user-detail'];
-    const userPostList = scope['webapp.user-post'];
 
-    const followers = userDetail?.userInfo?.stats?.followerCount ?? previous?.followers ?? 0;
+    // Fallback: extract from rendered DOM
+    if (videos.length === 0) {
+      const domData = await page.evaluate((profileHandle) => {
+        const results = [];
+        const videoLinks = document.querySelectorAll('a[href*="/video/"]');
+        const seen = new Set();
 
-    const items = userPostList?.itemList ?? userDetail?.userInfo?.itemList ?? [];
-    const videos = items.slice(0, 3).map((item) => ({
-      id: String(item.id),
-      thumbnail: item?.video?.cover ?? item?.video?.originCover ?? '',
-      views: item?.stats?.playCount ?? 0,
-      url: `https://www.tiktok.com/@${handle}/video/${item.id}`,
-    }));
+        for (const link of videoLinks) {
+          if (results.length >= 6) break;
+          const href = link.getAttribute('href') || '';
+          const idMatch = href.match(/\/video\/(\d+)/);
+          if (!idMatch) continue;
+          const id = idMatch[1];
+          if (seen.has(id)) continue;
+          seen.add(id);
+
+          let views = 0;
+          const strongEl = link.querySelector('strong');
+          if (strongEl) {
+            const txt = strongEl.textContent?.trim() || '';
+            const parsed = parseFloat(txt.replace(/,/g, ''));
+            const suffix = txt.slice(-1).toUpperCase();
+            if (suffix === 'K') views = Math.round(parsed * 1000);
+            else if (suffix === 'M') views = Math.round(parsed * 1000000);
+            else if (suffix === 'B') views = Math.round(parsed * 1000000000);
+            else if (!isNaN(parsed)) views = Math.round(parsed);
+          }
+
+          const img = link.querySelector('img');
+          const thumbnail = img?.getAttribute('src') || '';
+
+          results.push({
+            id,
+            thumbnail,
+            views,
+            url: `https://www.tiktok.com/@${profileHandle}/video/${id}`,
+          });
+        }
+        return results;
+      }, handle);
+
+      if (domData.length > 0) videos = domData;
+    }
+
+    // Try to get follower count from DOM if not from blob
+    if (followers === (previous?.followers ?? 0)) {
+      try {
+        const followerText = await page.$eval(
+          '[data-e2e="followers-count"]',
+          (el) => el.textContent || '',
+        );
+        if (followerText) followers = parseAbbreviated(followerText.trim());
+      } catch {
+        // Keep previous value
+      }
+    }
+
+    await context.close();
 
     return {
       handle,
@@ -195,10 +342,10 @@ function mailchimpAuthHeaders() {
   return { Authorization: `Basic ${token}` };
 }
 
-async function mailchimpGet(path, query = {}) {
+async function mailchimpGet(reqPath, query = {}) {
   const base = `https://${MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0`;
   const qs = new URLSearchParams(query).toString();
-  const url = `${base}${path}${qs ? `?${qs}` : ''}`;
+  const url = `${base}${reqPath}${qs ? `?${qs}` : ''}`;
   const res = await fetch(url, { headers: mailchimpAuthHeaders() });
   if (!res.ok) {
     const body = await res.text();
@@ -249,9 +396,6 @@ async function fetchMailchimp(previous) {
 
     await fs.writeFile(DISCOVERY_PATH, JSON.stringify(discovery, null, 2) + '\n');
 
-    // We don't yet know how the user labels Kano vs Stemplayer in their account,
-    // so until discovery shows us a clear signal we keep the seed audience
-    // counts and update only what we can correlate.
     const audiences = SEED_AUDIENCES.map((a) => ({ ...a }));
 
     for (const a of audiences) {
@@ -263,7 +407,38 @@ async function fetchMailchimp(previous) {
       }
     }
 
-    return computeMailchimp(audiences);
+    // Fetch subscriber locations aggregated by country
+    let mailchimpLocations = [];
+    for (const list of lists.lists ?? []) {
+      try {
+        const locData = await mailchimpGet(`/lists/${list.id}/locations`);
+        const locs = (locData.locations ?? locData ?? [])
+          .filter((l) => l.country && l.country_code)
+          .map((l) => ({
+            country: l.country,
+            cc: l.country_code,
+            count: l.total ?? l.member_count ?? 0,
+            percent: l.percent ?? 0,
+          }));
+        // Merge across lists (sum counts for same country)
+        for (const loc of locs) {
+          const existing = mailchimpLocations.find((e) => e.cc === loc.cc);
+          if (existing) {
+            existing.count += loc.count;
+            existing.percent = 0; // percent is per-list, not meaningful when merged
+          } else {
+            mailchimpLocations.push({ ...loc });
+          }
+        }
+      } catch (locErr) {
+        console.warn(`[mailchimp] locations for ${list.id}:`, locErr.message);
+      }
+    }
+    mailchimpLocations.sort((a, b) => b.count - a.count);
+
+    const result = computeMailchimp(audiences);
+    result.mailchimpLocations = mailchimpLocations;
+    return result;
   } catch (err) {
     console.warn('[mailchimp]', err.message);
     const base = previous?.mailchimp ?? buildMailchimpFromSeed();
@@ -324,6 +499,57 @@ function parseAbbreviated(s) {
   return Math.round(n);
 }
 
+function todayDateString() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/* ============================================================
+ * History accumulation
+ * ============================================================ */
+async function appendHistory(instagram, tiktok) {
+  const history = await readHistory();
+  const today = todayDateString();
+
+  const totalReelViews = (instagram.reels ?? []).reduce((s, r) => s + (r.views || 0), 0);
+  const totalVideoViews = (tiktok.videos ?? []).reduce((s, v) => s + (v.views || 0), 0);
+
+  const entry = {
+    date: today,
+    instagram: {
+      followers: instagram.followers,
+      totalReelViews,
+      reels: (instagram.reels ?? []).map((r) => ({
+        shortcode: r.shortcode,
+        thumbnail: r.thumbnail,
+        views: r.views,
+        url: r.url,
+      })),
+    },
+    tiktok: {
+      followers: tiktok.followers,
+      totalVideoViews,
+      videos: (tiktok.videos ?? []).map((v) => ({
+        id: v.id,
+        thumbnail: v.thumbnail,
+        views: v.views,
+        url: v.url,
+      })),
+    },
+  };
+
+  // Deduplicate by date (replace if same day)
+  const existing = history.entries.filter((e) => e.date !== today);
+  existing.push(entry);
+
+  // Sort by date ascending and cap at HISTORY_MAX_DAYS
+  existing.sort((a, b) => a.date.localeCompare(b.date));
+  const trimmed = existing.slice(-HISTORY_MAX_DAYS);
+
+  const updated = { entries: trimmed };
+  await fs.writeFile(HISTORY_PATH, JSON.stringify(updated, null, 2) + '\n');
+  console.log(`  History: ${trimmed.length} entries (appended ${today})`);
+}
+
 /* ============================================================
  * Main
  * ============================================================ */
@@ -331,11 +557,13 @@ async function main() {
   const previous = await readPrevious();
 
   console.log('Refreshing Instagram, TikTok, Mailchimp...');
-  const [instagram, tiktok, mailchimp] = await Promise.all([
-    scrapeInstagram(IG_HANDLE, previous?.instagram),
-    scrapeTikTok(TIKTOK_HANDLE, previous?.tiktok),
-    fetchMailchimp(previous),
-  ]);
+
+  // Run scrapes sequentially to share the browser, Mailchimp in parallel
+  const mailchimpPromise = fetchMailchimp(previous);
+  const instagram = await scrapeInstagram(IG_HANDLE, previous?.instagram);
+  const tiktok = await scrapeTikTok(TIKTOK_HANDLE, previous?.tiktok);
+  await closeBrowser();
+  const mailchimp = await mailchimpPromise;
 
   const snapshot = {
     generatedAt: new Date().toISOString(),
@@ -356,9 +584,13 @@ async function main() {
   console.log(
     `  Mailchimp combined: ${snapshot.mailchimp.cumulativeDisjoint}, audiences: ${snapshot.mailchimp.audiences.length}`,
   );
+
+  // Accumulate daily history for charts
+  await appendHistory(instagram, tiktok);
 }
 
 main().catch((err) => {
+  closeBrowser().catch(() => {});
   console.error(err);
   process.exit(1);
 });

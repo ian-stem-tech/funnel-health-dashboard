@@ -488,6 +488,11 @@ a {
   opacity: 0.42;
 }
 
+.audience-card.selected {
+  border-color: var(--gray-900);
+  box-shadow: 0 0 0 2px var(--gray-900), 0 10px 22px rgb(8 8 12 / 0.12);
+}
+
 .audience-card.inferred {
   border-style: dashed;
   border-color: rgb(31 31 31 / 0.32);
@@ -563,6 +568,43 @@ a {
 }
 
 /* ============================================================
+   Mailchimp locations
+   ============================================================ */
+
+.location-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.35rem 1rem;
+}
+
+.location-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.28rem 0;
+}
+
+.location-country {
+  font-family: "DeepSeaRegular", sans-serif;
+  color: var(--gray-700);
+  font-size: 0.84rem;
+}
+
+.location-count {
+  font-family: "DeepSeaBold", sans-serif;
+  color: var(--gray-900);
+  font-size: 0.86rem;
+}
+
+/* ============================================================
    Footer
    ============================================================ */
 
@@ -592,6 +634,343 @@ a {
 .dash-footer .refresh-link:hover {
   background: rgb(255 255 255 / 0.12);
 }
+
+/* ============================================================
+   Tile link (clickable IG / TikTok tiles)
+   ============================================================ */
+
+.tile-link {
+  display: contents;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile-link .bento-card {
+  cursor: pointer;
+}
+
+.tile-arrow {
+  text-decoration: underline;
+  opacity: 0.7;
+  transition: opacity var(--dur-fast) var(--ease-standard);
+}
+
+.tile-link:hover .tile-arrow {
+  opacity: 1;
+}
+
+/* ============================================================
+   Detail page layout
+   ============================================================ */
+
+.detail-page {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.detail-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.detail-title-row .logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+  opacity: 0.95;
+}
+
+.detail-title-row h1 {
+  margin: 0;
+  font-family: "DeepSeaBold", sans-serif;
+  letter-spacing: 0.012em;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  color: #e8e8e8;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.45);
+}
+
+.detail-title-row p {
+  margin: 0;
+  color: #d3d3d3;
+  font-family: "DeepSeaRegular", sans-serif;
+  font-size: clamp(0.88rem, 1.1vw, 0.98rem);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.45);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #d3d3d3;
+  font-family: "DeepSeaMedium", sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.back-link:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   Chart component
+   ============================================================ */
+
+.views-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chart-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.chart-label {
+  font-family: "DeepSeaMedium", sans-serif;
+  color: var(--gray-700);
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.chart-toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chart-toggle button {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  font-family: "DeepSeaMedium", sans-serif;
+  background: transparent;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard);
+}
+
+.chart-toggle button:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgb(31 31 31 / 0.06);
+}
+
+.chart-toggle button.active {
+  background: var(--gray-900);
+  color: var(--primary-cream);
+}
+
+.chart-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--gray-500);
+  font-family: "DeepSeaRegular", sans-serif;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   Content table
+   ============================================================ */
+
+.content-table-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.content-table-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.content-table-filter label {
+  font-family: "DeepSeaMedium", sans-serif;
+  color: var(--gray-700);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.content-table-filter input {
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+  font-family: "DeepSeaRegular", sans-serif;
+  font-size: 0.86rem;
+  background: rgb(255 255 255 / 0.7);
+  color: var(--gray-900);
+  width: 120px;
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-standard);
+}
+
+.content-table-filter input:focus {
+  border-color: var(--gray-700);
+}
+
+.content-table-count {
+  font-family: "DeepSeaRegular", sans-serif;
+  color: var(--gray-500);
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+.content-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "DeepSeaRegular", sans-serif;
+  font-size: 0.88rem;
+}
+
+.content-table th {
+  font-family: "DeepSeaMedium", sans-serif;
+  color: var(--gray-700);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line-soft);
+  white-space: nowrap;
+}
+
+.content-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.content-table th.sortable:hover {
+  color: var(--gray-900);
+}
+
+.content-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid rgb(31 31 31 / 0.06);
+  vertical-align: middle;
+}
+
+.content-table tbody tr:hover {
+  background: rgb(255 255 255 / 0.3);
+}
+
+.content-table-thumb-cell {
+  width: 48px;
+}
+
+.content-table-thumb {
+  width: 40px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgb(255 255 255 / 0.5);
+  display: block;
+}
+
+.content-table-thumb-placeholder {
+  width: 40px;
+  height: 56px;
+  border-radius: 6px;
+  border: 1px solid var(--line-soft);
+  background: rgb(255 255 255 / 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-500);
+  font-size: 0.72rem;
+}
+
+.content-table-id {
+  font-family: "DeepSeaMedium", sans-serif;
+  color: var(--gray-900);
+  font-size: 0.84rem;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content-table-views {
+  font-family: "DeepSeaBold", sans-serif;
+  color: var(--gray-900);
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+
+.content-table-date {
+  color: var(--gray-500);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.content-table-link {
+  font-family: "DeepSeaMedium", sans-serif;
+  color: var(--gray-700);
+  text-decoration: underline;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.content-table-link:hover {
+  color: var(--gray-900);
+}
+
+.content-table-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--gray-500);
+  font-family: "DeepSeaRegular", sans-serif;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   Responsive: detail pages
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .content-table-id {
+    max-width: 90px;
+  }
+
+  .content-table-thumb {
+    width: 32px;
+    height: 44px;
+  }
+
+  .content-table-thumb-placeholder {
+    width: 32px;
+    height: 44px;
+  }
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .bento-card,
