@@ -77,7 +77,7 @@ async function readHistory() {
 }
 
 /* ============================================================
- * Shared browser instance (Instagram only)
+ * Shared browser instance
  * ============================================================ */
 let _browser = null;
 
@@ -96,105 +96,337 @@ async function closeBrowser() {
 }
 
 /* ============================================================
- * Instagram public profile scrape (Playwright)
+ * Instagram scrape — multi-strategy approach
+ *
+ * Strategy 1: Instagram mobile API (i.instagram.com)
+ * Strategy 2: Playwright with network interception (captures
+ *             the GraphQL/API responses the page itself fetches)
+ * Strategy 3: Playwright DOM parsing (last resort)
+ *
+ * Each strategy falls through to the next on failure.
  * ============================================================ */
-async function scrapeInstagram(handle, previous) {
+
+const IG_APP_ID = '936619743392459';
+
+// Strategy 1: hit Instagram's web profile API directly (no browser needed)
+async function igWebProfileApi(handle) {
+  console.log('[instagram] Strategy 1: web profile API');
+  const res = await fetchWithRetry(
+    `https://www.instagram.com/api/v1/users/web_profile_info/?username=${handle}`,
+    {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
+        'X-IG-App-ID': IG_APP_ID,
+        'X-Requested-With': 'XMLHttpRequest',
+        Accept: '*/*',
+        'Sec-Fetch-Site': 'same-origin',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Dest': 'empty',
+        Referer: 'https://www.instagram.com/',
+      },
+    },
+    { maxRetries: 2, baseDelay: 3000 },
+  );
+  if (!res.ok) throw new Error(`Web profile API ${res.status}`);
+  const json = await res.json();
+  const user = json?.data?.user;
+  if (!user) throw new Error('No user object in API response');
+
+  const followers = user.edge_followed_by?.count ?? 0;
+
+  // Collect reels from the dedicated reels timeline
+  const reelEdges = user.edge_felix_video_timeline?.edges ?? [];
+  // Also collect videos from the main timeline
+  const mediaEdges = user.edge_owner_to_timeline_media?.edges ?? [];
+  const videoMedia = mediaEdges.filter((e) => e.node?.is_video);
+
+  // Merge both sources, deduplicate by shortcode, reels first
+  const seen = new Set();
+  const reels = [];
+  for (const e of [...reelEdges, ...videoMedia]) {
+    if (reels.length >= 20) break;
+    const node = e.node;
+    if (!node?.shortcode) continue;
+    if (seen.has(node.shortcode)) continue;
+    seen.add(node.shortcode);
+    reels.push({
+      shortcode: node.shortcode,
+      thumbnail: node.thumbnail_src ?? node.display_url ?? '',
+      views: node.video_view_count ?? 0,
+      url: `https://www.instagram.com/reel/${node.shortcode}/`,
+    });
+  }
+
+  console.log(`[instagram] Web profile API: ${followers} followers, ${reels.length} reels`);
+  return { followers, reels };
+}
+
+// Strategy 2: Playwright with network interception
+async function igNetworkIntercept(handle) {
+  console.log('[instagram] Strategy 2: Playwright + network interception');
+  const browser = await getBrowser();
+  const context = await browser.newContext({
+    userAgent:
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
+    viewport: { width: 390, height: 844 },
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+    locale: 'en-US',
+    timezoneId: 'America/New_York',
+  });
+
+  const page = await context.newPage();
+  const capturedData = { followers: 0, reels: [] };
+
+  // Intercept XHR/fetch responses from Instagram's API
+  page.on('response', async (response) => {
+    const url = response.url();
+    try {
+      if (
+        url.includes('/graphql/query') ||
+        url.includes('/api/v1/clips/') ||
+        url.includes('/api/v1/feed/reels_media') ||
+        url.includes('web_profile_info')
+      ) {
+        const json = await response.json();
+        extractIgDataFromResponse(json, capturedData);
+      }
+    } catch {
+      // Not JSON or parse error, ignore
+    }
+  });
+
+  await page.goto(`https://www.instagram.com/${handle}/reels/`, {
+    waitUntil: 'domcontentloaded',
+    timeout: 45000,
+  });
+
+  // Wait for API calls to complete
+  await page.waitForTimeout(6000);
+
+  // Scroll down to trigger more loads
+  await page.evaluate(() => window.scrollBy(0, 2000));
+  await page.waitForTimeout(3000);
+
+  // Also try parsing embedded JSON from the page HTML
   try {
-    const browser = await getBrowser();
-    const context = await browser.newContext({
-      userAgent:
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15',
-      locale: 'en-US',
-    });
-    const page = await context.newPage();
+    const pageContent = await page.content();
+    extractIgDataFromHtml(pageContent, capturedData, handle);
+  } catch {
+    // Ignore
+  }
 
-    await page.goto(`https://www.instagram.com/${handle}/reels/`, {
-      waitUntil: 'networkidle',
-      timeout: 45000,
-    });
-
-    await page.waitForTimeout(4000);
-
-    let followers = previous?.followers ?? 0;
+  // Fallback: try og:description for followers
+  if (capturedData.followers === 0) {
     try {
       const ogDesc = await page.$eval(
         'meta[property="og:description"]',
         (el) => el.getAttribute('content') || '',
       );
-      const followerMatch = ogDesc.match(/([\d.,KMB]+)\s+Followers/i);
-      if (followerMatch) followers = parseAbbreviated(followerMatch[1]);
+      const m = ogDesc.match(/([\d.,KMB]+)\s+Followers/i);
+      if (m) capturedData.followers = parseAbbreviated(m[1]);
     } catch {
-      const bodyText = await page.textContent('body');
-      const match = bodyText?.match(/([\d.,KMB]+)\s+followers/i);
-      if (match) followers = parseAbbreviated(match[1]);
+      // Ignore
     }
+  }
 
-    const reels = await page.evaluate(() => {
-      const results = [];
-      const reelLinks = document.querySelectorAll('a[href*="/reel/"]');
-      const seen = new Set();
+  // Fallback: DOM parsing for reel links
+  if (capturedData.reels.length === 0) {
+    const domReels = await igDomParse(page);
+    if (domReels.length > 0) capturedData.reels = domReels;
+  }
 
-      for (const link of reelLinks) {
-        if (results.length >= 20) break;
-        const href = link.getAttribute('href') || '';
-        const shortcodeMatch = href.match(/\/reel\/([A-Za-z0-9_-]+)/);
-        if (!shortcodeMatch) continue;
-        const shortcode = shortcodeMatch[1];
-        if (seen.has(shortcode)) continue;
-        seen.add(shortcode);
+  await context.close();
+  console.log(
+    `[instagram] Network intercept: ${capturedData.followers} followers, ${capturedData.reels.length} reels`,
+  );
+  return capturedData;
+}
 
-        let views = 0;
-        const viewText = link.querySelector('[aria-label]')?.getAttribute('aria-label') || '';
-        const viewMatch = viewText.match(/([\d,]+)\s*(views|plays)/i);
-        if (viewMatch) {
-          views = parseInt(viewMatch[1].replace(/,/g, ''), 10) || 0;
-        }
-        if (!views) {
-          const spans = link.querySelectorAll('span');
-          for (const span of spans) {
-            const txt = span.textContent?.trim() || '';
-            const numMatch = txt.match(/^([\d.,]+[KMB]?)$/i);
-            if (numMatch && !txt.includes('@') && !txt.includes('/')) {
-              const parsed = parseFloat(txt.replace(/,/g, ''));
-              const suffix = txt.slice(-1).toUpperCase();
-              if (suffix === 'K') views = Math.round(parsed * 1000);
-              else if (suffix === 'M') views = Math.round(parsed * 1000000);
-              else if (suffix === 'B') views = Math.round(parsed * 1000000000);
-              else if (!isNaN(parsed)) views = Math.round(parsed);
-              if (views > 0) break;
-            }
+function extractIgDataFromResponse(json, out) {
+  // GraphQL user data
+  const user =
+    json?.data?.user ??
+    json?.data?.xdt_api__v1__feed__user_timeline_graphql_connection?.user ??
+    null;
+  if (user?.edge_followed_by?.count) {
+    out.followers = user.edge_followed_by.count;
+  }
+  if (user?.follower_count) {
+    out.followers = user.follower_count;
+  }
+
+  // Reels from GraphQL edges
+  const edges =
+    user?.edge_felix_video_timeline?.edges ??
+    json?.data?.xdt_api__v1__clips__user__connection_v2?.edges ??
+    [];
+  for (const e of edges) {
+    const node = e.node?.media ?? e.node;
+    if (!node?.shortcode && !node?.code) continue;
+    const shortcode = node.shortcode ?? node.code;
+    if (out.reels.some((r) => r.shortcode === shortcode)) continue;
+    out.reels.push({
+      shortcode,
+      thumbnail: node.thumbnail_src ?? node.display_url ?? node.image_versions2?.candidates?.[0]?.url ?? '',
+      views: node.video_view_count ?? node.play_count ?? node.video_play_count ?? 0,
+      url: `https://www.instagram.com/reel/${shortcode}/`,
+    });
+  }
+
+  // Reels from clips/feed API response
+  const items = json?.items ?? json?.data?.items ?? [];
+  for (const item of items) {
+    const media = item.media ?? item;
+    const shortcode = media.code ?? media.shortcode;
+    if (!shortcode) continue;
+    if (out.reels.some((r) => r.shortcode === shortcode)) continue;
+    out.reels.push({
+      shortcode,
+      thumbnail: media.image_versions2?.candidates?.[0]?.url ?? '',
+      views: media.play_count ?? media.video_view_count ?? 0,
+      url: `https://www.instagram.com/reel/${shortcode}/`,
+    });
+  }
+
+  // Cap at 20
+  if (out.reels.length > 20) out.reels.length = 20;
+}
+
+function extractIgDataFromHtml(html, out, handle) {
+  // Try to find JSON blobs embedded in script tags
+  const patterns = [
+    /window\._sharedData\s*=\s*({[\s\S]*?});<\/script>/,
+    /window\.__additionalDataLoaded\s*\([^,]*,\s*({[\s\S]*?})\s*\)/,
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+  ];
+
+  for (const pattern of patterns) {
+    const matches = html.matchAll(pattern);
+    for (const match of matches) {
+      try {
+        const json = JSON.parse(match[1]);
+        extractIgDataFromResponse(json, out);
+        // Also check nested entry_data
+        const profilePage = json?.entry_data?.ProfilePage?.[0];
+        if (profilePage) extractIgDataFromResponse(profilePage, out);
+      } catch {
+        // Not valid JSON
+      }
+    }
+  }
+
+  // Regex fallback: extract shortcodes and play_counts from raw HTML
+  if (out.reels.length === 0) {
+    const shortcodes = [...html.matchAll(/"shortcode":"([A-Za-z0-9_-]+)"/g)];
+    const playCounts = [...html.matchAll(/"(?:play_count|video_view_count)":(\d+)/g)];
+    const thumbs = [...html.matchAll(/"(?:thumbnail_src|display_url)":"([^"]+)"/g)];
+    const seen = new Set();
+
+    for (let i = 0; i < shortcodes.length && out.reels.length < 20; i++) {
+      const sc = shortcodes[i][1];
+      if (seen.has(sc)) continue;
+      seen.add(sc);
+      out.reels.push({
+        shortcode: sc,
+        thumbnail: thumbs[i]
+          ? thumbs[i][1].replace(/\\u0026/g, '&').replace(/\\\//g, '/')
+          : '',
+        views: playCounts[i] ? Number(playCounts[i][1]) : 0,
+        url: `https://www.instagram.com/reel/${sc}/`,
+      });
+    }
+  }
+}
+
+// Strategy 3 (inline): basic DOM link parsing
+async function igDomParse(page) {
+  return page.evaluate(() => {
+    const results = [];
+    const reelLinks = document.querySelectorAll('a[href*="/reel/"]');
+    const seen = new Set();
+    for (const link of reelLinks) {
+      if (results.length >= 20) break;
+      const href = link.getAttribute('href') || '';
+      const m = href.match(/\/reel\/([A-Za-z0-9_-]+)/);
+      if (!m) continue;
+      const shortcode = m[1];
+      if (seen.has(shortcode)) continue;
+      seen.add(shortcode);
+
+      let views = 0;
+      const ariaLabel = link.querySelector('[aria-label]')?.getAttribute('aria-label') || '';
+      const vm = ariaLabel.match(/([\d,]+)\s*(views|plays)/i);
+      if (vm) views = parseInt(vm[1].replace(/,/g, ''), 10) || 0;
+      if (!views) {
+        for (const span of link.querySelectorAll('span')) {
+          const txt = span.textContent?.trim() || '';
+          const nm = txt.match(/^([\d.,]+)([KMB]?)$/i);
+          if (nm) {
+            const n = parseFloat(nm[1].replace(/,/g, ''));
+            const s = (nm[2] || '').toUpperCase();
+            if (s === 'K') views = Math.round(n * 1000);
+            else if (s === 'M') views = Math.round(n * 1000000);
+            else if (s === 'B') views = Math.round(n * 1000000000);
+            else views = Math.round(n);
+            if (views > 0) break;
           }
         }
-
-        const img = link.querySelector('img');
-        const thumbnail = img?.getAttribute('src') || '';
-
-        results.push({
-          shortcode,
-          thumbnail,
-          views,
-          url: `https://www.instagram.com/reel/${shortcode}/`,
-        });
       }
-      return results;
-    });
 
-    await context.close();
+      const img = link.querySelector('img');
+      results.push({
+        shortcode,
+        thumbnail: img?.getAttribute('src') || '',
+        views,
+        url: `https://www.instagram.com/reel/${shortcode}/`,
+      });
+    }
+    return results;
+  });
+}
 
-    return {
-      handle,
-      followers,
-      reels: reels.length > 0 ? reels : previous?.reels ?? [],
-    };
+// Orchestrator: tries each strategy in order
+async function scrapeInstagram(handle, previous) {
+  let followers = previous?.followers ?? 0;
+  let reels = [];
+  const errors = [];
+
+  // Strategy 1: Web profile API (fastest, no browser needed)
+  try {
+    const result = await igWebProfileApi(handle);
+    if (result.followers > 0) followers = result.followers;
+    if (result.reels.length > 0) reels = result.reels;
   } catch (err) {
-    console.warn('[instagram]', err.message);
-    return {
-      handle,
-      followers: previous?.followers ?? 0,
-      reels: previous?.reels ?? [],
-      error: err.message,
-    };
+    console.warn('[instagram] Strategy 1 failed:', err.message);
+    errors.push(`API: ${err.message}`);
   }
+
+  // Strategy 2: Playwright + network interception (if API didn't get reels)
+  if (reels.length === 0) {
+    await sleep(2000);
+    try {
+      const result = await igNetworkIntercept(handle);
+      if (result.followers > 0) followers = result.followers;
+      if (result.reels.length > 0) reels = result.reels;
+    } catch (err) {
+      console.warn('[instagram] Strategy 2 failed:', err.message);
+      errors.push(`Browser: ${err.message}`);
+    }
+  }
+
+  console.log(`[instagram] Final: ${followers} followers, ${reels.length} reels`);
+
+  return {
+    handle,
+    followers,
+    reels: reels.length > 0 ? reels : previous?.reels ?? [],
+    ...(reels.length === 0 && errors.length > 0
+      ? { error: errors.join('; ') }
+      : {}),
+  };
 }
 
 /* ============================================================
