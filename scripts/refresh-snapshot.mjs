@@ -450,44 +450,96 @@ async function igDomParse(page) {
   });
 }
 
-// Orchestrator: tries each strategy in order
+// Curated reel shortcodes to track (newest first)
+const TRACKED_REELS = [
+  'DX9Pez4t9yH',
+  'DX34l4cNKEN',
+  'DXzhXkwt0Cs',
+  'DXxnIA_oIgk',
+  'DXxKJc4N8ee',
+  'DXxDDcyNdpp',
+  'DXw9hQjtCi9',
+  'DXwhfxoMfzl',
+  'DXpwp-gDNzo',
+  'DXpf4IrkiJI',
+  'DXpJAghD0g6',
+];
+
+// Fetch reel metadata via Instagram oEmbed (public, no auth needed)
+async function igOEmbed(shortcode) {
+  const url = `https://www.instagram.com/api/v1/oembed/?url=https://www.instagram.com/reel/${shortcode}/`;
+  const res = await fetchWithRetry(url, {}, { maxRetries: 2, baseDelay: 2000 });
+  if (!res.ok) throw new Error(`oEmbed ${res.status} for ${shortcode}`);
+  return res.json();
+}
+
+// Fetch all tracked reels via oEmbed with embed HTML
+async function fetchTrackedReels(previous) {
+  console.log(`[instagram] Fetching ${TRACKED_REELS.length} tracked reels via oEmbed`);
+  const reels = [];
+  const previousMap = new Map((previous?.reels ?? []).map((r) => [r.shortcode, r]));
+
+  for (const shortcode of TRACKED_REELS) {
+    try {
+      const data = await igOEmbed(shortcode);
+      reels.push({
+        shortcode,
+        thumbnail: data.thumbnail_url ?? '',
+        title: data.title ?? '',
+        views: 0,
+        url: `https://www.instagram.com/reel/${shortcode}/`,
+        embedHtml: data.html ?? '',
+      });
+      await sleep(400);
+    } catch (err) {
+      console.warn(`[instagram] oEmbed failed for ${shortcode}:`, err.message);
+      // Fall back to previous data for this reel if available
+      const prev = previousMap.get(shortcode);
+      if (prev) {
+        reels.push(prev);
+      } else {
+        reels.push({
+          shortcode,
+          thumbnail: '',
+          title: '',
+          views: 0,
+          url: `https://www.instagram.com/reel/${shortcode}/`,
+          embedHtml: '',
+        });
+      }
+    }
+  }
+
+  console.log(`[instagram] oEmbed: ${reels.filter((r) => r.embedHtml).length}/${reels.length} with embed HTML`);
+  return reels;
+}
+
+// Orchestrator
 async function scrapeInstagram(handle, previous) {
   let followers = previous?.followers ?? 0;
-  let reels = [];
   const errors = [];
 
-  // Strategy 1: Web APIs (profile + paginated feed, no browser needed)
+  // Get follower count from the profile API
   try {
     const result = await igWebApis(handle);
     if (result.followers > 0) followers = result.followers;
-    if (result.reels.length > 0) reels = result.reels;
   } catch (err) {
-    console.warn('[instagram] Strategy 1 failed:', err.message);
-    errors.push(`API: ${err.message}`);
+    console.warn('[instagram] Profile API failed:', err.message);
+    errors.push(`Profile: ${err.message}`);
   }
 
-  // Strategy 2: Playwright + network interception (if API didn't get reels)
-  if (reels.length === 0) {
-    await sleep(2000);
-    try {
-      const result = await igNetworkIntercept(handle);
-      if (result.followers > 0) followers = result.followers;
-      if (result.reels.length > 0) reels = result.reels;
-    } catch (err) {
-      console.warn('[instagram] Strategy 2 failed:', err.message);
-      errors.push(`Browser: ${err.message}`);
-    }
-  }
+  await sleep(1000);
+
+  // Fetch tracked reels via oEmbed
+  const reels = await fetchTrackedReels(previous);
 
   console.log(`[instagram] Final: ${followers} followers, ${reels.length} reels`);
 
   return {
     handle,
     followers,
-    reels: reels.length > 0 ? reels : previous?.reels ?? [],
-    ...(reels.length === 0 && errors.length > 0
-      ? { error: errors.join('; ') }
-      : {}),
+    reels,
+    ...(errors.length > 0 ? { error: errors.join('; ') } : {}),
   };
 }
 

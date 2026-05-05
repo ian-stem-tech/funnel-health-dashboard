@@ -24,25 +24,29 @@ export function IGEmbedGrid({ reels }: Props) {
     <div className="ig-embed-grid">
       {reels.map((reel) => (
         <div key={reel.shortcode} className="ig-embed-cell">
-          <blockquote
-            className="instagram-media"
-            data-instgrm-permalink={reel.url}
-            data-instgrm-version="14"
-            style={{
-              background: '#FFF',
-              border: 0,
-              borderRadius: '12px',
-              margin: 0,
-              maxWidth: '100%',
-              minWidth: '200px',
-              padding: 0,
-              width: '100%',
-            }}
-          >
-            <a href={reel.url} target="_blank" rel="noreferrer noopener">
-              {reel.title || `View reel`}
-            </a>
-          </blockquote>
+          {reel.embedHtml ? (
+            <div dangerouslySetInnerHTML={{ __html: reel.embedHtml }} />
+          ) : (
+            <blockquote
+              className="instagram-media"
+              data-instgrm-permalink={reel.url}
+              data-instgrm-version="14"
+              style={{
+                background: '#FFF',
+                border: 0,
+                borderRadius: '12px',
+                margin: 0,
+                maxWidth: '100%',
+                minWidth: '200px',
+                padding: 0,
+                width: '100%',
+              }}
+            >
+              <a href={reel.url} target="_blank" rel="noreferrer noopener">
+                {reel.title || 'View reel'}
+              </a>
+            </blockquote>
+          )}
         </div>
       ))}
     </div>

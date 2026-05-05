@@ -4,6 +4,7 @@ export type Reel = {
   views: number;
   url: string;
   title?: string;
+  embedHtml?: string;
 };
 
 export type TikTokVideo = {
