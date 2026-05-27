@@ -19,6 +19,9 @@ export default async function InstagramPage() {
     views: number;
     url: string;
     firstSeen: string;
+    likes?: number;
+    comments?: number;
+    saves?: number;
   }>();
 
   for (const entry of history.entries) {
@@ -31,9 +34,15 @@ export default async function InstagramPage() {
           views: reel.views,
           url: reel.url,
           firstSeen: entry.date,
+          likes: reel.likes,
+          comments: reel.comments,
+          saves: reel.saves,
         });
       } else if (reel.views > existing.views) {
         existing.views = reel.views;
+        existing.likes = reel.likes;
+        existing.comments = reel.comments;
+        existing.saves = reel.saves;
         if (reel.thumbnail) existing.thumbnail = reel.thumbnail;
       }
     }

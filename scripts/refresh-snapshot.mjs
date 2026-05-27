@@ -3,9 +3,12 @@
  * refresh-snapshot.mjs
  *
  * Daily refresh script run by GitHub Actions.
- *   - Instagram: Playwright headless browser (reels page)
- *   - TikTok:    Playwright headless browser (profile page)
- *   - Mailchimp: REST API with rate-limit-aware retries
+ *   - Instagram:  Apify actor (profile + posts with likes/comments/saves/views)
+ *   - TikTok:     Apify actor (profile + videos with likes/comments/shares/views)
+ *   - X/Twitter:  Apify actor (profile + tweets with likes/retweets/replies/views)
+ *   - Reddit:     Apify actor (user posts with upvotes/comments)
+ *   - YouTube:    YouTube Data API v3 (channel stats + videos)
+ *   - Mailchimp:  REST API with rate-limit-aware retries
  *
  * Writes:
  *   - public/data/snapshot.json
@@ -14,7 +17,6 @@
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { chromium } from 'playwright';
 
 const ROOT = process.cwd();
 const SNAPSHOT_PATH = path.join(ROOT, 'public', 'data', 'snapshot.json');
@@ -23,14 +25,19 @@ const DISCOVERY_PATH = path.join(ROOT, 'public', 'data', 'mailchimp-discovery.js
 
 const IG_HANDLE = process.env.IG_HANDLE || 'stemplayer';
 const TIKTOK_HANDLE = process.env.TIKTOK_HANDLE || 'stemplayer';
+const X_HANDLE = process.env.X_HANDLE || 'stemplayer';
+const YOUTUBE_CHANNEL = process.env.YOUTUBE_CHANNEL || 'stemplayer';
+const REDDIT_USER = process.env.REDDIT_USER || 'stemplayer';
 
+const APIFY_API_TOKEN = process.env.APIFY_API_TOKEN;
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX || 'us4';
 
 const HISTORY_MAX_DAYS = 90;
 
 /* ============================================================
- * Retry helper with exponential backoff (handles 429)
+ * Helpers
  * ============================================================ */
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -39,7 +46,6 @@ async function sleep(ms) {
 async function fetchWithRetry(url, options = {}, { maxRetries = 3, baseDelay = 2000 } = {}) {
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     const res = await fetch(url, options);
-
     if (res.status === 429) {
       const retryAfter = res.headers.get('retry-after');
       const waitMs = retryAfter
@@ -49,10 +55,25 @@ async function fetchWithRetry(url, options = {}, { maxRetries = 3, baseDelay = 2
       await sleep(waitMs);
       continue;
     }
-
     return res;
   }
   throw new Error(`Rate limited after ${maxRetries + 1} attempts: ${url}`);
+}
+
+function parseAbbreviated(s) {
+  const trimmed = s.replace(/,/g, '').trim();
+  const m = trimmed.match(/^([\d.]+)\s*([KMB]?)$/i);
+  if (!m) return Number(trimmed) || 0;
+  const n = parseFloat(m[1]);
+  const suffix = m[2].toUpperCase();
+  if (suffix === 'K') return Math.round(n * 1_000);
+  if (suffix === 'M') return Math.round(n * 1_000_000);
+  if (suffix === 'B') return Math.round(n * 1_000_000_000);
+  return Math.round(n);
+}
+
+function todayDateString() {
+  return new Date().toISOString().slice(0, 10);
 }
 
 /* ============================================================
@@ -77,591 +98,329 @@ async function readHistory() {
 }
 
 /* ============================================================
- * Shared browser instance
+ * Apify helper — run an actor synchronously and return results
  * ============================================================ */
-let _browser = null;
-
-async function getBrowser() {
-  if (!_browser) {
-    _browser = await chromium.launch({ headless: true });
+async function runApifyActor(actorId, input, { timeoutSecs = 120 } = {}) {
+  if (!APIFY_API_TOKEN) {
+    throw new Error('APIFY_API_TOKEN not set');
   }
-  return _browser;
-}
 
-async function closeBrowser() {
-  if (_browser) {
-    await _browser.close();
-    _browser = null;
-  }
-}
-
-/* ============================================================
- * Instagram scrape — multi-strategy approach
- *
- * Strategy 1: Instagram mobile API (i.instagram.com)
- * Strategy 2: Playwright with network interception (captures
- *             the GraphQL/API responses the page itself fetches)
- * Strategy 3: Playwright DOM parsing (last resort)
- *
- * Each strategy falls through to the next on failure.
- * ============================================================ */
-
-const IG_APP_ID = '936619743392459';
-
-const IG_API_HEADERS = {
-  'User-Agent':
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
-  'X-IG-App-ID': IG_APP_ID,
-  'X-Requested-With': 'XMLHttpRequest',
-  Accept: '*/*',
-  'Sec-Fetch-Site': 'same-origin',
-  'Sec-Fetch-Mode': 'cors',
-  'Sec-Fetch-Dest': 'empty',
-  Referer: 'https://www.instagram.com/',
-};
-
-// Strategy 1: Instagram web APIs (no browser needed)
-//   Step A: web_profile_info for followers + user ID + initial view counts
-//   Step B: feed/user paginated for all videos with real-time view counts
-async function igWebApis(handle) {
-  console.log('[instagram] Strategy 1: web APIs');
-
-  // Step A: profile info for followers, user ID, and baseline view counts
-  const profileRes = await fetchWithRetry(
-    `https://www.instagram.com/api/v1/users/web_profile_info/?username=${handle}`,
-    { headers: IG_API_HEADERS },
-    { maxRetries: 2, baseDelay: 3000 },
+  const url = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_API_TOKEN}&timeout=${timeoutSecs}`;
+  const res = await fetchWithRetry(
+    url,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(input),
+    },
+    { maxRetries: 2, baseDelay: 5000 },
   );
-  if (!profileRes.ok) throw new Error(`Profile API ${profileRes.status}`);
-  const profileJson = await profileRes.json();
-  const user = profileJson?.data?.user;
-  if (!user) throw new Error('No user object in profile API response');
 
-  const userId = user.id;
-  const followers = user.edge_followed_by?.count ?? 0;
-
-  // Build a map of shortcode -> view count from the profile response
-  // (the profile API returns view counts for older videos that the feed API misses)
-  const profileViewCounts = new Map();
-  for (const edges of [
-    user.edge_felix_video_timeline?.edges ?? [],
-    (user.edge_owner_to_timeline_media?.edges ?? []).filter((e) => e.node?.is_video),
-  ]) {
-    for (const e of edges) {
-      const sc = e.node?.shortcode;
-      const views = e.node?.video_view_count;
-      if (sc && views) profileViewCounts.set(sc, views);
-    }
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Apify ${actorId} returned ${res.status}: ${body.slice(0, 300)}`);
   }
 
-  await sleep(1000);
-
-  // Step B: paginate feed/user to get all video posts with real-time view counts
-  const allVideos = [];
-  let maxId = '';
-  let page = 0;
-
-  while (page < 5 && allVideos.length < 30) {
-    const feedUrl =
-      `https://www.instagram.com/api/v1/feed/user/${userId}/?count=30` +
-      (maxId ? `&max_id=${maxId}` : '');
-    const feedRes = await fetchWithRetry(
-      feedUrl,
-      { headers: { ...IG_API_HEADERS, Referer: `https://www.instagram.com/${handle}/` } },
-    );
-    if (!feedRes.ok) {
-      console.warn(`[instagram] Feed page ${page + 1} returned ${feedRes.status}`);
-      break;
-    }
-    const feedJson = await feedRes.json();
-    const items = feedJson.items ?? [];
-
-    for (const item of items) {
-      if (item.media_type !== 2) continue; // only videos
-      const shortcode = item.code;
-      if (!shortcode) continue;
-      if (allVideos.some((v) => v.shortcode === shortcode)) continue;
-
-      // Prefer feed play_count (real-time), fall back to profile view count
-      const views = item.play_count ?? profileViewCounts.get(shortcode) ?? 0;
-      const thumb =
-        item.image_versions2?.candidates?.[0]?.url ??
-        item.carousel_media?.[0]?.image_versions2?.candidates?.[0]?.url ??
-        '';
-
-      allVideos.push({
-        shortcode,
-        thumbnail: thumb,
-        views,
-        timestamp: item.taken_at ?? 0,
-        url: `https://www.instagram.com/reel/${shortcode}/`,
-      });
-    }
-
-    page++;
-    if (!feedJson.more_available || !feedJson.next_max_id) break;
-    maxId = feedJson.next_max_id;
-    await sleep(1000);
-  }
-
-  // Also add any reels from the profile API that the feed missed
-  for (const [sc, views] of profileViewCounts) {
-    if (allVideos.some((v) => v.shortcode === sc)) continue;
-    allVideos.push({
-      shortcode: sc,
-      thumbnail: '',
-      views,
-      timestamp: 0,
-      url: `https://www.instagram.com/reel/${sc}/`,
-    });
-  }
-
-  // Sort newest first
-  allVideos.sort((a, b) => b.timestamp - a.timestamp);
-  const reels = allVideos.slice(0, 30).map(({ timestamp, ...rest }) => rest);
-
-  console.log(`[instagram] Web APIs: ${followers} followers, ${reels.length} reels (${page} feed pages)`);
-  return { followers, reels };
-}
-
-// Strategy 2: Playwright with network interception
-async function igNetworkIntercept(handle) {
-  console.log('[instagram] Strategy 2: Playwright + network interception');
-  const browser = await getBrowser();
-  const context = await browser.newContext({
-    userAgent:
-      'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
-    viewport: { width: 390, height: 844 },
-    deviceScaleFactor: 3,
-    isMobile: true,
-    hasTouch: true,
-    locale: 'en-US',
-    timezoneId: 'America/New_York',
-  });
-
-  const page = await context.newPage();
-  const capturedData = { followers: 0, reels: [] };
-
-  // Intercept XHR/fetch responses from Instagram's API
-  page.on('response', async (response) => {
-    const url = response.url();
-    try {
-      if (
-        url.includes('/graphql/query') ||
-        url.includes('/api/v1/clips/') ||
-        url.includes('/api/v1/feed/reels_media') ||
-        url.includes('web_profile_info')
-      ) {
-        const json = await response.json();
-        extractIgDataFromResponse(json, capturedData);
-      }
-    } catch {
-      // Not JSON or parse error, ignore
-    }
-  });
-
-  await page.goto(`https://www.instagram.com/${handle}/reels/`, {
-    waitUntil: 'domcontentloaded',
-    timeout: 45000,
-  });
-
-  // Wait for API calls to complete
-  await page.waitForTimeout(6000);
-
-  // Scroll down to trigger more loads
-  await page.evaluate(() => window.scrollBy(0, 2000));
-  await page.waitForTimeout(3000);
-
-  // Also try parsing embedded JSON from the page HTML
-  try {
-    const pageContent = await page.content();
-    extractIgDataFromHtml(pageContent, capturedData, handle);
-  } catch {
-    // Ignore
-  }
-
-  // Fallback: try og:description for followers
-  if (capturedData.followers === 0) {
-    try {
-      const ogDesc = await page.$eval(
-        'meta[property="og:description"]',
-        (el) => el.getAttribute('content') || '',
-      );
-      const m = ogDesc.match(/([\d.,KMB]+)\s+Followers/i);
-      if (m) capturedData.followers = parseAbbreviated(m[1]);
-    } catch {
-      // Ignore
-    }
-  }
-
-  // Fallback: DOM parsing for reel links
-  if (capturedData.reels.length === 0) {
-    const domReels = await igDomParse(page);
-    if (domReels.length > 0) capturedData.reels = domReels;
-  }
-
-  await context.close();
-  console.log(
-    `[instagram] Network intercept: ${capturedData.followers} followers, ${capturedData.reels.length} reels`,
-  );
-  return capturedData;
-}
-
-function extractIgDataFromResponse(json, out) {
-  // GraphQL user data
-  const user =
-    json?.data?.user ??
-    json?.data?.xdt_api__v1__feed__user_timeline_graphql_connection?.user ??
-    null;
-  if (user?.edge_followed_by?.count) {
-    out.followers = user.edge_followed_by.count;
-  }
-  if (user?.follower_count) {
-    out.followers = user.follower_count;
-  }
-
-  // Reels from GraphQL edges
-  const edges =
-    user?.edge_felix_video_timeline?.edges ??
-    json?.data?.xdt_api__v1__clips__user__connection_v2?.edges ??
-    [];
-  for (const e of edges) {
-    const node = e.node?.media ?? e.node;
-    if (!node?.shortcode && !node?.code) continue;
-    const shortcode = node.shortcode ?? node.code;
-    if (out.reels.some((r) => r.shortcode === shortcode)) continue;
-    out.reels.push({
-      shortcode,
-      thumbnail: node.thumbnail_src ?? node.display_url ?? node.image_versions2?.candidates?.[0]?.url ?? '',
-      views: node.video_view_count ?? node.play_count ?? node.video_play_count ?? 0,
-      url: `https://www.instagram.com/reel/${shortcode}/`,
-    });
-  }
-
-  // Reels from clips/feed API response
-  const items = json?.items ?? json?.data?.items ?? [];
-  for (const item of items) {
-    const media = item.media ?? item;
-    const shortcode = media.code ?? media.shortcode;
-    if (!shortcode) continue;
-    if (out.reels.some((r) => r.shortcode === shortcode)) continue;
-    out.reels.push({
-      shortcode,
-      thumbnail: media.image_versions2?.candidates?.[0]?.url ?? '',
-      views: media.play_count ?? media.video_view_count ?? 0,
-      url: `https://www.instagram.com/reel/${shortcode}/`,
-    });
-  }
-
-  // Cap at 20
-  if (out.reels.length > 20) out.reels.length = 20;
-}
-
-function extractIgDataFromHtml(html, out, handle) {
-  // Try to find JSON blobs embedded in script tags
-  const patterns = [
-    /window\._sharedData\s*=\s*({[\s\S]*?});<\/script>/,
-    /window\.__additionalDataLoaded\s*\([^,]*,\s*({[\s\S]*?})\s*\)/,
-    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
-  ];
-
-  for (const pattern of patterns) {
-    const matches = html.matchAll(pattern);
-    for (const match of matches) {
-      try {
-        const json = JSON.parse(match[1]);
-        extractIgDataFromResponse(json, out);
-        // Also check nested entry_data
-        const profilePage = json?.entry_data?.ProfilePage?.[0];
-        if (profilePage) extractIgDataFromResponse(profilePage, out);
-      } catch {
-        // Not valid JSON
-      }
-    }
-  }
-
-  // Regex fallback: extract shortcodes and play_counts from raw HTML
-  if (out.reels.length === 0) {
-    const shortcodes = [...html.matchAll(/"shortcode":"([A-Za-z0-9_-]+)"/g)];
-    const playCounts = [...html.matchAll(/"(?:play_count|video_view_count)":(\d+)/g)];
-    const thumbs = [...html.matchAll(/"(?:thumbnail_src|display_url)":"([^"]+)"/g)];
-    const seen = new Set();
-
-    for (let i = 0; i < shortcodes.length && out.reels.length < 20; i++) {
-      const sc = shortcodes[i][1];
-      if (seen.has(sc)) continue;
-      seen.add(sc);
-      out.reels.push({
-        shortcode: sc,
-        thumbnail: thumbs[i]
-          ? thumbs[i][1].replace(/\\u0026/g, '&').replace(/\\\//g, '/')
-          : '',
-        views: playCounts[i] ? Number(playCounts[i][1]) : 0,
-        url: `https://www.instagram.com/reel/${sc}/`,
-      });
-    }
-  }
-}
-
-// Strategy 3 (inline): basic DOM link parsing
-async function igDomParse(page) {
-  return page.evaluate(() => {
-    const results = [];
-    const reelLinks = document.querySelectorAll('a[href*="/reel/"]');
-    const seen = new Set();
-    for (const link of reelLinks) {
-      if (results.length >= 20) break;
-      const href = link.getAttribute('href') || '';
-      const m = href.match(/\/reel\/([A-Za-z0-9_-]+)/);
-      if (!m) continue;
-      const shortcode = m[1];
-      if (seen.has(shortcode)) continue;
-      seen.add(shortcode);
-
-      let views = 0;
-      const ariaLabel = link.querySelector('[aria-label]')?.getAttribute('aria-label') || '';
-      const vm = ariaLabel.match(/([\d,]+)\s*(views|plays)/i);
-      if (vm) views = parseInt(vm[1].replace(/,/g, ''), 10) || 0;
-      if (!views) {
-        for (const span of link.querySelectorAll('span')) {
-          const txt = span.textContent?.trim() || '';
-          const nm = txt.match(/^([\d.,]+)([KMB]?)$/i);
-          if (nm) {
-            const n = parseFloat(nm[1].replace(/,/g, ''));
-            const s = (nm[2] || '').toUpperCase();
-            if (s === 'K') views = Math.round(n * 1000);
-            else if (s === 'M') views = Math.round(n * 1000000);
-            else if (s === 'B') views = Math.round(n * 1000000000);
-            else views = Math.round(n);
-            if (views > 0) break;
-          }
-        }
-      }
-
-      const img = link.querySelector('img');
-      results.push({
-        shortcode,
-        thumbnail: img?.getAttribute('src') || '',
-        views,
-        url: `https://www.instagram.com/reel/${shortcode}/`,
-      });
-    }
-    return results;
-  });
-}
-
-// Curated reel shortcodes to track (newest first)
-const TRACKED_REELS = [
-  'DX9Pez4t9yH',
-  'DX34l4cNKEN',
-  'DXzhXkwt0Cs',
-  'DXxnIA_oIgk',
-  'DXxKJc4N8ee',
-  'DXxDDcyNdpp',
-  'DXw9hQjtCi9',
-  'DXwhfxoMfzl',
-  'DXpwp-gDNzo',
-  'DXpf4IrkiJI',
-  'DXpJAghD0g6',
-];
-
-// Fetch reel metadata via Instagram oEmbed (public, no auth needed)
-async function igOEmbed(shortcode) {
-  const url = `https://www.instagram.com/api/v1/oembed/?url=https://www.instagram.com/reel/${shortcode}/`;
-  const res = await fetchWithRetry(url, {}, { maxRetries: 2, baseDelay: 2000 });
-  if (!res.ok) throw new Error(`oEmbed ${res.status} for ${shortcode}`);
   return res.json();
 }
 
-// Fetch all tracked reels via oEmbed with embed HTML
-async function fetchTrackedReels(previous) {
-  console.log(`[instagram] Fetching ${TRACKED_REELS.length} tracked reels via oEmbed`);
-  const reels = [];
-  const previousMap = new Map((previous?.reels ?? []).map((r) => [r.shortcode, r]));
-
-  for (const shortcode of TRACKED_REELS) {
-    try {
-      const data = await igOEmbed(shortcode);
-      reels.push({
-        shortcode,
-        thumbnail: data.thumbnail_url ?? '',
-        title: data.title ?? '',
-        views: 0,
-        url: `https://www.instagram.com/reel/${shortcode}/`,
-        embedHtml: data.html ?? '',
-      });
-      await sleep(400);
-    } catch (err) {
-      console.warn(`[instagram] oEmbed failed for ${shortcode}:`, err.message);
-      // Fall back to previous data for this reel if available
-      const prev = previousMap.get(shortcode);
-      if (prev) {
-        reels.push(prev);
-      } else {
-        reels.push({
-          shortcode,
-          thumbnail: '',
-          title: '',
-          views: 0,
-          url: `https://www.instagram.com/reel/${shortcode}/`,
-          embedHtml: '',
-        });
-      }
-    }
+/* ============================================================
+ * Instagram via Apify
+ * ============================================================ */
+async function fetchInstagram(handle, previous) {
+  if (!APIFY_API_TOKEN) {
+    console.warn('[instagram] APIFY_API_TOKEN not set, using previous data');
+    return previous?.instagram ?? { handle, followers: 0, reels: [] };
   }
 
-  console.log(`[instagram] oEmbed: ${reels.filter((r) => r.embedHtml).length}/${reels.length} with embed HTML`);
-  return reels;
-}
-
-// Orchestrator
-async function scrapeInstagram(handle, previous) {
-  let followers = previous?.followers ?? 0;
-  const errors = [];
-
-  // Get follower count from the profile API
   try {
-    const result = await igWebApis(handle);
-    if (result.followers > 0) followers = result.followers;
+    console.log(`[instagram] Fetching @${handle} via Apify...`);
+    const items = await runApifyActor('apify/instagram-profile-scraper', {
+      usernames: [handle],
+      resultsLimit: 30,
+    }, { timeoutSecs: 180 });
+
+    const profile = items?.[0];
+    if (!profile) throw new Error('No profile data returned');
+
+    const followers = profile.followersCount ?? profile.edge_followed_by?.count ?? previous?.instagram?.followers ?? 0;
+
+    const posts = profile.latestPosts ?? profile.posts ?? [];
+    const reels = posts
+      .filter((p) => p.type === 'Video' || p.videoUrl || p.isVideo)
+      .slice(0, 30)
+      .map((p) => ({
+        shortcode: p.shortCode ?? p.shortcode ?? p.id ?? '',
+        thumbnail: p.displayUrl ?? p.thumbnailUrl ?? '',
+        views: p.videoViewCount ?? p.videoPlayCount ?? 0,
+        likes: p.likesCount ?? 0,
+        comments: p.commentsCount ?? 0,
+        saves: p.savesCount ?? 0,
+        title: p.caption?.slice(0, 100) ?? '',
+        url: p.url ?? `https://www.instagram.com/reel/${p.shortCode ?? p.shortcode}/`,
+      }));
+
+    console.log(`[instagram] ${followers} followers, ${reels.length} reels`);
+    return { handle, followers, reels };
   } catch (err) {
-    console.warn('[instagram] Profile API failed:', err.message);
-    errors.push(`Profile: ${err.message}`);
+    console.warn('[instagram] Apify failed:', err.message);
+    return {
+      handle,
+      followers: previous?.instagram?.followers ?? 0,
+      reels: previous?.instagram?.reels ?? [],
+      error: err.message,
+    };
   }
-
-  await sleep(1000);
-
-  // Fetch tracked reels via oEmbed
-  const reels = await fetchTrackedReels(previous);
-
-  console.log(`[instagram] Final: ${followers} followers, ${reels.length} reels`);
-
-  return {
-    handle,
-    followers,
-    reels,
-    ...(errors.length > 0 ? { error: errors.join('; ') } : {}),
-  };
 }
 
 /* ============================================================
- * TikTok public profile scrape (Playwright)
+ * TikTok via Apify
  * ============================================================ */
-async function scrapeTikTok(handle, previous) {
+async function fetchTikTok(handle, previous) {
+  if (!APIFY_API_TOKEN) {
+    console.warn('[tiktok] APIFY_API_TOKEN not set, using previous data');
+    return previous?.tiktok ?? { handle, followers: 0, videos: [] };
+  }
+
   try {
-    const browser = await getBrowser();
-    const context = await browser.newContext({
-      userAgent:
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15',
-      locale: 'en-US',
-    });
-    const page = await context.newPage();
+    console.log(`[tiktok] Fetching @${handle} via Apify...`);
+    const items = await runApifyActor('clockworks/free-tiktok-scraper', {
+      profiles: [handle],
+      resultsPerPage: 20,
+      shouldDownloadVideos: false,
+    }, { timeoutSecs: 180 });
 
-    await page.goto(`https://www.tiktok.com/@${handle}`, {
-      waitUntil: 'networkidle',
-      timeout: 45000,
-    });
+    let followers = previous?.tiktok?.followers ?? 0;
+    const videos = [];
 
-    await page.waitForTimeout(4000);
+    for (const item of items ?? []) {
+      if (item.authorMeta?.fans) {
+        followers = item.authorMeta.fans;
+      }
 
-    let followers = previous?.followers ?? 0;
+      if (item.id && item.videoMeta) {
+        videos.push({
+          id: String(item.id),
+          thumbnail: item.videoMeta?.coverUrl ?? item.covers?.[0] ?? '',
+          views: item.playCount ?? item.videoMeta?.playCount ?? 0,
+          likes: item.diggCount ?? item.likes ?? 0,
+          comments: item.commentCount ?? item.comments ?? 0,
+          shares: item.shareCount ?? item.shares ?? 0,
+          title: item.text?.slice(0, 100) ?? '',
+          url: item.webVideoUrl ?? `https://www.tiktok.com/@${handle}/video/${item.id}`,
+          createdAt: item.createTimeISO ?? undefined,
+        });
+      }
+    }
+
+    console.log(`[tiktok] ${followers} followers, ${videos.length} videos`);
+    return { handle, followers, videos: videos.slice(0, 20) };
+  } catch (err) {
+    console.warn('[tiktok] Apify failed:', err.message);
+    return {
+      handle,
+      followers: previous?.tiktok?.followers ?? 0,
+      videos: previous?.tiktok?.videos ?? [],
+      error: err.message,
+    };
+  }
+}
+
+/* ============================================================
+ * X/Twitter via Apify
+ * ============================================================ */
+async function fetchX(handle, previous) {
+  if (!APIFY_API_TOKEN) {
+    console.warn('[x] APIFY_API_TOKEN not set, using previous data');
+    return previous?.x ?? { handle, followers: 0, tweets: [] };
+  }
+
+  try {
+    console.log(`[x] Fetching @${handle} via Apify...`);
+    const items = await runApifyActor('apidojo/tweet-scraper', {
+      handles: [handle],
+      tweetsDesired: 20,
+      addUserInfo: true,
+    }, { timeoutSecs: 180 });
+
+    let followers = previous?.x?.followers ?? 0;
+    const tweets = [];
+
+    for (const item of items ?? []) {
+      if (item.author?.followers) {
+        followers = item.author.followers;
+      }
+
+      tweets.push({
+        id: item.id ?? item.tweetId ?? '',
+        text: (item.text ?? item.full_text ?? '').slice(0, 280),
+        likes: item.likeCount ?? item.favorite_count ?? 0,
+        retweets: item.retweetCount ?? item.retweet_count ?? 0,
+        replies: item.replyCount ?? item.reply_count ?? 0,
+        views: item.viewCount ?? item.views ?? 0,
+        url: item.url ?? `https://x.com/${handle}/status/${item.id}`,
+        createdAt: item.createdAt ?? item.created_at ?? undefined,
+      });
+    }
+
+    console.log(`[x] ${followers} followers, ${tweets.length} tweets`);
+    return { handle, followers, tweets: tweets.slice(0, 20) };
+  } catch (err) {
+    console.warn('[x] Apify failed:', err.message);
+    return {
+      handle,
+      followers: previous?.x?.followers ?? 0,
+      tweets: previous?.x?.tweets ?? [],
+      error: err.message,
+    };
+  }
+}
+
+/* ============================================================
+ * Reddit via Apify
+ * ============================================================ */
+async function fetchReddit(user, previous) {
+  if (!APIFY_API_TOKEN) {
+    console.warn('[reddit] APIFY_API_TOKEN not set, using previous data');
+    return previous?.reddit ?? { user, karma: 0, posts: [] };
+  }
+
+  try {
+    console.log(`[reddit] Fetching u/${user} via Apify...`);
+    const items = await runApifyActor('trudax/reddit-scraper', {
+      type: 'user',
+      urls: [`https://www.reddit.com/user/${user}/`],
+      maxItems: 20,
+    }, { timeoutSecs: 120 });
+
+    let karma = previous?.reddit?.karma ?? 0;
+    const posts = [];
+
+    for (const item of items ?? []) {
+      if (item.karma) karma = item.karma;
+
+      if (item.title || item.body) {
+        posts.push({
+          id: item.id ?? '',
+          title: (item.title ?? item.body ?? '').slice(0, 200),
+          upvotes: item.upVotes ?? item.score ?? item.ups ?? 0,
+          comments: item.numberOfComments ?? item.numComments ?? item.num_comments ?? 0,
+          url: item.url ?? '',
+          subreddit: item.subreddit ?? item.communityName ?? undefined,
+          createdAt: item.createdAt ?? item.created ?? undefined,
+        });
+      }
+    }
+
+    console.log(`[reddit] ${karma} karma, ${posts.length} posts`);
+    return { user, karma, posts: posts.slice(0, 20) };
+  } catch (err) {
+    console.warn('[reddit] Apify failed:', err.message);
+    return {
+      user,
+      karma: previous?.reddit?.karma ?? 0,
+      posts: previous?.reddit?.posts ?? [],
+      error: err.message,
+    };
+  }
+}
+
+/* ============================================================
+ * YouTube via Data API v3
+ * ============================================================ */
+async function fetchYouTube(channel, previous) {
+  if (!YOUTUBE_API_KEY) {
+    console.warn('[youtube] YOUTUBE_API_KEY not set, using previous data');
+    return previous?.youtube ?? { channel, subscribers: 0, videos: [] };
+  }
+
+  try {
+    console.log(`[youtube] Fetching channel "${channel}" via Data API v3...`);
+
+    // Step 1: Resolve channel — try by handle first, fall back to forUsername
+    let channelId = null;
+    let subscribers = previous?.youtube?.subscribers ?? 0;
+
+    const handleRes = await fetchWithRetry(
+      `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&forHandle=${channel}&key=${YOUTUBE_API_KEY}`,
+    );
+    if (handleRes.ok) {
+      const handleData = await handleRes.json();
+      if (handleData.items?.length > 0) {
+        channelId = handleData.items[0].id;
+        subscribers = Number(handleData.items[0].statistics?.subscriberCount ?? 0);
+      }
+    }
+
+    if (!channelId) {
+      const userRes = await fetchWithRetry(
+        `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&forUsername=${channel}&key=${YOUTUBE_API_KEY}`,
+      );
+      if (userRes.ok) {
+        const userData = await userRes.json();
+        if (userData.items?.length > 0) {
+          channelId = userData.items[0].id;
+          subscribers = Number(userData.items[0].statistics?.subscriberCount ?? 0);
+        }
+      }
+    }
+
+    // If channel looks like a channel ID already (UC...)
+    if (!channelId && channel.startsWith('UC')) {
+      channelId = channel;
+      const idRes = await fetchWithRetry(
+        `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channel}&key=${YOUTUBE_API_KEY}`,
+      );
+      if (idRes.ok) {
+        const idData = await idRes.json();
+        if (idData.items?.length > 0) {
+          subscribers = Number(idData.items[0].statistics?.subscriberCount ?? 0);
+        }
+      }
+    }
+
+    if (!channelId) {
+      throw new Error(`Could not resolve YouTube channel: ${channel}`);
+    }
+
+    // Step 2: Get recent video IDs via search
+    const searchRes = await fetchWithRetry(
+      `https://www.googleapis.com/youtube/v3/search?part=id&channelId=${channelId}&order=date&maxResults=20&type=video&key=${YOUTUBE_API_KEY}`,
+    );
+    if (!searchRes.ok) throw new Error(`YouTube search ${searchRes.status}`);
+    const searchData = await searchRes.json();
+    const videoIds = (searchData.items ?? []).map((i) => i.id?.videoId).filter(Boolean);
+
     let videos = [];
 
-    // Primary: extract from the rehydration JSON blob
-    try {
-      const blobContent = await page.$eval(
-        'script#__UNIVERSAL_DATA_FOR_REHYDRATION__',
-        (el) => el.textContent || '',
+    if (videoIds.length > 0) {
+      // Step 3: Get video details (stats + snippet)
+      const detailRes = await fetchWithRetry(
+        `https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet&id=${videoIds.join(',')}&key=${YOUTUBE_API_KEY}`,
       );
-      if (blobContent) {
-        const blob = JSON.parse(blobContent);
-        const scope = blob?.__DEFAULT_SCOPE__ ?? {};
-        const userDetail = scope['webapp.user-detail'];
-        const userPostList = scope['webapp.user-post'];
-
-        followers = userDetail?.userInfo?.stats?.followerCount ?? followers;
-
-        const items = userPostList?.itemList ?? userDetail?.userInfo?.itemList ?? [];
-        videos = items.slice(0, 20).map((item) => ({
-          id: String(item.id),
-          thumbnail: item?.video?.cover ?? item?.video?.originCover ?? '',
-          views: item?.stats?.playCount ?? 0,
-          url: `https://www.tiktok.com/@${handle}/video/${item.id}`,
+      if (detailRes.ok) {
+        const detailData = await detailRes.json();
+        videos = (detailData.items ?? []).map((v) => ({
+          id: v.id,
+          title: v.snippet?.title ?? '',
+          thumbnail: v.snippet?.thumbnails?.medium?.url ?? v.snippet?.thumbnails?.default?.url ?? '',
+          views: Number(v.statistics?.viewCount ?? 0),
+          likes: Number(v.statistics?.likeCount ?? 0),
+          comments: Number(v.statistics?.commentCount ?? 0),
+          url: `https://www.youtube.com/watch?v=${v.id}`,
+          publishedAt: v.snippet?.publishedAt ?? undefined,
         }));
       }
-    } catch {
-      // Blob not available, fall through to DOM extraction
     }
 
-    // Fallback: extract from the rendered DOM
-    if (videos.length === 0) {
-      const domData = await page.evaluate((profileHandle) => {
-        const results = [];
-        const videoLinks = document.querySelectorAll('a[href*="/video/"]');
-        const seen = new Set();
-
-        for (const link of videoLinks) {
-          if (results.length >= 20) break;
-          const href = link.getAttribute('href') || '';
-          const idMatch = href.match(/\/video\/(\d+)/);
-          if (!idMatch) continue;
-          const id = idMatch[1];
-          if (seen.has(id)) continue;
-          seen.add(id);
-
-          let views = 0;
-          const strongEl = link.querySelector('strong');
-          if (strongEl) {
-            const txt = strongEl.textContent?.trim() || '';
-            const parsed = parseFloat(txt.replace(/,/g, ''));
-            const suffix = txt.slice(-1).toUpperCase();
-            if (suffix === 'K') views = Math.round(parsed * 1000);
-            else if (suffix === 'M') views = Math.round(parsed * 1000000);
-            else if (suffix === 'B') views = Math.round(parsed * 1000000000);
-            else if (!isNaN(parsed)) views = Math.round(parsed);
-          }
-
-          const img = link.querySelector('img');
-          const thumbnail = img?.getAttribute('src') || '';
-
-          results.push({
-            id,
-            thumbnail,
-            views,
-            url: `https://www.tiktok.com/@${profileHandle}/video/${id}`,
-          });
-        }
-        return results;
-      }, handle);
-
-      if (domData.length > 0) videos = domData;
-    }
-
-    // Try follower count from DOM if the blob didn't have it
-    if (followers === (previous?.followers ?? 0)) {
-      try {
-        const followerText = await page.$eval(
-          '[data-e2e="followers-count"]',
-          (el) => el.textContent || '',
-        );
-        if (followerText) followers = parseAbbreviated(followerText.trim());
-      } catch {
-        // Keep previous value
-      }
-    }
-
-    await context.close();
-
-    return {
-      handle,
-      followers,
-      videos: videos.length > 0 ? videos : previous?.videos ?? [],
-    };
+    console.log(`[youtube] ${subscribers} subscribers, ${videos.length} videos`);
+    return { channel, subscribers, videos };
   } catch (err) {
-    console.warn('[tiktok]', err.message);
+    console.warn('[youtube] API failed:', err.message);
     return {
-      handle,
-      followers: previous?.followers ?? 0,
-      videos: previous?.videos ?? [],
+      channel,
+      subscribers: previous?.youtube?.subscribers ?? 0,
+      videos: previous?.youtube?.videos ?? [],
       error: err.message,
     };
   }
@@ -735,7 +494,6 @@ async function fetchMailchimp(previous) {
 
     const discovery = { generatedAt: new Date().toISOString(), lists: [] };
 
-    // Process lists sequentially with a small delay to avoid rate limits
     for (const list of lists.lists ?? []) {
       await sleep(300);
       const [tags, segments, mergeFields] = await Promise.all([
@@ -777,7 +535,6 @@ async function fetchMailchimp(previous) {
       }
     }
 
-    // Fetch subscriber locations (with delay between lists)
     let mailchimpLocations = [];
     for (const list of lists.lists ?? []) {
       await sleep(300);
@@ -855,33 +612,17 @@ function buildMailchimpFromSeed() {
 }
 
 /* ============================================================
- * Helpers
- * ============================================================ */
-function parseAbbreviated(s) {
-  const trimmed = s.replace(/,/g, '').trim();
-  const m = trimmed.match(/^([\d.]+)\s*([KMB]?)$/i);
-  if (!m) return Number(trimmed) || 0;
-  const n = parseFloat(m[1]);
-  const suffix = m[2].toUpperCase();
-  if (suffix === 'K') return Math.round(n * 1_000);
-  if (suffix === 'M') return Math.round(n * 1_000_000);
-  if (suffix === 'B') return Math.round(n * 1_000_000_000);
-  return Math.round(n);
-}
-
-function todayDateString() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-/* ============================================================
  * History accumulation
  * ============================================================ */
-async function appendHistory(instagram, tiktok) {
+async function appendHistory(instagram, tiktok, youtube, x, reddit) {
   const history = await readHistory();
   const today = todayDateString();
 
   const totalReelViews = (instagram.reels ?? []).reduce((s, r) => s + (r.views || 0), 0);
   const totalVideoViews = (tiktok.videos ?? []).reduce((s, v) => s + (v.views || 0), 0);
+  const totalYtViews = (youtube.videos ?? []).reduce((s, v) => s + (v.views || 0), 0);
+  const totalTweetViews = (x.tweets ?? []).reduce((s, t) => s + (t.views || 0), 0);
+  const totalUpvotes = (reddit.posts ?? []).reduce((s, p) => s + (p.upvotes || 0), 0);
 
   const entry = {
     date: today,
@@ -892,6 +633,8 @@ async function appendHistory(instagram, tiktok) {
         shortcode: r.shortcode,
         thumbnail: r.thumbnail,
         views: r.views,
+        likes: r.likes,
+        comments: r.comments,
         url: r.url,
       })),
     },
@@ -902,14 +645,54 @@ async function appendHistory(instagram, tiktok) {
         id: v.id,
         thumbnail: v.thumbnail,
         views: v.views,
+        likes: v.likes,
+        comments: v.comments,
+        shares: v.shares,
         url: v.url,
+      })),
+    },
+    youtube: {
+      subscribers: youtube.subscribers ?? 0,
+      totalVideoViews: totalYtViews,
+      videos: (youtube.videos ?? []).map((v) => ({
+        id: v.id,
+        title: v.title,
+        thumbnail: v.thumbnail,
+        views: v.views,
+        likes: v.likes,
+        comments: v.comments,
+        url: v.url,
+      })),
+    },
+    x: {
+      followers: x.followers ?? 0,
+      totalTweetViews,
+      tweets: (x.tweets ?? []).map((t) => ({
+        id: t.id,
+        text: t.text,
+        likes: t.likes,
+        retweets: t.retweets,
+        replies: t.replies,
+        views: t.views,
+        url: t.url,
+      })),
+    },
+    reddit: {
+      karma: reddit.karma ?? 0,
+      totalUpvotes,
+      posts: (reddit.posts ?? []).map((p) => ({
+        id: p.id,
+        title: p.title,
+        upvotes: p.upvotes,
+        comments: p.comments,
+        url: p.url,
+        subreddit: p.subreddit,
       })),
     },
   };
 
   const existing = history.entries.filter((e) => e.date !== today);
   existing.push(entry);
-
   existing.sort((a, b) => a.date.localeCompare(b.date));
   const trimmed = existing.slice(-HISTORY_MAX_DAYS);
 
@@ -924,41 +707,42 @@ async function appendHistory(instagram, tiktok) {
 async function main() {
   const previous = await readPrevious();
 
-  console.log('Refreshing Instagram, TikTok, Mailchimp...');
+  console.log('Refreshing Instagram, TikTok, YouTube, X, Reddit, Mailchimp...');
 
-  // Mailchimp runs in parallel; IG + TikTok share the browser sequentially
-  const mailchimpPromise = fetchMailchimp(previous);
-  const instagram = await scrapeInstagram(IG_HANDLE, previous?.instagram);
-  await sleep(2000);
-  const tiktok = await scrapeTikTok(TIKTOK_HANDLE, previous?.tiktok);
-  await closeBrowser();
-  const mailchimp = await mailchimpPromise;
+  // Run all fetches in parallel (each handles its own errors)
+  const [instagram, tiktok, youtube, x, reddit, mailchimp] = await Promise.all([
+    fetchInstagram(IG_HANDLE, previous),
+    fetchTikTok(TIKTOK_HANDLE, previous),
+    fetchYouTube(YOUTUBE_CHANNEL, previous),
+    fetchX(X_HANDLE, previous),
+    fetchReddit(REDDIT_USER, previous),
+    fetchMailchimp(previous),
+  ]);
 
   const snapshot = {
     generatedAt: new Date().toISOString(),
     instagram,
     tiktok,
+    youtube,
+    x,
+    reddit,
     mailchimp,
   };
 
   await fs.mkdir(path.dirname(SNAPSHOT_PATH), { recursive: true });
   await fs.writeFile(SNAPSHOT_PATH, JSON.stringify(snapshot, null, 2) + '\n');
   console.log(`Wrote ${SNAPSHOT_PATH}`);
-  console.log(
-    `  IG followers: ${snapshot.instagram.followers}, reels: ${snapshot.instagram.reels.length}`,
-  );
-  console.log(
-    `  TikTok followers: ${snapshot.tiktok.followers}, videos: ${snapshot.tiktok.videos.length}`,
-  );
-  console.log(
-    `  Mailchimp combined: ${snapshot.mailchimp.cumulativeDisjoint}, audiences: ${snapshot.mailchimp.audiences.length}`,
-  );
+  console.log(`  IG followers: ${instagram.followers}, reels: ${(instagram.reels ?? []).length}`);
+  console.log(`  TikTok followers: ${tiktok.followers}, videos: ${(tiktok.videos ?? []).length}`);
+  console.log(`  YouTube subscribers: ${youtube.subscribers}, videos: ${(youtube.videos ?? []).length}`);
+  console.log(`  X followers: ${x.followers}, tweets: ${(x.tweets ?? []).length}`);
+  console.log(`  Reddit karma: ${reddit.karma}, posts: ${(reddit.posts ?? []).length}`);
+  console.log(`  Mailchimp combined: ${mailchimp.cumulativeDisjoint}, audiences: ${mailchimp.audiences.length}`);
 
-  await appendHistory(instagram, tiktok);
+  await appendHistory(instagram, tiktok, youtube, x, reddit);
 }
 
 main().catch((err) => {
-  closeBrowser().catch(() => {});
   console.error(err);
   process.exit(1);
 });

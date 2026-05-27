@@ -100,6 +100,21 @@
     "followers": 86000,
     "videos": []
   },
+  "youtube": {
+    "channel": "stemplayer",
+    "subscribers": 0,
+    "videos": []
+  },
+  "x": {
+    "handle": "stemplayer",
+    "followers": 0,
+    "tweets": []
+  },
+  "reddit": {
+    "user": "stemplayer",
+    "karma": 0,
+    "posts": []
+  },
   "mailchimp": {
     "cumulativeRaw": 917282,
     "cumulativeDisjoint": 458641,

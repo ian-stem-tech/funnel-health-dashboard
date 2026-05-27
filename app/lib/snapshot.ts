@@ -25,7 +25,10 @@ export type {
   HistoryEntry,
   MailchimpLocation,
   Reel,
+  RedditPost,
   Snapshot,
   TikTokVideo,
+  XTweet,
+  YouTubeVideo,
 } from './types';
 export { formatNumber, formatDate } from './types';

@@ -163,11 +163,30 @@ a {
 .bento .area-hero       { grid-column: span 12; }
 .bento .area-instagram  { grid-column: span 6; }
 .bento .area-tiktok     { grid-column: span 6; }
+.bento .area-youtube    { grid-column: span 4; }
+.bento .area-x          { grid-column: span 4; }
+.bento .area-reddit     { grid-column: span 4; }
 .bento .area-mailchimp  { grid-column: span 12; }
+
+@media (max-width: 1024px) {
+  .bento .area-youtube,
+  .bento .area-x,
+  .bento .area-reddit {
+    grid-column: span 6;
+  }
+}
 
 @media (max-width: 880px) {
   .bento .area-instagram,
   .bento .area-tiktok {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 640px) {
+  .bento .area-youtube,
+  .bento .area-x,
+  .bento .area-reddit {
     grid-column: span 12;
   }
 }
@@ -425,6 +444,39 @@ a {
   font-size: 0.72rem;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   Tweet / post preview list (X and Reddit tiles)
+   ============================================================ */
+
+.tweet-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tweet-preview {
+  padding: 0.6rem 0.7rem;
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.4);
+}
+
+.tweet-text {
+  margin: 0 0 0.35rem;
+  font-family: "DeepSeaRegular", sans-serif;
+  color: var(--gray-900);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.tweet-stats {
+  display: flex;
+  gap: 0.75rem;
+  font-family: "DeepSeaMedium", sans-serif;
+  color: var(--gray-500);
+  font-size: 0.74rem;
 }
 
 /* ============================================================

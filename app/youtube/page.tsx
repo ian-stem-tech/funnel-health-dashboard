@@ -1,17 +1,19 @@
-import { loadHistory } from '../lib/snapshot';
+import { loadHistory, loadSnapshot } from '../lib/snapshot';
 import { formatNumber } from '../lib/types';
 import { BackLink } from '../components/BackLink';
-import { TikTokDetail } from './TikTokDetail';
+import { YouTubeDetail } from './YouTubeDetail';
 
-export default async function TikTokPage() {
-  const history = await loadHistory();
+export default async function YouTubePage() {
+  const [history, snapshot] = await Promise.all([loadHistory(), loadSnapshot()]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-  const chartData = history.entries.map((e) => ({
-    date: e.date,
-    views: e.tiktok.totalVideoViews,
-    followers: e.tiktok.followers,
-  }));
+  const chartData = history.entries
+    .filter((e) => e.youtube)
+    .map((e) => ({
+      date: e.date,
+      views: e.youtube?.totalVideoViews ?? 0,
+      followers: e.youtube?.subscribers ?? 0,
+    }));
 
   const videoMap = new Map<string, {
     id: string;
@@ -21,11 +23,11 @@ export default async function TikTokPage() {
     firstSeen: string;
     likes?: number;
     comments?: number;
-    shares?: number;
+    title?: string;
   }>();
 
   for (const entry of history.entries) {
-    for (const video of entry.tiktok.videos) {
+    for (const video of entry.youtube?.videos ?? []) {
       const existing = videoMap.get(video.id);
       if (!existing) {
         videoMap.set(video.id, {
@@ -36,21 +38,19 @@ export default async function TikTokPage() {
           firstSeen: entry.date,
           likes: video.likes,
           comments: video.comments,
-          shares: video.shares,
+          title: video.title,
         });
       } else if (video.views > existing.views) {
         existing.views = video.views;
         existing.likes = video.likes;
         existing.comments = video.comments;
-        existing.shares = video.shares;
         if (video.thumbnail) existing.thumbnail = video.thumbnail;
       }
     }
   }
 
   const videos = Array.from(videoMap.values());
-  const latestEntry = history.entries[history.entries.length - 1];
-  const followers = latestEntry?.tiktok.followers ?? 0;
+  const subscribers = snapshot.youtube?.subscribers ?? 0;
 
   return (
     <main className="shell">
@@ -61,13 +61,13 @@ export default async function TikTokPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="logo" src={`${basePath}/branding/stem-logo-2.svg`} alt="Stem" />
             <div>
-              <h1>TikTok Videos</h1>
-              <p>@stemplayer · {formatNumber(followers)} followers</p>
+              <h1>YouTube</h1>
+              <p>{snapshot.youtube?.channel ?? 'stemplayer'} · {formatNumber(subscribers)} subscribers</p>
             </div>
           </div>
         </header>
 
-        <TikTokDetail chartData={chartData} videos={videos} />
+        <YouTubeDetail chartData={chartData} videos={videos} />
       </div>
     </main>
   );

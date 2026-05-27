@@ -5,6 +5,9 @@ export type Reel = {
   url: string;
   title?: string;
   embedHtml?: string;
+  likes?: number;
+  comments?: number;
+  saves?: number;
 };
 
 export type TikTokVideo = {
@@ -16,6 +19,38 @@ export type TikTokVideo = {
   comments?: number;
   shares?: number;
   title?: string;
+  createdAt?: string;
+};
+
+export type XTweet = {
+  id: string;
+  text: string;
+  likes: number;
+  retweets: number;
+  replies: number;
+  views: number;
+  url: string;
+  createdAt?: string;
+};
+
+export type YouTubeVideo = {
+  id: string;
+  title: string;
+  thumbnail: string;
+  views: number;
+  likes: number;
+  comments: number;
+  url: string;
+  publishedAt?: string;
+};
+
+export type RedditPost = {
+  id: string;
+  title: string;
+  upvotes: number;
+  comments: number;
+  url: string;
+  subreddit?: string;
   createdAt?: string;
 };
 
@@ -51,6 +86,24 @@ export type Snapshot = {
     videos: TikTokVideo[];
     error?: string;
   };
+  youtube: {
+    channel: string;
+    subscribers: number;
+    videos: YouTubeVideo[];
+    error?: string;
+  };
+  x: {
+    handle: string;
+    followers: number;
+    tweets: XTweet[];
+    error?: string;
+  };
+  reddit: {
+    user: string;
+    karma: number;
+    posts: RedditPost[];
+    error?: string;
+  };
   mailchimp: {
     cumulativeRaw: number;
     cumulativeDisjoint: number;
@@ -71,6 +124,21 @@ export type HistoryEntry = {
     followers: number;
     totalVideoViews: number;
     videos: TikTokVideo[];
+  };
+  youtube?: {
+    subscribers: number;
+    totalVideoViews: number;
+    videos: YouTubeVideo[];
+  };
+  x?: {
+    followers: number;
+    totalTweetViews: number;
+    tweets: XTweet[];
+  };
+  reddit?: {
+    karma: number;
+    totalUpvotes: number;
+    posts: RedditPost[];
   };
 };
 
