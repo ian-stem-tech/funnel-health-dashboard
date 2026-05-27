@@ -6,7 +6,7 @@ import { ContentTable } from '../components/ContentTable';
 import { BentoCard } from '../components/BentoCard';
 import { IGEmbedGrid } from '../components/IGEmbedGrid';
 import { TimeRangeFilter } from '../components/TimeRangeFilter';
-import { sliceChartData, type TimeRange } from '../lib/dateFilter';
+import { sliceChartData, toDailyDeltas, type TimeRange } from '../lib/dateFilter';
 import type { Reel } from '../lib/types';
 
 type ReelItem = {
@@ -28,7 +28,8 @@ type Props = {
 
 export function InstagramDetail({ chartData, reels, currentReels }: Props) {
   const [range, setRange] = useState<TimeRange>('all');
-  const filteredChart = sliceChartData(chartData, range);
+  const dailyGains = toDailyDeltas(chartData);
+  const filteredChart = sliceChartData(dailyGains, range);
 
   return (
     <>
@@ -38,8 +39,8 @@ export function InstagramDetail({ chartData, reels, currentReels }: Props) {
         <IGEmbedGrid reels={currentReels} />
       </BentoCard>
 
-      <BentoCard title="Reel Views Over Time" iconLetter="IG">
-        <ViewsChart data={filteredChart} color="#1f1f1f" label="Reel views" />
+      <BentoCard title="Daily Views Gained" iconLetter="IG">
+        <ViewsChart data={filteredChart} color="#1f1f1f" label="Views gained" />
       </BentoCard>
 
       <BentoCard

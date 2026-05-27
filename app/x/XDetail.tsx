@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ViewsChart, type DataPoint } from '../components/ViewsChart';
 import { BentoCard } from '../components/BentoCard';
 import { TimeRangeFilter } from '../components/TimeRangeFilter';
-import { sliceChartData, type TimeRange } from '../lib/dateFilter';
+import { sliceChartData, toDailyDeltas, type TimeRange } from '../lib/dateFilter';
 import { formatNumber } from '../lib/types';
 
 type TweetItem = {
@@ -35,14 +35,15 @@ function getViews(tweet: TweetItem, range: TimeRange): number {
 
 export function XDetail({ chartData, tweets }: Props) {
   const [range, setRange] = useState<TimeRange>('all');
-  const filteredChart = sliceChartData(chartData, range);
+  const dailyGains = toDailyDeltas(chartData);
+  const filteredChart = sliceChartData(dailyGains, range);
 
   return (
     <>
       <TimeRangeFilter value={range} onChange={setRange} />
 
-      <BentoCard title="Tweet Views Over Time" iconLetter="X">
-        <ViewsChart data={filteredChart} color="#1f1f1f" label="Tweet views" />
+      <BentoCard title="Daily Views Gained" iconLetter="X">
+        <ViewsChart data={filteredChart} color="#1f1f1f" label="Views gained" />
       </BentoCard>
 
       <BentoCard
