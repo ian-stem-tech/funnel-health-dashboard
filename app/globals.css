@@ -326,8 +326,9 @@ a {
 
 .hero-stat-label {
   font-family: var(--font-stack);
-  color: var(--gray-700);
+  color: var(--gray-900);
   font-size: 0.82rem;
+  font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -342,7 +343,7 @@ a {
 
 .hero-stat-caption {
   font-family: var(--font-stack);
-  color: var(--gray-700);
+  color: var(--gray-900);
   font-size: 0.88rem;
 }
 
@@ -397,8 +398,9 @@ a {
 
 .hero-metric-label {
   font-family: var(--font-stack);
-  color: var(--gray-500);
-  font-size: 0.72rem;
+  color: var(--gray-900);
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   text-align: center;
@@ -468,8 +470,9 @@ a {
 
 .hero-channel-label {
   font-family: var(--font-stack);
-  color: var(--gray-500);
-  font-size: 0.72rem;
+  color: var(--gray-700);
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
