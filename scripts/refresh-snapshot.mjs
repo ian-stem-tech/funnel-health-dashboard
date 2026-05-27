@@ -30,6 +30,7 @@ const SNAPSHOT_PATH = path.join(ROOT, 'public', 'data', 'snapshot.json');
 const HISTORY_PATH = path.join(ROOT, 'public', 'data', 'history.json');
 const DISCOVERY_PATH = path.join(ROOT, 'public', 'data', 'mailchimp-discovery.json');
 const CACHE_META_PATH = path.join(ROOT, 'public', 'data', 'cache-meta.json');
+const THUMBS_DIR = path.join(ROOT, 'public', 'data', 'thumbnails');
 
 const APIFY_API_TOKEN = process.env.APIFY_API_TOKEN;
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
@@ -98,6 +99,48 @@ async function readHistory() {
   } catch {
     return { entries: [] };
   }
+}
+
+/* ============================================================
+ * Thumbnail downloader — persist CDN images locally
+ * ============================================================ */
+async function downloadThumbnail(cdnUrl, filename) {
+  if (!cdnUrl) return null;
+  await fs.mkdir(THUMBS_DIR, { recursive: true });
+  const ext = '.jpg';
+  const localFile = `${filename}${ext}`;
+  const localPath = path.join(THUMBS_DIR, localFile);
+
+  try {
+    const existing = await fs.stat(localPath).catch(() => null);
+    if (existing && existing.size > 500) {
+      return `data/thumbnails/${localFile}`;
+    }
+
+    const res = await fetch(cdnUrl, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length < 500) return null;
+    await fs.writeFile(localPath, buf);
+    return `data/thumbnails/${localFile}`;
+  } catch {
+    return null;
+  }
+}
+
+async function downloadAllThumbnails(items, idField = 'shortcode') {
+  const results = await Promise.allSettled(
+    items.map(async (item) => {
+      const id = item[idField] ?? item.id ?? '';
+      if (!id || !item.thumbnail) return item;
+      const localThumb = await downloadThumbnail(item.thumbnail, id);
+      if (localThumb) {
+        return { ...item, thumbnail: localThumb };
+      }
+      return item;
+    }),
+  );
+  return results.map((r) => (r.status === 'fulfilled' ? r.value : r.reason));
 }
 
 /* ============================================================
@@ -217,8 +260,10 @@ async function fetchInstagram(previous, cacheMeta) {
     }
 
     console.log(`[instagram] ${followers} followers, ${reels.length} reels`);
-    markCacheEntry(cacheMeta, 'instagram', 'ok', reels.length);
-    return { handle, followers, reels: reels.slice(0, 30) };
+    const savedReels = await downloadAllThumbnails(reels.slice(0, 30), 'shortcode');
+    console.log(`[instagram] Downloaded ${savedReels.filter((r) => r.thumbnail?.startsWith('data/')).length} thumbnails`);
+    markCacheEntry(cacheMeta, 'instagram', 'ok', savedReels.length);
+    return { handle, followers, reels: savedReels };
   } catch (err) {
     console.warn('[instagram] Apify failed:', err.message);
     markCacheEntry(cacheMeta, 'instagram', 'error');
@@ -275,8 +320,9 @@ async function fetchTikTok(previous, cacheMeta) {
     }
 
     console.log(`[tiktok] ${followers} followers, ${videos.length} videos`);
-    markCacheEntry(cacheMeta, 'tiktok', 'ok', videos.length);
-    return { handle, followers, videos: videos.slice(0, 30) };
+    const savedVideos = await downloadAllThumbnails(videos.slice(0, 30), 'id');
+    markCacheEntry(cacheMeta, 'tiktok', 'ok', savedVideos.length);
+    return { handle, followers, videos: savedVideos };
   } catch (err) {
     console.warn('[tiktok] Apify failed:', err.message);
     markCacheEntry(cacheMeta, 'tiktok', 'error');
@@ -332,8 +378,9 @@ async function fetchTikTokHashtag(previous, cacheMeta) {
     }
 
     console.log(`[tiktok-hashtag] ${hashtagLabel}: ${videos.length} videos`);
-    markCacheEntry(cacheMeta, 'tiktokHashtag', 'ok', videos.length);
-    return { hashtags, videos: videos.slice(0, 50) };
+    const savedVideos = await downloadAllThumbnails(videos.slice(0, 50), 'id');
+    markCacheEntry(cacheMeta, 'tiktokHashtag', 'ok', savedVideos.length);
+    return { hashtags, videos: savedVideos };
   } catch (err) {
     console.warn('[tiktok-hashtag] Apify failed:', err.message);
     markCacheEntry(cacheMeta, 'tiktokHashtag', 'error');
@@ -511,8 +558,9 @@ async function fetchYouTube(previous, cacheMeta) {
     }
 
     console.log(`[youtube] ${subscribers} subscribers, ${videos.length} videos`);
-    markCacheEntry(cacheMeta, 'youtube', 'ok', videos.length);
-    return { channel, subscribers, videos: videos.slice(0, 20) };
+    const savedVideos = await downloadAllThumbnails(videos.slice(0, 20), 'id');
+    markCacheEntry(cacheMeta, 'youtube', 'ok', savedVideos.length);
+    return { channel, subscribers, videos: savedVideos };
   } catch (err) {
     console.warn('[youtube] Apify failed:', err.message);
     markCacheEntry(cacheMeta, 'youtube', 'error');

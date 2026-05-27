@@ -8,10 +8,21 @@ type Props = {
   reels: Reel[];
 };
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+function resolveUrl(src: string | undefined): string | undefined {
+  if (!src) return undefined;
+  if (src.startsWith('http')) return src;
+  return `${BASE}/${src}`;
+}
+
 function ReelCard({ reel }: { reel: Reel }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
+
+  const thumb = resolveUrl(reel.thumbnail);
+  const video = resolveUrl(reel.videoUrl);
 
   const togglePlay = useCallback(() => {
     const v = videoRef.current;
@@ -33,7 +44,7 @@ function ReelCard({ reel }: { reel: Reel }) {
     setMuted(v.muted);
   }, []);
 
-  if (!reel.videoUrl) {
+  if (!video) {
     return (
       <a
         href={reel.url}
@@ -41,8 +52,9 @@ function ReelCard({ reel }: { reel: Reel }) {
         rel="noreferrer noopener"
         className="reel-thumb"
       >
-        {reel.thumbnail ? (
-          <img src={reel.thumbnail} alt={reel.title || 'Reel'} loading="lazy" />
+        {thumb ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={thumb} alt={reel.title || 'Reel'} loading="lazy" />
         ) : (
           <span className="reel-thumb-fallback">No preview</span>
         )}
@@ -55,8 +67,8 @@ function ReelCard({ reel }: { reel: Reel }) {
     <div className="reel-player" onClick={togglePlay}>
       <video
         ref={videoRef}
-        src={reel.videoUrl}
-        poster={reel.thumbnail || undefined}
+        src={video}
+        poster={thumb}
         muted={muted}
         loop
         playsInline

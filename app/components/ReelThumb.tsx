@@ -7,12 +7,20 @@ type Props = {
   label?: string;
 };
 
+function resolveThumb(thumbnail: string | undefined): string | undefined {
+  if (!thumbnail) return undefined;
+  if (thumbnail.startsWith('http')) return thumbnail;
+  const base = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  return `${base}/${thumbnail}`;
+}
+
 export function ReelThumb({ thumbnail, views, url, label }: Props) {
+  const src = resolveThumb(thumbnail);
   return (
     <a className="reel-thumb" href={url} target="_blank" rel="noreferrer noopener">
-      {thumbnail ? (
+      {src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={thumbnail} alt={label ?? 'Reel thumbnail'} loading="lazy" />
+        <img src={src} alt={label ?? 'Reel thumbnail'} loading="lazy" />
       ) : (
         <div className="reel-thumb-fallback">No preview</div>
       )}

@@ -3,6 +3,14 @@
 import { useMemo, useState } from 'react';
 import { formatNumber } from '../lib/types';
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+function resolveThumb(src: string | undefined): string | undefined {
+  if (!src) return undefined;
+  if (src.startsWith('http')) return src;
+  return `${BASE}/${src}`;
+}
+
 type ContentItem = {
   id: string;
   thumbnail?: string;
@@ -135,7 +143,7 @@ export function ContentTable({ items, idLabel = 'ID', platform }: Props) {
                   {item.thumbnail ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={item.thumbnail}
+                      src={resolveThumb(item.thumbnail)}
                       alt={`${platform} ${item.id}`}
                       className="content-table-thumb"
                       loading="lazy"
