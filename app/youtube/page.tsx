@@ -2,6 +2,7 @@ import { loadHistory, loadSnapshot } from '../lib/snapshot';
 import { formatNumber } from '../lib/types';
 import { BackLink } from '../components/BackLink';
 import { YouTubeDetail } from './YouTubeDetail';
+import { computeContentDeltas } from '../lib/computeDeltas';
 
 export default async function YouTubePage() {
   const [history, snapshot] = await Promise.all([loadHistory(), loadSnapshot()]);
@@ -15,10 +16,19 @@ export default async function YouTubePage() {
       followers: e.youtube?.subscribers ?? 0,
     }));
 
+  const deltas = computeContentDeltas(
+    history.entries,
+    (e) => (e.youtube?.videos ?? []).map((v) => ({ ...v, id: v.id })),
+    'id',
+  );
+
   const videoMap = new Map<string, {
     id: string;
     thumbnail: string;
     views: number;
+    views1d: number;
+    views7d: number;
+    views30d: number;
     url: string;
     firstSeen: string;
     likes?: number;
@@ -29,11 +39,15 @@ export default async function YouTubePage() {
   for (const entry of history.entries) {
     for (const video of entry.youtube?.videos ?? []) {
       const existing = videoMap.get(video.id);
+      const d = deltas.get(video.id);
       if (!existing) {
         videoMap.set(video.id, {
           id: video.id,
           thumbnail: video.thumbnail,
           views: video.views,
+          views1d: d?.views1d ?? 0,
+          views7d: d?.views7d ?? 0,
+          views30d: d?.views30d ?? 0,
           url: video.url,
           firstSeen: entry.date,
           likes: video.likes,
@@ -62,7 +76,7 @@ export default async function YouTubePage() {
             <img className="logo" src={`${basePath}/branding/stem-logo-2.svg`} alt="Stem" />
             <div>
               <h1>YouTube</h1>
-              <p>{snapshot.youtube?.channel ?? 'stemplayer'} · {formatNumber(subscribers)} subscribers</p>
+              <p>{snapshot.youtube?.channel ?? 'thestemplayer'} · {formatNumber(subscribers)} subscribers</p>
             </div>
           </div>
         </header>

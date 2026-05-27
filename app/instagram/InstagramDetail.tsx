@@ -6,13 +6,16 @@ import { ContentTable } from '../components/ContentTable';
 import { BentoCard } from '../components/BentoCard';
 import { IGEmbedGrid } from '../components/IGEmbedGrid';
 import { TimeRangeFilter } from '../components/TimeRangeFilter';
-import { filterByDateRange, sliceChartData, type TimeRange } from '../lib/dateFilter';
+import { sliceChartData, type TimeRange } from '../lib/dateFilter';
 import type { Reel } from '../lib/types';
 
 type ReelItem = {
   id: string;
   thumbnail: string;
   views: number;
+  views1d: number;
+  views7d: number;
+  views30d: number;
   url: string;
   firstSeen: string;
 };
@@ -26,7 +29,6 @@ type Props = {
 export function InstagramDetail({ chartData, reels, currentReels }: Props) {
   const [range, setRange] = useState<TimeRange>('all');
   const filteredChart = sliceChartData(chartData, range);
-  const filteredReels = filterByDateRange(reels, range, 'firstSeen');
 
   return (
     <>
@@ -42,10 +44,10 @@ export function InstagramDetail({ chartData, reels, currentReels }: Props) {
 
       <BentoCard
         title="All Reels"
-        subtitle={range === 'all' ? `${reels.length} tracked` : `${filteredReels.length} of ${reels.length} reels`}
+        subtitle={`${reels.length} tracked`}
         iconLetter="IG"
       >
-        <ContentTable items={filteredReels} idLabel="Shortcode" platform="instagram" />
+        <ContentTable items={reels} idLabel="Shortcode" platform="instagram" timeRange={range} />
       </BentoCard>
     </>
   );

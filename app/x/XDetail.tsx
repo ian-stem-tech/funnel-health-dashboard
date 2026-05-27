@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ViewsChart, type DataPoint } from '../components/ViewsChart';
 import { BentoCard } from '../components/BentoCard';
 import { TimeRangeFilter } from '../components/TimeRangeFilter';
-import { filterByDateRange, sliceChartData, type TimeRange } from '../lib/dateFilter';
+import { sliceChartData, type TimeRange } from '../lib/dateFilter';
 import { formatNumber } from '../lib/types';
 
 type TweetItem = {
@@ -14,6 +14,9 @@ type TweetItem = {
   retweets: number;
   replies: number;
   views: number;
+  views1d: number;
+  views7d: number;
+  views30d: number;
   url: string;
   createdAt?: string;
 };
@@ -23,10 +26,16 @@ type Props = {
   tweets: TweetItem[];
 };
 
+function getViews(tweet: TweetItem, range: TimeRange): number {
+  if (range === '1d') return tweet.views1d;
+  if (range === '7d') return tweet.views7d;
+  if (range === '30d') return tweet.views30d;
+  return tweet.views;
+}
+
 export function XDetail({ chartData, tweets }: Props) {
   const [range, setRange] = useState<TimeRange>('all');
   const filteredChart = sliceChartData(chartData, range);
-  const filteredTweets = filterByDateRange(tweets, range, 'createdAt');
 
   return (
     <>
@@ -38,10 +47,10 @@ export function XDetail({ chartData, tweets }: Props) {
 
       <BentoCard
         title="All Tweets"
-        subtitle={range === 'all' ? `${tweets.length} tracked` : `${filteredTweets.length} of ${tweets.length} tweets`}
+        subtitle={`${tweets.length} tracked`}
         iconLetter="X"
       >
-        {filteredTweets.length === 0 ? (
+        {tweets.length === 0 ? (
           <div className="content-table-empty">
             No tweet data collected yet. Data accumulates with each daily refresh.
           </div>
@@ -51,7 +60,7 @@ export function XDetail({ chartData, tweets }: Props) {
               <thead>
                 <tr>
                   <th>Tweet</th>
-                  <th>Views</th>
+                  <th>{range === 'all' ? 'Views' : `Views (${range})`}</th>
                   <th>Likes</th>
                   <th>Retweets</th>
                   <th>Replies</th>
@@ -59,12 +68,12 @@ export function XDetail({ chartData, tweets }: Props) {
                 </tr>
               </thead>
               <tbody>
-                {filteredTweets.map((tweet) => (
+                {tweets.map((tweet) => (
                   <tr key={tweet.id}>
                     <td className="content-table-id" style={{ maxWidth: 280 }}>
                       {tweet.text.slice(0, 100)}{tweet.text.length > 100 ? '...' : ''}
                     </td>
-                    <td className="content-table-views">{formatNumber(tweet.views)}</td>
+                    <td className="content-table-views">{formatNumber(getViews(tweet, range))}</td>
                     <td className="content-table-views">{formatNumber(tweet.likes)}</td>
                     <td className="content-table-views">{formatNumber(tweet.retweets)}</td>
                     <td className="content-table-views">{formatNumber(tweet.replies)}</td>

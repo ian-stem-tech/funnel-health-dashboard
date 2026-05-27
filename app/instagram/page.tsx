@@ -2,6 +2,7 @@ import { loadHistory, loadSnapshot } from '../lib/snapshot';
 import { formatNumber } from '../lib/types';
 import { BackLink } from '../components/BackLink';
 import { InstagramDetail } from './InstagramDetail';
+import { computeContentDeltas } from '../lib/computeDeltas';
 
 export default async function InstagramPage() {
   const [history, snapshot] = await Promise.all([loadHistory(), loadSnapshot()]);
@@ -13,10 +14,19 @@ export default async function InstagramPage() {
     followers: e.instagram.followers,
   }));
 
+  const deltas = computeContentDeltas(
+    history.entries,
+    (e) => e.instagram.reels.map((r) => ({ ...r, id: r.shortcode })),
+    'id',
+  );
+
   const reelMap = new Map<string, {
     id: string;
     thumbnail: string;
     views: number;
+    views1d: number;
+    views7d: number;
+    views30d: number;
     url: string;
     firstSeen: string;
     likes?: number;
@@ -27,11 +37,15 @@ export default async function InstagramPage() {
   for (const entry of history.entries) {
     for (const reel of entry.instagram.reels) {
       const existing = reelMap.get(reel.shortcode);
+      const d = deltas.get(reel.shortcode);
       if (!existing) {
         reelMap.set(reel.shortcode, {
           id: reel.shortcode,
           thumbnail: reel.thumbnail,
           views: reel.views,
+          views1d: d?.views1d ?? 0,
+          views7d: d?.views7d ?? 0,
+          views30d: d?.views30d ?? 0,
           url: reel.url,
           firstSeen: entry.date,
           likes: reel.likes,

@@ -5,12 +5,15 @@ import { ViewsChart, type DataPoint } from '../components/ViewsChart';
 import { ContentTable } from '../components/ContentTable';
 import { BentoCard } from '../components/BentoCard';
 import { TimeRangeFilter } from '../components/TimeRangeFilter';
-import { filterByDateRange, sliceChartData, type TimeRange } from '../lib/dateFilter';
+import { sliceChartData, type TimeRange } from '../lib/dateFilter';
 
 type VideoItem = {
   id: string;
   thumbnail: string;
   views: number;
+  views1d: number;
+  views7d: number;
+  views30d: number;
   url: string;
   firstSeen: string;
   likes?: number;
@@ -26,7 +29,6 @@ type Props = {
 export function YouTubeDetail({ chartData, videos }: Props) {
   const [range, setRange] = useState<TimeRange>('all');
   const filteredChart = sliceChartData(chartData, range);
-  const filteredVideos = filterByDateRange(videos, range, 'firstSeen');
 
   return (
     <>
@@ -38,10 +40,10 @@ export function YouTubeDetail({ chartData, videos }: Props) {
 
       <BentoCard
         title="All Videos"
-        subtitle={range === 'all' ? `${videos.length} tracked` : `${filteredVideos.length} of ${videos.length} videos`}
+        subtitle={`${videos.length} tracked`}
         iconLetter="YT"
       >
-        <ContentTable items={filteredVideos} idLabel="Video ID" platform="youtube" />
+        <ContentTable items={videos} idLabel="Video ID" platform="youtube" timeRange={range} />
       </BentoCard>
     </>
   );

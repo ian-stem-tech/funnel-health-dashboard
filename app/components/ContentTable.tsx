@@ -15,6 +15,9 @@ type ContentItem = {
   id: string;
   thumbnail?: string;
   views: number;
+  views1d?: number;
+  views7d?: number;
+  views30d?: number;
   url: string;
   firstSeen: string;
   likes?: number;
@@ -24,16 +27,26 @@ type ContentItem = {
   title?: string;
 };
 
+type TimeRange = '1d' | '7d' | '30d' | 'all';
+
 type Props = {
   items: ContentItem[];
   idLabel?: string;
   platform: 'instagram' | 'tiktok' | 'youtube';
+  timeRange?: TimeRange;
 };
 
 type SortField = 'views' | 'firstSeen' | 'id' | 'likes' | 'comments';
 type SortDir = 'asc' | 'desc';
 
-export function ContentTable({ items, idLabel = 'ID', platform }: Props) {
+function getDisplayViews(item: ContentItem, range: TimeRange): number {
+  if (range === '1d' && item.views1d !== undefined) return item.views1d;
+  if (range === '7d' && item.views7d !== undefined) return item.views7d;
+  if (range === '30d' && item.views30d !== undefined) return item.views30d;
+  return item.views;
+}
+
+export function ContentTable({ items, idLabel = 'ID', platform, timeRange = 'all' }: Props) {
   const [sortField, setSortField] = useState<SortField>('views');
   const [sortDir, setSortDir] = useState<SortDir>('desc');
   const [minViews, setMinViews] = useState('');
@@ -46,16 +59,16 @@ export function ContentTable({ items, idLabel = 'ID', platform }: Props) {
   const filtered = useMemo(() => {
     const threshold = parseInt(minViews, 10);
     if (!isNaN(threshold) && threshold > 0) {
-      return items.filter((item) => item.views >= threshold);
+      return items.filter((item) => getDisplayViews(item, timeRange) >= threshold);
     }
     return items;
-  }, [items, minViews]);
+  }, [items, minViews, timeRange]);
 
   const sorted = useMemo(() => {
     const arr = [...filtered];
     arr.sort((a, b) => {
       let cmp = 0;
-      if (sortField === 'views') cmp = a.views - b.views;
+      if (sortField === 'views') cmp = getDisplayViews(a, timeRange) - getDisplayViews(b, timeRange);
       else if (sortField === 'likes') cmp = (a.likes ?? 0) - (b.likes ?? 0);
       else if (sortField === 'comments') cmp = (a.comments ?? 0) - (b.comments ?? 0);
       else if (sortField === 'firstSeen') cmp = a.firstSeen.localeCompare(b.firstSeen);
@@ -63,7 +76,7 @@ export function ContentTable({ items, idLabel = 'ID', platform }: Props) {
       return sortDir === 'desc' ? -cmp : cmp;
     });
     return arr;
-  }, [filtered, sortField, sortDir]);
+  }, [filtered, sortField, sortDir, timeRange]);
 
   function handleSort(field: SortField) {
     if (sortField === field) {
@@ -116,7 +129,7 @@ export function ContentTable({ items, idLabel = 'ID', platform }: Props) {
                 {idLabel}{sortIndicator('id')}
               </th>
               <th className="sortable" onClick={() => handleSort('views')}>
-                Views{sortIndicator('views')}
+                {timeRange === 'all' ? 'Views' : `Views (${timeRange})`}{sortIndicator('views')}
               </th>
               {hasLikes && (
                 <th className="sortable" onClick={() => handleSort('likes')}>
@@ -153,7 +166,7 @@ export function ContentTable({ items, idLabel = 'ID', platform }: Props) {
                   )}
                 </td>
                 <td className="content-table-id">{item.title || item.id}</td>
-                <td className="content-table-views">{formatNumber(item.views)}</td>
+                <td className="content-table-views">{formatNumber(getDisplayViews(item, timeRange))}</td>
                 {hasLikes && (
                   <td className="content-table-views">{formatNumber(item.likes ?? 0)}</td>
                 )}
