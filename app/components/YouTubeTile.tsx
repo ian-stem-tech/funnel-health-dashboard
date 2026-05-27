@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { BentoCard } from './BentoCard';
-import { ReelThumb } from './ReelThumb';
 import { formatNumber, type Snapshot } from '../lib/types';
 
 export function YouTubeTile({ data }: { data: Snapshot['youtube'] }) {
-  const videos = data.videos.slice(0, 3);
+  const video = data.videos[0];
   return (
     <Link href="/youtube" className="tile-link">
       <BentoCard
@@ -19,24 +18,21 @@ export function YouTubeTile({ data }: { data: Snapshot['youtube'] }) {
           <span className="stat-label">Subscribers</span>
           <span className="stat-value">{formatNumber(data.subscribers)}</span>
         </div>
-        <div className="stat-block">
-          <span className="stat-label">Recent videos</span>
-          {videos.length > 0 ? (
-            <div className="reels-strip">
-              {videos.map((video) => (
-                <ReelThumb
-                  key={video.id}
-                  thumbnail={video.thumbnail}
-                  views={video.views}
-                  url={video.url}
-                  label={video.title}
-                />
-              ))}
+        {video ? (
+          <div className="yt-tile-preview">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={video.thumbnail}
+              alt={video.title || 'Video thumbnail'}
+              className="yt-tile-thumb"
+            />
+            <div className="yt-tile-info">
+              <span className="yt-tile-title">{video.title}</span>
             </div>
-          ) : (
-            <p className="card-subtitle">No recent video data available.</p>
-          )}
-        </div>
+          </div>
+        ) : (
+          <p className="card-subtitle">No video data available.</p>
+        )}
         {data.error && (
           <p className="card-subtitle" style={{ color: '#a16207' }}>
             Last refresh warning: {data.error}

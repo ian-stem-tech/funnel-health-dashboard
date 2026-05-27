@@ -34,6 +34,17 @@ export function YouTubeDetail({ chartData, videos }: Props) {
     <>
       <TimeRangeFilter value={range} onChange={setRange} />
 
+      <BentoCard title="Featured Video" iconLetter="YT">
+        <div className="yt-embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/tqFodSPhHtQ"
+            title="Stem Player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      </BentoCard>
+
       <BentoCard title="Video Views Over Time" iconLetter="YT">
         <ViewsChart data={filteredChart} color="#1f1f1f" label="Video views" />
       </BentoCard>

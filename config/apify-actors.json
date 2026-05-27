@@ -7,10 +7,10 @@
     "profileUrl": "https://www.instagram.com/stemplayer/",
     "metrics": ["followers", "views", "likes", "comments", "saves", "shares"],
     "input": {
-      "includeDownloadedVideo": true,
+      "includeDownloadedVideo": false,
       "includeSharesCount": true,
       "includeTranscript": false,
-      "resultsLimit": 27,
+      "resultsLimit": 12,
       "skipPinnedPosts": false,
       "username": ["stemplayer"]
     }

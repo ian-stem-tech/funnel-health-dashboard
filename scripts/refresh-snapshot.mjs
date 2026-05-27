@@ -231,7 +231,7 @@ async function fetchInstagram(previous, cacheMeta) {
 
   try {
     console.log(`[instagram] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
-    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
+    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 300 });
 
     let followers = previous?.instagram?.followers ?? 0;
     const reels = [];
@@ -525,67 +525,32 @@ async function fetchReddit(previous, cacheMeta) {
 }
 
 /* ============================================================
- * YouTube via Apify (config: youtube)
+ * YouTube — single pinned video (no Apify actor needed)
  * ============================================================ */
+const YOUTUBE_PINNED_VIDEO = {
+  id: 'tqFodSPhHtQ',
+  title: 'Stem Player',
+  thumbnail: 'https://i.ytimg.com/vi/tqFodSPhHtQ/maxresdefault.jpg',
+  views: 0,
+  likes: 0,
+  comments: 0,
+  url: 'https://www.youtube.com/watch?v=tqFodSPhHtQ',
+  publishedAt: '2026-01-01T00:00:00.000Z',
+};
+
 async function fetchYouTube(previous, cacheMeta) {
   const cfg = loadActorConfig('youtube');
   const channel = cfg.account;
+  const subscribers = previous?.youtube?.subscribers ?? 0;
 
-  if (!APIFY_API_TOKEN) {
-    console.warn('[youtube] APIFY_API_TOKEN not set, using previous data');
-    return previous?.youtube ?? { channel, subscribers: 0, videos: [] };
-  }
+  const prevVideo = previous?.youtube?.videos?.find((v) => v.id === YOUTUBE_PINNED_VIDEO.id);
+  const video = prevVideo
+    ? { ...YOUTUBE_PINNED_VIDEO, views: prevVideo.views, likes: prevVideo.likes, comments: prevVideo.comments }
+    : { ...YOUTUBE_PINNED_VIDEO };
 
-  if (isCacheValid(cacheMeta, 'youtube')) {
-    console.log('[youtube] Cache still valid, skipping fetch');
-    return previous?.youtube ?? { channel, subscribers: 0, videos: [] };
-  }
-
-  try {
-    console.log(`[youtube] Fetching "${channel}" via Apify actor ${cfg.actorId}...`);
-    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
-
-    let subscribers = previous?.youtube?.subscribers ?? 0;
-    const videos = [];
-
-    for (const item of items ?? []) {
-      if (item.channelSubscribers) {
-        subscribers = typeof item.channelSubscribers === 'number'
-          ? item.channelSubscribers
-          : parseAbbreviated(String(item.channelSubscribers));
-      }
-      if (item.subscriberCount) subscribers = item.subscriberCount;
-      if (item.numberOfSubscribers) subscribers = item.numberOfSubscribers;
-
-      if (item.id || item.videoId || item.url?.includes('watch')) {
-        const videoId = item.id ?? item.videoId ?? '';
-        videos.push({
-          id: String(videoId),
-          title: item.title ?? '',
-          thumbnail: item.thumbnailUrl ?? item.thumbnail ?? '',
-          views: item.viewCount ?? item.views ?? 0,
-          likes: item.likes ?? item.likeCount ?? 0,
-          comments: item.commentsCount ?? item.commentCount ?? item.comments ?? 0,
-          url: item.url ?? `https://www.youtube.com/watch?v=${videoId}`,
-          publishedAt: item.uploadDate ?? item.publishedAt ?? item.date ?? undefined,
-        });
-      }
-    }
-
-    console.log(`[youtube] ${subscribers} subscribers, ${videos.length} videos`);
-    const savedVideos = await downloadAllThumbnails(videos.slice(0, 20), 'id');
-    markCacheEntry(cacheMeta, 'youtube', 'ok', savedVideos.length);
-    return { channel, subscribers, videos: savedVideos };
-  } catch (err) {
-    console.warn('[youtube] Apify failed:', err.message);
-    markCacheEntry(cacheMeta, 'youtube', 'error');
-    return {
-      channel,
-      subscribers: previous?.youtube?.subscribers ?? 0,
-      videos: previous?.youtube?.videos ?? [],
-      error: err.message,
-    };
-  }
+  console.log(`[youtube] Using pinned video ${video.id} (${channel}, ${subscribers} subscribers)`);
+  markCacheEntry(cacheMeta, 'youtube', 'ok', 1);
+  return { channel, subscribers, videos: [video] };
 }
 
 /* ============================================================
