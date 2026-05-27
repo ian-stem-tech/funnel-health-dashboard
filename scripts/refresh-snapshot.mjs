@@ -231,7 +231,7 @@ async function fetchInstagram(previous, cacheMeta) {
 
   try {
     console.log(`[instagram] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
-    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 300 });
+    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 600 });
 
     let followers = previous?.instagram?.followers ?? 0;
     const reels = [];

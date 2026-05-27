@@ -8,7 +8,7 @@
     "metrics": ["followers", "views", "likes", "comments", "saves", "shares"],
     "input": {
       "includeDownloadedVideo": false,
-      "includeSharesCount": true,
+      "includeSharesCount": false,
       "includeTranscript": false,
       "resultsLimit": 12,
       "skipPinnedPosts": false,

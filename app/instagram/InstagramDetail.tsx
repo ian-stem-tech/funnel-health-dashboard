@@ -35,12 +35,12 @@ export function InstagramDetail({ chartData, reels, currentReels }: Props) {
     <>
       <TimeRangeFilter value={range} onChange={setRange} />
 
-      <BentoCard title="Reels" subtitle={`${currentReels.length} videos`} iconLetter="IG">
-        <IGEmbedGrid reels={currentReels} />
-      </BentoCard>
-
       <BentoCard title="Daily Views Gained" iconLetter="IG">
         <ViewsChart data={filteredChart} color="#1f1f1f" label="Views gained" />
+      </BentoCard>
+
+      <BentoCard title="Reels" subtitle={`${currentReels.length} videos`} iconLetter="IG">
+        <IGEmbedGrid reels={currentReels} />
       </BentoCard>
 
       <BentoCard

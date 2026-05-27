@@ -126,7 +126,7 @@ export function ViewsChart({ data, color = '#1f1f1f', label = 'Views' }: Props) 
               background: 'rgba(255,255,225,0.95)',
               border: '1px solid rgba(31,31,31,0.14)',
               borderRadius: '10px',
-              fontFamily: 'DeepSeaRegular, sans-serif',
+              fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
               fontSize: '0.84rem',
             }}
           />
