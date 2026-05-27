@@ -46,16 +46,20 @@ export function sliceChartData(
 /**
  * Convert cumulative chart data into daily deltas (views gained per day).
  * Each point becomes: views = today_cumulative - yesterday_cumulative.
- * The first day in the series gets its full value (no prior day to diff).
+ *
+ * Filters out points where the previous day had 0 views (tracking hadn't
+ * started yet), to avoid misleading spikes when data collection begins.
  */
 export function toDailyDeltas(data: DataPoint[]): DataPoint[] {
-  if (data.length === 0) return [];
-  return data.map((point, i) => {
-    if (i === 0) return { ...point, views: 0 };
-    const prevViews = data[i - 1].views;
-    return {
-      ...point,
-      views: Math.max(0, point.views - prevViews),
-    };
-  });
+  if (data.length < 2) return [];
+  const deltas: DataPoint[] = [];
+  for (let i = 1; i < data.length; i++) {
+    const prev = data[i - 1].views;
+    if (prev === 0) continue;
+    deltas.push({
+      ...data[i],
+      views: Math.max(0, data[i].views - prev),
+    });
+  }
+  return deltas;
 }

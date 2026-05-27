@@ -13,6 +13,9 @@ function daysAgo(days: number): string {
  * within each time window (1d, 7d, 30d) by diffing the earliest and latest
  * history entry in that window.
  *
+ * If only one data point exists in a window (no prior day to diff against),
+ * the delta is 0 — we have no baseline to measure gains from.
+ *
  * Returns a map: id -> { views1d, views7d, views30d, likes1d, ... }
  */
 export function computeContentDeltas<T extends ViewsRecord>(
@@ -53,7 +56,7 @@ export function computeContentDeltas<T extends ViewsRecord>(
 
     const calcDelta = (cutoff: string) => {
       const inRange = records.filter((r) => r.date >= cutoff);
-      if (inRange.length === 0) return { views: 0, likes: 0, comments: 0 };
+      if (inRange.length < 2) return { views: 0, likes: 0, comments: 0 };
       const earliest = inRange[0];
       return {
         views: Math.max(0, latest.views - earliest.views),
@@ -62,11 +65,9 @@ export function computeContentDeltas<T extends ViewsRecord>(
       };
     };
 
-    // If an item first appeared within the range, its entire count is the delta
-    const firstSeen = records[0].date;
-    const d1 = firstSeen >= cutoff1d ? latest : calcDelta(cutoff1d);
-    const d7 = firstSeen >= cutoff7d ? latest : calcDelta(cutoff7d);
-    const d30 = firstSeen >= cutoff30d ? latest : calcDelta(cutoff30d);
+    const d1 = calcDelta(cutoff1d);
+    const d7 = calcDelta(cutoff7d);
+    const d30 = calcDelta(cutoff30d);
 
     result.set(id, {
       views1d: d1.views, views7d: d7.views, views30d: d30.views,
