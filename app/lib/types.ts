@@ -1,10 +1,10 @@
 export type Reel = {
   shortcode: string;
   thumbnail: string;
+  videoUrl?: string;
   views: number;
   url: string;
   title?: string;
-  embedHtml?: string;
   likes?: number;
   comments?: number;
   saves?: number;

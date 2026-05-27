@@ -1,53 +1,88 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import type { Reel } from '../lib/types';
+import { formatNumber } from '../lib/types';
 
 type Props = {
   reels: Reel[];
 };
 
-export function IGEmbedGrid({ reels }: Props) {
-  useEffect(() => {
-    const existing = document.querySelector('script[src*="instagram.com/embed.js"]');
-    if (!existing) {
-      const script = document.createElement('script');
-      script.src = 'https://www.instagram.com/embed.js';
-      script.async = true;
-      document.body.appendChild(script);
-    } else if (window.instgrm) {
-      window.instgrm.Embeds.process();
+function ReelCard({ reel }: { reel: Reel }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+
+  const togglePlay = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
     }
-  }, [reels]);
+  }, []);
+
+  const toggleMute = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  }, []);
+
+  if (!reel.videoUrl) {
+    return (
+      <a
+        href={reel.url}
+        target="_blank"
+        rel="noreferrer noopener"
+        className="reel-thumb"
+      >
+        {reel.thumbnail ? (
+          <img src={reel.thumbnail} alt={reel.title || 'Reel'} loading="lazy" />
+        ) : (
+          <span className="reel-thumb-fallback">No preview</span>
+        )}
+        <span className="reel-views">▶ {formatNumber(reel.views)}</span>
+      </a>
+    );
+  }
 
   return (
-    <div className="ig-embed-grid">
+    <div className="reel-player" onClick={togglePlay}>
+      <video
+        ref={videoRef}
+        src={reel.videoUrl}
+        poster={reel.thumbnail || undefined}
+        muted={muted}
+        loop
+        playsInline
+        preload="none"
+      />
+      {!playing && <div className="reel-play-btn" aria-label="Play" />}
+      <div className="reel-player-controls">
+        <span className="reel-views">▶ {formatNumber(reel.views)}</span>
+        <button
+          className="reel-mute-btn"
+          onClick={toggleMute}
+          aria-label={muted ? 'Unmute' : 'Mute'}
+        >
+          {muted ? '🔇' : '🔊'}
+        </button>
+      </div>
+      {reel.title && <div className="reel-caption">{reel.title}</div>}
+    </div>
+  );
+}
+
+export function IGEmbedGrid({ reels }: Props) {
+  return (
+    <div className="ig-video-grid">
       {reels.map((reel) => (
-        <div key={reel.shortcode} className="ig-embed-cell">
-          {reel.embedHtml ? (
-            <div dangerouslySetInnerHTML={{ __html: reel.embedHtml }} />
-          ) : (
-            <blockquote
-              className="instagram-media"
-              data-instgrm-permalink={reel.url}
-              data-instgrm-version="14"
-              style={{
-                background: '#FFF',
-                border: 0,
-                borderRadius: '12px',
-                margin: 0,
-                maxWidth: '100%',
-                minWidth: '200px',
-                padding: 0,
-                width: '100%',
-              }}
-            >
-              <a href={reel.url} target="_blank" rel="noreferrer noopener">
-                {reel.title || 'View reel'}
-              </a>
-            </blockquote>
-          )}
-        </div>
+        <ReelCard key={reel.shortcode} reel={reel} />
       ))}
     </div>
   );

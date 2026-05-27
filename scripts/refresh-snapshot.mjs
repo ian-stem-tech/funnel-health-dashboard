@@ -200,9 +200,11 @@ async function fetchInstagram(previous, cacheMeta) {
 
       const shortcode = p.shortCode ?? p.shortcode ?? p.code ?? p.id ?? '';
       if (shortcode) {
+        const videoUrl = p.videoUrl ?? p.video_url ?? p.videoPlaybackUrl ?? '';
         reels.push({
           shortcode,
           thumbnail: p.displayUrl ?? p.thumbnailUrl ?? p.imageUrl ?? '',
+          videoUrl: videoUrl || undefined,
           views: p.videoViewCount ?? p.videoPlayCount ?? p.playCount ?? 0,
           likes: p.likesCount ?? p.likeCount ?? 0,
           comments: p.commentsCount ?? p.commentCount ?? 0,
