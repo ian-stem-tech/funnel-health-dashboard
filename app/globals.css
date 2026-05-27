@@ -46,8 +46,8 @@ body {
 body {
   min-width: 320px;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgb(0 0 0 / 0) 30%, rgb(0 0 0 / 0.92) 100%),
-    #ffffe1;
+    radial-gradient(ellipse 80% 60% at 50% 50%, #ffffe1 0%, transparent 70%),
+    #0a0a0a;
 }
 
 button {

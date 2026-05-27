@@ -37,10 +37,10 @@ export function HeroCard({ snapshot, deltas30d }: Props) {
 
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const channelBreakdown = [
-    { label: 'Instagram', value: ig.followers, icon: 'IG', href: `${basePath}/instagram` },
-    { label: 'TikTok', value: tt.followers, icon: 'TT', href: `${basePath}/tiktok` },
-    { label: 'YouTube', value: yt?.subscribers ?? 0, icon: 'YT', href: `${basePath}/youtube` },
-    { label: 'X', value: x?.followers ?? 0, icon: 'X', href: `${basePath}/x` },
+    { label: 'Instagram', value: ig.followers, icon: 'IG', href: `${basePath}/instagram/` },
+    { label: 'TikTok', value: tt.followers, icon: 'TT', href: `${basePath}/tiktok/` },
+    { label: 'YouTube', value: yt?.subscribers ?? 0, icon: 'YT', href: `${basePath}/youtube/` },
+    { label: 'X', value: x?.followers ?? 0, icon: 'X', href: `${basePath}/x/` },
     { label: 'Email', value: emailTotal, icon: 'MC', href: '' },
   ];
 
