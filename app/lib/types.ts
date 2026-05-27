@@ -8,6 +8,7 @@ export type Reel = {
   likes?: number;
   comments?: number;
   saves?: number;
+  shares?: number;
 };
 
 export type TikTokVideo = {
@@ -19,6 +20,19 @@ export type TikTokVideo = {
   comments?: number;
   shares?: number;
   title?: string;
+  createdAt?: string;
+};
+
+export type TikTokHashtagVideo = {
+  id: string;
+  thumbnail: string;
+  views: number;
+  url: string;
+  likes?: number;
+  comments?: number;
+  shares?: number;
+  title?: string;
+  author?: string;
   createdAt?: string;
 };
 
@@ -52,6 +66,7 @@ export type RedditPost = {
   url: string;
   subreddit?: string;
   createdAt?: string;
+  source?: 'subreddit' | 'mention';
 };
 
 export type AudienceSide = 'kano' | 'stemplayer' | 'combined';
@@ -86,6 +101,11 @@ export type Snapshot = {
     videos: TikTokVideo[];
     error?: string;
   };
+  tiktokHashtag: {
+    hashtag: string;
+    videos: TikTokHashtagVideo[];
+    error?: string;
+  };
   youtube: {
     channel: string;
     subscribers: number;
@@ -99,9 +119,8 @@ export type Snapshot = {
     error?: string;
   };
   reddit: {
-    user: string;
-    karma: number;
-    posts: RedditPost[];
+    subredditPosts: RedditPost[];
+    mentions: RedditPost[];
     error?: string;
   };
   mailchimp: {
@@ -125,6 +144,11 @@ export type HistoryEntry = {
     totalVideoViews: number;
     videos: TikTokVideo[];
   };
+  tiktokHashtag?: {
+    hashtag: string;
+    totalVideoViews: number;
+    videoCount: number;
+  };
   youtube?: {
     subscribers: number;
     totalVideoViews: number;
@@ -136,9 +160,9 @@ export type HistoryEntry = {
     tweets: XTweet[];
   };
   reddit?: {
-    karma: number;
     totalUpvotes: number;
-    posts: RedditPost[];
+    subredditPostCount: number;
+    mentionCount: number;
   };
 };
 

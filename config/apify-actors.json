@@ -1,0 +1,130 @@
+{
+  "instagramReels": {
+    "actorId": "xMc5Ga1oCONPmWJIa",
+    "actorName": "Instagram Reel Scraper",
+    "platform": "instagram",
+    "account": "stemplayer",
+    "profileUrl": "https://www.instagram.com/stemplayer/",
+    "metrics": ["followers", "views", "likes", "comments", "saves", "shares"],
+    "input": {
+      "includeDownloadedVideo": false,
+      "includeSharesCount": true,
+      "includeTranscript": false,
+      "resultsLimit": 27,
+      "skipPinnedPosts": false,
+      "username": ["stemplayer"]
+    }
+  },
+  "x": {
+    "actorId": "nfp1fpt5gUlBwPcor",
+    "actorName": "Twitter (X.com) Scraper",
+    "platform": "x",
+    "account": "stemplayer",
+    "profileUrl": "https://x.com/stemplayer",
+    "metrics": ["followers", "views", "likes", "retweets", "replies"],
+    "input": {
+      "includeSearchTerms": false,
+      "maxItems": 100,
+      "searchTerms": ["from:stemplayer"],
+      "sort": "Latest"
+    }
+  },
+  "tiktokProfile": {
+    "actorId": "GdWCkxBtKWOsKjdch",
+    "actorName": "TikTok Scraper",
+    "platform": "tiktok",
+    "account": "stemplayer",
+    "profileUrl": "https://www.tiktok.com/@stemplayer",
+    "metrics": ["followers", "views", "likes", "comments", "shares"],
+    "input": {
+      "profiles": ["https://www.tiktok.com/@stemplayer"],
+      "resultsPerPage": 30,
+      "shouldDownloadVideos": false,
+      "shouldDownloadCovers": false,
+      "shouldDownloadSlideshowImages": false,
+      "shouldDownloadMusicCovers": false,
+      "shouldDownloadAvatars": false,
+      "scrapeRelatedVideos": false
+    }
+  },
+  "tiktokHashtag": {
+    "actorId": "f1ZeP0K58iwlqG2pY",
+    "actorName": "TikTok Hashtag Scraper",
+    "platform": "tiktok",
+    "purpose": "campaign_hashtag_tracking",
+    "hashtag": "stemplayer",
+    "metrics": ["views", "likes", "comments", "shares"],
+    "input": {
+      "hashtags": ["stemplayer"],
+      "shouldDownloadCovers": false,
+      "shouldDownloadSlideshowImages": false,
+      "shouldDownloadVideos": false
+    }
+  },
+  "redditSubreddit": {
+    "actorId": "9sHOY9RzPYGjmTHo8",
+    "actorName": "Reddit Scraper",
+    "platform": "reddit",
+    "source": "subreddit",
+    "account": "stemplayer",
+    "metrics": ["upvotes", "comments"],
+    "input": {
+      "startUrls": [{ "url": "https://www.reddit.com/r/stemplayer/" }],
+      "searchPosts": true,
+      "searchComments": false,
+      "searchCommunities": false,
+      "searchSort": "new",
+      "searchTime": "all",
+      "maxPostsCount": 20,
+      "maxCommentsCount": 0,
+      "crawlCommentsPerPost": false,
+      "fastMode": true,
+      "includeNSFW": false,
+      "proxy": {
+        "useApifyProxy": true,
+        "apifyProxyGroups": ["RESIDENTIAL"]
+      }
+    }
+  },
+  "redditMentions": {
+    "actorId": "9sHOY9RzPYGjmTHo8",
+    "actorName": "Reddit Scraper",
+    "platform": "reddit",
+    "source": "mentions",
+    "searchTerm": "stemplayer",
+    "metrics": ["upvotes", "comments"],
+    "input": {
+      "searches": [{ "term": "stemplayer", "sort": "new", "time": "all" }],
+      "searchPosts": true,
+      "searchComments": false,
+      "searchCommunities": false,
+      "searchSort": "new",
+      "searchTime": "all",
+      "maxPostsCount": 20,
+      "maxCommentsCount": 0,
+      "crawlCommentsPerPost": false,
+      "fastMode": true,
+      "includeNSFW": false,
+      "proxy": {
+        "useApifyProxy": true,
+        "apifyProxyGroups": ["RESIDENTIAL"]
+      }
+    }
+  },
+  "youtube": {
+    "actorId": "h7sDV53CddomktSi5",
+    "actorName": "YouTube Scraper",
+    "platform": "youtube",
+    "account": "stemplayer",
+    "profileUrl": "https://www.youtube.com/@stemplayer",
+    "metrics": ["subscribers", "views", "likes", "comments"],
+    "input": {
+      "searchQueries": ["https://www.youtube.com/@stemplayer"],
+      "maxResults": 20,
+      "maxResultsShorts": 0,
+      "maxResultStreams": 0,
+      "downloadSubtitles": false,
+      "saveSubsToKVS": false
+    }
+  }
+}

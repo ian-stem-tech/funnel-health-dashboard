@@ -27,6 +27,7 @@ export type {
   Reel,
   RedditPost,
   Snapshot,
+  TikTokHashtagVideo,
   TikTokVideo,
   XTweet,
   YouTubeVideo,

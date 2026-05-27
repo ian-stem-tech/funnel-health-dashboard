@@ -1,21 +1,18 @@
 import { loadSnapshot } from '../lib/snapshot';
 import { formatNumber } from '../lib/types';
 import { BackLink } from '../components/BackLink';
-import { RedditDetail } from './RedditDetail';
+import { TikTokHashtagDetail } from './TikTokHashtagDetail';
 
-export default async function RedditPage() {
+export default async function TikTokHashtagPage() {
   const snapshot = await loadSnapshot();
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-  const subredditPosts = (snapshot.reddit?.subredditPosts ?? []).map((p) => ({
-    ...p,
-    source: 'subreddit' as const,
+  const data = snapshot.tiktokHashtag;
+  const videos = (data?.videos ?? []).map((v) => ({
+    ...v,
+    createdAt: v.createdAt ?? undefined,
   }));
-  const mentions = (snapshot.reddit?.mentions ?? []).map((p) => ({
-    ...p,
-    source: 'mention' as const,
-  }));
-  const totalPosts = subredditPosts.length + mentions.length;
+  const totalViews = videos.reduce((sum, v) => sum + (v.views ?? 0), 0);
 
   return (
     <main className="shell">
@@ -26,13 +23,13 @@ export default async function RedditPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="logo" src={`${basePath}/branding/stem-logo-2.svg`} alt="Stem" />
             <div>
-              <h1>Reddit</h1>
-              <p>r/stemplayer + mentions · {formatNumber(totalPosts)} posts</p>
+              <h1>TikTok #{data?.hashtag ?? 'stemplayer'}</h1>
+              <p>{formatNumber(videos.length)} videos · {formatNumber(totalViews)} total views</p>
             </div>
           </div>
         </header>
 
-        <RedditDetail subredditPosts={subredditPosts} mentions={mentions} />
+        <TikTokHashtagDetail videos={videos} hashtag={data?.hashtag ?? 'stemplayer'} />
       </div>
     </main>
   );

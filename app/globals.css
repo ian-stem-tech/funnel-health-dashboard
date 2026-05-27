@@ -160,18 +160,20 @@ a {
   grid-auto-rows: minmax(0, auto);
 }
 
-.bento .area-hero       { grid-column: span 12; }
-.bento .area-instagram  { grid-column: span 6; }
-.bento .area-tiktok     { grid-column: span 6; }
-.bento .area-youtube    { grid-column: span 4; }
-.bento .area-x          { grid-column: span 4; }
-.bento .area-reddit     { grid-column: span 4; }
-.bento .area-mailchimp  { grid-column: span 12; }
+.bento .area-hero            { grid-column: span 12; }
+.bento .area-instagram       { grid-column: span 6; }
+.bento .area-tiktok          { grid-column: span 6; }
+.bento .area-youtube         { grid-column: span 4; }
+.bento .area-x               { grid-column: span 4; }
+.bento .area-reddit          { grid-column: span 4; }
+.bento .area-tiktok-hashtag  { grid-column: span 4; }
+.bento .area-mailchimp       { grid-column: span 12; }
 
 @media (max-width: 1024px) {
   .bento .area-youtube,
   .bento .area-x,
-  .bento .area-reddit {
+  .bento .area-reddit,
+  .bento .area-tiktok-hashtag {
     grid-column: span 6;
   }
 }
@@ -186,7 +188,8 @@ a {
 @media (max-width: 640px) {
   .bento .area-youtube,
   .bento .area-x,
-  .bento .area-reddit {
+  .bento .area-reddit,
+  .bento .area-tiktok-hashtag {
     grid-column: span 12;
   }
 }

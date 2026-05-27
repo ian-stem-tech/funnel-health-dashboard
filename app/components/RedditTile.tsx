@@ -3,22 +3,27 @@ import { BentoCard } from './BentoCard';
 import { formatNumber, type Snapshot } from '../lib/types';
 
 export function RedditTile({ data }: { data: Snapshot['reddit'] }) {
-  const posts = data.posts.slice(0, 3);
-  const totalUpvotes = posts.reduce((sum, p) => sum + p.upvotes, 0);
+  const allPosts = [...(data.subredditPosts ?? []), ...(data.mentions ?? [])];
+  const posts = allPosts.slice(0, 3);
+  const totalUpvotes = allPosts.reduce((sum, p) => sum + p.upvotes, 0);
 
   return (
     <Link href="/reddit" className="tile-link">
       <BentoCard
         title="Reddit"
-        subtitle={`u/${data.user}`}
+        subtitle="r/stemplayer + mentions"
         iconLetter="R"
         headerExtra={
           <span className="card-subtitle tile-arrow">View details →</span>
         }
       >
         <div className="stat-block">
-          <span className="stat-label">Karma</span>
-          <span className="stat-value">{formatNumber(data.karma)}</span>
+          <span className="stat-label">Subreddit posts</span>
+          <span className="stat-value">{formatNumber((data.subredditPosts ?? []).length)}</span>
+        </div>
+        <div className="stat-block">
+          <span className="stat-label">Brand mentions</span>
+          <span className="stat-value">{formatNumber((data.mentions ?? []).length)}</span>
         </div>
         <div className="stat-block">
           <span className="stat-label">Recent posts</span>
@@ -41,7 +46,7 @@ export function RedditTile({ data }: { data: Snapshot['reddit'] }) {
         </div>
         {totalUpvotes > 0 && (
           <div className="stat-block">
-            <span className="stat-label">Recent upvotes</span>
+            <span className="stat-label">Total upvotes</span>
             <span className="stat-value">{formatNumber(totalUpvotes)}</span>
           </div>
         )}

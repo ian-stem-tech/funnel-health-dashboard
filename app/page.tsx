@@ -2,6 +2,7 @@ import { loadSnapshot } from './lib/snapshot';
 import { HeroCard } from './components/HeroCard';
 import { InstagramTile } from './components/InstagramTile';
 import { TikTokTile } from './components/TikTokTile';
+import { TikTokHashtagTile } from './components/TikTokHashtagTile';
 import { YouTubeTile } from './components/YouTubeTile';
 import { XTile } from './components/XTile';
 import { RedditTile } from './components/RedditTile';
@@ -47,6 +48,9 @@ export default async function Page() {
           </div>
           <div className="area-reddit">
             <RedditTile data={snapshot.reddit} />
+          </div>
+          <div className="area-tiktok-hashtag">
+            <TikTokHashtagTile data={snapshot.tiktokHashtag} />
           </div>
           <div className="area-mailchimp">
             <MailchimpTile data={snapshot.mailchimp} />

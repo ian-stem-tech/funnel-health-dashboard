@@ -3,12 +3,15 @@
  * refresh-snapshot.mjs
  *
  * Daily refresh script run by GitHub Actions.
- *   - Instagram:  Apify actor (profile + posts with likes/comments/saves/views)
- *   - TikTok:     Apify actor (profile + videos with likes/comments/shares/views)
- *   - X/Twitter:  Apify actor (profile + tweets with likes/retweets/replies/views)
- *   - Reddit:     Apify actor (user posts with upvotes/comments)
- *   - YouTube:    Apify actor (channel stats + videos with views/likes/comments)
- *   - Mailchimp:  REST API with rate-limit-aware retries
+ * Actor IDs and inputs are loaded from config/apify-actors.json.
+ *
+ *   - Instagram:      Apify actor (reels with likes/comments/saves/views)
+ *   - TikTok:         Apify actor (profile + videos with likes/comments/shares/views)
+ *   - TikTok Hashtag: Apify actor (#stemplayer campaign tracking)
+ *   - X/Twitter:      Apify actor (tweets with likes/retweets/replies/views)
+ *   - Reddit:         Apify actor (subreddit posts + brand mentions)
+ *   - YouTube:        Apify actor (channel stats + videos with views/likes/comments)
+ *   - Mailchimp:      REST API with rate-limit-aware retries
  *
  * Writes:
  *   - public/data/snapshot.json
@@ -17,17 +20,15 @@
  */
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const ACTOR_CONFIG = require('../config/apify-actors.json');
 
 const ROOT = process.cwd();
 const SNAPSHOT_PATH = path.join(ROOT, 'public', 'data', 'snapshot.json');
 const HISTORY_PATH = path.join(ROOT, 'public', 'data', 'history.json');
 const DISCOVERY_PATH = path.join(ROOT, 'public', 'data', 'mailchimp-discovery.json');
-
-const IG_HANDLE = process.env.IG_HANDLE || 'stemplayer';
-const TIKTOK_HANDLE = process.env.TIKTOK_HANDLE || 'stemplayer';
-const X_HANDLE = process.env.X_HANDLE || 'stemplayer';
-const YOUTUBE_CHANNEL = process.env.YOUTUBE_CHANNEL || 'stemplayer';
-const REDDIT_USER = process.env.REDDIT_USER || 'stemplayer';
 
 const APIFY_API_TOKEN = process.env.APIFY_API_TOKEN;
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
@@ -104,12 +105,15 @@ async function runApifyActor(actorId, input, { timeoutSecs = 120 } = {}) {
     throw new Error('APIFY_API_TOKEN not set');
   }
 
-  const url = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?token=${APIFY_API_TOKEN}&timeout=${timeoutSecs}`;
+  const url = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?timeout=${timeoutSecs}`;
   const res = await fetchWithRetry(
     url,
     {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${APIFY_API_TOKEN}`,
+      },
       body: JSON.stringify(input),
     },
     { maxRetries: 2, baseDelay: 5000 },
@@ -123,44 +127,54 @@ async function runApifyActor(actorId, input, { timeoutSecs = 120 } = {}) {
   return res.json();
 }
 
+function loadActorConfig(key) {
+  const cfg = ACTOR_CONFIG[key];
+  if (!cfg) throw new Error(`No actor config found for key: ${key}`);
+  return cfg;
+}
+
 /* ============================================================
- * Instagram via Apify
+ * Instagram via Apify (config: instagramReels)
  * ============================================================ */
-async function fetchInstagram(handle, previous) {
+async function fetchInstagram(previous) {
+  const cfg = loadActorConfig('instagramReels');
+  const handle = cfg.account;
+
   if (!APIFY_API_TOKEN) {
     console.warn('[instagram] APIFY_API_TOKEN not set, using previous data');
     return previous?.instagram ?? { handle, followers: 0, reels: [] };
   }
 
   try {
-    console.log(`[instagram] Fetching @${handle} via Apify...`);
-    const items = await runApifyActor('apify/instagram-profile-scraper', {
-      usernames: [handle],
-      resultsLimit: 30,
-    }, { timeoutSecs: 180 });
+    console.log(`[instagram] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
+    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
 
-    const profile = items?.[0];
-    if (!profile) throw new Error('No profile data returned');
+    let followers = previous?.instagram?.followers ?? 0;
+    const reels = [];
 
-    const followers = profile.followersCount ?? profile.edge_followed_by?.count ?? previous?.instagram?.followers ?? 0;
+    for (const p of items ?? []) {
+      if (p.followersCount ?? p.ownerFollowerCount) {
+        followers = p.followersCount ?? p.ownerFollowerCount;
+      }
 
-    const posts = profile.latestPosts ?? profile.posts ?? [];
-    const reels = posts
-      .filter((p) => p.type === 'Video' || p.videoUrl || p.isVideo)
-      .slice(0, 30)
-      .map((p) => ({
-        shortcode: p.shortCode ?? p.shortcode ?? p.id ?? '',
-        thumbnail: p.displayUrl ?? p.thumbnailUrl ?? '',
-        views: p.videoViewCount ?? p.videoPlayCount ?? 0,
-        likes: p.likesCount ?? 0,
-        comments: p.commentsCount ?? 0,
-        saves: p.savesCount ?? 0,
-        title: p.caption?.slice(0, 100) ?? '',
-        url: p.url ?? `https://www.instagram.com/reel/${p.shortCode ?? p.shortcode}/`,
-      }));
+      const shortcode = p.shortCode ?? p.shortcode ?? p.code ?? p.id ?? '';
+      if (shortcode) {
+        reels.push({
+          shortcode,
+          thumbnail: p.displayUrl ?? p.thumbnailUrl ?? p.imageUrl ?? '',
+          views: p.videoViewCount ?? p.videoPlayCount ?? p.playCount ?? 0,
+          likes: p.likesCount ?? p.likeCount ?? 0,
+          comments: p.commentsCount ?? p.commentCount ?? 0,
+          saves: p.savesCount ?? p.saveCount ?? 0,
+          shares: p.sharesCount ?? p.shareCount ?? 0,
+          title: (p.caption ?? p.text ?? '').slice(0, 100),
+          url: p.url ?? `https://www.instagram.com/reel/${shortcode}/`,
+        });
+      }
+    }
 
     console.log(`[instagram] ${followers} followers, ${reels.length} reels`);
-    return { handle, followers, reels };
+    return { handle, followers, reels: reels.slice(0, 30) };
   } catch (err) {
     console.warn('[instagram] Apify failed:', err.message);
     return {
@@ -173,47 +187,45 @@ async function fetchInstagram(handle, previous) {
 }
 
 /* ============================================================
- * TikTok via Apify
+ * TikTok via Apify (config: tiktokProfile)
  * ============================================================ */
-async function fetchTikTok(handle, previous) {
+async function fetchTikTok(previous) {
+  const cfg = loadActorConfig('tiktokProfile');
+  const handle = cfg.account;
+
   if (!APIFY_API_TOKEN) {
     console.warn('[tiktok] APIFY_API_TOKEN not set, using previous data');
     return previous?.tiktok ?? { handle, followers: 0, videos: [] };
   }
 
   try {
-    console.log(`[tiktok] Fetching @${handle} via Apify...`);
-    const items = await runApifyActor('clockworks/free-tiktok-scraper', {
-      profiles: [handle],
-      resultsPerPage: 20,
-      shouldDownloadVideos: false,
-    }, { timeoutSecs: 180 });
+    console.log(`[tiktok] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
+    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
 
     let followers = previous?.tiktok?.followers ?? 0;
     const videos = [];
 
     for (const item of items ?? []) {
-      if (item.authorMeta?.fans) {
-        followers = item.authorMeta.fans;
-      }
+      if (item.authorMeta?.fans) followers = item.authorMeta.fans;
+      if (item.authorStats?.followerCount) followers = item.authorStats.followerCount;
 
-      if (item.id && item.videoMeta) {
+      if (item.id || item.videoId) {
         videos.push({
-          id: String(item.id),
-          thumbnail: item.videoMeta?.coverUrl ?? item.covers?.[0] ?? '',
-          views: item.playCount ?? item.videoMeta?.playCount ?? 0,
-          likes: item.diggCount ?? item.likes ?? 0,
-          comments: item.commentCount ?? item.comments ?? 0,
-          shares: item.shareCount ?? item.shares ?? 0,
-          title: item.text?.slice(0, 100) ?? '',
-          url: item.webVideoUrl ?? `https://www.tiktok.com/@${handle}/video/${item.id}`,
-          createdAt: item.createTimeISO ?? undefined,
+          id: String(item.id ?? item.videoId),
+          thumbnail: item.videoMeta?.coverUrl ?? item.covers?.[0] ?? item.coverUrl ?? '',
+          views: item.playCount ?? item.videoMeta?.playCount ?? item.stats?.playCount ?? 0,
+          likes: item.diggCount ?? item.likes ?? item.stats?.diggCount ?? 0,
+          comments: item.commentCount ?? item.comments ?? item.stats?.commentCount ?? 0,
+          shares: item.shareCount ?? item.shares ?? item.stats?.shareCount ?? 0,
+          title: (item.text ?? item.desc ?? '').slice(0, 100),
+          url: item.webVideoUrl ?? `https://www.tiktok.com/@${handle}/video/${item.id ?? item.videoId}`,
+          createdAt: item.createTimeISO ?? item.createTime ? new Date((item.createTime ?? 0) * 1000).toISOString() : undefined,
         });
       }
     }
 
     console.log(`[tiktok] ${followers} followers, ${videos.length} videos`);
-    return { handle, followers, videos: videos.slice(0, 20) };
+    return { handle, followers, videos: videos.slice(0, 30) };
   } catch (err) {
     console.warn('[tiktok] Apify failed:', err.message);
     return {
@@ -226,44 +238,91 @@ async function fetchTikTok(handle, previous) {
 }
 
 /* ============================================================
- * X/Twitter via Apify
+ * TikTok Hashtag via Apify (config: tiktokHashtag)
  * ============================================================ */
-async function fetchX(handle, previous) {
+async function fetchTikTokHashtag(previous) {
+  const cfg = loadActorConfig('tiktokHashtag');
+  const hashtag = cfg.hashtag;
+
+  if (!APIFY_API_TOKEN) {
+    console.warn('[tiktok-hashtag] APIFY_API_TOKEN not set, using previous data');
+    return previous?.tiktokHashtag ?? { hashtag, videos: [] };
+  }
+
+  try {
+    console.log(`[tiktok-hashtag] Fetching #${hashtag} via Apify actor ${cfg.actorId}...`);
+    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 120 });
+
+    const videos = [];
+
+    for (const item of items ?? []) {
+      if (item.id || item.videoId) {
+        const author = item.authorMeta?.name ?? item.author ?? '';
+        videos.push({
+          id: String(item.id ?? item.videoId),
+          thumbnail: item.videoMeta?.coverUrl ?? item.covers?.[0] ?? item.coverUrl ?? '',
+          views: item.playCount ?? item.videoMeta?.playCount ?? 0,
+          likes: item.diggCount ?? item.likes ?? 0,
+          comments: item.commentCount ?? item.comments ?? 0,
+          shares: item.shareCount ?? item.shares ?? 0,
+          title: (item.text ?? item.desc ?? '').slice(0, 100),
+          author,
+          url: item.webVideoUrl ?? `https://www.tiktok.com/@${author}/video/${item.id ?? item.videoId}`,
+          createdAt: item.createTimeISO ?? undefined,
+        });
+      }
+    }
+
+    console.log(`[tiktok-hashtag] #${hashtag}: ${videos.length} videos`);
+    return { hashtag, videos: videos.slice(0, 30) };
+  } catch (err) {
+    console.warn('[tiktok-hashtag] Apify failed:', err.message);
+    return {
+      hashtag,
+      videos: previous?.tiktokHashtag?.videos ?? [],
+      error: err.message,
+    };
+  }
+}
+
+/* ============================================================
+ * X/Twitter via Apify (config: x)
+ * ============================================================ */
+async function fetchX(previous) {
+  const cfg = loadActorConfig('x');
+  const handle = cfg.account;
+
   if (!APIFY_API_TOKEN) {
     console.warn('[x] APIFY_API_TOKEN not set, using previous data');
     return previous?.x ?? { handle, followers: 0, tweets: [] };
   }
 
   try {
-    console.log(`[x] Fetching @${handle} via Apify...`);
-    const items = await runApifyActor('apidojo/tweet-scraper', {
-      handles: [handle],
-      tweetsDesired: 20,
-      addUserInfo: true,
-    }, { timeoutSecs: 180 });
+    console.log(`[x] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
+    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
 
     let followers = previous?.x?.followers ?? 0;
     const tweets = [];
 
     for (const item of items ?? []) {
-      if (item.author?.followers) {
-        followers = item.author.followers;
-      }
+      if (item.author?.followers) followers = item.author.followers;
+      if (item.author?.followersCount) followers = item.author.followersCount;
+      if (item.user?.followers_count) followers = item.user.followers_count;
 
       tweets.push({
-        id: item.id ?? item.tweetId ?? '',
-        text: (item.text ?? item.full_text ?? '').slice(0, 280),
-        likes: item.likeCount ?? item.favorite_count ?? 0,
+        id: item.id ?? item.tweetId ?? item.rest_id ?? '',
+        text: (item.text ?? item.full_text ?? item.tweetText ?? '').slice(0, 280),
+        likes: item.likeCount ?? item.favorite_count ?? item.favoriteCount ?? 0,
         retweets: item.retweetCount ?? item.retweet_count ?? 0,
         replies: item.replyCount ?? item.reply_count ?? 0,
-        views: item.viewCount ?? item.views ?? 0,
-        url: item.url ?? `https://x.com/${handle}/status/${item.id}`,
-        createdAt: item.createdAt ?? item.created_at ?? undefined,
+        views: item.viewCount ?? item.views ?? item.impressionCount ?? 0,
+        url: item.url ?? item.tweetUrl ?? `https://x.com/${handle}/status/${item.id ?? item.tweetId}`,
+        createdAt: item.createdAt ?? item.created_at ?? item.tweetDate ?? undefined,
       });
     }
 
     console.log(`[x] ${followers} followers, ${tweets.length} tweets`);
-    return { handle, followers, tweets: tweets.slice(0, 20) };
+    return { handle, followers, tweets: tweets.slice(0, 100) };
   } catch (err) {
     console.warn('[x] Apify failed:', err.message);
     return {
@@ -276,70 +335,74 @@ async function fetchX(handle, previous) {
 }
 
 /* ============================================================
- * Reddit via Apify
+ * Reddit via Apify (configs: redditSubreddit + redditMentions)
  * ============================================================ */
-async function fetchReddit(user, previous) {
+function parseRedditPosts(items, source) {
+  const posts = [];
+  for (const item of items ?? []) {
+    if (item.title || item.body) {
+      posts.push({
+        id: item.id ?? '',
+        title: (item.title ?? item.body ?? '').slice(0, 200),
+        upvotes: item.upVotes ?? item.score ?? item.ups ?? 0,
+        comments: item.numberOfComments ?? item.numComments ?? item.num_comments ?? 0,
+        url: item.url ?? '',
+        subreddit: item.subreddit ?? item.communityName ?? undefined,
+        createdAt: item.createdAt ?? item.created ?? undefined,
+        source,
+      });
+    }
+  }
+  return posts;
+}
+
+async function fetchReddit(previous) {
+  const subCfg = loadActorConfig('redditSubreddit');
+  const mentionCfg = loadActorConfig('redditMentions');
+
   if (!APIFY_API_TOKEN) {
     console.warn('[reddit] APIFY_API_TOKEN not set, using previous data');
-    return previous?.reddit ?? { user, karma: 0, posts: [] };
+    return previous?.reddit ?? { subredditPosts: [], mentions: [] };
   }
 
   try {
-    console.log(`[reddit] Fetching u/${user} via Apify...`);
-    const items = await runApifyActor('trudax/reddit-scraper', {
-      type: 'user',
-      urls: [`https://www.reddit.com/user/${user}/`],
-      maxItems: 20,
-    }, { timeoutSecs: 120 });
+    console.log(`[reddit] Fetching subreddit + mentions via Apify actor ${subCfg.actorId}...`);
 
-    let karma = previous?.reddit?.karma ?? 0;
-    const posts = [];
+    const [subItems, mentionItems] = await Promise.all([
+      runApifyActor(subCfg.actorId, subCfg.input, { timeoutSecs: 120 }),
+      runApifyActor(mentionCfg.actorId, mentionCfg.input, { timeoutSecs: 120 }),
+    ]);
 
-    for (const item of items ?? []) {
-      if (item.karma) karma = item.karma;
+    const subredditPosts = parseRedditPosts(subItems, 'subreddit').slice(0, 20);
+    const mentions = parseRedditPosts(mentionItems, 'mention').slice(0, 20);
 
-      if (item.title || item.body) {
-        posts.push({
-          id: item.id ?? '',
-          title: (item.title ?? item.body ?? '').slice(0, 200),
-          upvotes: item.upVotes ?? item.score ?? item.ups ?? 0,
-          comments: item.numberOfComments ?? item.numComments ?? item.num_comments ?? 0,
-          url: item.url ?? '',
-          subreddit: item.subreddit ?? item.communityName ?? undefined,
-          createdAt: item.createdAt ?? item.created ?? undefined,
-        });
-      }
-    }
-
-    console.log(`[reddit] ${karma} karma, ${posts.length} posts`);
-    return { user, karma, posts: posts.slice(0, 20) };
+    console.log(`[reddit] ${subredditPosts.length} subreddit posts, ${mentions.length} mentions`);
+    return { subredditPosts, mentions };
   } catch (err) {
     console.warn('[reddit] Apify failed:', err.message);
     return {
-      user,
-      karma: previous?.reddit?.karma ?? 0,
-      posts: previous?.reddit?.posts ?? [],
+      subredditPosts: previous?.reddit?.subredditPosts ?? [],
+      mentions: previous?.reddit?.mentions ?? [],
       error: err.message,
     };
   }
 }
 
 /* ============================================================
- * YouTube via Data API v3
+ * YouTube via Apify (config: youtube)
  * ============================================================ */
-async function fetchYouTube(channel, previous) {
+async function fetchYouTube(previous) {
+  const cfg = loadActorConfig('youtube');
+  const channel = cfg.account;
+
   if (!APIFY_API_TOKEN) {
     console.warn('[youtube] APIFY_API_TOKEN not set, using previous data');
     return previous?.youtube ?? { channel, subscribers: 0, videos: [] };
   }
 
   try {
-    console.log(`[youtube] Fetching channel "${channel}" via Apify...`);
-    const items = await runApifyActor('streamers/youtube-channel-scraper', {
-      channelUrls: [`https://www.youtube.com/@${channel}`],
-      maxResults: 20,
-      sortBy: 'newest',
-    }, { timeoutSecs: 180 });
+    console.log(`[youtube] Fetching "${channel}" via Apify actor ${cfg.actorId}...`);
+    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
 
     let subscribers = previous?.youtube?.subscribers ?? 0;
     const videos = [];
@@ -350,12 +413,11 @@ async function fetchYouTube(channel, previous) {
           ? item.channelSubscribers
           : parseAbbreviated(String(item.channelSubscribers));
       }
-      if (item.subscriberCount) {
-        subscribers = item.subscriberCount;
-      }
+      if (item.subscriberCount) subscribers = item.subscriberCount;
+      if (item.numberOfSubscribers) subscribers = item.numberOfSubscribers;
 
-      if (item.id || item.videoId) {
-        const videoId = item.id ?? item.videoId;
+      if (item.id || item.videoId || item.url?.includes('watch')) {
+        const videoId = item.id ?? item.videoId ?? '';
         videos.push({
           id: String(videoId),
           title: item.title ?? '',
@@ -364,7 +426,7 @@ async function fetchYouTube(channel, previous) {
           likes: item.likes ?? item.likeCount ?? 0,
           comments: item.commentsCount ?? item.commentCount ?? item.comments ?? 0,
           url: item.url ?? `https://www.youtube.com/watch?v=${videoId}`,
-          publishedAt: item.uploadDate ?? item.publishedAt ?? undefined,
+          publishedAt: item.uploadDate ?? item.publishedAt ?? item.date ?? undefined,
         });
       }
     }
@@ -570,15 +632,17 @@ function buildMailchimpFromSeed() {
 /* ============================================================
  * History accumulation
  * ============================================================ */
-async function appendHistory(instagram, tiktok, youtube, x, reddit) {
+async function appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddit) {
   const history = await readHistory();
   const today = todayDateString();
 
   const totalReelViews = (instagram.reels ?? []).reduce((s, r) => s + (r.views || 0), 0);
   const totalVideoViews = (tiktok.videos ?? []).reduce((s, v) => s + (v.views || 0), 0);
+  const totalHashtagViews = (tiktokHashtag.videos ?? []).reduce((s, v) => s + (v.views || 0), 0);
   const totalYtViews = (youtube.videos ?? []).reduce((s, v) => s + (v.views || 0), 0);
   const totalTweetViews = (x.tweets ?? []).reduce((s, t) => s + (t.views || 0), 0);
-  const totalUpvotes = (reddit.posts ?? []).reduce((s, p) => s + (p.upvotes || 0), 0);
+  const allRedditPosts = [...(reddit.subredditPosts ?? []), ...(reddit.mentions ?? [])];
+  const totalUpvotes = allRedditPosts.reduce((s, p) => s + (p.upvotes || 0), 0);
 
   const entry = {
     date: today,
@@ -607,6 +671,11 @@ async function appendHistory(instagram, tiktok, youtube, x, reddit) {
         url: v.url,
       })),
     },
+    tiktokHashtag: {
+      hashtag: tiktokHashtag.hashtag,
+      totalVideoViews: totalHashtagViews,
+      videoCount: (tiktokHashtag.videos ?? []).length,
+    },
     youtube: {
       subscribers: youtube.subscribers ?? 0,
       totalVideoViews: totalYtViews,
@@ -634,16 +703,9 @@ async function appendHistory(instagram, tiktok, youtube, x, reddit) {
       })),
     },
     reddit: {
-      karma: reddit.karma ?? 0,
       totalUpvotes,
-      posts: (reddit.posts ?? []).map((p) => ({
-        id: p.id,
-        title: p.title,
-        upvotes: p.upvotes,
-        comments: p.comments,
-        url: p.url,
-        subreddit: p.subreddit,
-      })),
+      subredditPostCount: (reddit.subredditPosts ?? []).length,
+      mentionCount: (reddit.mentions ?? []).length,
     },
   };
 
@@ -663,15 +725,15 @@ async function appendHistory(instagram, tiktok, youtube, x, reddit) {
 async function main() {
   const previous = await readPrevious();
 
-  console.log('Refreshing Instagram, TikTok, YouTube, X, Reddit, Mailchimp...');
+  console.log('Refreshing Instagram, TikTok, TikTok Hashtag, YouTube, X, Reddit, Mailchimp...');
 
-  // Run all fetches in parallel (each handles its own errors)
-  const [instagram, tiktok, youtube, x, reddit, mailchimp] = await Promise.all([
-    fetchInstagram(IG_HANDLE, previous),
-    fetchTikTok(TIKTOK_HANDLE, previous),
-    fetchYouTube(YOUTUBE_CHANNEL, previous),
-    fetchX(X_HANDLE, previous),
-    fetchReddit(REDDIT_USER, previous),
+  const [instagram, tiktok, tiktokHashtag, youtube, x, reddit, mailchimp] = await Promise.all([
+    fetchInstagram(previous),
+    fetchTikTok(previous),
+    fetchTikTokHashtag(previous),
+    fetchYouTube(previous),
+    fetchX(previous),
+    fetchReddit(previous),
     fetchMailchimp(previous),
   ]);
 
@@ -679,6 +741,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     instagram,
     tiktok,
+    tiktokHashtag,
     youtube,
     x,
     reddit,
@@ -690,12 +753,13 @@ async function main() {
   console.log(`Wrote ${SNAPSHOT_PATH}`);
   console.log(`  IG followers: ${instagram.followers}, reels: ${(instagram.reels ?? []).length}`);
   console.log(`  TikTok followers: ${tiktok.followers}, videos: ${(tiktok.videos ?? []).length}`);
+  console.log(`  TikTok #${tiktokHashtag.hashtag}: ${(tiktokHashtag.videos ?? []).length} videos`);
   console.log(`  YouTube subscribers: ${youtube.subscribers}, videos: ${(youtube.videos ?? []).length}`);
   console.log(`  X followers: ${x.followers}, tweets: ${(x.tweets ?? []).length}`);
-  console.log(`  Reddit karma: ${reddit.karma}, posts: ${(reddit.posts ?? []).length}`);
+  console.log(`  Reddit: ${(reddit.subredditPosts ?? []).length} subreddit, ${(reddit.mentions ?? []).length} mentions`);
   console.log(`  Mailchimp combined: ${mailchimp.cumulativeDisjoint}, audiences: ${mailchimp.audiences.length}`);
 
-  await appendHistory(instagram, tiktok, youtube, x, reddit);
+  await appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddit);
 }
 
 main().catch((err) => {
