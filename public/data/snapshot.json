@@ -1,122 +1,2225 @@
 {
-  "generatedAt": "2026-05-27T09:01:41.756Z",
+  "generatedAt": "2026-05-27T11:12:24.627Z",
   "instagram": {
     "handle": "stemplayer",
     "followers": 90528,
     "reels": [
       {
-        "shortcode": "DX9Pez4t9yH",
-        "thumbnail": "https://scontent-ams2-1.cdninstagram.com/v/t51.71878-15/684254483_1872620654124997_2015318161593935086_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_cat=101&_nc_oc=Q6cZ2gFpUpO87S5iWrszUuHdWWhaqq5zd8Od3QdKVUHPNixnZduHkxPnI37_fiAzo15Ph4U&_nc_ohc=Pr08xb7dwSkQ7kNvwHt6i9m&_nc_gid=nvnn-pQrywwjeGyESV8vgA&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af4EFB9ljU-kiFrQPso9I8lweySNTH4DeWlhvV3Bc3fUGQ&oe=6A00D00F&_nc_sid=57e406",
-        "title": "#stem2",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DX9Pez4t9yH/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DX9Pez4t9yH/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DX9Pez4t9yH/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DX9Pez4t9yH/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DX34l4cNKEN",
-        "thumbnail": "https://scontent-atl3-2.cdninstagram.com/v/t51.82787-15/684151708_18103577516487844_7201044577864578904_n.jpg?stp=dst-jpg_e35_p640x640_sh2.08_tt6&_nc_ht=scontent-atl3-2.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gF8lQAz0BbPZCrA7tmLkPL7VRzDP7THltZl72Ujps_U_C92nRC15yGOxo-K-F5p654&_nc_ohc=5HCeb51PTK8Q7kNvwEfsV4j&_nc_gid=xiMpOAQgQZIzvhdTnNX0ow&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af4Q6hpSteckdhqhwU2mBSBdCicnPbQBHlmH5KMxbVckEQ&oe=6A1C79F8&_nc_sid=57e406",
-        "title": "STEM 2 AUTOMIX\n\n@sza x @steve.lacy",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DX34l4cNKEN/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DX34l4cNKEN/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DX34l4cNKEN/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DX34l4cNKEN/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DXzhXkwt0Cs",
-        "thumbnail": "https://scontent-atl3-2.cdninstagram.com/v/t51.82787-15/685935877_18103370390487844_6089807381590622355_n.jpg?stp=dst-jpg_e15_p640x640_tt6&_nc_ht=scontent-atl3-2.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gGepHTXZZf9gjJRVvcjkuLk84N2Tx2QdjeuEdjYmamDRYGbE0d3T5T-SWt3CZ7PbRA&_nc_ohc=-Eoc2uBHrrMQ7kNvwGcsIgG&_nc_gid=Jy8PgXYxtGLhax_N9stpyg&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af6NMXCsrlu1v3Wn1XO-ebJ4cM-cbHySEFFupDPu_7mZrA&oe=6A1C8399&_nc_sid=57e406",
+        "shortcode": "DXpJAghD0g6",
+        "thumbnail": "https://scontent-mia3-2.cdninstagram.com/v/t51.71878-15/674444161_946998311637941_984355645601213832_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gHS0RnJ_7yRDXQEjJEf1MGT4ixbdwHlfnf9T8J_L3SH_M3JQKL-Bw6qxG7P4ClV9q8&_nc_ohc=PMH0SUgxPW8Q7kNvwGwwlNb&_nc_gid=3pi0qHKExdsxLqIj3eiP_Q&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af6mLigFB8siM5AOFS-6_ESB7M0OIa3RKrvS8pO2YKgVMg&oe=6A1C8969&_nc_sid=10d13b",
+        "views": 7169,
+        "likes": 763,
+        "comments": 8,
+        "saves": 0,
+        "shares": 67,
         "title": "",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXzhXkwt0Cs/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXzhXkwt0Cs/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXzhXkwt0Cs/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXzhXkwt0Cs/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DXxnIA_oIgk",
-        "thumbnail": "https://scontent-ams2-1.cdninstagram.com/v/t51.71878-15/683854903_908473355538361_1199478673062649047_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_cat=101&_nc_oc=Q6cZ2gEflt0zJC1IACRVqn4tnVptD_2W24EkwrqFlNo0dk3Gs4oBo146TFlT87VKwBeV1cM&_nc_ohc=3ryr72fuNioQ7kNvwHxWTSb&_nc_gid=ASXbPoCBzB9lVQoB6kEanw&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af4mYAtwxLgQWafGNj7Lhjhg0aQcm4qduHZVcx321qPU_Q&oe=6A00CC9E&_nc_sid=57e406",
-        "title": "#stem2",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXxnIA_oIgk/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXxnIA_oIgk/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXxnIA_oIgk/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXxnIA_oIgk/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DXxKJc4N8ee",
-        "thumbnail": "https://scontent-ams2-1.cdninstagram.com/v/t51.71878-15/684156904_999416645982582_5629459039071348478_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_cat=106&_nc_oc=Q6cZ2gH5RKBt-BeaDGyFTekcMK4n4mDC92EhWMS3vEyXzejMxaUMT1WHpA-PbzcwX68eNTw&_nc_ohc=vo2BOPR56V0Q7kNvwEtSYSi&_nc_gid=cFYte7Ca1SL1mJhbzbo2jw&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af6anPPXrWohe2iwuUhMJLWkD9jSa3qsZ1fmYTc4F2kTVw&oe=6A00D550&_nc_sid=57e406",
-        "title": "#stem2",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXxKJc4N8ee/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXxKJc4N8ee/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXxKJc4N8ee/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXxKJc4N8ee/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DXxDDcyNdpp",
-        "thumbnail": "https://scontent-ams2-1.cdninstagram.com/v/t51.71878-15/683941714_1511423753759072_2075201108296516369_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gE8PGyEGpP-ZEdmQLIrnx_ldPBoxJGdPfRX6ZdqJSsLerVLrHnrsxD4iZhY1Mac22E&_nc_ohc=qtpGSReOCwgQ7kNvwHkBZZi&_nc_gid=DQRQK8VHtrG_PWDTADyjhw&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af4UlW_chN9Fayf9o6tUBxScPumv1lI3LB0Q38NjzQWwGQ&oe=6A00CE40&_nc_sid=57e406",
-        "title": "#stem2",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXxDDcyNdpp/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXxDDcyNdpp/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXxDDcyNdpp/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXxDDcyNdpp/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DXw9hQjtCi9",
-        "thumbnail": "https://scontent-ams2-1.cdninstagram.com/v/t51.71878-15/682957537_977770754944068_2579720106324350371_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_cat=100&_nc_oc=Q6cZ2gHmxr5EGuyh-PTSgtb4ijQ8WScNIMjSxeQlMsn6bxe-3EEuHAoVPMYiUC_WYa-3uAI&_nc_ohc=6iWvSIxDwmQQ7kNvwEfddmU&_nc_gid=QUyHQZHdQDOgLOeQLz8z3A&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af4d9wWUB1vbJQcDko9rqaVrvfxlGxf_0yZZ6KjUA91_RQ&oe=6A00D615&_nc_sid=57e406",
-        "title": "#stem2",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXw9hQjtCi9/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXw9hQjtCi9/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXw9hQjtCi9/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXw9hQjtCi9/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DXwhfxoMfzl",
-        "thumbnail": "https://scontent-ams2-1.cdninstagram.com/v/t51.71878-15/684538941_2775723152804554_8253695591941302272_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_cat=110&_nc_oc=Q6cZ2gFhuJ_0BYKnD02GgFjsyHEGQJIRPVcE8riMThYIBye3KqjPhP0DV8JiiwF8zqHIYJk&_nc_ohc=3CurbsOC_jwQ7kNvwHe6fye&_nc_gid=4g3NTAKFvIHRSy3aXLAYDg&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af6-q5-ZM-wiTMh7fNJ6R4RGGJo_LUC3CU1AwPZaH-l0gA&oe=6A00CFB8&_nc_sid=57e406",
-        "title": "#stem2",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXwhfxoMfzl/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXwhfxoMfzl/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXwhfxoMfzl/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXwhfxoMfzl/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
-      },
-      {
-        "shortcode": "DXpwp-gDNzo",
-        "thumbnail": "https://scontent-atl3-2.cdninstagram.com/v/t51.71878-15/683766916_985925390573402_6292328866639501842_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2gFgGGkCdq1-IXgwrI90Hkk9ehfWCciY_cpIgTdsGOLvIWH_ymVxiux5FTm6G2o7RoU&_nc_ohc=TlJGAVn6GWwQ7kNvwHy4D3c&_nc_gid=lKikz-wXaMRqLPNPkdjhzw&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af7MG88lXygsLGkEAnuJaSoO1aJn98ZRPOWAqFrYmt9RsQ&oe=6A1C9A6C&_nc_sid=57e406",
-        "title": "",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXpwp-gDNzo/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXpwp-gDNzo/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXpwp-gDNzo/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXpwp-gDNzo/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
+        "url": "https://www.instagram.com/p/DXpJAghD0g6/"
       },
       {
         "shortcode": "DXpf4IrkiJI",
-        "thumbnail": "https://scontent-atl3-2.cdninstagram.com/v/t51.71878-15/682681893_969938318837918_726656426198028256_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2gE-8HiI44uciAYjmmpWrNXEugQuHwRfMCzIr3gZRvMtgcmBS-LRsXLW9qGj3VHukIQ&_nc_ohc=qgxS1iAJx_AQ7kNvwGGvz_N&_nc_gid=jE4qBahPkvQbLa_VoFKl0Q&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af4soog1ygRCrAwRmHEGsz94RvYvcMW8P4r7Zq4wTYyNhA&oe=6A1C9BE6&_nc_sid=57e406",
+        "thumbnail": "https://scontent-ord5-2.cdninstagram.com/v/t51.71878-15/682681893_969938318837918_726656426198028256_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2gGphBkYjUFCEaegp-2hUXthFw2qwFkq_vJCQiZZtAIuOwZYbiyCRAUSLT3LCc9jft4&_nc_ohc=qgxS1iAJx_AQ7kNvwGetf1h&_nc_gid=m9mzuvaHvmaT2d8Nxxt2Ag&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af6fNUd80hABIPnXQrzod6iCLcnOB91xEqSl2SiQ2hdmYg&oe=6A1C9BE6&_nc_sid=10d13b",
+        "views": 6972,
+        "likes": 991,
+        "comments": 15,
+        "saves": 0,
+        "shares": 106,
         "title": "",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXpf4IrkiJI/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXpf4IrkiJI/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXpf4IrkiJI/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXpf4IrkiJI/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
+        "url": "https://www.instagram.com/p/DXpf4IrkiJI/"
       },
       {
-        "shortcode": "DXpJAghD0g6",
-        "thumbnail": "https://scontent-atl3-1.cdninstagram.com/v/t51.71878-15/674444161_946998311637941_984355645601213832_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gFtH7AwzgVHILJjnD7dC4WaqXTkJEfMDPoPKw92FcAWI2kWPkLQxadOL7lxSJFovSk&_nc_ohc=PMH0SUgxPW8Q7kNvwHqduhj&_nc_gid=DBc10Ei_mTL3BWu3RB57aA&edm=ALY_pVYBAAAA&ccb=7-5&oh=00_Af5LckE5F2D0ZSUI-qobinoxbV9Pkl222utGSIAFtinU3Q&oe=6A1C8969&_nc_sid=57e406",
+        "shortcode": "DXpwp-gDNzo",
+        "thumbnail": "https://scontent-dfw6-1.cdninstagram.com/v/t51.71878-15/683766916_985925390573402_6292328866639501842_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-dfw6-1.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2gGhxSymmprShJCL0cCEd8UIXGtwwQnSOVlmTivORGqhG81PS8g3GvcSvstAznQn53Q&_nc_ohc=TlJGAVn6GWwQ7kNvwFHbkP1&_nc_gid=dPNmsjlwRUjXHpRbV5BaSw&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7H6fgNB0y6hDI7Hk_v44-IEmXgsA5HwMsA26Jzl7bIlg&oe=6A1C9A6C&_nc_sid=10d13b",
+        "views": 9589,
+        "likes": 716,
+        "comments": 17,
+        "saves": 0,
+        "shares": 74,
         "title": "",
-        "views": 0,
-        "url": "https://www.instagram.com/reel/DXpJAghD0g6/",
-        "embedHtml": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXpJAghD0g6/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXpJAghD0g6/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">View this post on Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXpJAghD0g6/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">A post shared by STEM (@stemplayer)</a></p></div></blockquote>\n<script async src=\"//www.instagram.com/embed.js\"></script>"
+        "url": "https://www.instagram.com/p/DXpwp-gDNzo/"
+      },
+      {
+        "shortcode": "DYhyFJRtyOj",
+        "thumbnail": "https://instagram.fric1-1.fna.fbcdn.net/v/t51.71878-15/702162344_3160353504135130_7970221889279245615_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=instagram.fric1-1.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2gFXhzFeguS_Ba3t7YLHjOEs0NbfhzNqzZCBqq0E5zLI0ca7_gvMHOX6NDlHUQGUbbU&_nc_ohc=nYP7P6DVeigQ7kNvwE35SPV&_nc_gid=HtyTshx0rGol3FQTkWKqYQ&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7_b7UdWG8txLxyeFb0WIPTFB9_OEkldLHyqASeiAS3Ug&oe=6A1CAD25&_nc_sid=10d13b",
+        "views": 3536,
+        "likes": 251,
+        "comments": 9,
+        "saves": 0,
+        "shares": 54,
+        "title": "So much music\nSo much to do with it\n#stem2",
+        "url": "https://www.instagram.com/p/DYhyFJRtyOj/"
+      },
+      {
+        "shortcode": "DYUyp9Bt9ge",
+        "thumbnail": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/698284063_18104923892487844_7669640501470424439_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gF1hlUu8gB9kkE3mKd4X8AUCXV9NPMYvrwjrRy7n_Zekg3cOTJcUkdUphCCGalaivA&_nc_ohc=I0GI6JAwtccQ7kNvwGfRsyy&_nc_gid=RzT6raOT9Azyn9xk2uPlzQ&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af4c1nSMW_mmFOa6Hnmwcy7-LYKF4_Om5KnF_P15cPxlZA&oe=6A1C896E&_nc_sid=10d13b",
+        "views": 3755,
+        "likes": 621,
+        "comments": 15,
+        "saves": 0,
+        "shares": 66,
+        "title": "Poetic Justice\nSTEM.FM",
+        "url": "https://www.instagram.com/p/DYUyp9Bt9ge/"
+      },
+      {
+        "shortcode": "DP1GquhDRN3",
+        "thumbnail": "https://scontent-mia5-1.cdninstagram.com/v/t51.82787-15/565327188_18527287369052092_7113741651530051628_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-mia5-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gE75mTknHl6FY2lb0ZYbZ-Bmyje-XCrVcdSqEDAcJ6tPuR45696YmOzxDPQvOY7fS4&_nc_ohc=pMPil9-XODgQ7kNvwE8J2_k&_nc_gid=NRQkbsNXmWUprZhDUeyxOg&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af45HnVaNKqOMOgdTshfqp6cXEqOQGXgjxOoJXTbQ2zpRQ&oe=6A1C9FF8&_nc_sid=10d13b",
+        "views": 20838,
+        "likes": 2109,
+        "comments": 58,
+        "saves": 0,
+        "shares": 266,
+        "title": "Thelonious Stokes for @stemplayer",
+        "url": "https://www.instagram.com/p/DP1GquhDRN3/"
+      },
+      {
+        "shortcode": "DKzaUzPt84r",
+        "thumbnail": "https://scontent-dfw6-1.cdninstagram.com/v/t51.71878-15/505469833_1404231894151790_1792122534282387305_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-dfw6-1.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2gEWUiKQ-lL8ug3zjzpdbXACSlDU_tqiSgs3qZ36T-ftAXvaaBKA48vfjSEK25rkzHI&_nc_ohc=8U_I1kZcH1wQ7kNvwEi032-&_nc_gid=jUuV6TS9BetbNZweqkuGFg&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af63a399eFuwfjMdOACYuLXeH3Hov3H2YG6eXMjHB8jkqg&oe=6A1CA152&_nc_sid=10d13b",
+        "views": 2644,
+        "likes": -1,
+        "comments": 4,
+        "saves": 0,
+        "shares": 0,
+        "title": "STEM PACK: the backpack as soft as a cloud\n\n🎶 A$AP Rocky & Nigo X Eris Drew, mixed on Stem FM",
+        "url": "https://www.instagram.com/p/DKzaUzPt84r/"
+      },
+      {
+        "shortcode": "DP1VsK-Da1t",
+        "thumbnail": "https://scontent-hou1-1.cdninstagram.com/v/t51.71878-15/564841774_1707192099963893_7290700619671933645_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-hou1-1.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gEILE2mjCBCDRSUvvU_00kj3hylUThQ_ftLnbfXkllZu4aIbTOasXfZ_uLkBjn7LhM&_nc_ohc=8KmL0KCiupQQ7kNvwFgwepC&_nc_gid=kgmIEU-ciFobhgPkkWAxJg&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af50wc8bYK71-yA0J3vWod2yctybiETMfFzXp2Qo-p1oyg&oe=6A1C91D5&_nc_sid=10d13b",
+        "views": 3821,
+        "likes": 665,
+        "comments": 14,
+        "saves": 0,
+        "shares": 44,
+        "title": "Thelonious Stokes for @stemplayer STEM 2.",
+        "url": "https://www.instagram.com/p/DP1VsK-Da1t/"
+      },
+      {
+        "shortcode": "DP8FzLYFOqN",
+        "thumbnail": "https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/565687260_18082198514487844_7992569070072145709_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gFETJkHhG9kcwJEiKXJWmWIHlZwh349hmRmD55NA4Ulz2ICZf_0wMkscopRyjyxQYk&_nc_ohc=3LZn1Q26zLkQ7kNvwHmJzqe&_nc_gid=nsFHe8Hx-umZdZnKCAdEEA&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af6QiQxu-zzKWyVHKWfQds0olHl1-FEG5hAmplXzoNhDSg&oe=6A1C9DF3&_nc_sid=10d13b",
+        "views": 13296,
+        "likes": 1707,
+        "comments": 77,
+        "saves": 0,
+        "shares": 440,
+        "title": "STEM 2 live use",
+        "url": "https://www.instagram.com/p/DP8FzLYFOqN/"
+      },
+      {
+        "shortcode": "DP1d0L9DSaB",
+        "thumbnail": "https://scontent-lga3-3.cdninstagram.com/v/t51.82787-15/566017595_18527288632052092_2953796314332793560_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gHL9v9VhOBkLKdcJMxT6Bfnl4yUQ6BkPKp2KXNkrr_V9Rfm8LH7rOsSC68RTQ2fSY4&_nc_ohc=fuSZX-CuZdcQ7kNvwHexRDo&_nc_gid=UN3TvPi10RPxAhbovG-7hw&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7gabO5rVWgPRlVBCFiZAwzx-bRIaEad-1mL4BmzuA9aA&oe=6A1CAAA1&_nc_sid=10d13b",
+        "views": 5078,
+        "likes": 886,
+        "comments": 9,
+        "saves": 0,
+        "shares": 37,
+        "title": "Thelonious Stokes for @stemplayer",
+        "url": "https://www.instagram.com/p/DP1d0L9DSaB/"
+      },
+      {
+        "shortcode": "DX34l4cNKEN",
+        "thumbnail": "https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/684151708_18103577516487844_7201044577864578904_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gHIJk0QL_dBfxpun-yl2xmeFXweF_eG-_F93dcozI6LVfetKPoMGvyFltGUp9q26Ns&_nc_ohc=5HCeb51PTK8Q7kNvwF6IuGy&_nc_gid=rCd9BnaaSXKfKC7wwxpYvQ&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af4oBhicWaSSlUKsDZYwkr5njskpIxEOwTb3lHgLbKu02g&oe=6A1CB238&_nc_sid=10d13b",
+        "views": 4761,
+        "likes": 958,
+        "comments": 17,
+        "saves": 0,
+        "shares": 62,
+        "title": "STEM 2 AUTOMIX\n\n@sza x @steve.lacy",
+        "url": "https://www.instagram.com/p/DX34l4cNKEN/"
+      },
+      {
+        "shortcode": "DLCU-_CvKbe",
+        "thumbnail": "https://scontent-hou1-1.cdninstagram.com/v/t51.71878-15/502424011_1431919841418434_3732653449642760662_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=scontent-hou1-1.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2gENeCGoOaSDuYPHFBAnG6z5wtZdrnlBjv0OrDz1Z0IuQdeR669BUAtbqxOVTuhZ8EY&_nc_ohc=TiLDz9NfG6oQ7kNvwHHySZS&_nc_gid=JWLz-3JgZHOk9HRmZlCQVw&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7grQHN5CHu1fFVsYUu6EU5E5yg-t8H5owYS9cZHWZMXA&oe=6A1CBFA2&_nc_sid=10d13b",
+        "views": 1704,
+        "likes": -1,
+        "comments": 20,
+        "saves": 0,
+        "shares": 0,
+        "title": "Imagine holding a track in your hands. Breaking it apart and rebuilding it.\nOne sound at a time.\n\nTo",
+        "url": "https://www.instagram.com/p/DLCU-_CvKbe/"
+      },
+      {
+        "shortcode": "DP7ZP7RjApt",
+        "thumbnail": "https://scontent-bos5-1.cdninstagram.com/v/t51.82787-15/565621727_18082178312487844_3972394472329448295_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-bos5-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gHbKNhLVre5EAC_Myf_02skCdw8ttYfLGEXYiqYGdGEIAMOjGTgDWRBY6xfCfUmgyQ&_nc_ohc=_ruXFSUUgMUQ7kNvwFSEU7B&_nc_gid=7ABB6Yi6Vi_Mr6S1If_DeQ&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7m4V203kHLHqAFZIGxFnyo2_72euBt3_mQnTvgHEBM2A&oe=6A1CBF23&_nc_sid=10d13b",
+        "views": 80379,
+        "likes": 12393,
+        "comments": 243,
+        "saves": 0,
+        "shares": 2331,
+        "title": "STEM PLAYER 2\n\nBUY NOW FOR $299 STEM.FM/STEM2",
+        "url": "https://www.instagram.com/p/DP7ZP7RjApt/"
+      },
+      {
+        "shortcode": "DK9ZvnYPNvE",
+        "thumbnail": "https://scontent-dfw6-1.cdninstagram.com/v/t51.71878-15/509778554_697377966405783_8574713690924003387_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=scontent-dfw6-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gEg2bXFllSkByUKdGK3G_qdq30BDATeGTdQKAJMaK_lcKyydhqYkzUwunSoWMpDSwtp7Hpsfo0ouILGCcWdSOFs&_nc_ohc=FDbLDHHUQ28Q7kNvwGVcscL&_nc_gid=pF1YMjfiVYdzFFCOf-A8FA&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7t0QI9Kq1LuS8ZjiK2xtxzfG1zefn8iZypcNGaasqWiA&oe=6A1C9AC5&_nc_sid=10d13b",
+        "views": 1036,
+        "likes": -1,
+        "comments": 6,
+        "saves": 0,
+        "shares": 0,
+        "title": "HELIOT EMIL x STEM \n\nOn occasion of @3daysofdesign, we’re hosting an event in our Copenhagen studio ",
+        "url": "https://www.instagram.com/p/DK9ZvnYPNvE/"
+      },
+      {
+        "shortcode": "DP1jijXjVZC",
+        "thumbnail": "https://scontent-atl3-2.cdninstagram.com/v/t51.71878-15/564874253_799962329301828_8535089138117063104_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-2.cdninstagram.com&_nc_cat=100&_nc_oc=Q6cZ2gHOmOMdEYS2Sr76OPCofJMruF9Wr3sJG-XBOtUrjLoVa9i-60moZiWhrR_C_hOn6hc&_nc_ohc=NBd4IxdhIpwQ7kNvwErGyD7&_nc_gid=yBclby1DeeehhTbpCAhySA&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af58mG2t5ftbyjFGZKHpYQ5qo1EQHJgqmZmyCnHNE917VA&oe=6A1CB66F&_nc_sid=10d13b",
+        "views": 10539,
+        "likes": 1712,
+        "comments": 35,
+        "saves": 0,
+        "shares": 242,
+        "title": "Thelonious Stokes for @stemplayer",
+        "url": "https://www.instagram.com/p/DP1jijXjVZC/"
+      },
+      {
+        "shortcode": "DXzhXkwt0Cs",
+        "thumbnail": "https://scontent-atl3-2.cdninstagram.com/v/t51.82787-15/685935877_18103370390487844_6089807381590622355_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-2.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gFQb_KCr4YvbSEEdhPkw-X73ZPUTel40nFc2O4-GSH0WbL5vsT8v3dy04XPGtShNh0&_nc_ohc=-Eoc2uBHrrMQ7kNvwHMP-da&_nc_gid=sG-VaTPbLf6f-uhRzFJ_Mw&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af5_pd-KaAOkoowakrEZezyXftiJdgTx5faOnP6lTQrnMg&oe=6A1CBBD9&_nc_sid=10d13b",
+        "views": 40698,
+        "likes": 4516,
+        "comments": 79,
+        "saves": 0,
+        "shares": 747,
+        "title": "",
+        "url": "https://www.instagram.com/p/DXzhXkwt0Cs/"
+      },
+      {
+        "shortcode": "DYpO_RmN-fy",
+        "thumbnail": "https://scontent-det1-1.cdninstagram.com/v/t51.71878-15/704347253_4597896250440678_4018583451967743559_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-det1-1.cdninstagram.com&_nc_cat=106&_nc_oc=Q6cZ2gH1i6D4QiMe91kITa_7JArvUux43XRpqI5K9xnq1FRXknyTzqgYA92TpN5qtsCoIOA&_nc_ohc=Cyls0aboQJkQ7kNvwFmR9K8&_nc_gid=tiIdjkhkQw62f-lH88WJyw&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af5xA_T4L0SQfeef6gHb6OS1ehIzbXL-EwAWAfQ5PtcsXg&oe=6A1CBA86&_nc_sid=10d13b",
+        "views": 3874,
+        "likes": 359,
+        "comments": 22,
+        "saves": 0,
+        "shares": 59,
+        "title": "use it like a speaker\n\nplay it like an instrument\n\n@dababy on the STEM 2\n\nSTEM.FM waitlist out now",
+        "url": "https://www.instagram.com/p/DYpO_RmN-fy/"
+      },
+      {
+        "shortcode": "DXZrnjGjQu3",
+        "thumbnail": "https://instagram.ftpa1-1.fna.fbcdn.net/v/t51.71878-15/670904301_1269683838630056_4569959800555773327_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=instagram.ftpa1-1.fna.fbcdn.net&_nc_cat=108&_nc_oc=Q6cZ2gHVw6l8RWDj3OOdQOvekHZrPUSLHAPkR50KvX1NTLeTeHWBphSbv7FtwKAcknl_iuf3b3OkOMjyRH0FacrWjYYo&_nc_ohc=mkWr3ZPat_AQ7kNvwEuE8PC&_nc_gid=fd7NVqMl5WAEXd1WMXm3ug&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7OMOcmIUoe3LTW0oRBUGCJNnd4mzdquRItSFwLL87qSA&oe=6A1C9DC1&_nc_sid=10d13b",
+        "views": 5664,
+        "likes": 680,
+        "comments": 20,
+        "saves": 0,
+        "shares": 60,
+        "title": "At @deoron this week for Milan Design Festival\n\nCome find us",
+        "url": "https://www.instagram.com/p/DXZrnjGjQu3/"
+      },
+      {
+        "shortcode": "Cr7dOsuhboD",
+        "thumbnail": "https://scontent-ord5-2.cdninstagram.com/v/t51.71878-15/502961283_676532228608684_2724783505745688089_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_ht=scontent-ord5-2.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gHZs65YkLWhSk5ZqU7jT8D-i3tq7WEa3vU9HeYCW_RJBaL_Or_FSqsoL9LjLXGUVT4&_nc_ohc=cglXeYwFzMEQ7kNvwGD-IcE&_nc_gid=_9Gh6zYpnmvXW0_zxzGRRg&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af5Yfr2vMoK_GWMsvLKN8xDh6ULlbLkqM1gqwV7e2apPew&oe=6A1C9A3A&_nc_sid=10d13b",
+        "views": 43065,
+        "likes": -1,
+        "comments": 88,
+        "saves": 0,
+        "shares": 0,
+        "title": "Prototype of new kind of electric skin. Name TBD.",
+        "url": "https://www.instagram.com/p/Cr7dOsuhboD/"
+      },
+      {
+        "shortcode": "CstjEDIOio9",
+        "thumbnail": "https://scontent-iad6-1.cdninstagram.com/v/t51.71878-15/499068397_1354166669220690_772201613933317675_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_cat=106&_nc_oc=Q6cZ2gFndZrmUhVyyzAnOFMURRLdHiYmHYaFd06g5j604IGECUvjzBn0uaUgtbEMGAxgUV4&_nc_ohc=l6v0aZ2eT6AQ7kNvwGRnSAw&_nc_gid=56d5aajwe8EcqQRgRY9gHQ&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af4lv5yw8W5PVuQhz4DX66C7y6iUzsU_T3k2JGW_Bh0x6A&oe=6A1CB122&_nc_sid=10d13b",
+        "views": 10111,
+        "likes": -1,
+        "comments": 49,
+        "saves": 0,
+        "shares": 0,
+        "title": "MA DUKES PRESENTS\nJ DILLA STEMS VOL.2\n\nAVAILABLE NOW\nSTEM.TECH\n\nLINK IN BIO",
+        "url": "https://www.instagram.com/p/CstjEDIOio9/"
+      },
+      {
+        "shortcode": "CqqFagVNSqk",
+        "thumbnail": "https://scontent-lax7-1.cdninstagram.com/v/t51.71878-15/502054899_2732436660480869_8002144307943070562_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-lax7-1.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gFef-b8OMXGw22pmAAWEGPXW3h5VvkHOIgPzbadbUqZpEu6J7RsNSQQu5Her6bE4XA&_nc_ohc=89SndPmOopAQ7kNvwGmt0_1&_nc_gid=A-A8nMY6vuhHzAvMvQBnvA&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af5nFTRbKmW0-InFa2lJ_NGbQUBjMh8t8SP4MWzBu6GQ9w&oe=6A1CB1F8&_nc_sid=10d13b",
+        "views": 25743,
+        "likes": 4286,
+        "comments": 135,
+        "saves": 0,
+        "shares": 4,
+        "title": "MA DUKES BRINGS J DILLA TO STEM\n\n20 unreleased tracks now available at Stem.tech \n\nCosmic spectrum g",
+        "url": "https://www.instagram.com/p/CqqFagVNSqk/"
+      },
+      {
+        "shortcode": "CxdyNCbP5n3",
+        "thumbnail": "https://scontent-iad3-2.cdninstagram.com/v/t51.71878-15/496161015_628518933539219_2775700686103688318_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=111&_nc_oc=Q6cZ2gEJC5X2LHgaljeT1_njD3FcMqCKep4TGF56N6g6lYkKOubOh2TxxvShL3iRFjG_EOkxxkMBNNyjYAJq6kdFYsBs&_nc_ohc=oKKod0_fN7oQ7kNvwHtrYXJ&_nc_gid=cGQEM5ZhiAgJbxS-KdFW7w&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af6iaeFq0rdZ1h2OwKRiH5ab67N7GAsN7fpAKoyKEbTDZQ&oe=6A1CA8E1&_nc_sid=10d13b",
+        "views": 17762,
+        "likes": -1,
+        "comments": 45,
+        "saves": 0,
+        "shares": 0,
+        "title": "We split cells into eyes ears hands and feet\nIf we don’t use them well \nWhat were all those billions",
+        "url": "https://www.instagram.com/p/CxdyNCbP5n3/"
+      },
+      {
+        "shortcode": "DKy_I22MQvz",
+        "thumbnail": "https://scontent-atl3-3.cdninstagram.com/v/t51.71878-15/504070651_1323936509178657_775624306202669756_n.jpg?stp=dst-jpg_e15_fr_p1080x1080_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=109&_nc_oc=Q6cZ2gEbhEgzXNPR5B63biiUmQ4D-IpPY-Zw8n0Js-wkSSX7hRs70ULGSxY0Cbmz8AqUe78&_nc_ohc=zBaW4XWBtXAQ7kNvwEYWdE1&_nc_gid=zFhMDT3yy7YDQ37erLgUxg&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af4YOv8LWkBX1IxZRnzT_CpIO9FdSpcPyxiiYvJ3YyzeXw&oe=6A1C9B80&_nc_sid=10d13b",
+        "views": 1348,
+        "likes": -1,
+        "comments": 16,
+        "saves": 0,
+        "shares": 0,
+        "title": "Introducing: Louis Carnell / @louiscarnell__\n\nThe London-based multidisciplinary artist whose sonic ",
+        "url": "https://www.instagram.com/p/DKy_I22MQvz/"
+      },
+      {
+        "shortcode": "DABw6Stx8nH",
+        "thumbnail": "https://scontent-atl3-3.cdninstagram.com/v/t51.71878-15/504093683_4201881590088669_7342962886013228860_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-3.cdninstagram.com&_nc_cat=109&_nc_oc=Q6cZ2gFaTfiOEPfI_jI71shV9ZakL0rNpVtTOOGfs2LZzoW1DW57I0rtszlyJw00LzO-ric&_nc_ohc=1PavvfSfk_0Q7kNvwFzdzdP&_nc_gid=3rONYowAwHkjf9tiJfUptQ&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af4vGfmf3b1Bui0DO6y9hHPQkACxfE35f5jnikx8nDa2fQ&oe=6A1CACCC&_nc_sid=10d13b",
+        "views": 8627,
+        "likes": 666,
+        "comments": 24,
+        "saves": 0,
+        "shares": 48,
+        "title": "STEM Season 2\n\nOn The Radar X Bowery Showroom Pop Up",
+        "url": "https://www.instagram.com/p/DABw6Stx8nH/"
+      },
+      {
+        "shortcode": "C_45RWVOhh_",
+        "thumbnail": "https://scontent-iad3-1.cdninstagram.com/v/t51.71878-15/505769327_3187071028113280_3606437351016335940_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gFK8L1-HskUjQycEzijB1Ui-3L1j3k3G1tla1_tmMSVw8-gOd68Aenp4JUUPP1IdzM&_nc_ohc=3xGYu0nHWY8Q7kNvwHYdiFg&_nc_gid=gx-vpNd4WsLLr-GHKUerig&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af7W4Tt58wStCPscOp0zd2ls6wgXAmpC9DxY_xZuLJeR5A&oe=6A1CBAFB&_nc_sid=10d13b",
+        "views": 49477,
+        "likes": 6322,
+        "comments": 156,
+        "saves": 0,
+        "shares": 110,
+        "title": "Power Cell, the worlds comfiest battery\n\navailable now stem.tech",
+        "url": "https://www.instagram.com/p/C_45RWVOhh_/"
+      },
+      {
+        "shortcode": "DJKTpDmChDq",
+        "thumbnail": "https://scontent-lga3-3.cdninstagram.com/v/t51.2885-15/491450919_18062513804487844_1011104669147127040_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-lga3-3.cdninstagram.com&_nc_cat=104&_nc_oc=Q6cZ2gHQ9FKt0WSH4KQKu3mZTR5No_SzKpu_ktEudcCNVFgEXrhxJXEXKorkqXmfbscVn1w&_nc_ohc=EexsNhloLogQ7kNvwF5Ohjs&_nc_gid=OhuwLEYRBKDJbONbj5o85A&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af4h3xxQwnDGZ3lx7TS_6Q3JYbVB7SDnikKc9rasrFRSkA&oe=6A1C8DFE&_nc_sid=10d13b",
+        "views": 5241,
+        "likes": 580,
+        "comments": 36,
+        "saves": 0,
+        "shares": 324,
+        "title": "Cable Pack, soft seamless syncing\n\navailable now stem.tech",
+        "url": "https://www.instagram.com/p/DJKTpDmChDq/"
+      },
+      {
+        "shortcode": "DKue7PVMLt1",
+        "thumbnail": "https://scontent-atl3-1.cdninstagram.com/v/t51.2885-15/504848551_18505743871034681_7695980072616235445_n.jpg?stp=dst-jpg_e15_tt6&_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gFbq-Y9ddPdnHaMD275KGlyNFTl8zv6tyQKptVn-jFCe3zX7hXqSv9zWz_-5DslkxE&_nc_ohc=pk_RUVOaEqAQ7kNvwG7RJmC&_nc_gid=7-lmpjG5kwAbG4_OWCwv3g&edm=APs17CUBAAAA&ccb=7-5&oh=00_Af4k3nX31tVVIIatSC94t9S9X7nlQ6iUNAgDHFHfvLnWxg&oe=6A1C9AAB&_nc_sid=10d13b",
+        "views": 1501,
+        "likes": 1090,
+        "comments": 40,
+        "saves": 0,
+        "shares": 27,
+        "title": "Imagine a track as a physical object, something tactile you can hold and play with. One touch at a t",
+        "url": "https://www.instagram.com/p/DKue7PVMLt1/"
       }
-    ],
-    "error": "Profile: Rate limited after 3 attempts: https://www.instagram.com/api/v1/users/web_profile_info/?username=stemplayer"
+    ]
   },
   "tiktok": {
     "handle": "stemplayer",
     "followers": 86000,
-    "videos": []
-  },
-  "youtube": {
-    "channel": "stemplayer",
-    "subscribers": 0,
-    "videos": []
-  },
-  "x": {
-    "handle": "stemplayer",
-    "followers": 0,
-    "tweets": []
-  },
-  "reddit": {
-    "subredditPosts": [],
-    "mentions": []
+    "videos": [
+      {
+        "id": "7644270343909068054",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oUk4zU1ofADeFXDTIt8rT7QAQFjpeK0mzIEQLU~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=W3rXnnuCMg%2BKYvtfvpbQveLdGWc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 808,
+        "likes": 69,
+        "comments": 10,
+        "shares": 2,
+        "title": "less playing music and more playing with it #stem2",
+        "url": "https://www.tiktok.com/@stemplayer/video/7644270343909068054",
+        "createdAt": "2026-05-26T18:33:13.000Z"
+      },
+      {
+        "id": "7642381060474539286",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oAQLGjG8LbCXHYeeKjJkADdIKTlggIPeAUmlVI~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=hmiXy28ZaZfK7Tc7rFD5jNlyDIg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 65600,
+        "likes": 3718,
+        "comments": 82,
+        "shares": 132,
+        "title": "Popping dat thang on the STEM 2 #stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7642381060474539286",
+        "createdAt": "2026-05-21T16:21:49.000Z"
+      },
+      {
+        "id": "7641225083482262787",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oQLIqFDjIDUAF8IpFAe4ALcFQfveXRLEwQQKiK~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=balwvs2%2Fd2rB2CLB2q%2Fs6KH1ev4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 699700,
+        "likes": 61000,
+        "comments": 382,
+        "shares": 7028,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7641225083482262787",
+        "createdAt": "2026-05-18T13:36:02.000Z"
+      },
+      {
+        "id": "7640046786425474326",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oofG3puQ8fjHCINIMDWUA58MA4IzYLXi8cDIet~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=IoWR%2BrksP3yUZ8C4ohOJBFwjBg8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 9199,
+        "likes": 198,
+        "comments": 12,
+        "shares": 11,
+        "title": "Frank Ocean on #stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7640046786425474326",
+        "createdAt": "2026-05-15T09:23:44.000Z"
+      },
+      {
+        "id": "7639821093435346198",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ok8tGByB1AGyzCjiibawPAI1CCZGfAcw5IIN0r~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=cSZB61BwNz7mtP6KhlAx2owWWzs%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 7040,
+        "likes": 123,
+        "comments": 20,
+        "shares": 4,
+        "title": "LOOP ON THE STEM 2",
+        "url": "https://www.tiktok.com/@stemplayer/video/7639821093435346198",
+        "createdAt": "2026-05-14T18:47:48.000Z"
+      },
+      {
+        "id": "7635241694631415062",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYGCQakRNEed0XD6FggF098DQfplpREBtMO6rA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=aTYBq5AbzdpomNT%2FU50HfI47a3Y%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 55100,
+        "likes": 3615,
+        "comments": 39,
+        "shares": 234,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7635241694631415062",
+        "createdAt": "2026-05-02T10:37:25.000Z"
+      },
+      {
+        "id": "7634634707241733378",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o0zO3iBRkBp3eVEUqgYTAM95IfMkihFi4dIQdB~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=aAllUKCEtzI%2FVYc2SHGLnx5h8Oc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 3649,
+        "likes": 122,
+        "comments": 4,
+        "shares": 0,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7634634707241733378",
+        "createdAt": "2026-04-30T19:21:58.000Z"
+      },
+      {
+        "id": "7634634693526293782",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYRzLFmqA3QIZB9pJdkiiXpeIBQfX7azdgBqEG~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=GrmvqqWnHzVgWQWNzTg6lg%2FucRc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 3220,
+        "likes": 84,
+        "comments": 6,
+        "shares": 2,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7634634693526293782",
+        "createdAt": "2026-04-30T19:21:56.000Z"
+      },
+      {
+        "id": "7633574194160241943",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oIFvA5U3kFDAvEeAETED7yfQIAGAAcJeLIvhZr~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=jmVdCbHNPtzhBPG780PBdKREgg0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 3095,
+        "likes": 136,
+        "comments": 6,
+        "shares": 14,
+        "title": "#stem2",
+        "url": "https://www.tiktok.com/@stemplayer/video/7633574194160241943",
+        "createdAt": "2026-04-27T22:46:47.000Z"
+      },
+      {
+        "id": "7633548662655733014",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYf7kQCQDTnc8B0QgEfBApMv0F0sDpFEP6ORMv~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=%2FgOmU4C2Ox0ITSHrA2lLmACXCs4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 2110,
+        "likes": 72,
+        "comments": 2,
+        "shares": 2,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7633548662655733014",
+        "createdAt": "2026-04-27T21:07:34.000Z"
+      },
+      {
+        "id": "7633517019228425494",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o8iyJASB0Bs1wcViiAAeiAEQBCcvP9iwSKIpDm~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=79xF5Leyq%2BZRYHdOmfWX5ByFCqc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1944,
+        "likes": 84,
+        "comments": 1,
+        "shares": 2,
+        "title": "BOOM BAP #stem2",
+        "url": "https://www.tiktok.com/@stemplayer/video/7633517019228425494",
+        "createdAt": "2026-04-27T19:04:45.000Z"
+      },
+      {
+        "id": "7633503465070742806",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oMg1AQe4pfdBdoRGXmvnPFtvpBOYwdAWAfYreG~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=mG3RsnieB2W2qcuxHb06v7%2FOlyQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1791,
+        "likes": 81,
+        "comments": 1,
+        "shares": 0,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7633503465070742806",
+        "createdAt": "2026-04-27T18:12:11.000Z"
+      },
+      {
+        "id": "7633426386442652950",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oQZYk0BdEiA9I0A9PCiycXBYC964fKav0t6zwG~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=w67jVLaA8b0IdyVs581j5UfQ9CM%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1359,
+        "likes": 66,
+        "comments": 7,
+        "shares": 1,
+        "title": "#stem2",
+        "url": "https://www.tiktok.com/@stemplayer/video/7633426386442652950",
+        "createdAt": "2026-04-27T16:00:00.000Z"
+      },
+      {
+        "id": "7632342056324713750",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ooD2j4GD1Xwe0eaNXuslIfzIR0PLgIT7LgAAWw~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=P%2BIh5qYFqXF20g5EPh7eMQsVhxY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1740,
+        "likes": 90,
+        "comments": 4,
+        "shares": 4,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7632342056324713750",
+        "createdAt": "2026-04-24T15:05:22.000Z"
+      },
+      {
+        "id": "7629421310912793878",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o8ACAkGhYk0IfARX07BJSET0y8JIiMiwr08C3i~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=99pZSqQ1GQosqATTi9fMUBC6dHk%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 3038,
+        "likes": 202,
+        "comments": 19,
+        "shares": 3,
+        "title": "vibe casting with stem 2 #stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7629421310912793878",
+        "createdAt": "2026-04-16T18:11:19.000Z"
+      },
+      {
+        "id": "7628645744550890774",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ooHGLDGnMIjfAuR8QBcdIes3IyvqTgAbaLajAf~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=wAEH7CgXNFMmlRqC3CbUfm8zWhM%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1850,
+        "likes": 108,
+        "comments": 5,
+        "shares": 1,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7628645744550890774",
+        "createdAt": "2026-04-14T16:01:44.000Z"
+      },
+      {
+        "id": "7620855639111109910",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/owenfeGGRNGChFmIabLeBQ57WSLlQAGAtKBQlA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=t1iGFmOo96kMHxGtnqAGsChkvNg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 4054,
+        "likes": 249,
+        "comments": 9,
+        "shares": 16,
+        "title": "#stem2 ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7620855639111109910",
+        "createdAt": "2026-03-24T16:12:09.000Z"
+      },
+      {
+        "id": "7571409682049273111",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oUIQvREBXTQMMB1YAabIMJBPURaVEMciATDiZ~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=T0gVI3aABpZ1yaYzK9Hz3PW2Teg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 13600,
+        "likes": 294,
+        "comments": 14,
+        "shares": 25,
+        "title": "#stem2",
+        "url": "https://www.tiktok.com/@stemplayer/video/7571409682049273111",
+        "createdAt": "2025-11-11T10:16:34.000Z"
+      },
+      {
+        "id": "7571149125941513494",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o4fkjEsTSIIAIALSQFJLWAAIQXGA0eALPAeoAE~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=oBUOvAmYO94U5KG0Ugt6Ez5mt44%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 80600,
+        "likes": 1719,
+        "comments": 11,
+        "shares": 85,
+        "title": "Vibe casting in central London\n\n #stem2 #stemplayer #stemfm ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7571149125941513494",
+        "createdAt": "2025-11-10T17:25:29.000Z"
+      },
+      {
+        "id": "7569730121578564867",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ooqQugCcLGKGeIQagQLwAoQIjAGfEhTeIjDSYi~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=WBWbnU7cN5Ebr2m%2FmVSyu3GnCEQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 52400,
+        "likes": 1614,
+        "comments": 42,
+        "shares": 108,
+        "title": "#fyp ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7569730121578564867",
+        "createdAt": "2025-11-06T21:39:01.000Z"
+      },
+      {
+        "id": "7568921324840684823",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oMMQU78tDOeGSXKIq6fDAxISQFQLaQFAjGoc6e~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=a7cxXIs4NQbKLuFfh8sySJz1sFg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 18600,
+        "likes": 127,
+        "comments": 4,
+        "shares": 2,
+        "title": "DESTINY x YOU’RE THE ONE\n\nAUTOMIXING POWERED BY STEM FM PLAYING ON STEM 2\n\n#fyp ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7568921324840684823",
+        "createdAt": "2025-11-04T17:20:29.000Z"
+      },
+      {
+        "id": "7568844789907492118",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/owaP8C10BIQEbxIRQYEiZBEnBvLxkDiJB3PAw~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=gNnel029i9be3mGgkMx5GOAuOp0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 10200,
+        "likes": 142,
+        "comments": 4,
+        "shares": 8,
+        "title": "SNAP MY FINGERS x NISSAN ALTIMA #fyp",
+        "url": "https://www.tiktok.com/@stemplayer/video/7568844789907492118",
+        "createdAt": "2025-11-04T12:23:33.000Z"
+      },
+      {
+        "id": "7568818998129806614",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ospC4kK2IjdJBD4EI4FJCFA0ERFNHkffHgADhE~tplv-tiktokx-dmt-logom:tos-no1a-i-0068-no/o8sIeIcGAeAF9GoLeASjLAAFInTaZEQx7dyAJI.image?dr=9634&x-expires=1780052400&x-signature=ppgf7GscLc%2BPOh6nwrM94O8%2Fm%2FE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 13100,
+        "likes": 317,
+        "comments": 10,
+        "shares": 19,
+        "title": "#fyp ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7568818998129806614",
+        "createdAt": "2025-11-04T10:43:27.000Z"
+      },
+      {
+        "id": "7562972489446378774",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o0vT3iSIBBA1i6m9S7E2naYEi5API89ZUBkU7~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=dJlnl8%2BapcC%2FqfoQPMcfHmwgsJA%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 30100,
+        "likes": 796,
+        "comments": 24,
+        "shares": 69,
+        "title": "STEM 2 \n\nLIVE MIXING \n\nSWAP STEMS FOR ANY TWO SONGS\n\nAVAILABLE FOR $299",
+        "url": "https://www.tiktok.com/@stemplayer/video/7562972489446378774",
+        "createdAt": "2025-10-19T16:35:57.000Z"
+      },
+      {
+        "id": "7562332084782566678",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oMwyjg9UcZvEvPtiLqQuVtYzBAIaBicMSBEAI~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=wK%2Bo5%2F3iCgKccANzGNsyWpd%2BwTg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 304200,
+        "likes": 35000,
+        "comments": 255,
+        "shares": 1918,
+        "title": "STEM PLAYER 2",
+        "url": "https://www.tiktok.com/@stemplayer/video/7562332084782566678",
+        "createdAt": "2025-10-17T23:10:54.000Z"
+      },
+      {
+        "id": "7529867119618428182",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYxcQn1fAsPGAgHIhdgXwfX0ReWeQu87G8EAMA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=lQqYaWecmK4ukOxW0VshM1neI0Y%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 22200,
+        "likes": 324,
+        "comments": 11,
+        "shares": 12,
+        "title": "Woke up\n\n@Trippie Redd \n\n#fyp #trippieredd #stemfm ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7529867119618428182",
+        "createdAt": "2025-07-22T11:30:13.000Z"
+      },
+      {
+        "id": "7524287510512405782",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/owwj1XME6LQHaC0oAbEQRRNFPfDvmeEkFDOBgU~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=iyL4fgRsMUsKktRSDBKAaFvfl8w%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 13000,
+        "likes": 133,
+        "comments": 5,
+        "shares": 5,
+        "title": "Unboxing the STEM PACK ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7524287510512405782",
+        "createdAt": "2025-07-07T10:38:29.000Z"
+      },
+      {
+        "id": "7519931529426980118",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oIEMIkhfCtAIXbERaKXo1AFm0JODfxgFAurRcB~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=f0ANCQHzHBTn9LJh3%2BZKqkpQMfY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 11900,
+        "likes": 223,
+        "comments": 2,
+        "shares": 2,
+        "title": "‘T’ - a shape worn forever. Friday on STEMPLAYER.COM",
+        "url": "https://www.tiktok.com/@stemplayer/video/7519931529426980118",
+        "createdAt": "2025-06-25T16:55:02.000Z"
+      },
+      {
+        "id": "7519555163514785046",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/osCvENBoFg2IqVR2CEn5fBCAatUDWFeFtkU0BE~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=gZW6tI%2B65bpDJ4GmHxJizRkM5c4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 9432,
+        "likes": 45,
+        "comments": 2,
+        "shares": 3,
+        "title": "#Rihanna X #icespice & #pinkpantheress  mixed on #stemfm ",
+        "url": "https://www.tiktok.com/@stemplayer/video/7519555163514785046",
+        "createdAt": "2025-06-24T16:34:34.000Z"
+      },
+      {
+        "id": "7519498209819921686",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oIreIPaIjIxew99JnABTzIdtEAfQ7cGS8h8LLD~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=3l9K%2FmQpF7UPe8k7%2BJ0gA%2B7Ugkw%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 9690,
+        "likes": 211,
+        "comments": 2,
+        "shares": 5,
+        "title": "PROTOTYPES: Why are we always drawn to simple forms? They’re everywhere in nature — soft, irregular,",
+        "url": "https://www.tiktok.com/@stemplayer/video/7519498209819921686",
+        "createdAt": "2025-06-24T12:53:33.000Z"
+      }
+    ]
   },
   "tiktokHashtag": {
     "hashtag": "stemplayer",
-    "videos": []
+    "videos": [
+      {
+        "id": "7642199000292117774",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oAcmFqAAfACsA2DoE1iduUQgZFRDoDeAGSEID6~tplv-tiktokx-dmt-logom:tos-useast5-i-0068-tx/ocEZTAREEDAf6IAOAqAgbMh1SCFueiDDosomTu.image?dr=9634&x-expires=1780052400&x-signature=wZjdgksSeboaZpTslvvaIVX5SB8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 148500,
+        "likes": 8898,
+        "comments": 89,
+        "shares": 114,
+        "title": "I DESPARETLY wanted one of these 🎶 #stemplayer #kanyewest #mp3 #mp3player #tech ",
+        "author": "johnnyytech",
+        "url": "https://www.tiktok.com/@johnnyytech/video/7642199000292117774",
+        "createdAt": "2026-05-21T04:35:53.000Z"
+      },
+      {
+        "id": "7611854588190264598",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oQaABIaCKDBDiX6EA9ihNB8vEjvIAviYbpccA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=zDQdBeUwMtZBHRaWuVEs8GhnTx0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 65700,
+        "likes": 1655,
+        "comments": 25,
+        "shares": 35,
+        "title": "Ho to use the Stem Player (1) in 2026 ? 👀 \n\n#stemplayer #tuto #stem #music @STEMPLAYER ",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7611854588190264598",
+        "createdAt": "2026-02-28T10:03:31.000Z"
+      },
+      {
+        "id": "7026752395426139439",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/1791824c6ab34875aa816b7b2d4bbfa8_1636043287~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=y3jgISKlKR88rTemRYx%2BiqTToE0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 421100,
+        "likes": 44600,
+        "comments": 288,
+        "shares": 2213,
+        "title": "Yeezy Stem Player Tutorial. #yeezystemplayer #stemplayer #kanyewest #macmiller #frankocean #producer",
+        "author": "dissectpodcast",
+        "url": "https://www.tiktok.com/@dissectpodcast/video/7026752395426139439",
+        "createdAt": "2021-11-04T16:28:06.000Z"
+      },
+      {
+        "id": "7642381060474539286",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oAQLGjG8LbCXHYeeKjJkADdIKTlggIPeAUmlVI~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=yHExgpNkvIWOU9lnHlunNmdvXK4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 65600,
+        "likes": 3718,
+        "comments": 82,
+        "shares": 132,
+        "title": "Popping dat thang on the STEM 2 #stem2 ",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7642381060474539286",
+        "createdAt": "2026-05-21T16:21:49.000Z"
+      },
+      {
+        "id": "7635241694631415062",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYGCQakRNEed0XD6FggF098DQfplpREBtMO6rA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=aTYBq5AbzdpomNT%2FU50HfI47a3Y%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 55100,
+        "likes": 3615,
+        "comments": 39,
+        "shares": 234,
+        "title": "#stem2 ",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7635241694631415062",
+        "createdAt": "2026-05-02T10:37:25.000Z"
+      },
+      {
+        "id": "7614522436104604950",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oUe9sAVTNQBVtIImysLeWGAjCNaUeeErGAGtRN~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=xjAe73MahnbFjI8aUieTQVkNWSc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 128200,
+        "likes": 10800,
+        "comments": 67,
+        "shares": 555,
+        "title": "\"Pain 1993\" by Drake & Playboi Carti on the Stem Player 🥷🏻 \n\n#drake #playboicarti #stemplayer #pai",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7614522436104604950",
+        "createdAt": "2026-03-07T14:36:04.000Z"
+      },
+      {
+        "id": "7644191891684150560",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-useast2a-p-0037-euttp/oEaaoZ7gDIIAeV69ATFCmSRCwBf9qWDIEHQ2EF~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=Kauvj8TJOCXxYY5KNh6zvNHUQv0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 4261,
+        "likes": 143,
+        "comments": 1,
+        "shares": 1,
+        "title": "Respuesta a @StemPlayer \n\n\"Sexy Nana\" de La Rvfleuse ft. Aya Nakamurz ❤️‍🔥 sur le Stem Player !\n\n#a",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7644191891684150560",
+        "createdAt": "2026-05-26T13:28:43.000Z"
+      },
+      {
+        "id": "7644270343909068054",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oUk4zU1ofADeFXDTIt8rT7QAQFjpeK0mzIEQLU~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=TaK2ArYtMsMAmLZFfIe6N6%2BrEkM%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 808,
+        "likes": 69,
+        "comments": 10,
+        "shares": 2,
+        "title": "less playing music and more playing with it #stem2",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7644270343909068054",
+        "createdAt": "2026-05-26T18:33:13.000Z"
+      },
+      {
+        "id": "7641225083482262787",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oQLIqFDjIDUAF8IpFAe4ALcFQfveXRLEwQQKiK~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=r%2FPcQsZpX6kFYCGYtJsjzrfOzGg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 699700,
+        "likes": 61000,
+        "comments": 382,
+        "shares": 7028,
+        "title": "#stem2 ",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7641225083482262787",
+        "createdAt": "2026-05-18T13:36:02.000Z"
+      },
+      {
+        "id": "7628641880921705761",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast2a-p-0037-euttp/oUgYIIDTGggQdWjK2EOWfBjAeeSDvF1IMMkYvI~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=qNMNm8e241ATC5l48IJXTQ4DOdY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 56200,
+        "likes": 4590,
+        "comments": 64,
+        "shares": 340,
+        "title": "\"Back Home\" by Yeat & Joji on the Stem Player 🤯 \n\nSorry to tell you that Yeat but your album is so ",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7628641880921705761",
+        "createdAt": "2026-04-14T15:46:46.000Z"
+      },
+      {
+        "id": "7642740779500211470",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oQAH7FGvLeTZIegGTjV0AC9IouAggkReAUOR5I~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=dB0uvPlwnlCmCUPaJWRTHgSL6qQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 6772,
+        "likes": 731,
+        "comments": 20,
+        "shares": 19,
+        "title": "You were unable to add your own songs up until like 3 days ago so for I wanna say 2 years people hav",
+        "author": "deltaa.67",
+        "url": "https://www.tiktok.com/@deltaa.67/video/7642740779500211470",
+        "createdAt": "2026-05-22T15:37:59.000Z"
+      },
+      {
+        "id": "7643379168335514911",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oQvNKEAy05AAA9KBAARIvili1ISU2aVlR8hAi~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=bu%2F1w2cP0BphSkHMRB12Wawp2W8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1042,
+        "likes": 56,
+        "comments": 0,
+        "shares": 0,
+        "title": "STEM PLAYER #YZY #fyp #music",
+        "author": "kavfxclipss",
+        "url": "https://www.tiktok.com/@kavfxclipss/video/7643379168335514911",
+        "createdAt": "2026-05-25T22:00:00.000Z"
+      },
+      {
+        "id": "7043067670077525253",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/c89e59abf8cd483a88dba925b2d9fed0~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=IJ13Fc8%2F4qW%2FjutULtDlLr8e8%2Bs%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1800000,
+        "likes": 237000,
+        "comments": 1582,
+        "shares": 7550,
+        "title": "Stem Player Demo by @Medici #stemplayer #kanye #ye #music #remixing",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7043067670077525253",
+        "createdAt": "2021-12-18T15:39:40.000Z"
+      },
+      {
+        "id": "7424166669360139552",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast2a-p-0037-euttp/2c14eb71e8ae41d2b4edc4a25c9cde5d_1728573514~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=xq433ATwONnHg8BC6R2l6awlFmo%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 4400000,
+        "likes": 365700,
+        "comments": 983,
+        "shares": 11700,
+        "title": "\"Not Like Us\" by Kendrick Lamar on the Stemplayer 🔥\n\n#stemplayer #kendricklamar #notlikeus #kendric",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7424166669360139552",
+        "createdAt": "2024-10-10T15:18:31.000Z"
+      },
+      {
+        "id": "7615676324014771478",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oIEwIBCHIUC2AuB0IiWYfhCY4izCSiOwyqCUA4~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=h3rNrLkfR3S2SDNWqmODr%2BfEuzU%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 5772,
+        "likes": 156,
+        "comments": 3,
+        "shares": 1,
+        "title": "\"Circus Circus Free$tyle\" by Baby Keem on the Stem Player !\n\nAlbum still in your rotation ? 💎\n\n#ste",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7615676324014771478",
+        "createdAt": "2026-03-10T17:13:46.000Z"
+      },
+      {
+        "id": "7384955936970001670",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/b9b561bce402441ea782a00ad9b3f62b_1719444054~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=1KRCPoD167yUEt5uS2TeUl9F0Ek%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 1100000,
+        "likes": 80000,
+        "comments": 213,
+        "shares": 982,
+        "title": "2021 Yeezy x Teenage Engineering UNRELEASED SAMPLE Stem Player 🎧🎶\n\nAs an unreleaded relic from Ye’",
+        "author": "archivethreadss",
+        "url": "https://www.tiktok.com/@archivethreadss/video/7384955936970001670",
+        "createdAt": "2024-06-26T23:20:52.000Z"
+      },
+      {
+        "id": "7611553659830226198",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oMBqAqVoAFC7zEaCIpEDf8fWIxPSguQGFkhW5R~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=4%2BhjWyjD%2B9vWyscgqLBzZRMgev4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 2618,
+        "likes": 82,
+        "comments": 1,
+        "shares": 1,
+        "title": "Thug’s verse on\"Trimski\" by NAV & Young Thug on the Stem Player 🔥 \n\n#stemplayer #nav #youngthug #tr",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7611553659830226198",
+        "createdAt": "2026-02-27T14:35:44.000Z"
+      },
+      {
+        "id": "7460604879636040990",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/o0KBlEvYgjVFXIA4vAEaiJxx4BKWZy8ZRBT9i~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=i5jfag%2BUKVKwx0ZyMUnJekUj%2F%2F8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 9075,
+        "likes": 386,
+        "comments": 14,
+        "shares": 10,
+        "title": "Making a beat with the unreleased Kanye West x Teenage Engineering Stem Player #kanyewest #kanye #ye",
+        "author": "melinebeats",
+        "url": "https://www.tiktok.com/@melinebeats/video/7460604879636040990",
+        "createdAt": "2025-01-16T19:57:23.000Z"
+      },
+      {
+        "id": "7223904509523873070",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/1de66f67c2fc43dea1cb936bf783721e_1681946350~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=DumezvCiVh6e4BGmYih%2BhXaHcqU%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 4279,
+        "likes": 68,
+        "comments": 4,
+        "shares": 4,
+        "title": "StemPlayer can split songs into stems without a StemPlayer 😬\n#fyp #stemplayer #stemplayers #ai #ais",
+        "author": "skyjordxn",
+        "url": "https://www.tiktok.com/@skyjordxn/video/7223904509523873070",
+        "createdAt": "2023-04-19T23:19:10.000Z"
+      },
+      {
+        "id": "7149006532322102570",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/00e8770f83b948b09e0d994cd592609f~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=g5dR6ykpDLGMOWAad5BszsaXCew%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 356000,
+        "likes": 51000,
+        "comments": 386,
+        "shares": 554,
+        "title": "Who tf wants to be 70 and alone? #stemplayer @jheneaiko @OVO Sound ",
+        "author": "rtajimaroa8",
+        "url": "https://www.tiktok.com/@rtajimaroa8/video/7149006532322102570",
+        "createdAt": "2022-09-30T03:16:45.000Z"
+      },
+      {
+        "id": "7561079600105753878",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/osFFBfp2BCz0i7XCNuiWyuEddAyI2nCwyrICzA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=ABStvpHZux8SPagOpcN7dFO%2Fn4E%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 5108,
+        "likes": 189,
+        "comments": 4,
+        "shares": 5,
+        "title": "Réponse à @❥ bunrys \n\"Trophies\" by Cardi B on the Stem Player  🏆 \n\n#cardib #amithedrama #stemplayer",
+        "author": "stemplayer.wrld",
+        "url": "https://www.tiktok.com/@stemplayer.wrld/video/7561079600105753878",
+        "createdAt": "2025-10-14T14:10:34.000Z"
+      },
+      {
+        "id": "7639821093435346198",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ok8tGByB1AGyzCjiibawPAI1CCZGfAcw5IIN0r~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=cSZB61BwNz7mtP6KhlAx2owWWzs%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 7040,
+        "likes": 123,
+        "comments": 20,
+        "shares": 4,
+        "title": "LOOP ON THE STEM 2",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7639821093435346198",
+        "createdAt": "2026-05-14T18:47:48.000Z"
+      },
+      {
+        "id": "7046103181591334150",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/24bc8b901ad24f9a9dcc554444b473d3~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=fP7vbBjKP20OkXWnH5%2BaLZEoU7U%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 20300,
+        "likes": 538,
+        "comments": 18,
+        "shares": 29,
+        "title": "Reply to @7teenshells Part one of how to upload and make the stems clear. #blowthisup #fyp #raptok #",
+        "author": "teenxmaxx",
+        "url": "https://www.tiktok.com/@teenxmaxx/video/7046103181591334150",
+        "createdAt": "2021-12-26T19:59:00.000Z"
+      },
+      {
+        "id": "7467356017236512043",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/owEBEJzwwBAOY3AFALiwBIzACC3wrBh0Ibfuhi~tplv-tiktokx-dmt-logom:tos-useast5-i-0068-tx/o8keQtFj9EUfIYmHIPsA1HGdLDeAAEOACIyhAy.image?dr=9634&x-expires=1780052400&x-signature=i6CZ58PO1WD8mYE4tKyfSw467KA%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 58000,
+        "likes": 2105,
+        "comments": 44,
+        "shares": 53,
+        "title": "Can anyone explain to me or help me figure out how to add music to this stem player ! 😭 #yeezy #ste",
+        "author": "brandon_0943",
+        "url": "https://www.tiktok.com/@brandon_0943/video/7467356017236512043",
+        "createdAt": "2025-02-04T00:35:46.000Z"
+      },
+      {
+        "id": "7065877459132255535",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/d33c4d1221754c799eef0632c90361e8~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=b%2B8Pv4XBbNrRSVXc8CDBv53ckS8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 40200000,
+        "likes": 5600000,
+        "comments": 16200,
+        "shares": 26500,
+        "title": "King of pop 🧘🧘🧘 what should I play next?? #kanye #StemPlayer #skete @STEM PLAYER",
+        "author": "rtajimaroa8",
+        "url": "https://www.tiktok.com/@rtajimaroa8/video/7065877459132255535",
+        "createdAt": "2022-02-18T02:53:17.000Z"
+      },
+      {
+        "id": "7564219585801604382",
+        "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oAijWrI50Du4BhB0CAfvi0AqAFEBbsMfIYeRgI~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=uVBM76nuHDVT4igOwimZXsiON6o%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 3047,
+        "likes": 83,
+        "comments": 6,
+        "shares": 1,
+        "title": "this is the stem player we should’ve gotten :/ #stemplayer #teenageengineering #music ",
+        "author": "toaawashere",
+        "url": "https://www.tiktok.com/@toaawashere/video/7564219585801604382",
+        "createdAt": "2025-10-23T01:15:31.000Z"
+      },
+      {
+        "id": "7068402331645267206",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/a4a4ea7c47b1451cb3143edf82fb8e76~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=CuDoTIqhBjRXoVfNj6ZSCO2DYug%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 292500,
+        "likes": 12300,
+        "comments": 115,
+        "shares": 65,
+        "title": "HOW TO USE STEMPLAYER PLATFORM. #Donda2 #stemplayer #Kanyewest #Ye #Donda #music #remix",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7068402331645267206",
+        "createdAt": "2022-02-24T22:11:06.000Z"
+      },
+      {
+        "id": "7054239013657464070",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/c2f09c164e2845c9bb1b296a943b139f_1642443015~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=pDlFQ%2FTGUV%2FgVwchqKrrSLTq7EE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 828700,
+        "likes": 42600,
+        "comments": 252,
+        "shares": 276,
+        "title": "Uploading 4 stems at once of ‘Easy’ by Timmy   #fyp #kanye #stemplayer #music #remix",
+        "author": "stemplayer",
+        "url": "https://www.tiktok.com/@stemplayer/video/7054239013657464070",
+        "createdAt": "2022-01-17T18:10:11.000Z"
+      },
+      {
+        "id": "7307042447564000543",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/oUpZVERIBoHoeB1CAifHAGBy3iDuDlEEwxgRln~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=3WaxT98M6enMXomyBCY9IGnUmlw%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+        "views": 42900,
+        "likes": 722,
+        "comments": 45,
+        "shares": 4,
+        "title": "I’m getting to yall’s requests! Who likes YEAT? #yeat #yeattok #vocals #stemplayer #stemplayer #2amv",
+        "author": "stemplayers_",
+        "url": "https://www.tiktok.com/@stemplayers_/video/7307042447564000543",
+        "createdAt": "2023-11-30T00:16:50.000Z"
+      },
+      {
+        "id": "7566094967941238030",
+        "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/ogAQgErARt8IpAVfAAcAACsUpueDECFmSb1DJn~tplv-tiktokx-dmt-logom:tos-useast5-i-0068-tx/occSaabVAAAUAjyiAELfAKkGNemHf2FIHIEAAI.image?dr=9634&x-expires=1780052400&x-signature=XbpGKhD5HEqxKXBfLIQlXjNumRY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
+        "views": 858700,
+        "likes": 42000,
+        "comments": 151,
+        "shares": 241,
+        "title": "Is the $200 stem player still worth it? 🥴 #gadget #mp3player #tech #stemplayer ",
+        "author": "steviesells",
+        "url": "https://www.tiktok.com/@steviesells/video/7566094967941238030",
+        "createdAt": "2025-10-28T02:33:11.000Z"
+      }
+    ]
+  },
+  "youtube": {
+    "channel": "stemplayer",
+    "subscribers": 116,
+    "videos": [
+      {
+        "id": "Tp9VCSe_ECo",
+        "title": "Sail - AWOLNATION (Perfomed On Yeezy Stem Player)",
+        "thumbnail": "https://i.ytimg.com/vi/Tp9VCSe_ECo/maxresdefault.jpg",
+        "views": 338,
+        "likes": 18,
+        "comments": 0,
+        "url": "https://www.youtube.com/watch?v=Tp9VCSe_ECo",
+        "publishedAt": "2022-01-30T21:00:10.000Z"
+      },
+      {
+        "id": "AZjsSZkhXqU",
+        "title": "Yeezy Tech Stem Player Remote Control",
+        "thumbnail": "https://i.ytimg.com/vi/AZjsSZkhXqU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-DoACuAiKAgwIABABGGUgSyhEMA8=&rs=AOn4CLCBM4qEiye-4cHsf1iigcuhsNPt3A",
+        "views": 134,
+        "likes": 2,
+        "comments": 0,
+        "url": "https://www.youtube.com/watch?v=AZjsSZkhXqU",
+        "publishedAt": "2021-11-11T12:54:09.000Z"
+      },
+      {
+        "id": "wAy3SdEmSfQ",
+        "title": "Kanye West’s Donda Stem Player",
+        "thumbnail": "https://i.ytimg.com/vi/wAy3SdEmSfQ/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVShKMA8=&rs=AOn4CLCIzu4GtelJoObszLySc3kz8dzJog",
+        "views": 527,
+        "likes": 12,
+        "comments": 0,
+        "url": "https://www.youtube.com/watch?v=wAy3SdEmSfQ",
+        "publishedAt": "2021-08-27T14:34:22.000Z"
+      },
+      {
+        "id": "Z-lq-z5KM2c",
+        "title": "Remix ANY song with Kanye West's Stem Player",
+        "thumbnail": "https://i.ytimg.com/vi/Z-lq-z5KM2c/maxresdefault.jpg",
+        "views": 2312129,
+        "likes": 43000,
+        "comments": 2816,
+        "url": "https://www.youtube.com/watch?v=Z-lq-z5KM2c",
+        "publishedAt": "2021-11-16T01:03:42.000Z"
+      },
+      {
+        "id": "dH4iV5zKhg4",
+        "title": "How to pair the Donda Stem Player with a Bluetooth device",
+        "thumbnail": "https://i.ytimg.com/vi/dH4iV5zKhg4/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgWChKMA8=&rs=AOn4CLCWyXzypJKVd-WVuRSYMQC-kxrUCQ",
+        "views": 31778,
+        "likes": 470,
+        "comments": 50,
+        "url": "https://www.youtube.com/watch?v=dH4iV5zKhg4",
+        "publishedAt": "2022-01-16T15:43:51.000Z"
+      },
+      {
+        "id": "-PXQMNcFOjE",
+        "title": "I Got The Donda Stem Player",
+        "thumbnail": "https://i.ytimg.com/vi/-PXQMNcFOjE/hqdefault.jpg",
+        "views": 1395547,
+        "likes": 55000,
+        "comments": 2603,
+        "url": "https://www.youtube.com/watch?v=-PXQMNcFOjE",
+        "publishedAt": "2021-11-03T22:57:38.000Z"
+      },
+      {
+        "id": "XCFylXd7tQg",
+        "title": "NEW KANYE WEST SHOWS AMAZING TECHNOLOGY | STEM PLAYER |  DONDA",
+        "thumbnail": "https://i.ytimg.com/vi/XCFylXd7tQg/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC8giKAgwIABABGGUgWyhVMA8=&rs=AOn4CLD7M0W6LgKqYvqhU9I4NoBgcvNk8w",
+        "views": 857971,
+        "likes": 19000,
+        "comments": 961,
+        "url": "https://www.youtube.com/watch?v=XCFylXd7tQg",
+        "publishedAt": "2021-08-26T19:25:51.000Z"
+      },
+      {
+        "id": "iindKlt-sS4",
+        "title": "Kanye West Donda Stem Player - No Hype Ep 333",
+        "thumbnail": "https://i.ytimg.com/vi/iindKlt-sS4/maxresdefault.jpg",
+        "views": 415,
+        "likes": 16,
+        "comments": 8,
+        "url": "https://www.youtube.com/watch?v=iindKlt-sS4",
+        "publishedAt": "2021-11-16T02:16:49.000Z"
+      },
+      {
+        "id": "WWzr3y5khV0",
+        "title": "...Ready for it? by Taylor Swift on the Yeezy Stem Player",
+        "thumbnail": "https://i.ytimg.com/vi/WWzr3y5khV0/maxresdefault.jpg",
+        "views": 1322,
+        "likes": 24,
+        "comments": 15,
+        "url": "https://www.youtube.com/watch?v=WWzr3y5khV0",
+        "publishedAt": "2021-11-30T00:27:07.000Z"
+      },
+      {
+        "id": "NMqPAEjARN0",
+        "title": "Kanye West Stem Player Unboxing | Home Studio Motivation",
+        "thumbnail": "https://i.ytimg.com/vi/NMqPAEjARN0/maxresdefault.jpg",
+        "views": 3208,
+        "likes": 112,
+        "comments": 32,
+        "url": "https://www.youtube.com/watch?v=NMqPAEjARN0",
+        "publishedAt": "2022-03-10T21:42:49.000Z"
+      },
+      {
+        "id": "-4FKiUdk3_Q",
+        "title": "Why Kanye West's STEM PLAYER is Bad for the Future of Music",
+        "thumbnail": "https://i.ytimg.com/vi/-4FKiUdk3_Q/maxresdefault.jpg",
+        "views": 354374,
+        "likes": 15000,
+        "comments": 1181,
+        "url": "https://www.youtube.com/watch?v=-4FKiUdk3_Q",
+        "publishedAt": "2022-03-19T17:00:00.000Z"
+      },
+      {
+        "id": "NmhYMXua9VE",
+        "title": "How to Use Stem Player by Kanye West",
+        "thumbnail": "https://i.ytimg.com/vi/NmhYMXua9VE/maxresdefault.jpg",
+        "views": 1053,
+        "likes": 34,
+        "comments": 5,
+        "url": "https://www.youtube.com/watch?v=NmhYMXua9VE",
+        "publishedAt": "2022-03-03T01:32:36.000Z"
+      },
+      {
+        "id": "GCygONkjS1s",
+        "title": "Everything to Know About Kanye West's Stem Player",
+        "thumbnail": "https://i.ytimg.com/vi/GCygONkjS1s/maxresdefault.jpg",
+        "views": 26588,
+        "likes": 675,
+        "comments": 105,
+        "url": "https://www.youtube.com/watch?v=GCygONkjS1s",
+        "publishedAt": "2021-09-07T16:00:16.000Z"
+      },
+      {
+        "id": "WbLMgvZuqMQ",
+        "title": "Inside Stem Player",
+        "thumbnail": "https://i.ytimg.com/vi/WbLMgvZuqMQ/maxresdefault.jpg",
+        "views": 7878,
+        "likes": 341,
+        "comments": 37,
+        "url": "https://www.youtube.com/watch?v=WbLMgvZuqMQ",
+        "publishedAt": "2025-11-28T12:00:06.000Z"
+      },
+      {
+        "id": "eoPQjI9oAwA",
+        "title": "Yeezy Stem Player : A Complete Guide",
+        "thumbnail": "https://i.ytimg.com/vi/eoPQjI9oAwA/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGUgWShLMA8=&rs=AOn4CLBAcNWn7tC10BC5FJWi6fhKEgnSfQ",
+        "views": 104440,
+        "likes": 1900,
+        "comments": 263,
+        "url": "https://www.youtube.com/watch?v=eoPQjI9oAwA",
+        "publishedAt": "2021-11-03T02:21:36.000Z"
+      },
+      {
+        "id": "ihsnCdpf8gw",
+        "title": "HOW TO USE STEMPLAYER PLATFORM",
+        "thumbnail": "https://i.ytimg.com/vi/ihsnCdpf8gw/maxresdefault.jpg",
+        "views": 4253,
+        "likes": 133,
+        "comments": 16,
+        "url": "https://www.youtube.com/watch?v=ihsnCdpf8gw",
+        "publishedAt": "2022-02-24T13:53:45.000Z"
+      },
+      {
+        "id": "XXLGpH5w4lA",
+        "title": "STEM PLAYER REVIEW AFTER 3 MONTHS!! ((FULL REVIEW))",
+        "thumbnail": "https://i.ytimg.com/vi/XXLGpH5w4lA/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgVShAMA8=&rs=AOn4CLD-R0t64GjSNWw6pgja6dLW_AARBQ",
+        "views": 217,
+        "likes": 11,
+        "comments": 3,
+        "url": "https://www.youtube.com/watch?v=XXLGpH5w4lA",
+        "publishedAt": "2022-07-17T15:00:14.000Z"
+      },
+      {
+        "id": "KZaPrVyUMdM",
+        "title": "How To Use The Stem Player",
+        "thumbnail": "https://i.ytimg.com/vi/KZaPrVyUMdM/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgUShFMA8=&rs=AOn4CLC75h20i1bNz5c48FMwUrxXc5x3pw",
+        "views": 62134,
+        "likes": 1400,
+        "comments": 106,
+        "url": "https://www.youtube.com/watch?v=KZaPrVyUMdM",
+        "publishedAt": "2022-02-19T20:00:07.000Z"
+      },
+      {
+        "id": "_wueJ6laCmg",
+        "title": "Donda Stem Player | Kanye West Song Maker Does THIS Crazy Thing",
+        "thumbnail": "https://i.ytimg.com/vi/_wueJ6laCmg/maxresdefault.jpg",
+        "views": 14583,
+        "likes": 357,
+        "comments": 90,
+        "url": "https://www.youtube.com/watch?v=_wueJ6laCmg",
+        "publishedAt": "2021-08-28T16:44:03.000Z"
+      },
+      {
+        "id": "ZUw2fW9NUX0",
+        "title": "Stem Player teardown and reassembly",
+        "thumbnail": "https://i.ytimg.com/vi/ZUw2fW9NUX0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgWSg-MA8=&rs=AOn4CLBh4yWpt0q9fk8qq-T12yiq1i_tAw",
+        "views": 3331,
+        "likes": 133,
+        "comments": 41,
+        "url": "https://www.youtube.com/watch?v=ZUw2fW9NUX0",
+        "publishedAt": "2022-04-03T21:57:06.000Z"
+      }
+    ]
+  },
+  "x": {
+    "handle": "stemplayer",
+    "followers": 21637,
+    "tweets": [
+      {
+        "id": "2057448148168040552",
+        "text": "https://t.co/IfH4PaOQ9I",
+        "likes": 42,
+        "retweets": 1,
+        "replies": 2,
+        "views": 3022,
+        "url": "https://x.com/stemplayer/status/2057448148168040552",
+        "createdAt": "Thu May 21 13:07:18 +0000 2026"
+      },
+      {
+        "id": "2053868916322017440",
+        "text": "https://t.co/2xH2e5LijT",
+        "likes": 38,
+        "retweets": 2,
+        "replies": 1,
+        "views": 2524,
+        "url": "https://x.com/stemplayer/status/2053868916322017440",
+        "createdAt": "Mon May 11 16:04:43 +0000 2026"
+      },
+      {
+        "id": "1991170200910299214",
+        "text": "@DONFATHER404 just sent a DM",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "views": 209,
+        "url": "https://x.com/stemplayer/status/1991170200910299214",
+        "createdAt": "Wed Nov 19 15:42:24 +0000 2025"
+      },
+      {
+        "id": "1987583028114121001",
+        "text": "@A3J3S3 soon",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "views": 182,
+        "url": "https://x.com/stemplayer/status/1987583028114121001",
+        "createdAt": "Sun Nov 09 18:08:16 +0000 2025"
+      },
+      {
+        "id": "1986548365425881333",
+        "text": "https://t.co/lMhwee78gp",
+        "likes": 165,
+        "retweets": 12,
+        "replies": 8,
+        "views": 9495,
+        "url": "https://x.com/stemplayer/status/1986548365425881333",
+        "createdAt": "Thu Nov 06 21:36:53 +0000 2025"
+      },
+      {
+        "id": "1986065427642855728",
+        "text": "@zacharyburnside soon",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "views": 85,
+        "url": "https://x.com/stemplayer/status/1986065427642855728",
+        "createdAt": "Wed Nov 05 13:37:51 +0000 2025"
+      },
+      {
+        "id": "1986065352606756934",
+        "text": "@khaye_radebe we’re all nothing without God",
+        "likes": 4,
+        "retweets": 0,
+        "replies": 2,
+        "views": 242,
+        "url": "https://x.com/stemplayer/status/1986065352606756934",
+        "createdAt": "Wed Nov 05 13:37:34 +0000 2025"
+      },
+      {
+        "id": "1985798669527085462",
+        "text": "@DONFATHER404 https://t.co/Usceo8mIRb",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "views": 83,
+        "url": "https://x.com/stemplayer/status/1985798669527085462",
+        "createdAt": "Tue Nov 04 19:57:51 +0000 2025"
+      },
+      {
+        "id": "1985796352668786832",
+        "text": "@DONFATHER404 Can’t wait to hear the YB mixes",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "views": 16,
+        "url": "https://x.com/stemplayer/status/1985796352668786832",
+        "createdAt": "Tue Nov 04 19:48:39 +0000 2025"
+      },
+      {
+        "id": "1985758783331844483",
+        "text": "@DJ_Double_C Post",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "views": 177,
+        "url": "https://x.com/stemplayer/status/1985758783331844483",
+        "createdAt": "Tue Nov 04 17:19:22 +0000 2025"
+      },
+      {
+        "id": "1985758645070516321",
+        "text": "@ziggziah please tag us",
+        "likes": 6,
+        "retweets": 0,
+        "replies": 1,
+        "views": 366,
+        "url": "https://x.com/stemplayer/status/1985758645070516321",
+        "createdAt": "Tue Nov 04 17:18:49 +0000 2025"
+      },
+      {
+        "id": "1985292735595606021",
+        "text": "@itsjaylin Stem 2 is sexy. Making sure artists are paid fairly is even sexier",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 2,
+        "views": 64,
+        "url": "https://x.com/stemplayer/status/1985292735595606021",
+        "createdAt": "Mon Nov 03 10:27:27 +0000 2025"
+      },
+      {
+        "id": "1985292366719173055",
+        "text": "@itsjaylin All users get a 30 day free trial. Stem fm lets both listeners and artists enjoy music in your way",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 108,
+        "url": "https://x.com/stemplayer/status/1985292366719173055",
+        "createdAt": "Mon Nov 03 10:25:59 +0000 2025"
+      },
+      {
+        "id": "1985291318419980429",
+        "text": "@16_Blocks You can now with ingestion",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "views": 82,
+        "url": "https://x.com/stemplayer/status/1985291318419980429",
+        "createdAt": "Mon Nov 03 10:21:49 +0000 2025"
+      },
+      {
+        "id": "1985291192582410426",
+        "text": "@xaviersean9 soon",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "views": 212,
+        "url": "https://x.com/stemplayer/status/1985291192582410426",
+        "createdAt": "Mon Nov 03 10:21:19 +0000 2025"
+      },
+      {
+        "id": "1984307146859700324",
+        "text": "https://t.co/BdQI2aZqto",
+        "likes": 398,
+        "retweets": 19,
+        "replies": 15,
+        "views": 23142,
+        "url": "https://x.com/stemplayer/status/1984307146859700324",
+        "createdAt": "Fri Oct 31 17:11:05 +0000 2025"
+      },
+      {
+        "id": "1980302256881987629",
+        "text": "@_MNTRY @kaelinellis Email your name and order number to help@stemplayer.com. Projector preorders are also entitled to a 20% discount on STEM 2: https://t.co/I8gCv1BOHp",
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "views": 187,
+        "url": "https://x.com/stemplayer/status/1980302256881987629",
+        "createdAt": "Mon Oct 20 15:57:04 +0000 2025"
+      },
+      {
+        "id": "1979323800861934035",
+        "text": "https://t.co/4UnAtqm3Jd",
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "views": 4795,
+        "url": "https://x.com/stemplayer/status/1979323800861934035",
+        "createdAt": "Fri Oct 17 23:09:02 +0000 2025"
+      },
+      {
+        "id": "1979323722969551172",
+        "text": "STEM PLAYER 2 https://t.co/Q6BbEefgkG",
+        "likes": 494,
+        "retweets": 31,
+        "replies": 11,
+        "views": 96981,
+        "url": "https://x.com/stemplayer/status/1979323722969551172",
+        "createdAt": "Fri Oct 17 23:08:44 +0000 2025"
+      },
+      {
+        "id": "1979240301886611793",
+        "text": "https://t.co/1S3DFC5T6G \nhttps://t.co/Qahdzt3MUH \nhttps://t.co/DY0LmYw1Sj",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "views": 2501,
+        "url": "https://x.com/stemplayer/status/1979240301886611793",
+        "createdAt": "Fri Oct 17 17:37:15 +0000 2025"
+      },
+      {
+        "id": "1979240123880415268",
+        "text": "WATCH  ON @tbpn \n\n12:00 PM PST\n15:00 PM EST \n20:00 PM BST \n\nLINKS BELOW https://t.co/JqQGTUOND5",
+        "likes": 4,
+        "retweets": 0,
+        "replies": 1,
+        "views": 2223,
+        "url": "https://x.com/stemplayer/status/1979240123880415268",
+        "createdAt": "Fri Oct 17 17:36:32 +0000 2025"
+      },
+      {
+        "id": "1937811631779533021",
+        "text": "Stem FM has developed a new approach to Beat Detection. Using self similarity - a property of all music - we are able to achieve a new state of the art in musical alignment. Alpha opening soon https://t.co/AQUvdgGYED",
+        "likes": 32,
+        "retweets": 4,
+        "replies": 2,
+        "views": 3485,
+        "url": "https://x.com/stemplayer/status/1937811631779533021",
+        "createdAt": "Wed Jun 25 09:54:30 +0000 2025"
+      },
+      {
+        "id": "1931039080604745879",
+        "text": "https://t.co/N6vb2qRmip",
+        "likes": 83,
+        "retweets": 7,
+        "replies": 5,
+        "views": 4895,
+        "url": "https://x.com/stemplayer/status/1931039080604745879",
+        "createdAt": "Fri Jun 06 17:22:48 +0000 2025"
+      },
+      {
+        "id": "1924845007002915231",
+        "text": "spring in the London studio https://t.co/Do8sbbOJph",
+        "likes": 45,
+        "retweets": 2,
+        "replies": 0,
+        "views": 4565,
+        "url": "https://x.com/stemplayer/status/1924845007002915231",
+        "createdAt": "Tue May 20 15:09:46 +0000 2025"
+      },
+      {
+        "id": "1923405757422182678",
+        "text": "https://t.co/A9Rt0o5eir https://t.co/bRtg3XVCtC",
+        "likes": 43,
+        "retweets": 2,
+        "replies": 1,
+        "views": 3673,
+        "url": "https://x.com/stemplayer/status/1923405757422182678",
+        "createdAt": "Fri May 16 15:50:42 +0000 2025"
+      },
+      {
+        "id": "1921942327855026631",
+        "text": "@WordsByKyle no, Stem is independent",
+        "likes": 22,
+        "retweets": 0,
+        "replies": 1,
+        "views": 887,
+        "url": "https://x.com/stemplayer/status/1921942327855026631",
+        "createdAt": "Mon May 12 14:55:33 +0000 2025"
+      },
+      {
+        "id": "1921937134811820057",
+        "text": "@Honest_Podzilla The website is still processing the change, here's a direct link 👇\n\nhttps://t.co/mLDCJiixHp",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 674,
+        "url": "https://x.com/stemplayer/status/1921937134811820057",
+        "createdAt": "Mon May 12 14:34:55 +0000 2025"
+      },
+      {
+        "id": "1917612926455656457",
+        "text": "@davidtphung @bigvibessss @cxy we are in the lab https://t.co/yCfgHPfGeb",
+        "likes": 16,
+        "retweets": 2,
+        "replies": 0,
+        "views": 358,
+        "url": "https://x.com/stemplayer/status/1917612926455656457",
+        "createdAt": "Wed Apr 30 16:12:03 +0000 2025"
+      },
+      {
+        "id": "1909229053048975373",
+        "text": "https://t.co/trvowJ2YPC https://t.co/HAZlMsso6M",
+        "likes": 9,
+        "retweets": 0,
+        "replies": 0,
+        "views": 2269,
+        "url": "https://x.com/stemplayer/status/1909229053048975373",
+        "createdAt": "Mon Apr 07 12:57:32 +0000 2025"
+      },
+      {
+        "id": "1907219057788809682",
+        "text": "@SCFGOAT Spank Butt",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 76,
+        "url": "https://x.com/stemplayer/status/1907219057788809682",
+        "createdAt": "Tue Apr 01 23:50:32 +0000 2025"
+      },
+      {
+        "id": "1907158195988038119",
+        "text": "https://t.co/6ilHO657Yt",
+        "likes": 30,
+        "retweets": 1,
+        "replies": 2,
+        "views": 3690,
+        "url": "https://x.com/stemplayer/status/1907158195988038119",
+        "createdAt": "Tue Apr 01 19:48:41 +0000 2025"
+      },
+      {
+        "id": "1906993692780495279",
+        "text": "@IzzysCastle @gabe_piedra We had to push back to protect it. We expect 2026. Refunds available for anyone who doesn’t want to wait.",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "views": 93,
+        "url": "https://x.com/stemplayer/status/1906993692780495279",
+        "createdAt": "Tue Apr 01 08:55:01 +0000 2025"
+      },
+      {
+        "id": "1737896026634133645",
+        "text": "@robmanuel Haha!",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 350,
+        "url": "https://x.com/stemplayer/status/1737896026634133645",
+        "createdAt": "Thu Dec 21 18:01:15 +0000 2023"
+      },
+      {
+        "id": "1737521378281058677",
+        "text": "@CrAstro2 Completely soulless",
+        "likes": 2,
+        "retweets": 0,
+        "replies": 35,
+        "views": 51291,
+        "url": "https://x.com/stemplayer/status/1737521378281058677",
+        "createdAt": "Wed Dec 20 17:12:32 +0000 2023"
+      },
+      {
+        "id": "1737511512078471314",
+        "text": "@oddballabddo @DippityDooDay @ethanXwaves *help@stem.tech",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 419,
+        "url": "https://x.com/stemplayer/status/1737511512078471314",
+        "createdAt": "Wed Dec 20 16:33:20 +0000 2023"
+      },
+      {
+        "id": "1735903419796160774",
+        "text": "@FreddieGibbs Buckle in for some Monsters Inc my guy",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "views": 1168,
+        "url": "https://x.com/stemplayer/status/1735903419796160774",
+        "createdAt": "Sat Dec 16 06:03:21 +0000 2023"
+      },
+      {
+        "id": "1729145447669973121",
+        "text": "@sorawlr “Spem in Alium” - Thomas Tallis, c. 1570",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 699,
+        "url": "https://x.com/stemplayer/status/1729145447669973121",
+        "createdAt": "Mon Nov 27 14:29:35 +0000 2023"
+      },
+      {
+        "id": "1729145179050045496",
+        "text": "@isaiaheaguilar @alexnklein Email us a video at help@stemplayer.com we’ll get you a replacement",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 199,
+        "url": "https://x.com/stemplayer/status/1729145179050045496",
+        "createdAt": "Mon Nov 27 14:28:31 +0000 2023"
+      },
+      {
+        "id": "1727251204609384786",
+        "text": "@Kurrco Love the cover art.",
+        "likes": 7,
+        "retweets": 0,
+        "replies": 2,
+        "views": 1803,
+        "url": "https://x.com/stemplayer/status/1727251204609384786",
+        "createdAt": "Wed Nov 22 09:02:32 +0000 2023"
+      },
+      {
+        "id": "1727251093296476419",
+        "text": "@the_A_costa Thanks for your support and engagement ⚜️",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "views": 199,
+        "url": "https://x.com/stemplayer/status/1727251093296476419",
+        "createdAt": "Wed Nov 22 09:02:06 +0000 2023"
+      },
+      {
+        "id": "1727251041752953332",
+        "text": "@Racks_getter He knows what would need to happen, debts to be settled, wrongs to be righted",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "views": 397,
+        "url": "https://x.com/stemplayer/status/1727251041752953332",
+        "createdAt": "Wed Nov 22 09:01:53 +0000 2023"
+      },
+      {
+        "id": "1727250952938520723",
+        "text": "@MiguelHackette you won’t need a Sonos with stem2",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "views": 215,
+        "url": "https://x.com/stemplayer/status/1727250952938520723",
+        "createdAt": "Wed Nov 22 09:01:32 +0000 2023"
+      },
+      {
+        "id": "1687504535370047493",
+        "text": "BHAVI STEM 1\n\nABDUCCION STEM 1 in cosmic green and yellow is now open to reserve at https://t.co/IRgetNnP2d\n\nExperience the EP &amp; the brand new “AEROBICO REMIX” featuring @LITkillah   @Miloj0ficial  and @DukiSSJ  in stem format via link in bio https://t.co/mP5jIHEccY",
+        "likes": 238,
+        "retweets": 15,
+        "replies": 3,
+        "views": 27581,
+        "url": "https://x.com/stemplayer/status/1687504535370047493",
+        "createdAt": "Fri Aug 04 16:43:28 +0000 2023"
+      },
+      {
+        "id": "1643973217189777409",
+        "text": "MA DUKES BRINGS J DILLA TO STEM\n\n20 unreleased tracks now available at https://t.co/aXKOvsLCi7\n\nCosmic spectrum green skins for Stemplayer available for pre-order https://t.co/LlniFTTe3Y",
+        "likes": 112,
+        "retweets": 11,
+        "replies": 9,
+        "views": 26440,
+        "url": "https://x.com/stemplayer/status/1643973217189777409",
+        "createdAt": "Thu Apr 06 13:45:33 +0000 2023"
+      },
+      {
+        "id": "1628482360894160896",
+        "text": "Silicon forms inspired by carbon life \n\nStem is evolving https://t.co/w2ntRDWpP7",
+        "likes": 129,
+        "retweets": 11,
+        "replies": 4,
+        "views": 18796,
+        "url": "https://x.com/stemplayer/status/1628482360894160896",
+        "createdAt": "Wed Feb 22 19:50:25 +0000 2023"
+      },
+      {
+        "id": "1628107161396969484",
+        "text": "Stem works to change how we interact with technology\n\nThe devices use hearing feeling and moving\n\nMore than reading typing and swiping https://t.co/6d7KkefiQt",
+        "likes": 170,
+        "retweets": 6,
+        "replies": 10,
+        "views": 21255,
+        "url": "https://x.com/stemplayer/status/1628107161396969484",
+        "createdAt": "Tue Feb 21 18:59:30 +0000 2023"
+      },
+      {
+        "id": "1625484572099248136",
+        "text": "It uses a unique active digital micro mirror chip - mirrors the size of blood cells - to create better picture clarity than backlit OLEDs. This makes any wall into a window into a place that feels real and continuous with our human world.",
+        "likes": 42,
+        "retweets": 0,
+        "replies": 2,
+        "views": 12723,
+        "url": "https://x.com/stemplayer/status/1625484572099248136",
+        "createdAt": "Tue Feb 14 13:18:16 +0000 2023"
+      },
+      {
+        "id": "1625484446588878851",
+        "text": "The projector has been designed as a portal. Today we spend too much time looking down rather than up and out. The resolution of the v1 module is 480p. https://t.co/4qk43pF9Ej",
+        "likes": 335,
+        "retweets": 28,
+        "replies": 40,
+        "views": 89709,
+        "url": "https://x.com/stemplayer/status/1625484446588878851",
+        "createdAt": "Tue Feb 14 13:17:46 +0000 2023"
+      },
+      {
+        "id": "1623785562774638596",
+        "text": "“Stem is for the people” via @highsnobiety https://t.co/DPjI3x5xmq https://t.co/2l9HYttu9p",
+        "likes": 185,
+        "retweets": 12,
+        "replies": 14,
+        "views": 33095,
+        "url": "https://x.com/stemplayer/status/1623785562774638596",
+        "createdAt": "Thu Feb 09 20:47:01 +0000 2023"
+      },
+      {
+        "id": "1620124386027257856",
+        "text": "STEM PROJECTOR \n\nWATCH AND CREATE\nROTOSCOPE CHARACTERS. TRANSFER COLOR PALETTES BETWEEN MOVIES. ADJUST SPEED. MORPH THE SCREEN SHAPE.\n\nPRE-ORDER NOW ON https://t.co/VCyqz9LjpH https://t.co/InR0O7YMF6",
+        "likes": 467,
+        "retweets": 39,
+        "replies": 13,
+        "views": 79677,
+        "url": "https://x.com/stemplayer/status/1620124386027257856",
+        "createdAt": "Mon Jan 30 18:18:48 +0000 2023"
+      },
+      {
+        "id": "1619080979028807680",
+        "text": "PALM SIZE\n\nhttps://t.co/VCyqz9LjpH https://t.co/8UsQ5YO93u",
+        "likes": 83,
+        "retweets": 6,
+        "replies": 2,
+        "views": 10077,
+        "url": "https://x.com/stemplayer/status/1619080979028807680",
+        "createdAt": "Fri Jan 27 21:12:41 +0000 2023"
+      },
+      {
+        "id": "1619069793293975552",
+        "text": "INTEGRATED STAND\n\nhttps://t.co/VCyqz9LjpH https://t.co/rE8xl0fLhw",
+        "likes": 46,
+        "retweets": 3,
+        "replies": 2,
+        "views": 8599,
+        "url": "https://x.com/stemplayer/status/1619069793293975552",
+        "createdAt": "Fri Jan 27 20:28:14 +0000 2023"
+      },
+      {
+        "id": "1619050343723302912",
+        "text": "PALM SIZE\n\nhttps://t.co/VCyqz9LjpH https://t.co/ww3dRGcynJ",
+        "likes": 46,
+        "retweets": 2,
+        "replies": 2,
+        "views": 8034,
+        "url": "https://x.com/stemplayer/status/1619050343723302912",
+        "createdAt": "Fri Jan 27 19:10:57 +0000 2023"
+      },
+      {
+        "id": "1618698585381683200",
+        "text": "CUT OUT ANY CHARACTER\n\nhttps://t.co/VCyqz9LjpH https://t.co/Db501xlB00",
+        "likes": 53,
+        "retweets": 3,
+        "replies": 3,
+        "views": 10412,
+        "url": "https://x.com/stemplayer/status/1618698585381683200",
+        "createdAt": "Thu Jan 26 19:53:11 +0000 2023"
+      },
+      {
+        "id": "1618685424930820097",
+        "text": "EXTRACT COLORS FROM ANY MOVIE\n\nhttps://t.co/VCyqz9LjpH https://t.co/eNoIRBc2S5",
+        "likes": 115,
+        "retweets": 8,
+        "replies": 9,
+        "views": 13720,
+        "url": "https://x.com/stemplayer/status/1618685424930820097",
+        "createdAt": "Thu Jan 26 19:00:53 +0000 2023"
+      },
+      {
+        "id": "1618354166128312322",
+        "text": "MORPHS OUT OF SKIN\n\nhttps://t.co/VCyqz9LjpH https://t.co/NGUr7s5qLM",
+        "likes": 62,
+        "retweets": 5,
+        "replies": 2,
+        "views": 10781,
+        "url": "https://x.com/stemplayer/status/1618354166128312322",
+        "createdAt": "Wed Jan 25 21:04:35 +0000 2023"
+      },
+      {
+        "id": "1618338317191516160",
+        "text": "PRO QUALITY TOOLS\n\nhttps://t.co/VCyqz9LjpH https://t.co/EPeuBM2mRg",
+        "likes": 64,
+        "retweets": 1,
+        "replies": 5,
+        "views": 9271,
+        "url": "https://x.com/stemplayer/status/1618338317191516160",
+        "createdAt": "Wed Jan 25 20:01:36 +0000 2023"
+      },
+      {
+        "id": "1618324316277583874",
+        "text": "HUMAN MACHINE LEARNING\n\nhttps://t.co/VCyqz9LjpH https://t.co/unnC3Bsz5X",
+        "likes": 147,
+        "retweets": 11,
+        "replies": 6,
+        "views": 14948,
+        "url": "https://x.com/stemplayer/status/1618324316277583874",
+        "createdAt": "Wed Jan 25 19:05:58 +0000 2023"
+      },
+      {
+        "id": "1617992907956588547",
+        "text": "DIGITAL MICRO-MIRROR DISPLAY \n\nhttps://t.co/VCyqz9LjpH https://t.co/BFZubFcp2n",
+        "likes": 66,
+        "retweets": 4,
+        "replies": 1,
+        "views": 8860,
+        "url": "https://x.com/stemplayer/status/1617992907956588547",
+        "createdAt": "Tue Jan 24 21:09:04 +0000 2023"
+      },
+      {
+        "id": "1617979743235891202",
+        "text": "BASED ON THE BODY\n\nhttps://t.co/VCyqz9LjpH https://t.co/naltqL9zb7",
+        "likes": 113,
+        "retweets": 6,
+        "replies": 8,
+        "views": 13492,
+        "url": "https://x.com/stemplayer/status/1617979743235891202",
+        "createdAt": "Tue Jan 24 20:16:46 +0000 2023"
+      },
+      {
+        "id": "1617960362154000384",
+        "text": "BRIGHT PROJECTION\n\nhttps://t.co/VCyqz9LjpH https://t.co/xFE66DuzSD",
+        "likes": 84,
+        "retweets": 2,
+        "replies": 1,
+        "views": 8680,
+        "url": "https://x.com/stemplayer/status/1617960362154000384",
+        "createdAt": "Tue Jan 24 18:59:45 +0000 2023"
+      },
+      {
+        "id": "1617612391684145153",
+        "text": "STEM FEATURED IN @FastCompany \n\nhttps://t.co/VCyqz9LjpH https://t.co/TKk1s1N0Xl",
+        "likes": 54,
+        "retweets": 5,
+        "replies": 9,
+        "views": 7437,
+        "url": "https://x.com/stemplayer/status/1617612391684145153",
+        "createdAt": "Mon Jan 23 19:57:02 +0000 2023"
+      },
+      {
+        "id": "1616512434239377416",
+        "text": "https://t.co/vNCfMfRHWv",
+        "likes": 26,
+        "retweets": 2,
+        "replies": 2,
+        "views": 8947,
+        "url": "https://x.com/stemplayer/status/1616512434239377416",
+        "createdAt": "Fri Jan 20 19:06:12 +0000 2023"
+      },
+      {
+        "id": "1616512410113961984",
+        "text": "STEM PROJECTOR FEATURED ON @FASTCOMPANY \n\nhttps://t.co/VCyqz9LjpH https://t.co/7G4PQiOYYc",
+        "likes": 61,
+        "retweets": 3,
+        "replies": 4,
+        "views": 11802,
+        "url": "https://x.com/stemplayer/status/1616512410113961984",
+        "createdAt": "Fri Jan 20 19:06:06 +0000 2023"
+      },
+      {
+        "id": "1615782635615264768",
+        "text": "STEM PROJECTOR\n\nPALM SIZED, SENSORY TOUCH CONTROLS\n\nPRE-ORDER NOW ON https://t.co/VCyqz9KLA9 https://t.co/iauMmGtPZD",
+        "likes": 316,
+        "retweets": 16,
+        "replies": 9,
+        "views": 58717,
+        "url": "https://x.com/stemplayer/status/1615782635615264768",
+        "createdAt": "Wed Jan 18 18:46:14 +0000 2023"
+      },
+      {
+        "id": "1615051002868015105",
+        "text": "https://t.co/jt2qoMfuFR",
+        "likes": 30,
+        "retweets": 2,
+        "replies": 1,
+        "views": 4535,
+        "url": "https://x.com/stemplayer/status/1615051002868015105",
+        "createdAt": "Mon Jan 16 18:18:59 +0000 2023"
+      },
+      {
+        "id": "1615050920185761804",
+        "text": "STEM PROJECTOR FEATURED ON @HYPEBEAST\n\nhttps://t.co/VCyqz9KLA9 https://t.co/O6w8a2dlDf",
+        "likes": 97,
+        "retweets": 5,
+        "replies": 4,
+        "views": 10861,
+        "url": "https://x.com/stemplayer/status/1615050920185761804",
+        "createdAt": "Mon Jan 16 18:18:40 +0000 2023"
+      },
+      {
+        "id": "1613614434488025090",
+        "text": "https://t.co/VCyqz9LjpH https://t.co/ZTWGhKdwm0",
+        "likes": 313,
+        "retweets": 22,
+        "replies": 8,
+        "views": 20233,
+        "url": "https://x.com/stemplayer/status/1613614434488025090",
+        "createdAt": "Thu Jan 12 19:10:35 +0000 2023"
+      },
+      {
+        "id": "1613251128111644674",
+        "text": "STEM PROJECTOR\n\nINCLUDES CURATED MOVIES, UPLOAD YOUR OWN\n\nPLAYS STEM MUSIC, SUPPORTS AIRPLAY &amp; CHROMECAST\n\nPRE-ORDER NOW ON https://t.co/VCyqz9KLA9 https://t.co/bM7WUorrEM",
+        "likes": 1093,
+        "retweets": 80,
+        "replies": 27,
+        "views": 126533,
+        "url": "https://x.com/stemplayer/status/1613251128111644674",
+        "createdAt": "Wed Jan 11 19:06:56 +0000 2023"
+      },
+      {
+        "id": "1612889084543868928",
+        "text": "STEM PROJECTOR\n\nSUMMON A CINEMA, ANYWHERE\n\nPRE-ORDER NOW ON https://t.co/VCyqz9KLA9 https://t.co/pZIYeyT6io",
+        "likes": 590,
+        "retweets": 51,
+        "replies": 24,
+        "views": 59608,
+        "url": "https://x.com/stemplayer/status/1612889084543868928",
+        "createdAt": "Tue Jan 10 19:08:18 +0000 2023"
+      },
+      {
+        "id": "1612464034410033153",
+        "text": "STEM PROJECTOR \nBRIGHT, PORTABLE, IMMERSIVE \nPRE-ORDER NOW ON https://t.co/VCyqz9LjpH https://t.co/Zttek2ZHHh",
+        "likes": 2372,
+        "retweets": 245,
+        "replies": 54,
+        "views": 286924,
+        "url": "https://x.com/stemplayer/status/1612464034410033153",
+        "createdAt": "Mon Jan 09 14:59:18 +0000 2023"
+      },
+      {
+        "id": "1612424990888165380",
+        "text": "STEM GHOSTFACE\n\nNEW GHOSTFACE KILLAH ALBUM EXCLUSIVELY LAUNCHING ON GHOSTFACE STEMPLAYER BLACK &amp; CREAM NOW LIVE ON https://t.co/VCyqz9LjpH\n\nGHOSTFACE KILLAH “6 MINUTES” SONG IS ALSO AVAILABLE TO STREAM FOR FREE EXCLUSIVELY ON https://t.co/VCyqz9LjpH FOR 36 HOURS https://t.co/",
+        "likes": 2349,
+        "retweets": 171,
+        "replies": 90,
+        "views": 1086593,
+        "url": "https://x.com/stemplayer/status/1612424990888165380",
+        "createdAt": "Mon Jan 09 12:24:09 +0000 2023"
+      },
+      {
+        "id": "1611437864184647697",
+        "text": "MONDAY https://t.co/f3mn0VZqx8",
+        "likes": 941,
+        "retweets": 46,
+        "replies": 28,
+        "views": 145795,
+        "url": "https://x.com/stemplayer/status/1611437864184647697",
+        "createdAt": "Fri Jan 06 19:01:40 +0000 2023"
+      },
+      {
+        "id": "1607441735399145473",
+        "text": "STEM PROJECTOR DEMO\nhttps://t.co/VCyqz9LjpH https://t.co/1cZ7G3oV7T",
+        "likes": 290,
+        "retweets": 21,
+        "replies": 11,
+        "views": 37459,
+        "url": "https://x.com/stemplayer/status/1607441735399145473",
+        "createdAt": "Mon Dec 26 18:22:29 +0000 2022"
+      },
+      {
+        "id": "1604176740821393409",
+        "text": "STEM SPEAKER PROTOTYPE BAG https://t.co/ufceelaRB4",
+        "likes": 811,
+        "retweets": 22,
+        "replies": 33,
+        "views": 60786,
+        "url": "https://x.com/stemplayer/status/1604176740821393409",
+        "createdAt": "Sat Dec 17 18:08:33 +0000 2022"
+      },
+      {
+        "id": "1603119269025353729",
+        "text": "Work in progress https://t.co/cazoKWfipw",
+        "likes": 250,
+        "retweets": 16,
+        "replies": 5,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1603119269025353729",
+        "createdAt": "Wed Dec 14 20:06:32 +0000 2022"
+      },
+      {
+        "id": "1600568809873674241",
+        "text": "NEW MASS PRODUCTION https://t.co/RBpdYTKdVj",
+        "likes": 443,
+        "retweets": 22,
+        "replies": 15,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1600568809873674241",
+        "createdAt": "Wed Dec 07 19:11:56 +0000 2022"
+      },
+      {
+        "id": "1600203583609180160",
+        "text": "NEW VIRTUAL STEMPLAYER\n\nhttps://t.co/81me2jelD0 https://t.co/bz9wiRrYCI",
+        "likes": 229,
+        "retweets": 24,
+        "replies": 8,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1600203583609180160",
+        "createdAt": "Tue Dec 06 19:00:39 +0000 2022"
+      },
+      {
+        "id": "1597344373272113152",
+        "text": "Drop your questions below and tune in this Thursday.",
+        "likes": 14,
+        "retweets": 0,
+        "replies": 8,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1597344373272113152",
+        "createdAt": "Mon Nov 28 21:39:10 +0000 2022"
+      },
+      {
+        "id": "1597344368821927937",
+        "text": "Q&amp;A\n\n01.12.22\n\n6PM GMT 10AM PST\n\nhttps://t.co/944kq2meUv https://t.co/nHUQHw6x4H",
+        "likes": 61,
+        "retweets": 5,
+        "replies": 8,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1597344368821927937",
+        "createdAt": "Mon Nov 28 21:39:09 +0000 2022"
+      },
+      {
+        "id": "1597294885887160321",
+        "text": "We come in peace https://t.co/vyBLGHKbEc",
+        "likes": 1179,
+        "retweets": 53,
+        "replies": 23,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1597294885887160321",
+        "createdAt": "Mon Nov 28 18:22:31 +0000 2022"
+      },
+      {
+        "id": "1591249094307381249",
+        "text": "https://t.co/VCyqz9LjpH https://t.co/4BK2nHLWst",
+        "likes": 903,
+        "retweets": 65,
+        "replies": 25,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1591249094307381249",
+        "createdAt": "Sat Nov 12 01:58:42 +0000 2022"
+      },
+      {
+        "id": "1591208068456775680",
+        "text": "https://t.co/PkrYHmJhQq",
+        "likes": 515,
+        "retweets": 63,
+        "replies": 9,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1591208068456775680",
+        "createdAt": "Fri Nov 11 23:15:41 +0000 2022"
+      },
+      {
+        "id": "1591139530555658240",
+        "text": "https://t.co/VCyqz9LjpH https://t.co/8onXc25a5m",
+        "likes": 1411,
+        "retweets": 117,
+        "replies": 43,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1591139530555658240",
+        "createdAt": "Fri Nov 11 18:43:20 +0000 2022"
+      },
+      {
+        "id": "1590712076514770947",
+        "text": "🙏 https://t.co/88n26Dlemu",
+        "likes": 29,
+        "retweets": 2,
+        "replies": 0,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1590712076514770947",
+        "createdAt": "Thu Nov 10 14:24:47 +0000 2022"
+      },
+      {
+        "id": "1588461799766216705",
+        "text": "https://t.co/VCyqz9KLA9 https://t.co/WGADxiSACC",
+        "likes": 874,
+        "retweets": 41,
+        "replies": 32,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1588461799766216705",
+        "createdAt": "Fri Nov 04 09:22:59 +0000 2022"
+      },
+      {
+        "id": "1588315098590097408",
+        "text": "https://t.co/M2lTWJiky7",
+        "likes": 381,
+        "retweets": 12,
+        "replies": 11,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1588315098590097408",
+        "createdAt": "Thu Nov 03 23:40:03 +0000 2022"
+      },
+      {
+        "id": "1588267668322164736",
+        "text": "STEM1 SKETCHES, early 2019 https://t.co/XMv6oDXpDR",
+        "likes": 227,
+        "retweets": 7,
+        "replies": 5,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1588267668322164736",
+        "createdAt": "Thu Nov 03 20:31:35 +0000 2022"
+      },
+      {
+        "id": "1577404750693339140",
+        "text": "CLEAR\n\nAVAILABLE NOW\n\nhttps://t.co/81me2iWKLs https://t.co/C6D4qsmr6s",
+        "likes": 1652,
+        "retweets": 157,
+        "replies": 45,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1577404750693339140",
+        "createdAt": "Tue Oct 04 21:06:13 +0000 2022"
+      },
+      {
+        "id": "1521095665073459200",
+        "text": "@therealmikedean @Lukebobboost @alexnklein https://t.co/UUre2HLjfM",
+        "likes": 103,
+        "retweets": 5,
+        "replies": 4,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1521095665073459200",
+        "createdAt": "Mon May 02 11:54:01 +0000 2022"
+      },
+      {
+        "id": "1520031622288003073",
+        "text": "@Shammi_Raichura 🖤",
+        "likes": 10,
+        "retweets": 1,
+        "replies": 0,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1520031622288003073",
+        "createdAt": "Fri Apr 29 13:25:54 +0000 2022"
+      },
+      {
+        "id": "1517427539702128641",
+        "text": "@aultic @kanyewest @alexnklein 🔥",
+        "likes": 30,
+        "retweets": 0,
+        "replies": 0,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1517427539702128641",
+        "createdAt": "Fri Apr 22 08:58:12 +0000 2022"
+      },
+      {
+        "id": "1516684065952391168",
+        "text": "@Des32390146 Can you please send us your SP number on DM? We will look into this for you.",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1516684065952391168",
+        "createdAt": "Wed Apr 20 07:43:54 +0000 2022"
+      },
+      {
+        "id": "1516327064936271878",
+        "text": "@Des32390146 What is the issue?",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1516327064936271878",
+        "createdAt": "Tue Apr 19 08:05:18 +0000 2022"
+      },
+      {
+        "id": "1511813857559429125",
+        "text": "@rakitecht @alexnklein @kanyewest @KanyePodcast @kanyewestau @TheKanyeSource @TeamKanyeDaily @PhotosOfKanye @kanyeg1rl 🔥",
+        "likes": 51,
+        "retweets": 0,
+        "replies": 1,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1511813857559429125",
+        "createdAt": "Wed Apr 06 21:11:26 +0000 2022"
+      },
+      {
+        "id": "1511363955859546115",
+        "text": "@itswadechile You can connect the Stem Player to your AirPods using the BlueTooth connectivity feature. Hold down your volume up and down button at the same time, while your  AirPods are next to the device in connection mode.",
+        "likes": 5,
+        "retweets": 0,
+        "replies": 1,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1511363955859546115",
+        "createdAt": "Tue Apr 05 15:23:41 +0000 2022"
+      },
+      {
+        "id": "1511319284303249417",
+        "text": "@mrjc90 We will DM you.",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1511319284303249417",
+        "createdAt": "Tue Apr 05 12:26:10 +0000 2022"
+      },
+      {
+        "id": "1511085201002278916",
+        "text": "@19jedi80 please email help@stemplayer.com",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1511085201002278916",
+        "createdAt": "Mon Apr 04 20:56:01 +0000 2022"
+      },
+      {
+        "id": "1510569601171664904",
+        "text": "@LIMixxi You have to email help@stemplayer.com for returns, our team will be able to help you with the next steps.",
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1510569601171664904",
+        "createdAt": "Sun Apr 03 10:47:12 +0000 2022"
+      },
+      {
+        "id": "1508819952505135114",
+        "text": "@HipCityReg @alexnklein 🔥",
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "views": 0,
+        "url": "https://x.com/stemplayer/status/1508819952505135114",
+        "createdAt": "Tue Mar 29 14:54:43 +0000 2022"
+      }
+    ]
+  },
+  "reddit": {
+    "subredditPosts": [],
+    "mentions": [],
+    "error": "Apify 9sHOY9RzPYGjmTHo8 returned 400: {\n  \"error\": {\n    \"type\": \"run-failed\",\n    \"message\": \"Actor run did not succeed (run ID: NPybTQVEtvDj17ywB, status: FAILED).\"\n  }\n}"
   },
   "mailchimp": {
     "cumulativeRaw": 917282,
