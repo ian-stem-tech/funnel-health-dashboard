@@ -59,7 +59,7 @@ export function TikTokHashtagDetail({ videos, hashtags }: Props) {
               <tbody>
                 {filteredVideos.map((video) => (
                   <tr key={video.id}>
-                    <td className="content-table-id" style={{ maxWidth: 240 }}>
+                    <td className="content-table-id content-table-id-wide">
                       {(video.title || `Video ${video.id}`).slice(0, 80)}
                       {(video.title ?? '').length > 80 ? '...' : ''}
                     </td>

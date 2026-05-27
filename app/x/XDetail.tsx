@@ -71,7 +71,7 @@ export function XDetail({ chartData, tweets }: Props) {
               <tbody>
                 {tweets.map((tweet) => (
                   <tr key={tweet.id}>
-                    <td className="content-table-id" style={{ maxWidth: 280 }}>
+                    <td className="content-table-id content-table-id-wide">
                       {tweet.text.slice(0, 100)}{tweet.text.length > 100 ? '...' : ''}
                     </td>
                     <td className="content-table-views">{formatNumber(getViews(tweet, range))}</td>

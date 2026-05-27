@@ -1293,6 +1293,10 @@ a {
   max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.content-table-id-wide {
+  max-width: 260px;
   white-space: nowrap;
 }
 
@@ -1335,8 +1339,77 @@ a {
    ============================================================ */
 
 @media (max-width: 640px) {
-  .content-table-id {
+  .detail-page {
+    gap: 0.75rem;
+  }
+
+  .detail-title-row {
+    gap: 0.5rem;
+  }
+
+  .detail-title-row .logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .detail-title-row h1 {
+    font-size: 1.1rem;
+  }
+
+  .detail-title-row p {
+    font-size: 0.76rem;
+  }
+
+  .back-link {
+    font-size: 0.8rem;
+  }
+
+  /* Time filter + chart controls */
+  .chart-toggle button {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.78rem;
+    min-height: 38px;
+  }
+
+  .chart-label {
+    font-size: 0.78rem;
+  }
+
+  /* Charts: reduce height on small screens */
+  .recharts-responsive-container {
+    max-height: 220px !important;
+  }
+
+  /* Content tables */
+  .content-table {
+    font-size: 0.78rem;
+  }
+
+  .content-table th {
+    font-size: 0.68rem;
+    padding: 0.4rem 0.35rem;
+  }
+
+  .content-table td {
+    padding: 0.4rem 0.35rem;
+  }
+
+  .content-table-id,
+  .content-table-id-wide {
     max-width: 90px;
+    font-size: 0.76rem;
+  }
+
+  .content-table-views {
+    font-size: 0.8rem;
+  }
+
+  .content-table-link {
+    font-size: 0.74rem;
+  }
+
+  .content-table-date {
+    font-size: 0.74rem;
   }
 
   .content-table-thumb {
@@ -1347,6 +1420,45 @@ a {
   .content-table-thumb-placeholder {
     width: 32px;
     height: 44px;
+  }
+
+  .content-table-empty {
+    padding: 1.2rem 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  /* Reel cards */
+  .reel-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .reel-card {
+    border-radius: 12px;
+  }
+
+  .reel-card-stats {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .reel-card-caption {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.45rem;
+  }
+
+  /* YouTube embed */
+  .yt-embed-wrap {
+    border-radius: 10px;
+  }
+
+  /* Stat blocks on tiles */
+  .stat-value {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
   }
 }
 
