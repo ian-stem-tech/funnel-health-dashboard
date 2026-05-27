@@ -20,13 +20,13 @@
     "itemCount": 50
   },
   "youtube": {
-    "lastFetchedAt": "2026-05-27T13:19:30.682Z",
+    "lastFetchedAt": "2026-05-27T15:00:45.222Z",
     "status": "ok",
-    "itemCount": 20
+    "itemCount": 1
   },
   "instagram": {
-    "lastFetchedAt": "2026-05-27T13:21:01.540Z",
-    "status": "error",
-    "itemCount": 0
+    "lastFetchedAt": "2026-05-27T15:02:19.669Z",
+    "status": "ok",
+    "itemCount": 12
   }
 }
