@@ -1986,14 +1986,14 @@
       },
       "tiktok": {
         "followers": 86000,
-        "totalVideoViews": 1455716,
+        "totalVideoViews": 1455728,
         "videos": [
           {
             "id": "7644270343909068054",
             "thumbnail": "data/thumbnails/7644270343909068054.jpg",
-            "views": 848,
+            "views": 852,
             "likes": 69,
-            "comments": 9,
+            "comments": 10,
             "shares": 2,
             "url": "https://www.tiktok.com/@stemplayer/video/7644270343909068054"
           },
@@ -2001,7 +2001,7 @@
             "id": "7642381060474539286",
             "thumbnail": "data/thumbnails/7642381060474539286.jpg",
             "views": 65700,
-            "likes": 3729,
+            "likes": 3730,
             "comments": 82,
             "shares": 132,
             "url": "https://www.tiktok.com/@stemplayer/video/7642381060474539286"
@@ -2009,7 +2009,7 @@
           {
             "id": "7641225083482262787",
             "thumbnail": "data/thumbnails/7641225083482262787.jpg",
-            "views": 700800,
+            "views": 700900,
             "likes": 61100,
             "comments": 385,
             "shares": 7037,
@@ -2018,7 +2018,7 @@
           {
             "id": "7640046786425474326",
             "thumbnail": "data/thumbnails/7640046786425474326.jpg",
-            "views": 9211,
+            "views": 9212,
             "likes": 198,
             "comments": 12,
             "shares": 11,
@@ -2027,7 +2027,7 @@
           {
             "id": "7639821093435346198",
             "thumbnail": "data/thumbnails/7639821093435346198.jpg",
-            "views": 7045,
+            "views": 7046,
             "likes": 123,
             "comments": 20,
             "shares": 4,
@@ -2045,7 +2045,7 @@
           {
             "id": "7634634707241733378",
             "thumbnail": "data/thumbnails/7634634707241733378.jpg",
-            "views": 3656,
+            "views": 3657,
             "likes": 122,
             "comments": 4,
             "shares": 0,
@@ -2063,7 +2063,7 @@
           {
             "id": "7633574194160241943",
             "thumbnail": "data/thumbnails/7633574194160241943.jpg",
-            "views": 3100,
+            "views": 3101,
             "likes": 136,
             "comments": 6,
             "shares": 14,
@@ -2072,7 +2072,7 @@
           {
             "id": "7633548662655733014",
             "thumbnail": "data/thumbnails/7633548662655733014.jpg",
-            "views": 2115,
+            "views": 2116,
             "likes": 72,
             "comments": 2,
             "shares": 2,
@@ -2081,7 +2081,7 @@
           {
             "id": "7633517019228425494",
             "thumbnail": "data/thumbnails/7633517019228425494.jpg",
-            "views": 1949,
+            "views": 1950,
             "likes": 84,
             "comments": 1,
             "shares": 2,
@@ -2090,7 +2090,7 @@
           {
             "id": "7633503465070742806",
             "thumbnail": "data/thumbnails/7633503465070742806.jpg",
-            "views": 1794,
+            "views": 1795,
             "likes": 81,
             "comments": 1,
             "shares": 0,
@@ -2099,7 +2099,7 @@
           {
             "id": "7633426386442652950",
             "thumbnail": "data/thumbnails/7633426386442652950.jpg",
-            "views": 1362,
+            "views": 1363,
             "likes": 66,
             "comments": 7,
             "shares": 1,
@@ -2182,7 +2182,7 @@
             "thumbnail": "data/thumbnails/7568844789907492118.jpg",
             "views": 10200,
             "likes": 142,
-            "comments": 5,
+            "comments": 4,
             "shares": 8,
             "url": "https://www.tiktok.com/@stemplayer/video/7568844789907492118"
           },
@@ -2207,9 +2207,9 @@
           {
             "id": "7562332084782566678",
             "thumbnail": "data/thumbnails/7562332084782566678.jpg",
-            "views": 304300,
+            "views": 304200,
             "likes": 35000,
-            "comments": 256,
+            "comments": 255,
             "shares": 1918,
             "url": "https://www.tiktok.com/@stemplayer/video/7562332084782566678"
           },
@@ -2265,12 +2265,12 @@
           "stemplayer",
           "stem2"
         ],
-        "totalVideoViews": 39224211,
+        "totalVideoViews": 11355265,
         "videoCount": 50
       },
       "youtube": {
         "subscribers": 30100,
-        "totalVideoViews": 444045,
+        "totalVideoViews": 2820056,
         "videos": [
           {
             "id": "-E6O3Nmi00Q",
@@ -2282,58 +2282,13 @@
             "url": "https://www.youtube.com/watch?v=-E6O3Nmi00Q"
           },
           {
-            "id": "IyuWheIDauw",
-            "title": "summer 30s main advert",
-            "thumbnail": "data/thumbnails/IyuWheIDauw.jpg",
-            "views": 172138,
-            "likes": 0,
+            "id": "PZq9AQX6dnY",
+            "title": "Kano Pixel, Camera & Speaker Kit | Kano Computer",
+            "thumbnail": "data/thumbnails/PZq9AQX6dnY.jpg",
+            "views": 8612,
+            "likes": 98,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=IyuWheIDauw"
-          },
-          {
-            "id": "ZZ6MLkJNk7Y",
-            "title": "Kano PC - Japan - Julia",
-            "thumbnail": "data/thumbnails/ZZ6MLkJNk7Y.jpg",
-            "views": 404,
-            "likes": 0,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=ZZ6MLkJNk7Y"
-          },
-          {
-            "id": "T83aU8peuvc",
-            "title": "now this clone with motion",
-            "thumbnail": "data/thumbnails/T83aU8peuvc.jpg",
-            "views": 784,
-            "likes": 0,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=T83aU8peuvc"
-          },
-          {
-            "id": "ORWN2qy2XJA",
-            "title": "Pixel Kit Prospect A advert",
-            "thumbnail": "data/thumbnails/ORWN2qy2XJA.jpg",
-            "views": 47650,
-            "likes": 3,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=ORWN2qy2XJA"
-          },
-          {
-            "id": "0OAVvrDbExk",
-            "title": "Kano Software Studio Teaser",
-            "thumbnail": "data/thumbnails/0OAVvrDbExk.jpg",
-            "views": 311,
-            "likes": 5,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=0OAVvrDbExk"
-          },
-          {
-            "id": "6XVw8JXEUoc",
-            "title": "Summer 30, Main advert (old)",
-            "thumbnail": "data/thumbnails/6XVw8JXEUoc.jpg",
-            "views": 7498,
-            "likes": 0,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=6XVw8JXEUoc"
+            "url": "https://www.youtube.com/watch?v=PZq9AQX6dnY"
           },
           {
             "id": "pUzX42i_SH4",
@@ -2345,31 +2300,22 @@
             "url": "https://www.youtube.com/watch?v=pUzX42i_SH4"
           },
           {
-            "id": "3e0d917djlY",
-            "title": "KANO CODINGKIT 15s FINAL H264 20180720",
-            "thumbnail": "data/thumbnails/3e0d917djlY.jpg",
-            "views": 82546,
-            "likes": 1,
+            "id": "ELPdKdWy050",
+            "title": "Learning to Code in Arbat Refugee Camp | Kano Computing",
+            "thumbnail": "data/thumbnails/ELPdKdWy050.jpg",
+            "views": 676,
+            "likes": 19,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=3e0d917djlY"
+            "url": "https://www.youtube.com/watch?v=ELPdKdWy050"
           },
           {
-            "id": "gpQ3OFN0QxU",
-            "title": "Kano PC – The Best First Computer (Web Size)",
-            "thumbnail": "data/thumbnails/gpQ3OFN0QxU.jpg",
-            "views": 421,
-            "likes": 5,
+            "id": "ORWN2qy2XJA",
+            "title": "Pixel Kit Prospect A advert",
+            "thumbnail": "data/thumbnails/ORWN2qy2XJA.jpg",
+            "views": 47650,
+            "likes": 3,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=gpQ3OFN0QxU"
-          },
-          {
-            "id": "LYY8VKd0S1U",
-            "title": "Kano PC Presentation Video",
-            "thumbnail": "data/thumbnails/LYY8VKd0S1U.jpg",
-            "views": 1012,
-            "likes": 10,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=LYY8VKd0S1U"
+            "url": "https://www.youtube.com/watch?v=ORWN2qy2XJA"
           },
           {
             "id": "wSef57rkuN8",
@@ -2381,40 +2327,49 @@
             "url": "https://www.youtube.com/watch?v=wSef57rkuN8"
           },
           {
-            "id": "zMxhPsl4EJc",
-            "title": "JayGuyMan Walkthrough: Using Code To Make Art |  | Kano Computing",
-            "thumbnail": "data/thumbnails/zMxhPsl4EJc.jpg",
-            "views": 2038,
-            "likes": 25,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=zMxhPsl4EJc"
+            "id": "eutazjnBfYM",
+            "title": "Code A Touchscreen Computing | Kano Computing",
+            "thumbnail": "data/thumbnails/eutazjnBfYM.jpg",
+            "views": 2623574,
+            "likes": 53,
+            "comments": 5,
+            "url": "https://www.youtube.com/watch?v=eutazjnBfYM"
           },
           {
-            "id": "_7d-2ev1ESw",
-            "title": "Who are Kano? | Kano Computing",
-            "thumbnail": "data/thumbnails/_7d-2ev1ESw.jpg",
-            "views": 543,
-            "likes": 14,
-            "comments": 3,
-            "url": "https://www.youtube.com/watch?v=_7d-2ev1ESw"
+            "id": "LbdLdaeit18",
+            "title": "【Kano PC】コンピュータのしくみがわかる 教育用 Windows PC",
+            "thumbnail": "data/thumbnails/LbdLdaeit18.jpg",
+            "views": 9157,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=LbdLdaeit18"
           },
           {
-            "id": "g6lwwaJqifs",
-            "title": "It's a computer – and you make it yourself.",
-            "thumbnail": "data/thumbnails/g6lwwaJqifs.jpg",
-            "views": 3645,
-            "likes": 36,
+            "id": "LYY8VKd0S1U",
+            "title": "Kano PC Presentation Video",
+            "thumbnail": "data/thumbnails/LYY8VKd0S1U.jpg",
+            "views": 1012,
+            "likes": 10,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=g6lwwaJqifs"
+            "url": "https://www.youtube.com/watch?v=LYY8VKd0S1U"
           },
           {
-            "id": "myV0J84YJuU",
-            "title": "2518c Kano   Edit64   FINAL   1080p",
-            "thumbnail": "data/thumbnails/myV0J84YJuU.jpg",
-            "views": 538,
-            "likes": 4,
+            "id": "T83aU8peuvc",
+            "title": "now this clone with motion",
+            "thumbnail": "data/thumbnails/T83aU8peuvc.jpg",
+            "views": 784,
+            "likes": 0,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=myV0J84YJuU"
+            "url": "https://www.youtube.com/watch?v=T83aU8peuvc"
+          },
+          {
+            "id": "ZZ6MLkJNk7Y",
+            "title": "Kano PC - Japan - Julia",
+            "thumbnail": "data/thumbnails/ZZ6MLkJNk7Y.jpg",
+            "views": 404,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=ZZ6MLkJNk7Y"
           },
           {
             "id": "VduEYsJYm8s",
@@ -2426,13 +2381,49 @@
             "url": "https://www.youtube.com/watch?v=VduEYsJYm8s"
           },
           {
-            "id": "1ek-DS-FfHw",
-            "title": "minecraft-video-website",
-            "thumbnail": "data/thumbnails/1ek-DS-FfHw.jpg",
-            "views": 5954,
-            "likes": 10,
+            "id": "LXeBvkKKXd4",
+            "title": "CKT 1m",
+            "thumbnail": "data/thumbnails/LXeBvkKKXd4.jpg",
+            "views": 1099,
+            "likes": 15,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=1ek-DS-FfHw"
+            "url": "https://www.youtube.com/watch?v=LXeBvkKKXd4"
+          },
+          {
+            "id": "BjaRZHzgBls",
+            "title": "How Did We Change The Lives of Some Student Writers | Kano",
+            "thumbnail": "data/thumbnails/BjaRZHzgBls.jpg",
+            "views": 301,
+            "likes": 13,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=BjaRZHzgBls"
+          },
+          {
+            "id": "g6lwwaJqifs",
+            "title": "It's a computer – and you make it yourself.",
+            "thumbnail": "data/thumbnails/g6lwwaJqifs.jpg",
+            "views": 3645,
+            "likes": 36,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=g6lwwaJqifs"
+          },
+          {
+            "id": "TFNlApyqdUw",
+            "title": "Educator Roundtable",
+            "thumbnail": "data/thumbnails/TFNlApyqdUw.jpg",
+            "views": 189,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=TFNlApyqdUw"
+          },
+          {
+            "id": "j6kdECHmgHg",
+            "title": "15 seconds v2 2",
+            "thumbnail": "data/thumbnails/j6kdECHmgHg.jpg",
+            "views": 6557,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=j6kdECHmgHg"
           },
           {
             "id": "U27oNtbpPsA",
@@ -2444,19 +2435,28 @@
             "url": "https://www.youtube.com/watch?v=U27oNtbpPsA"
           },
           {
-            "id": "j6kdECHmgHg",
-            "title": "15 seconds v2 2",
-            "thumbnail": "data/thumbnails/j6kdECHmgHg.jpg",
-            "views": 6557,
-            "likes": 0,
+            "id": "a-L3eolRlJ8",
+            "title": "LEARN HOW TO CODE IN MINUTES! | Kano Computing",
+            "thumbnail": "data/thumbnails/a-L3eolRlJ8.jpg",
+            "views": 3575,
+            "likes": 56,
+            "comments": 20,
+            "url": "https://www.youtube.com/watch?v=a-L3eolRlJ8"
+          },
+          {
+            "id": "OuE-2KDrfsQ",
+            "title": "A Webcam You Can Build | Kano Computing",
+            "thumbnail": "data/thumbnails/OuE-2KDrfsQ.jpg",
+            "views": 815,
+            "likes": 19,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=j6kdECHmgHg"
+            "url": "https://www.youtube.com/watch?v=OuE-2KDrfsQ"
           }
         ]
       },
       "x": {
         "followers": 21638,
-        "totalTweetViews": 2580485,
+        "totalTweetViews": 2580479,
         "tweets": [
           {
             "id": "2057448148168040552",
@@ -2473,7 +2473,7 @@
             "likes": 38,
             "retweets": 2,
             "replies": 1,
-            "views": 2524,
+            "views": 2523,
             "url": "https://x.com/stemplayer/status/2053868916322017440"
           },
           {
@@ -2653,7 +2653,7 @@
             "likes": 32,
             "retweets": 4,
             "replies": 2,
-            "views": 3485,
+            "views": 3484,
             "url": "https://x.com/stemplayer/status/1937811631779533021"
           },
           {
@@ -2662,7 +2662,7 @@
             "likes": 83,
             "retweets": 7,
             "replies": 5,
-            "views": 4895,
+            "views": 4894,
             "url": "https://x.com/stemplayer/status/1931039080604745879"
           },
           {
@@ -2671,7 +2671,7 @@
             "likes": 45,
             "retweets": 2,
             "replies": 0,
-            "views": 4565,
+            "views": 4564,
             "url": "https://x.com/stemplayer/status/1924845007002915231"
           },
           {
@@ -2680,15 +2680,15 @@
             "likes": 43,
             "retweets": 2,
             "replies": 1,
-            "views": 3673,
+            "views": 3672,
             "url": "https://x.com/stemplayer/status/1923405757422182678"
           },
           {
             "id": "1921942327855026631",
             "text": "@WordsByKyle no, Stem is independent",
-            "likes": 22,
+            "likes": 0,
             "retweets": 0,
-            "replies": 1,
+            "replies": 0,
             "views": 887,
             "url": "https://x.com/stemplayer/status/1921942327855026631"
           },
@@ -2704,8 +2704,8 @@
           {
             "id": "1917612926455656457",
             "text": "@davidtphung @bigvibessss @cxy we are in the lab https://t.co/yCfgHPfGeb",
-            "likes": 16,
-            "retweets": 2,
+            "likes": 0,
+            "retweets": 0,
             "replies": 0,
             "views": 358,
             "url": "https://x.com/stemplayer/status/1917612926455656457"
@@ -2716,7 +2716,7 @@
             "likes": 9,
             "retweets": 0,
             "replies": 0,
-            "views": 2269,
+            "views": 2268,
             "url": "https://x.com/stemplayer/status/1909229053048975373"
           },
           {
@@ -2740,7 +2740,7 @@
           {
             "id": "1906993692780495279",
             "text": "@IzzysCastle @gabe_piedra We had to push back to protect it. We expect 2026. Refunds available for anyone who doesn’t want to wait.",
-            "likes": 1,
+            "likes": 0,
             "retweets": 0,
             "replies": 0,
             "views": 93,
@@ -3199,7 +3199,7 @@
           {
             "id": "1591208068456775680",
             "text": "https://t.co/PkrYHmJhQq",
-            "likes": 515,
+            "likes": 516,
             "retweets": 63,
             "replies": 9,
             "views": 0,
@@ -3226,7 +3226,7 @@
           {
             "id": "1588461799766216705",
             "text": "https://t.co/VCyqz9KLA9 https://t.co/WGADxiSACC",
-            "likes": 874,
+            "likes": 875,
             "retweets": 41,
             "replies": 32,
             "views": 0,
@@ -3253,7 +3253,7 @@
           {
             "id": "1577404750693339140",
             "text": "CLEAR\n\nAVAILABLE NOW\n\nhttps://t.co/81me2iWKLs https://t.co/C6D4qsmr6s",
-            "likes": 1652,
+            "likes": 1653,
             "retweets": 157,
             "replies": 45,
             "views": 0,
@@ -3271,8 +3271,8 @@
           {
             "id": "1520031622288003073",
             "text": "@Shammi_Raichura 🖤",
-            "likes": 10,
-            "retweets": 1,
+            "likes": 0,
+            "retweets": 0,
             "replies": 0,
             "views": 0,
             "url": "https://x.com/stemplayer/status/1520031622288003073"
@@ -3291,7 +3291,7 @@
             "text": "@Des32390146 Can you please send us your SP number on DM? We will look into this for you.",
             "likes": 0,
             "retweets": 0,
-            "replies": 1,
+            "replies": 0,
             "views": 0,
             "url": "https://x.com/stemplayer/status/1516684065952391168"
           },
@@ -3300,7 +3300,7 @@
             "text": "@Des32390146 What is the issue?",
             "likes": 0,
             "retweets": 0,
-            "replies": 1,
+            "replies": 0,
             "views": 0,
             "url": "https://x.com/stemplayer/status/1516327064936271878"
           },
@@ -3316,25 +3316,25 @@
           {
             "id": "1511363955859546115",
             "text": "@itswadechile You can connect the Stem Player to your AirPods using the BlueTooth connectivity feature. Hold down your volume up and down button at the same time, while your  AirPods are next to the device in connection mode.",
-            "likes": 5,
+            "likes": 0,
             "retweets": 0,
-            "replies": 1,
+            "replies": 0,
             "views": 0,
             "url": "https://x.com/stemplayer/status/1511363955859546115"
           },
           {
             "id": "1511319284303249417",
             "text": "@mrjc90 We will DM you.",
-            "likes": 1,
+            "likes": 0,
             "retweets": 0,
-            "replies": 1,
+            "replies": 0,
             "views": 0,
             "url": "https://x.com/stemplayer/status/1511319284303249417"
           },
           {
             "id": "1511085201002278916",
             "text": "@19jedi80 please email help@stemplayer.com",
-            "likes": 1,
+            "likes": 0,
             "retweets": 0,
             "replies": 0,
             "views": 0,
@@ -3345,16 +3345,16 @@
             "text": "@LIMixxi You have to email help@stemplayer.com for returns, our team will be able to help you with the next steps.",
             "likes": 0,
             "retweets": 0,
-            "replies": 1,
+            "replies": 0,
             "views": 0,
             "url": "https://x.com/stemplayer/status/1510569601171664904"
           },
           {
             "id": "1508819952505135114",
             "text": "@HipCityReg @alexnklein 🔥",
-            "likes": 1,
+            "likes": 0,
             "retweets": 0,
-            "replies": 1,
+            "replies": 0,
             "views": 0,
             "url": "https://x.com/stemplayer/status/1508819952505135114"
           }
