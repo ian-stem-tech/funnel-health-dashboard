@@ -29,6 +29,13 @@
   box-sizing: border-box;
 }
 
+.bento-card,
+button {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 1rem;
+}
+
 html,
 body {
   margin: 0;
@@ -561,9 +568,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gray-500);
+  background: linear-gradient(135deg, #2c2c2e 0%, #1a1a1c 100%);
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-stack);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: normal;
   background: linear-gradient(155deg, rgb(255 255 255 / 0.4), rgb(255 255 255 / 0.18));
 }
 

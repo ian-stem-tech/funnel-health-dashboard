@@ -30,7 +30,19 @@ export function IGEmbedGrid({ reels }: Props) {
             <div className="reel-card-media">
               {src ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={src} alt={reel.title || `Reel ${reel.shortcode}`} loading="lazy" />
+                <img
+                  src={src}
+                  alt={reel.title || `Reel ${reel.shortcode}`}
+                  loading="lazy"
+                  onError={(e) => {
+                    const el = e.currentTarget;
+                    el.style.display = 'none';
+                    const ph = document.createElement('div');
+                    ph.className = 'reel-card-placeholder';
+                    ph.textContent = '▶ Instagram Reel';
+                    el.parentElement?.insertBefore(ph, el);
+                  }}
+                />
               ) : (
                 <div className="reel-card-placeholder">No preview</div>
               )}
