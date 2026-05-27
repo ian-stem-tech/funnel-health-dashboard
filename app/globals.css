@@ -46,8 +46,7 @@ body {
 body {
   min-width: 320px;
   background:
-    radial-gradient(ellipse 78% 140% at left center, rgb(0 0 0 / 0) 34%, rgb(0 0 0 / 0.92) 100%),
-    radial-gradient(ellipse 78% 140% at right center, rgb(0 0 0 / 0) 34%, rgb(0 0 0 / 0.92) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgb(0 0 0 / 0) 30%, rgb(0 0 0 / 0.92) 100%),
     #ffffe1;
 }
 
@@ -177,6 +176,27 @@ a {
   .bento .area-reddit,
   .bento .area-tiktok-hashtag {
     grid-column: span 12;
+  }
+
+  .shell {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .dash-header {
+    padding: 0.4rem 0.2rem;
+  }
+
+  .dash-header h1 {
+    font-size: 1.1rem;
+  }
+
+  .dash-header p {
+    font-size: 0.78rem;
+  }
+
+  .bento-card {
+    border-radius: 14px;
+    padding: 0.85rem;
   }
 }
 
