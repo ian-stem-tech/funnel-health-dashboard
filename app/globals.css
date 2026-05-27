@@ -349,6 +349,14 @@ a {
   font-size: 0.88rem;
 }
 
+.hero-30d-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 /* ---- Metrics grid (views, likes, comments, shares, engagement) ---- */
 
 .hero-metrics-grid {
