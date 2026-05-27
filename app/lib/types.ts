@@ -102,7 +102,7 @@ export type Snapshot = {
     error?: string;
   };
   tiktokHashtag: {
-    hashtag: string;
+    hashtags: string[];
     videos: TikTokHashtagVideo[];
     error?: string;
   };
@@ -145,7 +145,7 @@ export type HistoryEntry = {
     videos: TikTokVideo[];
   };
   tiktokHashtag?: {
-    hashtag: string;
+    hashtags: string[];
     totalVideoViews: number;
     videoCount: number;
   };

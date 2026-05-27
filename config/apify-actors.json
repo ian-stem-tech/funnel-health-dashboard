@@ -52,10 +52,10 @@
     "actorName": "TikTok Hashtag Scraper",
     "platform": "tiktok",
     "purpose": "campaign_hashtag_tracking",
-    "hashtag": "stemplayer",
+    "hashtags": ["stemplayer", "stem2"],
     "metrics": ["views", "likes", "comments", "shares"],
     "input": {
-      "hashtags": ["stemplayer"],
+      "hashtags": ["stemplayer", "stem2"],
       "shouldDownloadCovers": false,
       "shouldDownloadSlideshowImages": false,
       "shouldDownloadVideos": false

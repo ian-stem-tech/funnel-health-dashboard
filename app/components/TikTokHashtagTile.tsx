@@ -10,7 +10,7 @@ export function TikTokHashtagTile({ data }: { data: Snapshot['tiktokHashtag'] })
     <Link href="/tiktok-hashtag" className="tile-link">
       <BentoCard
         title="TikTok Hashtag"
-        subtitle={`#${data.hashtag}`}
+        subtitle={(data.hashtags ?? []).map((h) => `#${h}`).join(', ')}
         iconLetter="TT"
         headerExtra={
           <span className="card-subtitle tile-arrow">View details →</span>

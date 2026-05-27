@@ -23,13 +23,13 @@ export default async function TikTokHashtagPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="logo" src={`${basePath}/branding/stem-logo-2.svg`} alt="Stem" />
             <div>
-              <h1>TikTok #{data?.hashtag ?? 'stemplayer'}</h1>
-              <p>{formatNumber(videos.length)} videos · {formatNumber(totalViews)} total views</p>
+              <h1>TikTok Hashtags</h1>
+              <p>{(data?.hashtags ?? ['stemplayer']).map((h) => `#${h}`).join(', ')} · {formatNumber(videos.length)} videos · {formatNumber(totalViews)} total views</p>
             </div>
           </div>
         </header>
 
-        <TikTokHashtagDetail videos={videos} hashtag={data?.hashtag ?? 'stemplayer'} />
+        <TikTokHashtagDetail videos={videos} hashtags={data?.hashtags ?? ['stemplayer']} />
       </div>
     </main>
   );

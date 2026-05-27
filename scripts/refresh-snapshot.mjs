@@ -294,20 +294,21 @@ async function fetchTikTok(previous, cacheMeta) {
  * ============================================================ */
 async function fetchTikTokHashtag(previous, cacheMeta) {
   const cfg = loadActorConfig('tiktokHashtag');
-  const hashtag = cfg.hashtag;
+  const hashtags = cfg.hashtags ?? [cfg.hashtag ?? 'stemplayer'];
+  const hashtagLabel = hashtags.map((h) => `#${h}`).join(', ');
 
   if (!APIFY_API_TOKEN) {
     console.warn('[tiktok-hashtag] APIFY_API_TOKEN not set, using previous data');
-    return previous?.tiktokHashtag ?? { hashtag, videos: [] };
+    return previous?.tiktokHashtag ?? { hashtags, videos: [] };
   }
 
   if (isCacheValid(cacheMeta, 'tiktokHashtag')) {
     console.log('[tiktok-hashtag] Cache still valid, skipping fetch');
-    return previous?.tiktokHashtag ?? { hashtag, videos: [] };
+    return previous?.tiktokHashtag ?? { hashtags, videos: [] };
   }
 
   try {
-    console.log(`[tiktok-hashtag] Fetching #${hashtag} via Apify actor ${cfg.actorId}...`);
+    console.log(`[tiktok-hashtag] Fetching ${hashtagLabel} via Apify actor ${cfg.actorId}...`);
     const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 120 });
 
     const videos = [];
@@ -330,14 +331,14 @@ async function fetchTikTokHashtag(previous, cacheMeta) {
       }
     }
 
-    console.log(`[tiktok-hashtag] #${hashtag}: ${videos.length} videos`);
+    console.log(`[tiktok-hashtag] ${hashtagLabel}: ${videos.length} videos`);
     markCacheEntry(cacheMeta, 'tiktokHashtag', 'ok', videos.length);
-    return { hashtag, videos: videos.slice(0, 30) };
+    return { hashtags, videos: videos.slice(0, 50) };
   } catch (err) {
     console.warn('[tiktok-hashtag] Apify failed:', err.message);
     markCacheEntry(cacheMeta, 'tiktokHashtag', 'error');
     return {
-      hashtag,
+      hashtags,
       videos: previous?.tiktokHashtag?.videos ?? [],
       error: err.message,
     };
@@ -752,7 +753,7 @@ async function appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddi
       })),
     },
     tiktokHashtag: {
-      hashtag: tiktokHashtag.hashtag,
+      hashtags: tiktokHashtag.hashtags,
       totalVideoViews: totalHashtagViews,
       videoCount: (tiktokHashtag.videos ?? []).length,
     },
@@ -844,7 +845,7 @@ async function main() {
   const results = [
     { channel: 'Instagram', ok: !instagram.error, detail: `${instagram.followers} followers, ${(instagram.reels ?? []).length} reels` },
     { channel: 'TikTok', ok: !tiktok.error, detail: `${tiktok.followers} followers, ${(tiktok.videos ?? []).length} videos` },
-    { channel: 'TikTok #' + tiktokHashtag.hashtag, ok: !tiktokHashtag.error, detail: `${(tiktokHashtag.videos ?? []).length} videos` },
+    { channel: 'TikTok Hashtags', ok: !tiktokHashtag.error, detail: `${(tiktokHashtag.hashtags ?? []).map((h) => '#' + h).join(', ')}: ${(tiktokHashtag.videos ?? []).length} videos` },
     { channel: 'YouTube', ok: !youtube.error, detail: `${youtube.subscribers} subscribers, ${(youtube.videos ?? []).length} videos` },
     { channel: 'X/Twitter', ok: !x.error, detail: `${x.followers} followers, ${(x.tweets ?? []).length} tweets` },
     { channel: 'Reddit', ok: !reddit.error, detail: `${(reddit.subredditPosts ?? []).length} subreddit, ${(reddit.mentions ?? []).length} mentions` },

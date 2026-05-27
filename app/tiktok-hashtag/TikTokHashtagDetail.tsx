@@ -21,19 +21,20 @@ type VideoItem = {
 
 type Props = {
   videos: VideoItem[];
-  hashtag: string;
+  hashtags: string[];
 };
 
-export function TikTokHashtagDetail({ videos, hashtag }: Props) {
+export function TikTokHashtagDetail({ videos, hashtags }: Props) {
   const [range, setRange] = useState<TimeRange>('all');
   const filteredVideos = filterByDateRange(videos, range, 'createdAt');
+  const hashtagLabel = hashtags.map((h) => `#${h}`).join(', ');
 
   return (
     <>
       <TimeRangeFilter value={range} onChange={setRange} />
 
       <BentoCard
-        title={`#${hashtag} Videos`}
+        title={`${hashtagLabel} Videos`}
         subtitle={range === 'all' ? `${videos.length} tracked` : `${filteredVideos.length} of ${videos.length} videos`}
         iconLetter="TT"
       >
