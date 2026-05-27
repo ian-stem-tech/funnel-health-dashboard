@@ -97,8 +97,8 @@
     "profileUrl": "https://www.youtube.com/@thestemplayer",
     "metrics": ["subscribers", "views", "likes", "comments"],
     "input": {
-      "searchQueries": ["https://www.youtube.com/@thestemplayer"],
-      "maxResults": 20,
+      "startUrls": [{ "url": "https://www.youtube.com/@thestemplayer" }],
+      "maxResults": 50,
       "maxResultsShorts": 0,
       "maxResultStreams": 0,
       "downloadSubtitles": false,
