@@ -29,12 +29,15 @@ const ROOT = process.cwd();
 const SNAPSHOT_PATH = path.join(ROOT, 'public', 'data', 'snapshot.json');
 const HISTORY_PATH = path.join(ROOT, 'public', 'data', 'history.json');
 const DISCOVERY_PATH = path.join(ROOT, 'public', 'data', 'mailchimp-discovery.json');
+const CACHE_META_PATH = path.join(ROOT, 'public', 'data', 'cache-meta.json');
 
 const APIFY_API_TOKEN = process.env.APIFY_API_TOKEN;
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX || 'us4';
 
 const HISTORY_MAX_DAYS = 90;
+const CACHE_COOLDOWN_HOURS = parseInt(process.env.CACHE_COOLDOWN_HOURS ?? '4', 10);
+const FORCE_REFRESH = process.env.FORCE_REFRESH === 'true';
 
 /* ============================================================
  * Helpers
@@ -98,6 +101,39 @@ async function readHistory() {
 }
 
 /* ============================================================
+ * Cache layer — skip actors fetched within the cooldown window
+ * ============================================================ */
+async function readCacheMeta() {
+  try {
+    const raw = await fs.readFile(CACHE_META_PATH, 'utf-8');
+    return JSON.parse(raw);
+  } catch {
+    return {};
+  }
+}
+
+async function writeCacheMeta(meta) {
+  await fs.writeFile(CACHE_META_PATH, JSON.stringify(meta, null, 2) + '\n');
+}
+
+function isCacheValid(meta, key) {
+  if (FORCE_REFRESH) return false;
+  const entry = meta[key];
+  if (!entry?.lastFetchedAt) return false;
+  const ageMs = Date.now() - new Date(entry.lastFetchedAt).getTime();
+  const cooldownMs = CACHE_COOLDOWN_HOURS * 60 * 60 * 1000;
+  return ageMs < cooldownMs && entry.status === 'ok';
+}
+
+function markCacheEntry(meta, key, status, itemCount = 0) {
+  meta[key] = {
+    lastFetchedAt: new Date().toISOString(),
+    status,
+    itemCount,
+  };
+}
+
+/* ============================================================
  * Apify helper — run an actor synchronously and return results
  * ============================================================ */
 async function runApifyActor(actorId, input, { timeoutSecs = 120 } = {}) {
@@ -136,12 +172,17 @@ function loadActorConfig(key) {
 /* ============================================================
  * Instagram via Apify (config: instagramReels)
  * ============================================================ */
-async function fetchInstagram(previous) {
+async function fetchInstagram(previous, cacheMeta) {
   const cfg = loadActorConfig('instagramReels');
   const handle = cfg.account;
 
   if (!APIFY_API_TOKEN) {
     console.warn('[instagram] APIFY_API_TOKEN not set, using previous data');
+    return previous?.instagram ?? { handle, followers: 0, reels: [] };
+  }
+
+  if (isCacheValid(cacheMeta, 'instagram')) {
+    console.log('[instagram] Cache still valid, skipping fetch');
     return previous?.instagram ?? { handle, followers: 0, reels: [] };
   }
 
@@ -174,9 +215,11 @@ async function fetchInstagram(previous) {
     }
 
     console.log(`[instagram] ${followers} followers, ${reels.length} reels`);
+    markCacheEntry(cacheMeta, 'instagram', 'ok', reels.length);
     return { handle, followers, reels: reels.slice(0, 30) };
   } catch (err) {
     console.warn('[instagram] Apify failed:', err.message);
+    markCacheEntry(cacheMeta, 'instagram', 'error');
     return {
       handle,
       followers: previous?.instagram?.followers ?? 0,
@@ -189,12 +232,17 @@ async function fetchInstagram(previous) {
 /* ============================================================
  * TikTok via Apify (config: tiktokProfile)
  * ============================================================ */
-async function fetchTikTok(previous) {
+async function fetchTikTok(previous, cacheMeta) {
   const cfg = loadActorConfig('tiktokProfile');
   const handle = cfg.account;
 
   if (!APIFY_API_TOKEN) {
     console.warn('[tiktok] APIFY_API_TOKEN not set, using previous data');
+    return previous?.tiktok ?? { handle, followers: 0, videos: [] };
+  }
+
+  if (isCacheValid(cacheMeta, 'tiktok')) {
+    console.log('[tiktok] Cache still valid, skipping fetch');
     return previous?.tiktok ?? { handle, followers: 0, videos: [] };
   }
 
@@ -225,9 +273,11 @@ async function fetchTikTok(previous) {
     }
 
     console.log(`[tiktok] ${followers} followers, ${videos.length} videos`);
+    markCacheEntry(cacheMeta, 'tiktok', 'ok', videos.length);
     return { handle, followers, videos: videos.slice(0, 30) };
   } catch (err) {
     console.warn('[tiktok] Apify failed:', err.message);
+    markCacheEntry(cacheMeta, 'tiktok', 'error');
     return {
       handle,
       followers: previous?.tiktok?.followers ?? 0,
@@ -240,12 +290,17 @@ async function fetchTikTok(previous) {
 /* ============================================================
  * TikTok Hashtag via Apify (config: tiktokHashtag)
  * ============================================================ */
-async function fetchTikTokHashtag(previous) {
+async function fetchTikTokHashtag(previous, cacheMeta) {
   const cfg = loadActorConfig('tiktokHashtag');
   const hashtag = cfg.hashtag;
 
   if (!APIFY_API_TOKEN) {
     console.warn('[tiktok-hashtag] APIFY_API_TOKEN not set, using previous data');
+    return previous?.tiktokHashtag ?? { hashtag, videos: [] };
+  }
+
+  if (isCacheValid(cacheMeta, 'tiktokHashtag')) {
+    console.log('[tiktok-hashtag] Cache still valid, skipping fetch');
     return previous?.tiktokHashtag ?? { hashtag, videos: [] };
   }
 
@@ -274,9 +329,11 @@ async function fetchTikTokHashtag(previous) {
     }
 
     console.log(`[tiktok-hashtag] #${hashtag}: ${videos.length} videos`);
+    markCacheEntry(cacheMeta, 'tiktokHashtag', 'ok', videos.length);
     return { hashtag, videos: videos.slice(0, 30) };
   } catch (err) {
     console.warn('[tiktok-hashtag] Apify failed:', err.message);
+    markCacheEntry(cacheMeta, 'tiktokHashtag', 'error');
     return {
       hashtag,
       videos: previous?.tiktokHashtag?.videos ?? [],
@@ -288,12 +345,17 @@ async function fetchTikTokHashtag(previous) {
 /* ============================================================
  * X/Twitter via Apify (config: x)
  * ============================================================ */
-async function fetchX(previous) {
+async function fetchX(previous, cacheMeta) {
   const cfg = loadActorConfig('x');
   const handle = cfg.account;
 
   if (!APIFY_API_TOKEN) {
     console.warn('[x] APIFY_API_TOKEN not set, using previous data');
+    return previous?.x ?? { handle, followers: 0, tweets: [] };
+  }
+
+  if (isCacheValid(cacheMeta, 'x')) {
+    console.log('[x] Cache still valid, skipping fetch');
     return previous?.x ?? { handle, followers: 0, tweets: [] };
   }
 
@@ -322,9 +384,11 @@ async function fetchX(previous) {
     }
 
     console.log(`[x] ${followers} followers, ${tweets.length} tweets`);
+    markCacheEntry(cacheMeta, 'x', 'ok', tweets.length);
     return { handle, followers, tweets: tweets.slice(0, 100) };
   } catch (err) {
     console.warn('[x] Apify failed:', err.message);
+    markCacheEntry(cacheMeta, 'x', 'error');
     return {
       handle,
       followers: previous?.x?.followers ?? 0,
@@ -356,12 +420,17 @@ function parseRedditPosts(items, source) {
   return posts;
 }
 
-async function fetchReddit(previous) {
+async function fetchReddit(previous, cacheMeta) {
   const subCfg = loadActorConfig('redditSubreddit');
   const mentionCfg = loadActorConfig('redditMentions');
 
   if (!APIFY_API_TOKEN) {
     console.warn('[reddit] APIFY_API_TOKEN not set, using previous data');
+    return previous?.reddit ?? { subredditPosts: [], mentions: [] };
+  }
+
+  if (isCacheValid(cacheMeta, 'reddit')) {
+    console.log('[reddit] Cache still valid, skipping fetch');
     return previous?.reddit ?? { subredditPosts: [], mentions: [] };
   }
 
@@ -377,9 +446,11 @@ async function fetchReddit(previous) {
     const mentions = parseRedditPosts(mentionItems, 'mention').slice(0, 20);
 
     console.log(`[reddit] ${subredditPosts.length} subreddit posts, ${mentions.length} mentions`);
+    markCacheEntry(cacheMeta, 'reddit', 'ok', subredditPosts.length + mentions.length);
     return { subredditPosts, mentions };
   } catch (err) {
     console.warn('[reddit] Apify failed:', err.message);
+    markCacheEntry(cacheMeta, 'reddit', 'error');
     return {
       subredditPosts: previous?.reddit?.subredditPosts ?? [],
       mentions: previous?.reddit?.mentions ?? [],
@@ -391,12 +462,17 @@ async function fetchReddit(previous) {
 /* ============================================================
  * YouTube via Apify (config: youtube)
  * ============================================================ */
-async function fetchYouTube(previous) {
+async function fetchYouTube(previous, cacheMeta) {
   const cfg = loadActorConfig('youtube');
   const channel = cfg.account;
 
   if (!APIFY_API_TOKEN) {
     console.warn('[youtube] APIFY_API_TOKEN not set, using previous data');
+    return previous?.youtube ?? { channel, subscribers: 0, videos: [] };
+  }
+
+  if (isCacheValid(cacheMeta, 'youtube')) {
+    console.log('[youtube] Cache still valid, skipping fetch');
     return previous?.youtube ?? { channel, subscribers: 0, videos: [] };
   }
 
@@ -432,9 +508,11 @@ async function fetchYouTube(previous) {
     }
 
     console.log(`[youtube] ${subscribers} subscribers, ${videos.length} videos`);
+    markCacheEntry(cacheMeta, 'youtube', 'ok', videos.length);
     return { channel, subscribers, videos: videos.slice(0, 20) };
   } catch (err) {
     console.warn('[youtube] Apify failed:', err.message);
+    markCacheEntry(cacheMeta, 'youtube', 'error');
     return {
       channel,
       subscribers: previous?.youtube?.subscribers ?? 0,
@@ -724,16 +802,20 @@ async function appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddi
  * ============================================================ */
 async function main() {
   const previous = await readPrevious();
+  const cacheMeta = await readCacheMeta();
 
-  console.log('Refreshing Instagram, TikTok, TikTok Hashtag, YouTube, X, Reddit, Mailchimp...');
+  console.log('='.repeat(60));
+  console.log('Refreshing all channels...');
+  console.log(`  Cache cooldown: ${CACHE_COOLDOWN_HOURS}h | Force refresh: ${FORCE_REFRESH}`);
+  console.log('='.repeat(60));
 
   const [instagram, tiktok, tiktokHashtag, youtube, x, reddit, mailchimp] = await Promise.all([
-    fetchInstagram(previous),
-    fetchTikTok(previous),
-    fetchTikTokHashtag(previous),
-    fetchYouTube(previous),
-    fetchX(previous),
-    fetchReddit(previous),
+    fetchInstagram(previous, cacheMeta),
+    fetchTikTok(previous, cacheMeta),
+    fetchTikTokHashtag(previous, cacheMeta),
+    fetchYouTube(previous, cacheMeta),
+    fetchX(previous, cacheMeta),
+    fetchReddit(previous, cacheMeta),
     fetchMailchimp(previous),
   ]);
 
@@ -750,16 +832,37 @@ async function main() {
 
   await fs.mkdir(path.dirname(SNAPSHOT_PATH), { recursive: true });
   await fs.writeFile(SNAPSHOT_PATH, JSON.stringify(snapshot, null, 2) + '\n');
-  console.log(`Wrote ${SNAPSHOT_PATH}`);
-  console.log(`  IG followers: ${instagram.followers}, reels: ${(instagram.reels ?? []).length}`);
-  console.log(`  TikTok followers: ${tiktok.followers}, videos: ${(tiktok.videos ?? []).length}`);
-  console.log(`  TikTok #${tiktokHashtag.hashtag}: ${(tiktokHashtag.videos ?? []).length} videos`);
-  console.log(`  YouTube subscribers: ${youtube.subscribers}, videos: ${(youtube.videos ?? []).length}`);
-  console.log(`  X followers: ${x.followers}, tweets: ${(x.tweets ?? []).length}`);
-  console.log(`  Reddit: ${(reddit.subredditPosts ?? []).length} subreddit, ${(reddit.mentions ?? []).length} mentions`);
-  console.log(`  Mailchimp combined: ${mailchimp.cumulativeDisjoint}, audiences: ${mailchimp.audiences.length}`);
 
+  await writeCacheMeta(cacheMeta);
+
+  console.log('\n' + '='.repeat(60));
+  console.log('RESULTS SUMMARY');
+  console.log('='.repeat(60));
+
+  const results = [
+    { channel: 'Instagram', ok: !instagram.error, detail: `${instagram.followers} followers, ${(instagram.reels ?? []).length} reels` },
+    { channel: 'TikTok', ok: !tiktok.error, detail: `${tiktok.followers} followers, ${(tiktok.videos ?? []).length} videos` },
+    { channel: 'TikTok #' + tiktokHashtag.hashtag, ok: !tiktokHashtag.error, detail: `${(tiktokHashtag.videos ?? []).length} videos` },
+    { channel: 'YouTube', ok: !youtube.error, detail: `${youtube.subscribers} subscribers, ${(youtube.videos ?? []).length} videos` },
+    { channel: 'X/Twitter', ok: !x.error, detail: `${x.followers} followers, ${(x.tweets ?? []).length} tweets` },
+    { channel: 'Reddit', ok: !reddit.error, detail: `${(reddit.subredditPosts ?? []).length} subreddit, ${(reddit.mentions ?? []).length} mentions` },
+    { channel: 'Mailchimp', ok: !mailchimp.error, detail: `${mailchimp.cumulativeDisjoint} combined, ${mailchimp.audiences.length} audiences` },
+  ];
+
+  let hasErrors = false;
+  for (const r of results) {
+    const icon = r.ok ? 'OK' : 'WARN';
+    console.log(`  [${icon}] ${r.channel}: ${r.detail}`);
+    if (!r.ok) hasErrors = true;
+  }
+
+  if (hasErrors) {
+    console.log('\nSome channels had errors (see warnings above). Previous data was preserved for those.');
+  }
+
+  console.log(`\nWrote ${SNAPSHOT_PATH}`);
   await appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddit);
+  console.log('='.repeat(60));
 }
 
 main().catch((err) => {
