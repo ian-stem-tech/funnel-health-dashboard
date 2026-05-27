@@ -1,15 +1,66 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+import { useMemo, useState, lazy, Suspense } from 'react';
+
+const LazyChart = lazy(() =>
+  import('recharts').then((mod) => ({
+    default: function RechartsWrapper({
+      chartData,
+      color,
+      label,
+      formatDateLabel,
+      formatCompact,
+    }: {
+      chartData: { date: string; views: number }[];
+      color: string;
+      label: string;
+      formatDateLabel: (s: string) => string;
+      formatCompact: (n: number) => string;
+    }) {
+      const { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } = mod;
+      return (
+        <ResponsiveContainer width="100%" height={320}>
+          <LineChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
+            <CartesianGrid stroke="rgba(31,31,31,0.08)" strokeDasharray="3 3" />
+            <XAxis
+              dataKey="date"
+              tickFormatter={formatDateLabel}
+              tick={{ fontSize: 12, fill: '#7a7a7a' }}
+              axisLine={{ stroke: 'rgba(31,31,31,0.12)' }}
+              tickLine={false}
+            />
+            <YAxis
+              tickFormatter={formatCompact}
+              tick={{ fontSize: 12, fill: '#7a7a7a' }}
+              axisLine={false}
+              tickLine={false}
+              width={52}
+            />
+            <Tooltip
+              formatter={(value) => [new Intl.NumberFormat('en-US').format(Number(value)), label]}
+              labelFormatter={(l) => formatDateLabel(String(l))}
+              contentStyle={{
+                background: 'rgba(255,255,225,0.95)',
+                border: '1px solid rgba(31,31,31,0.14)',
+                borderRadius: '10px',
+                fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+                fontSize: '0.84rem',
+              }}
+            />
+            <Line
+              type="monotone"
+              dataKey="views"
+              stroke={color}
+              strokeWidth={2}
+              dot={chartData.length <= 30}
+              activeDot={{ r: 5, fill: color }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      );
+    },
+  })),
+);
 
 export type DataPoint = {
   date: string;
@@ -102,44 +153,15 @@ export function ViewsChart({ data, color = '#1f1f1f', label = 'Views' }: Props) 
           </button>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={320}>
-        <LineChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
-          <CartesianGrid stroke="rgba(31,31,31,0.08)" strokeDasharray="3 3" />
-          <XAxis
-            dataKey="date"
-            tickFormatter={formatDateLabel}
-            tick={{ fontSize: 12, fill: '#7a7a7a' }}
-            axisLine={{ stroke: 'rgba(31,31,31,0.12)' }}
-            tickLine={false}
-          />
-          <YAxis
-            tickFormatter={formatCompact}
-            tick={{ fontSize: 12, fill: '#7a7a7a' }}
-            axisLine={false}
-            tickLine={false}
-            width={52}
-          />
-          <Tooltip
-            formatter={(value) => [new Intl.NumberFormat('en-US').format(Number(value)), label]}
-            labelFormatter={(label) => formatDateLabel(String(label))}
-            contentStyle={{
-              background: 'rgba(255,255,225,0.95)',
-              border: '1px solid rgba(31,31,31,0.14)',
-              borderRadius: '10px',
-              fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-              fontSize: '0.84rem',
-            }}
-          />
-          <Line
-            type="monotone"
-            dataKey="views"
-            stroke={color}
-            strokeWidth={2}
-            dot={chartData.length <= 30}
-            activeDot={{ r: 5, fill: color }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <Suspense fallback={<div style={{ height: 320 }} />}>
+        <LazyChart
+          chartData={chartData}
+          color={color}
+          label={label}
+          formatDateLabel={formatDateLabel}
+          formatCompact={formatCompact}
+        />
+      </Suspense>
     </div>
   );
 }
