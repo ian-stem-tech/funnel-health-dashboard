@@ -1,7 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { ViewsChart, type DataPoint } from '../components/ViewsChart';
 import { BentoCard } from '../components/BentoCard';
+import { TimeRangeFilter } from '../components/TimeRangeFilter';
+import { filterByDateRange, sliceChartData, type TimeRange } from '../lib/dateFilter';
 import { formatNumber } from '../lib/types';
 
 type TweetItem = {
@@ -21,14 +24,24 @@ type Props = {
 };
 
 export function XDetail({ chartData, tweets }: Props) {
+  const [range, setRange] = useState<TimeRange>('all');
+  const filteredChart = sliceChartData(chartData, range);
+  const filteredTweets = filterByDateRange(tweets, range, 'createdAt');
+
   return (
     <>
+      <TimeRangeFilter value={range} onChange={setRange} />
+
       <BentoCard title="Tweet Views Over Time" iconLetter="X">
-        <ViewsChart data={chartData} color="#1f1f1f" label="Tweet views" />
+        <ViewsChart data={filteredChart} color="#1f1f1f" label="Tweet views" />
       </BentoCard>
 
-      <BentoCard title="All Tweets" subtitle={`${tweets.length} tracked`} iconLetter="X">
-        {tweets.length === 0 ? (
+      <BentoCard
+        title="All Tweets"
+        subtitle={range === 'all' ? `${tweets.length} tracked` : `${filteredTweets.length} of ${tweets.length} tweets`}
+        iconLetter="X"
+      >
+        {filteredTweets.length === 0 ? (
           <div className="content-table-empty">
             No tweet data collected yet. Data accumulates with each daily refresh.
           </div>
@@ -46,7 +59,7 @@ export function XDetail({ chartData, tweets }: Props) {
                 </tr>
               </thead>
               <tbody>
-                {tweets.map((tweet) => (
+                {filteredTweets.map((tweet) => (
                   <tr key={tweet.id}>
                     <td className="content-table-id" style={{ maxWidth: 280 }}>
                       {tweet.text.slice(0, 100)}{tweet.text.length > 100 ? '...' : ''}

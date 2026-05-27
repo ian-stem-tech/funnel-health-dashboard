@@ -7,7 +7,7 @@
  *   - TikTok:     Apify actor (profile + videos with likes/comments/shares/views)
  *   - X/Twitter:  Apify actor (profile + tweets with likes/retweets/replies/views)
  *   - Reddit:     Apify actor (user posts with upvotes/comments)
- *   - YouTube:    YouTube Data API v3 (channel stats + videos)
+ *   - YouTube:    Apify actor (channel stats + videos with views/likes/comments)
  *   - Mailchimp:  REST API with rate-limit-aware retries
  *
  * Writes:
@@ -30,7 +30,6 @@ const YOUTUBE_CHANNEL = process.env.YOUTUBE_CHANNEL || 'stemplayer';
 const REDDIT_USER = process.env.REDDIT_USER || 'stemplayer';
 
 const APIFY_API_TOKEN = process.env.APIFY_API_TOKEN;
-const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX || 'us4';
 
@@ -329,94 +328,51 @@ async function fetchReddit(user, previous) {
  * YouTube via Data API v3
  * ============================================================ */
 async function fetchYouTube(channel, previous) {
-  if (!YOUTUBE_API_KEY) {
-    console.warn('[youtube] YOUTUBE_API_KEY not set, using previous data');
+  if (!APIFY_API_TOKEN) {
+    console.warn('[youtube] APIFY_API_TOKEN not set, using previous data');
     return previous?.youtube ?? { channel, subscribers: 0, videos: [] };
   }
 
   try {
-    console.log(`[youtube] Fetching channel "${channel}" via Data API v3...`);
+    console.log(`[youtube] Fetching channel "${channel}" via Apify...`);
+    const items = await runApifyActor('streamers/youtube-channel-scraper', {
+      channelUrls: [`https://www.youtube.com/@${channel}`],
+      maxResults: 20,
+      sortBy: 'newest',
+    }, { timeoutSecs: 180 });
 
-    // Step 1: Resolve channel — try by handle first, fall back to forUsername
-    let channelId = null;
     let subscribers = previous?.youtube?.subscribers ?? 0;
+    const videos = [];
 
-    const handleRes = await fetchWithRetry(
-      `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&forHandle=${channel}&key=${YOUTUBE_API_KEY}`,
-    );
-    if (handleRes.ok) {
-      const handleData = await handleRes.json();
-      if (handleData.items?.length > 0) {
-        channelId = handleData.items[0].id;
-        subscribers = Number(handleData.items[0].statistics?.subscriberCount ?? 0);
+    for (const item of items ?? []) {
+      if (item.channelSubscribers) {
+        subscribers = typeof item.channelSubscribers === 'number'
+          ? item.channelSubscribers
+          : parseAbbreviated(String(item.channelSubscribers));
       }
-    }
-
-    if (!channelId) {
-      const userRes = await fetchWithRetry(
-        `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&forUsername=${channel}&key=${YOUTUBE_API_KEY}`,
-      );
-      if (userRes.ok) {
-        const userData = await userRes.json();
-        if (userData.items?.length > 0) {
-          channelId = userData.items[0].id;
-          subscribers = Number(userData.items[0].statistics?.subscriberCount ?? 0);
-        }
+      if (item.subscriberCount) {
+        subscribers = item.subscriberCount;
       }
-    }
 
-    // If channel looks like a channel ID already (UC...)
-    if (!channelId && channel.startsWith('UC')) {
-      channelId = channel;
-      const idRes = await fetchWithRetry(
-        `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channel}&key=${YOUTUBE_API_KEY}`,
-      );
-      if (idRes.ok) {
-        const idData = await idRes.json();
-        if (idData.items?.length > 0) {
-          subscribers = Number(idData.items[0].statistics?.subscriberCount ?? 0);
-        }
-      }
-    }
-
-    if (!channelId) {
-      throw new Error(`Could not resolve YouTube channel: ${channel}`);
-    }
-
-    // Step 2: Get recent video IDs via search
-    const searchRes = await fetchWithRetry(
-      `https://www.googleapis.com/youtube/v3/search?part=id&channelId=${channelId}&order=date&maxResults=20&type=video&key=${YOUTUBE_API_KEY}`,
-    );
-    if (!searchRes.ok) throw new Error(`YouTube search ${searchRes.status}`);
-    const searchData = await searchRes.json();
-    const videoIds = (searchData.items ?? []).map((i) => i.id?.videoId).filter(Boolean);
-
-    let videos = [];
-
-    if (videoIds.length > 0) {
-      // Step 3: Get video details (stats + snippet)
-      const detailRes = await fetchWithRetry(
-        `https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet&id=${videoIds.join(',')}&key=${YOUTUBE_API_KEY}`,
-      );
-      if (detailRes.ok) {
-        const detailData = await detailRes.json();
-        videos = (detailData.items ?? []).map((v) => ({
-          id: v.id,
-          title: v.snippet?.title ?? '',
-          thumbnail: v.snippet?.thumbnails?.medium?.url ?? v.snippet?.thumbnails?.default?.url ?? '',
-          views: Number(v.statistics?.viewCount ?? 0),
-          likes: Number(v.statistics?.likeCount ?? 0),
-          comments: Number(v.statistics?.commentCount ?? 0),
-          url: `https://www.youtube.com/watch?v=${v.id}`,
-          publishedAt: v.snippet?.publishedAt ?? undefined,
-        }));
+      if (item.id || item.videoId) {
+        const videoId = item.id ?? item.videoId;
+        videos.push({
+          id: String(videoId),
+          title: item.title ?? '',
+          thumbnail: item.thumbnailUrl ?? item.thumbnail ?? '',
+          views: item.viewCount ?? item.views ?? 0,
+          likes: item.likes ?? item.likeCount ?? 0,
+          comments: item.commentsCount ?? item.commentCount ?? item.comments ?? 0,
+          url: item.url ?? `https://www.youtube.com/watch?v=${videoId}`,
+          publishedAt: item.uploadDate ?? item.publishedAt ?? undefined,
+        });
       }
     }
 
     console.log(`[youtube] ${subscribers} subscribers, ${videos.length} videos`);
-    return { channel, subscribers, videos };
+    return { channel, subscribers, videos: videos.slice(0, 20) };
   } catch (err) {
-    console.warn('[youtube] API failed:', err.message);
+    console.warn('[youtube] Apify failed:', err.message);
     return {
       channel,
       subscribers: previous?.youtube?.subscribers ?? 0,
