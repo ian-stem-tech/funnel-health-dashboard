@@ -1986,39 +1986,39 @@
       },
       "tiktok": {
         "followers": 86000,
-        "totalVideoViews": 1454319,
+        "totalVideoViews": 1455716,
         "videos": [
           {
             "id": "7644270343909068054",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oUk4zU1ofADeFXDTIt8rT7QAQFjpeK0mzIEQLU~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=W3rXnnuCMg%2BKYvtfvpbQveLdGWc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 808,
+            "thumbnail": "data/thumbnails/7644270343909068054.jpg",
+            "views": 848,
             "likes": 69,
-            "comments": 10,
+            "comments": 9,
             "shares": 2,
             "url": "https://www.tiktok.com/@stemplayer/video/7644270343909068054"
           },
           {
             "id": "7642381060474539286",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oAQLGjG8LbCXHYeeKjJkADdIKTlggIPeAUmlVI~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=hmiXy28ZaZfK7Tc7rFD5jNlyDIg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 65600,
-            "likes": 3718,
+            "thumbnail": "data/thumbnails/7642381060474539286.jpg",
+            "views": 65700,
+            "likes": 3729,
             "comments": 82,
             "shares": 132,
             "url": "https://www.tiktok.com/@stemplayer/video/7642381060474539286"
           },
           {
             "id": "7641225083482262787",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oQLIqFDjIDUAF8IpFAe4ALcFQfveXRLEwQQKiK~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=balwvs2%2Fd2rB2CLB2q%2Fs6KH1ev4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 699700,
-            "likes": 61000,
-            "comments": 382,
-            "shares": 7028,
+            "thumbnail": "data/thumbnails/7641225083482262787.jpg",
+            "views": 700800,
+            "likes": 61100,
+            "comments": 385,
+            "shares": 7037,
             "url": "https://www.tiktok.com/@stemplayer/video/7641225083482262787"
           },
           {
             "id": "7640046786425474326",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oofG3puQ8fjHCINIMDWUA58MA4IzYLXi8cDIet~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=IoWR%2BrksP3yUZ8C4ohOJBFwjBg8%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 9199,
+            "thumbnail": "data/thumbnails/7640046786425474326.jpg",
+            "views": 9211,
             "likes": 198,
             "comments": 12,
             "shares": 11,
@@ -2026,8 +2026,8 @@
           },
           {
             "id": "7639821093435346198",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ok8tGByB1AGyzCjiibawPAI1CCZGfAcw5IIN0r~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=cSZB61BwNz7mtP6KhlAx2owWWzs%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 7040,
+            "thumbnail": "data/thumbnails/7639821093435346198.jpg",
+            "views": 7045,
             "likes": 123,
             "comments": 20,
             "shares": 4,
@@ -2035,7 +2035,7 @@
           },
           {
             "id": "7635241694631415062",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYGCQakRNEed0XD6FggF098DQfplpREBtMO6rA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=aTYBq5AbzdpomNT%2FU50HfI47a3Y%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7635241694631415062.jpg",
             "views": 55100,
             "likes": 3615,
             "comments": 39,
@@ -2044,8 +2044,8 @@
           },
           {
             "id": "7634634707241733378",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o0zO3iBRkBp3eVEUqgYTAM95IfMkihFi4dIQdB~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=aAllUKCEtzI%2FVYc2SHGLnx5h8Oc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 3649,
+            "thumbnail": "data/thumbnails/7634634707241733378.jpg",
+            "views": 3656,
             "likes": 122,
             "comments": 4,
             "shares": 0,
@@ -2053,8 +2053,8 @@
           },
           {
             "id": "7634634693526293782",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYRzLFmqA3QIZB9pJdkiiXpeIBQfX7azdgBqEG~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=GrmvqqWnHzVgWQWNzTg6lg%2FucRc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 3220,
+            "thumbnail": "data/thumbnails/7634634693526293782.jpg",
+            "views": 3225,
             "likes": 84,
             "comments": 6,
             "shares": 2,
@@ -2062,8 +2062,8 @@
           },
           {
             "id": "7633574194160241943",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oIFvA5U3kFDAvEeAETED7yfQIAGAAcJeLIvhZr~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=jmVdCbHNPtzhBPG780PBdKREgg0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 3095,
+            "thumbnail": "data/thumbnails/7633574194160241943.jpg",
+            "views": 3100,
             "likes": 136,
             "comments": 6,
             "shares": 14,
@@ -2071,8 +2071,8 @@
           },
           {
             "id": "7633548662655733014",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYf7kQCQDTnc8B0QgEfBApMv0F0sDpFEP6ORMv~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=%2FgOmU4C2Ox0ITSHrA2lLmACXCs4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 2110,
+            "thumbnail": "data/thumbnails/7633548662655733014.jpg",
+            "views": 2115,
             "likes": 72,
             "comments": 2,
             "shares": 2,
@@ -2080,8 +2080,8 @@
           },
           {
             "id": "7633517019228425494",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o8iyJASB0Bs1wcViiAAeiAEQBCcvP9iwSKIpDm~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=79xF5Leyq%2BZRYHdOmfWX5ByFCqc%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 1944,
+            "thumbnail": "data/thumbnails/7633517019228425494.jpg",
+            "views": 1949,
             "likes": 84,
             "comments": 1,
             "shares": 2,
@@ -2089,8 +2089,8 @@
           },
           {
             "id": "7633503465070742806",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oMg1AQe4pfdBdoRGXmvnPFtvpBOYwdAWAfYreG~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=mG3RsnieB2W2qcuxHb06v7%2FOlyQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 1791,
+            "thumbnail": "data/thumbnails/7633503465070742806.jpg",
+            "views": 1794,
             "likes": 81,
             "comments": 1,
             "shares": 0,
@@ -2098,8 +2098,8 @@
           },
           {
             "id": "7633426386442652950",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oQZYk0BdEiA9I0A9PCiycXBYC964fKav0t6zwG~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=w67jVLaA8b0IdyVs581j5UfQ9CM%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 1359,
+            "thumbnail": "data/thumbnails/7633426386442652950.jpg",
+            "views": 1362,
             "likes": 66,
             "comments": 7,
             "shares": 1,
@@ -2107,8 +2107,8 @@
           },
           {
             "id": "7632342056324713750",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ooD2j4GD1Xwe0eaNXuslIfzIR0PLgIT7LgAAWw~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=P%2BIh5qYFqXF20g5EPh7eMQsVhxY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 1740,
+            "thumbnail": "data/thumbnails/7632342056324713750.jpg",
+            "views": 1742,
             "likes": 90,
             "comments": 4,
             "shares": 4,
@@ -2116,8 +2116,8 @@
           },
           {
             "id": "7629421310912793878",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o8ACAkGhYk0IfARX07BJSET0y8JIiMiwr08C3i~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=99pZSqQ1GQosqATTi9fMUBC6dHk%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 3038,
+            "thumbnail": "data/thumbnails/7629421310912793878.jpg",
+            "views": 3039,
             "likes": 202,
             "comments": 19,
             "shares": 3,
@@ -2125,8 +2125,8 @@
           },
           {
             "id": "7628645744550890774",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ooHGLDGnMIjfAuR8QBcdIes3IyvqTgAbaLajAf~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=wAEH7CgXNFMmlRqC3CbUfm8zWhM%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 1850,
+            "thumbnail": "data/thumbnails/7628645744550890774.jpg",
+            "views": 1851,
             "likes": 108,
             "comments": 5,
             "shares": 1,
@@ -2134,8 +2134,8 @@
           },
           {
             "id": "7620855639111109910",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/owenfeGGRNGChFmIabLeBQ57WSLlQAGAtKBQlA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=t1iGFmOo96kMHxGtnqAGsChkvNg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 4054,
+            "thumbnail": "data/thumbnails/7620855639111109910.jpg",
+            "views": 4055,
             "likes": 249,
             "comments": 9,
             "shares": 16,
@@ -2143,7 +2143,7 @@
           },
           {
             "id": "7571409682049273111",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oUIQvREBXTQMMB1YAabIMJBPURaVEMciATDiZ~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=T0gVI3aABpZ1yaYzK9Hz3PW2Teg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7571409682049273111.jpg",
             "views": 13600,
             "likes": 294,
             "comments": 14,
@@ -2152,7 +2152,7 @@
           },
           {
             "id": "7571149125941513494",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o4fkjEsTSIIAIALSQFJLWAAIQXGA0eALPAeoAE~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=oBUOvAmYO94U5KG0Ugt6Ez5mt44%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7571149125941513494.jpg",
             "views": 80600,
             "likes": 1719,
             "comments": 11,
@@ -2161,7 +2161,7 @@
           },
           {
             "id": "7569730121578564867",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ooqQugCcLGKGeIQagQLwAoQIjAGfEhTeIjDSYi~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=WBWbnU7cN5Ebr2m%2FmVSyu3GnCEQ%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7569730121578564867.jpg",
             "views": 52400,
             "likes": 1614,
             "comments": 42,
@@ -2170,7 +2170,7 @@
           },
           {
             "id": "7568921324840684823",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oMMQU78tDOeGSXKIq6fDAxISQFQLaQFAjGoc6e~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=a7cxXIs4NQbKLuFfh8sySJz1sFg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7568921324840684823.jpg",
             "views": 18600,
             "likes": 127,
             "comments": 4,
@@ -2179,16 +2179,16 @@
           },
           {
             "id": "7568844789907492118",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/owaP8C10BIQEbxIRQYEiZBEnBvLxkDiJB3PAw~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=gNnel029i9be3mGgkMx5GOAuOp0%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7568844789907492118.jpg",
             "views": 10200,
             "likes": 142,
-            "comments": 4,
+            "comments": 5,
             "shares": 8,
             "url": "https://www.tiktok.com/@stemplayer/video/7568844789907492118"
           },
           {
             "id": "7568818998129806614",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/ospC4kK2IjdJBD4EI4FJCFA0ERFNHkffHgADhE~tplv-tiktokx-dmt-logom:tos-no1a-i-0068-no/o8sIeIcGAeAF9GoLeASjLAAFInTaZEQx7dyAJI.image?dr=9634&x-expires=1780052400&x-signature=ppgf7GscLc%2BPOh6nwrM94O8%2Fm%2FE%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7568818998129806614.jpg",
             "views": 13100,
             "likes": 317,
             "comments": 10,
@@ -2197,7 +2197,7 @@
           },
           {
             "id": "7562972489446378774",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/o0vT3iSIBBA1i6m9S7E2naYEi5API89ZUBkU7~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=dJlnl8%2BapcC%2FqfoQPMcfHmwgsJA%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7562972489446378774.jpg",
             "views": 30100,
             "likes": 796,
             "comments": 24,
@@ -2206,16 +2206,16 @@
           },
           {
             "id": "7562332084782566678",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oMwyjg9UcZvEvPtiLqQuVtYzBAIaBicMSBEAI~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=wK%2Bo5%2F3iCgKccANzGNsyWpd%2BwTg%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 304200,
+            "thumbnail": "data/thumbnails/7562332084782566678.jpg",
+            "views": 304300,
             "likes": 35000,
-            "comments": 255,
+            "comments": 256,
             "shares": 1918,
             "url": "https://www.tiktok.com/@stemplayer/video/7562332084782566678"
           },
           {
             "id": "7529867119618428182",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oYxcQn1fAsPGAgHIhdgXwfX0ReWeQu87G8EAMA~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=lQqYaWecmK4ukOxW0VshM1neI0Y%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7529867119618428182.jpg",
             "views": 22200,
             "likes": 324,
             "comments": 11,
@@ -2224,7 +2224,7 @@
           },
           {
             "id": "7524287510512405782",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/owwj1XME6LQHaC0oAbEQRRNFPfDvmeEkFDOBgU~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=iyL4fgRsMUsKktRSDBKAaFvfl8w%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7524287510512405782.jpg",
             "views": 13000,
             "likes": 133,
             "comments": 5,
@@ -2233,7 +2233,7 @@
           },
           {
             "id": "7519931529426980118",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oIEMIkhfCtAIXbERaKXo1AFm0JODfxgFAurRcB~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=f0ANCQHzHBTn9LJh3%2BZKqkpQMfY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
+            "thumbnail": "data/thumbnails/7519931529426980118.jpg",
             "views": 11900,
             "likes": 223,
             "comments": 2,
@@ -2242,8 +2242,8 @@
           },
           {
             "id": "7519555163514785046",
-            "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/osCvENBoFg2IqVR2CEn5fBCAatUDWFeFtkU0BE~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=gZW6tI%2B65bpDJ4GmHxJizRkM5c4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 9432,
+            "thumbnail": "data/thumbnails/7519555163514785046.jpg",
+            "views": 9433,
             "likes": 45,
             "comments": 2,
             "shares": 3,
@@ -2251,8 +2251,8 @@
           },
           {
             "id": "7519498209819921686",
-            "thumbnail": "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oIreIPaIjIxew99JnABTzIdtEAfQ7cGS8h8LLD~tplv-tiktokx-origin.image?dr=9636&x-expires=1780052400&x-signature=3l9K%2FmQpF7UPe8k7%2BJ0gA%2B7Ugkw%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast5",
-            "views": 9690,
+            "thumbnail": "data/thumbnails/7519498209819921686.jpg",
+            "views": 9691,
             "likes": 211,
             "comments": 2,
             "shares": 5,
@@ -2261,199 +2261,202 @@
         ]
       },
       "tiktokHashtag": {
-        "hashtag": "stemplayer",
-        "totalVideoViews": 51647022,
-        "videoCount": 30
+        "hashtags": [
+          "stemplayer",
+          "stem2"
+        ],
+        "totalVideoViews": 39224211,
+        "videoCount": 50
       },
       "youtube": {
-        "subscribers": 116,
-        "totalVideoViews": 5182220,
+        "subscribers": 30100,
+        "totalVideoViews": 444045,
         "videos": [
           {
-            "id": "Tp9VCSe_ECo",
-            "title": "Sail - AWOLNATION (Perfomed On Yeezy Stem Player)",
-            "thumbnail": "https://i.ytimg.com/vi/Tp9VCSe_ECo/maxresdefault.jpg",
-            "views": 338,
-            "likes": 18,
-            "comments": 0,
-            "url": "https://www.youtube.com/watch?v=Tp9VCSe_ECo"
-          },
-          {
-            "id": "AZjsSZkhXqU",
-            "title": "Yeezy Tech Stem Player Remote Control",
-            "thumbnail": "https://i.ytimg.com/vi/AZjsSZkhXqU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-DoACuAiKAgwIABABGGUgSyhEMA8=&rs=AOn4CLCBM4qEiye-4cHsf1iigcuhsNPt3A",
-            "views": 134,
+            "id": "-E6O3Nmi00Q",
+            "title": "30 seconds v1 2",
+            "thumbnail": "data/thumbnails/-E6O3Nmi00Q.jpg",
+            "views": 1165,
             "likes": 2,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=AZjsSZkhXqU"
+            "url": "https://www.youtube.com/watch?v=-E6O3Nmi00Q"
           },
           {
-            "id": "wAy3SdEmSfQ",
-            "title": "Kanye West’s Donda Stem Player",
-            "thumbnail": "https://i.ytimg.com/vi/wAy3SdEmSfQ/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVShKMA8=&rs=AOn4CLCIzu4GtelJoObszLySc3kz8dzJog",
-            "views": 527,
-            "likes": 12,
+            "id": "IyuWheIDauw",
+            "title": "summer 30s main advert",
+            "thumbnail": "data/thumbnails/IyuWheIDauw.jpg",
+            "views": 172138,
+            "likes": 0,
             "comments": 0,
-            "url": "https://www.youtube.com/watch?v=wAy3SdEmSfQ"
+            "url": "https://www.youtube.com/watch?v=IyuWheIDauw"
           },
           {
-            "id": "Z-lq-z5KM2c",
-            "title": "Remix ANY song with Kanye West's Stem Player",
-            "thumbnail": "https://i.ytimg.com/vi/Z-lq-z5KM2c/maxresdefault.jpg",
-            "views": 2312129,
-            "likes": 43000,
-            "comments": 2816,
-            "url": "https://www.youtube.com/watch?v=Z-lq-z5KM2c"
+            "id": "ZZ6MLkJNk7Y",
+            "title": "Kano PC - Japan - Julia",
+            "thumbnail": "data/thumbnails/ZZ6MLkJNk7Y.jpg",
+            "views": 404,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=ZZ6MLkJNk7Y"
           },
           {
-            "id": "dH4iV5zKhg4",
-            "title": "How to pair the Donda Stem Player with a Bluetooth device",
-            "thumbnail": "https://i.ytimg.com/vi/dH4iV5zKhg4/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgWChKMA8=&rs=AOn4CLCWyXzypJKVd-WVuRSYMQC-kxrUCQ",
-            "views": 31778,
-            "likes": 470,
-            "comments": 50,
-            "url": "https://www.youtube.com/watch?v=dH4iV5zKhg4"
+            "id": "T83aU8peuvc",
+            "title": "now this clone with motion",
+            "thumbnail": "data/thumbnails/T83aU8peuvc.jpg",
+            "views": 784,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=T83aU8peuvc"
           },
           {
-            "id": "-PXQMNcFOjE",
-            "title": "I Got The Donda Stem Player",
-            "thumbnail": "https://i.ytimg.com/vi/-PXQMNcFOjE/hqdefault.jpg",
-            "views": 1395547,
-            "likes": 55000,
-            "comments": 2603,
-            "url": "https://www.youtube.com/watch?v=-PXQMNcFOjE"
+            "id": "ORWN2qy2XJA",
+            "title": "Pixel Kit Prospect A advert",
+            "thumbnail": "data/thumbnails/ORWN2qy2XJA.jpg",
+            "views": 47650,
+            "likes": 3,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=ORWN2qy2XJA"
           },
           {
-            "id": "XCFylXd7tQg",
-            "title": "NEW KANYE WEST SHOWS AMAZING TECHNOLOGY | STEM PLAYER |  DONDA",
-            "thumbnail": "https://i.ytimg.com/vi/XCFylXd7tQg/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC8giKAgwIABABGGUgWyhVMA8=&rs=AOn4CLD7M0W6LgKqYvqhU9I4NoBgcvNk8w",
-            "views": 857971,
-            "likes": 19000,
-            "comments": 961,
-            "url": "https://www.youtube.com/watch?v=XCFylXd7tQg"
+            "id": "0OAVvrDbExk",
+            "title": "Kano Software Studio Teaser",
+            "thumbnail": "data/thumbnails/0OAVvrDbExk.jpg",
+            "views": 311,
+            "likes": 5,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=0OAVvrDbExk"
           },
           {
-            "id": "iindKlt-sS4",
-            "title": "Kanye West Donda Stem Player - No Hype Ep 333",
-            "thumbnail": "https://i.ytimg.com/vi/iindKlt-sS4/maxresdefault.jpg",
-            "views": 415,
-            "likes": 16,
-            "comments": 8,
-            "url": "https://www.youtube.com/watch?v=iindKlt-sS4"
+            "id": "6XVw8JXEUoc",
+            "title": "Summer 30, Main advert (old)",
+            "thumbnail": "data/thumbnails/6XVw8JXEUoc.jpg",
+            "views": 7498,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=6XVw8JXEUoc"
           },
           {
-            "id": "WWzr3y5khV0",
-            "title": "...Ready for it? by Taylor Swift on the Yeezy Stem Player",
-            "thumbnail": "https://i.ytimg.com/vi/WWzr3y5khV0/maxresdefault.jpg",
-            "views": 1322,
-            "likes": 24,
-            "comments": 15,
-            "url": "https://www.youtube.com/watch?v=WWzr3y5khV0"
+            "id": "pUzX42i_SH4",
+            "title": "Street Artist competition - now live! (15s)",
+            "thumbnail": "data/thumbnails/pUzX42i_SH4.jpg",
+            "views": 63240,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=pUzX42i_SH4"
           },
           {
-            "id": "NMqPAEjARN0",
-            "title": "Kanye West Stem Player Unboxing | Home Studio Motivation",
-            "thumbnail": "https://i.ytimg.com/vi/NMqPAEjARN0/maxresdefault.jpg",
-            "views": 3208,
-            "likes": 112,
-            "comments": 32,
-            "url": "https://www.youtube.com/watch?v=NMqPAEjARN0"
+            "id": "3e0d917djlY",
+            "title": "KANO CODINGKIT 15s FINAL H264 20180720",
+            "thumbnail": "data/thumbnails/3e0d917djlY.jpg",
+            "views": 82546,
+            "likes": 1,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=3e0d917djlY"
           },
           {
-            "id": "-4FKiUdk3_Q",
-            "title": "Why Kanye West's STEM PLAYER is Bad for the Future of Music",
-            "thumbnail": "https://i.ytimg.com/vi/-4FKiUdk3_Q/maxresdefault.jpg",
-            "views": 354374,
-            "likes": 15000,
-            "comments": 1181,
-            "url": "https://www.youtube.com/watch?v=-4FKiUdk3_Q"
+            "id": "gpQ3OFN0QxU",
+            "title": "Kano PC – The Best First Computer (Web Size)",
+            "thumbnail": "data/thumbnails/gpQ3OFN0QxU.jpg",
+            "views": 421,
+            "likes": 5,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=gpQ3OFN0QxU"
           },
           {
-            "id": "NmhYMXua9VE",
-            "title": "How to Use Stem Player by Kanye West",
-            "thumbnail": "https://i.ytimg.com/vi/NmhYMXua9VE/maxresdefault.jpg",
-            "views": 1053,
-            "likes": 34,
-            "comments": 5,
-            "url": "https://www.youtube.com/watch?v=NmhYMXua9VE"
+            "id": "LYY8VKd0S1U",
+            "title": "Kano PC Presentation Video",
+            "thumbnail": "data/thumbnails/LYY8VKd0S1U.jpg",
+            "views": 1012,
+            "likes": 10,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=LYY8VKd0S1U"
           },
           {
-            "id": "GCygONkjS1s",
-            "title": "Everything to Know About Kanye West's Stem Player",
-            "thumbnail": "https://i.ytimg.com/vi/GCygONkjS1s/maxresdefault.jpg",
-            "views": 26588,
-            "likes": 675,
-            "comments": 105,
-            "url": "https://www.youtube.com/watch?v=GCygONkjS1s"
+            "id": "wSef57rkuN8",
+            "title": "Kano Education - Fall 2020",
+            "thumbnail": "data/thumbnails/wSef57rkuN8.jpg",
+            "views": 378,
+            "likes": 3,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=wSef57rkuN8"
           },
           {
-            "id": "WbLMgvZuqMQ",
-            "title": "Inside Stem Player",
-            "thumbnail": "https://i.ytimg.com/vi/WbLMgvZuqMQ/maxresdefault.jpg",
-            "views": 7878,
-            "likes": 341,
-            "comments": 37,
-            "url": "https://www.youtube.com/watch?v=WbLMgvZuqMQ"
+            "id": "zMxhPsl4EJc",
+            "title": "JayGuyMan Walkthrough: Using Code To Make Art |  | Kano Computing",
+            "thumbnail": "data/thumbnails/zMxhPsl4EJc.jpg",
+            "views": 2038,
+            "likes": 25,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=zMxhPsl4EJc"
           },
           {
-            "id": "eoPQjI9oAwA",
-            "title": "Yeezy Stem Player : A Complete Guide",
-            "thumbnail": "https://i.ytimg.com/vi/eoPQjI9oAwA/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGGUgWShLMA8=&rs=AOn4CLBAcNWn7tC10BC5FJWi6fhKEgnSfQ",
-            "views": 104440,
-            "likes": 1900,
-            "comments": 263,
-            "url": "https://www.youtube.com/watch?v=eoPQjI9oAwA"
-          },
-          {
-            "id": "ihsnCdpf8gw",
-            "title": "HOW TO USE STEMPLAYER PLATFORM",
-            "thumbnail": "https://i.ytimg.com/vi/ihsnCdpf8gw/maxresdefault.jpg",
-            "views": 4253,
-            "likes": 133,
-            "comments": 16,
-            "url": "https://www.youtube.com/watch?v=ihsnCdpf8gw"
-          },
-          {
-            "id": "XXLGpH5w4lA",
-            "title": "STEM PLAYER REVIEW AFTER 3 MONTHS!! ((FULL REVIEW))",
-            "thumbnail": "https://i.ytimg.com/vi/XXLGpH5w4lA/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgVShAMA8=&rs=AOn4CLD-R0t64GjSNWw6pgja6dLW_AARBQ",
-            "views": 217,
-            "likes": 11,
+            "id": "_7d-2ev1ESw",
+            "title": "Who are Kano? | Kano Computing",
+            "thumbnail": "data/thumbnails/_7d-2ev1ESw.jpg",
+            "views": 543,
+            "likes": 14,
             "comments": 3,
-            "url": "https://www.youtube.com/watch?v=XXLGpH5w4lA"
+            "url": "https://www.youtube.com/watch?v=_7d-2ev1ESw"
           },
           {
-            "id": "KZaPrVyUMdM",
-            "title": "How To Use The Stem Player",
-            "thumbnail": "https://i.ytimg.com/vi/KZaPrVyUMdM/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgUShFMA8=&rs=AOn4CLC75h20i1bNz5c48FMwUrxXc5x3pw",
-            "views": 62134,
-            "likes": 1400,
-            "comments": 106,
-            "url": "https://www.youtube.com/watch?v=KZaPrVyUMdM"
+            "id": "g6lwwaJqifs",
+            "title": "It's a computer – and you make it yourself.",
+            "thumbnail": "data/thumbnails/g6lwwaJqifs.jpg",
+            "views": 3645,
+            "likes": 36,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=g6lwwaJqifs"
           },
           {
-            "id": "_wueJ6laCmg",
-            "title": "Donda Stem Player | Kanye West Song Maker Does THIS Crazy Thing",
-            "thumbnail": "https://i.ytimg.com/vi/_wueJ6laCmg/maxresdefault.jpg",
-            "views": 14583,
-            "likes": 357,
-            "comments": 90,
-            "url": "https://www.youtube.com/watch?v=_wueJ6laCmg"
+            "id": "myV0J84YJuU",
+            "title": "2518c Kano   Edit64   FINAL   1080p",
+            "thumbnail": "data/thumbnails/myV0J84YJuU.jpg",
+            "views": 538,
+            "likes": 4,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=myV0J84YJuU"
           },
           {
-            "id": "ZUw2fW9NUX0",
-            "title": "Stem Player teardown and reassembly",
-            "thumbnail": "https://i.ytimg.com/vi/ZUw2fW9NUX0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgWSg-MA8=&rs=AOn4CLBh4yWpt0q9fk8qq-T12yiq1i_tAw",
-            "views": 3331,
-            "likes": 133,
-            "comments": 41,
-            "url": "https://www.youtube.com/watch?v=ZUw2fW9NUX0"
+            "id": "VduEYsJYm8s",
+            "title": "How To Build Your Own Kano PC | Kano Computing",
+            "thumbnail": "data/thumbnails/VduEYsJYm8s.jpg",
+            "views": 46686,
+            "likes": 169,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=VduEYsJYm8s"
+          },
+          {
+            "id": "1ek-DS-FfHw",
+            "title": "minecraft-video-website",
+            "thumbnail": "data/thumbnails/1ek-DS-FfHw.jpg",
+            "views": 5954,
+            "likes": 10,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=1ek-DS-FfHw"
+          },
+          {
+            "id": "U27oNtbpPsA",
+            "title": "Surprising Youth Writers with Kano PC's | Freedom Writers | Kano",
+            "thumbnail": "data/thumbnails/U27oNtbpPsA.jpg",
+            "views": 537,
+            "likes": 14,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=U27oNtbpPsA"
+          },
+          {
+            "id": "j6kdECHmgHg",
+            "title": "15 seconds v2 2",
+            "thumbnail": "data/thumbnails/j6kdECHmgHg.jpg",
+            "views": 6557,
+            "likes": 0,
+            "comments": 0,
+            "url": "https://www.youtube.com/watch?v=j6kdECHmgHg"
           }
         ]
       },
       "x": {
-        "followers": 21637,
-        "totalTweetViews": 2580481,
+        "followers": 21638,
+        "totalTweetViews": 2580485,
         "tweets": [
           {
             "id": "2057448148168040552",
@@ -2461,7 +2464,7 @@
             "likes": 42,
             "retweets": 1,
             "replies": 2,
-            "views": 3022,
+            "views": 3023,
             "url": "https://x.com/stemplayer/status/2057448148168040552"
           },
           {
@@ -3064,7 +3067,7 @@
             "likes": 313,
             "retweets": 22,
             "replies": 8,
-            "views": 20233,
+            "views": 20234,
             "url": "https://x.com/stemplayer/status/1613614434488025090"
           },
           {
@@ -3100,7 +3103,7 @@
             "likes": 2349,
             "retweets": 171,
             "replies": 90,
-            "views": 1086593,
+            "views": 1086595,
             "url": "https://x.com/stemplayer/status/1612424990888165380"
           },
           {
@@ -3358,9 +3361,9 @@
         ]
       },
       "reddit": {
-        "totalUpvotes": 0,
-        "subredditPostCount": 0,
-        "mentionCount": 0
+        "totalUpvotes": 373,
+        "subredditPostCount": 20,
+        "mentionCount": 20
       }
     }
   ]
