@@ -62,53 +62,31 @@
     }
   },
   "redditSubreddit": {
-    "actorId": "9sHOY9RzPYGjmTHo8",
-    "actorName": "Reddit Scraper",
+    "actorId": "alex_claw~reddit-scraper",
+    "actorName": "Reddit Scraper (alex_claw)",
     "platform": "reddit",
     "source": "subreddit",
     "account": "stemplayer",
     "metrics": ["upvotes", "comments"],
     "input": {
-      "startUrls": [{ "url": "https://www.reddit.com/r/stemplayer/" }],
-      "searchPosts": true,
-      "searchComments": false,
-      "searchCommunities": false,
-      "searchSort": "new",
-      "searchTime": "all",
-      "maxPostsCount": 20,
-      "maxCommentsCount": 0,
-      "crawlCommentsPerPost": false,
-      "fastMode": true,
-      "includeNSFW": false,
-      "proxy": {
-        "useApifyProxy": true,
-        "apifyProxyGroups": ["RESIDENTIAL"]
-      }
+      "subreddits": ["stemplayer"],
+      "maxPostsPerSubreddit": 20,
+      "sort": "new",
+      "includeComments": false
     }
   },
   "redditMentions": {
-    "actorId": "9sHOY9RzPYGjmTHo8",
-    "actorName": "Reddit Scraper",
+    "actorId": "macrocosmos~reddit-scraper",
+    "actorName": "Reddit Scraper (macrocosmos)",
     "platform": "reddit",
     "source": "mentions",
     "searchTerm": "stemplayer",
     "metrics": ["upvotes", "comments"],
     "input": {
-      "searches": [{ "term": "stemplayer", "sort": "new", "time": "all" }],
-      "searchPosts": true,
-      "searchComments": false,
-      "searchCommunities": false,
-      "searchSort": "new",
-      "searchTime": "all",
-      "maxPostsCount": 20,
-      "maxCommentsCount": 0,
-      "crawlCommentsPerPost": false,
-      "fastMode": true,
-      "includeNSFW": false,
-      "proxy": {
-        "useApifyProxy": true,
-        "apifyProxyGroups": ["RESIDENTIAL"]
-      }
+      "subreddits": ["all"],
+      "keyword": "stemplayer",
+      "limit": 20,
+      "sort": "new"
     }
   },
   "youtube": {

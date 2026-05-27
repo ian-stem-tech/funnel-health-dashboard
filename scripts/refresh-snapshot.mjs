@@ -454,18 +454,22 @@ async function fetchX(previous, cacheMeta) {
 function parseRedditPosts(items, source) {
   const posts = [];
   for (const item of items ?? []) {
-    if (item.title || item.body) {
-      posts.push({
-        id: item.id ?? '',
-        title: (item.title ?? item.body ?? '').slice(0, 200),
-        upvotes: item.upVotes ?? item.score ?? item.ups ?? 0,
-        comments: item.numberOfComments ?? item.numComments ?? item.num_comments ?? 0,
-        url: item.url ?? '',
-        subreddit: item.subreddit ?? item.communityName ?? undefined,
-        createdAt: item.createdAt ?? item.created ?? undefined,
-        source,
-      });
-    }
+    const title = item.title ?? item.body ?? item.selftext ?? '';
+    if (!title) continue;
+    posts.push({
+      id: item.id ?? item.name ?? '',
+      title: title.slice(0, 200),
+      upvotes: item.score ?? item.upVotes ?? item.ups ?? item.upvotes ?? 0,
+      comments: item.num_comments ?? item.numberOfComments ?? item.numComments ?? item.commentCount ?? 0,
+      url: item.url ?? item.permalink
+        ? `https://www.reddit.com${item.permalink}`
+        : '',
+      subreddit: item.subreddit ?? item.communityName ?? item.subreddit_name_prefixed?.replace('r/', '') ?? undefined,
+      createdAt: item.created_utc
+        ? new Date(item.created_utc * 1000).toISOString()
+        : item.createdAt ?? item.created ?? undefined,
+      source,
+    });
   }
   return posts;
 }
@@ -484,29 +488,40 @@ async function fetchReddit(previous, cacheMeta) {
     return previous?.reddit ?? { subredditPosts: [], mentions: [] };
   }
 
+  let subredditPosts = [];
+  let mentions = [];
+  const errors = [];
+
   try {
-    console.log(`[reddit] Fetching subreddit + mentions via Apify actor ${subCfg.actorId}...`);
-
-    const [subItems, mentionItems] = await Promise.all([
-      runApifyActor(subCfg.actorId, subCfg.input, { timeoutSecs: 120 }),
-      runApifyActor(mentionCfg.actorId, mentionCfg.input, { timeoutSecs: 120 }),
-    ]);
-
-    const subredditPosts = parseRedditPosts(subItems, 'subreddit').slice(0, 20);
-    const mentions = parseRedditPosts(mentionItems, 'mention').slice(0, 20);
-
-    console.log(`[reddit] ${subredditPosts.length} subreddit posts, ${mentions.length} mentions`);
-    markCacheEntry(cacheMeta, 'reddit', 'ok', subredditPosts.length + mentions.length);
-    return { subredditPosts, mentions };
+    console.log(`[reddit] Fetching r/stemplayer via ${subCfg.actorId}...`);
+    const subItems = await runApifyActor(subCfg.actorId, subCfg.input, { timeoutSecs: 120 });
+    subredditPosts = parseRedditPosts(subItems, 'subreddit').slice(0, 20);
+    console.log(`[reddit] ${subredditPosts.length} subreddit posts`);
   } catch (err) {
-    console.warn('[reddit] Apify failed:', err.message);
-    markCacheEntry(cacheMeta, 'reddit', 'error');
-    return {
-      subredditPosts: previous?.reddit?.subredditPosts ?? [],
-      mentions: previous?.reddit?.mentions ?? [],
-      error: err.message,
-    };
+    console.warn('[reddit] Subreddit fetch failed:', err.message);
+    subredditPosts = previous?.reddit?.subredditPosts ?? [];
+    errors.push(`subreddit: ${err.message}`);
   }
+
+  try {
+    console.log(`[reddit] Fetching mentions via ${mentionCfg.actorId}...`);
+    const mentionItems = await runApifyActor(mentionCfg.actorId, mentionCfg.input, { timeoutSecs: 120 });
+    mentions = parseRedditPosts(mentionItems, 'mention').slice(0, 20);
+    console.log(`[reddit] ${mentions.length} mentions`);
+  } catch (err) {
+    console.warn('[reddit] Mentions fetch failed:', err.message);
+    mentions = previous?.reddit?.mentions ?? [];
+    errors.push(`mentions: ${err.message}`);
+  }
+
+  const status = errors.length === 0 ? 'ok' : (errors.length === 2 ? 'error' : 'partial');
+  markCacheEntry(cacheMeta, 'reddit', status, subredditPosts.length + mentions.length);
+
+  return {
+    subredditPosts,
+    mentions,
+    ...(errors.length > 0 ? { error: errors.join('; ') } : {}),
+  };
 }
 
 /* ============================================================
