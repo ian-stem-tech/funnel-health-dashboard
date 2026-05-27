@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { BentoCard } from './BentoCard';
 import { formatNumber, formatDate, type Snapshot } from '../lib/types';
 
@@ -34,12 +35,13 @@ export function HeroCard({ snapshot, deltas30d }: Props) {
 
   const totalEngagement = deltas30d.likes + deltas30d.comments;
 
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const channelBreakdown = [
-    { label: 'Instagram', value: ig.followers, icon: 'IG' },
-    { label: 'TikTok', value: tt.followers, icon: 'TT' },
-    { label: 'YouTube', value: yt?.subscribers ?? 0, icon: 'YT' },
-    { label: 'X', value: x?.followers ?? 0, icon: 'X' },
-    { label: 'Email', value: emailTotal, icon: 'MC' },
+    { label: 'Instagram', value: ig.followers, icon: 'IG', href: `${basePath}/instagram` },
+    { label: 'TikTok', value: tt.followers, icon: 'TT', href: `${basePath}/tiktok` },
+    { label: 'YouTube', value: yt?.subscribers ?? 0, icon: 'YT', href: `${basePath}/youtube` },
+    { label: 'X', value: x?.followers ?? 0, icon: 'X', href: `${basePath}/x` },
+    { label: 'Email', value: emailTotal, icon: 'MC', href: '' },
   ];
 
   const hasData = deltas30d.views > 0 || deltas30d.likes > 0;
@@ -87,15 +89,25 @@ export function HeroCard({ snapshot, deltas30d }: Props) {
       </div>
 
       <div className="hero-channel-strip">
-        {channelBreakdown.map((ch) => (
-          <div key={ch.label} className="hero-channel-chip">
-            <span className="hero-channel-icon">{ch.icon}</span>
-            <div className="hero-channel-info">
-              <span className="hero-channel-value">{compactNumber(ch.value)}</span>
-              <span className="hero-channel-label">{ch.label}</span>
+        {channelBreakdown.map((ch) =>
+          ch.href ? (
+            <Link key={ch.label} href={ch.href} className="hero-channel-chip hero-channel-link">
+              <span className="hero-channel-icon">{ch.icon}</span>
+              <div className="hero-channel-info">
+                <span className="hero-channel-value">{compactNumber(ch.value)}</span>
+                <span className="hero-channel-label">{ch.label}</span>
+              </div>
+            </Link>
+          ) : (
+            <div key={ch.label} className="hero-channel-chip">
+              <span className="hero-channel-icon">{ch.icon}</span>
+              <div className="hero-channel-info">
+                <span className="hero-channel-value">{compactNumber(ch.value)}</span>
+                <span className="hero-channel-label">{ch.label}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ),
+        )}
       </div>
     </BentoCard>
   );

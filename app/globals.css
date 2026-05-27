@@ -407,6 +407,12 @@ a {
     background var(--dur-fast) var(--ease-standard);
 }
 
+.hero-channel-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
 .hero-channel-chip:hover {
   transform: translateY(-1px);
   background: rgb(255 255 255 / 0.6);
