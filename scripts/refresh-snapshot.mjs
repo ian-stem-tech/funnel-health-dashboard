@@ -177,33 +177,58 @@ function markCacheEntry(meta, key, status, itemCount = 0) {
 }
 
 /* ============================================================
- * Apify helper — run an actor synchronously and return results
+ * Apify helper — start actor async, poll until done, fetch items
  * ============================================================ */
-async function runApifyActor(actorId, input, { timeoutSecs = 120 } = {}) {
+const APIFY_POLL_INTERVAL_MS = 10_000;
+const APIFY_MAX_WAIT_MS = 10 * 60 * 1000; // 10 minutes
+
+async function runApifyActor(actorId, input) {
   if (!APIFY_API_TOKEN) {
     throw new Error('APIFY_API_TOKEN not set');
   }
 
-  const url = `https://api.apify.com/v2/acts/${actorId}/run-sync-get-dataset-items?timeout=${timeoutSecs}`;
-  const res = await fetchWithRetry(
-    url,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${APIFY_API_TOKEN}`,
-      },
-      body: JSON.stringify(input),
-    },
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${APIFY_API_TOKEN}`,
+  };
+
+  const startUrl = `https://api.apify.com/v2/acts/${actorId}/runs`;
+  const startRes = await fetchWithRetry(
+    startUrl,
+    { method: 'POST', headers, body: JSON.stringify(input) },
     { maxRetries: 2, baseDelay: 5000 },
   );
 
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Apify ${actorId} returned ${res.status}: ${body.slice(0, 300)}`);
+  if (!startRes.ok) {
+    const body = await startRes.text();
+    throw new Error(`Apify ${actorId} start failed ${startRes.status}: ${body.slice(0, 300)}`);
   }
 
-  return res.json();
+  const { data: runData } = await startRes.json();
+  const runId = runData.id;
+  const datasetId = runData.defaultDatasetId;
+  console.log(`[apify] Started run ${runId} for ${actorId}, polling...`);
+
+  const deadline = Date.now() + APIFY_MAX_WAIT_MS;
+  while (Date.now() < deadline) {
+    await new Promise((r) => setTimeout(r, APIFY_POLL_INTERVAL_MS));
+    const statusRes = await fetch(`https://api.apify.com/v2/actor-runs/${runId}`, { headers });
+    if (!statusRes.ok) continue;
+    const { data: run } = await statusRes.json();
+    const s = run.status;
+    if (s === 'SUCCEEDED') break;
+    if (s === 'FAILED' || s === 'TIMED-OUT' || s === 'ABORTED') {
+      throw new Error(`Apify ${actorId} run ${runId} ended with status: ${s}`);
+    }
+    console.log(`[apify] Run ${runId} status: ${s} …`);
+  }
+
+  const itemsUrl = `https://api.apify.com/v2/datasets/${datasetId}/items?format=json`;
+  const itemsRes = await fetch(itemsUrl, { headers });
+  if (!itemsRes.ok) {
+    throw new Error(`Apify dataset fetch failed: ${itemsRes.status}`);
+  }
+  return itemsRes.json();
 }
 
 function loadActorConfig(key) {
@@ -231,7 +256,7 @@ async function fetchInstagram(previous, cacheMeta) {
 
   try {
     console.log(`[instagram] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
-    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 600 });
+    const items = await runApifyActor(cfg.actorId, cfg.input);
 
     let followers = previous?.instagram?.followers ?? 0;
     const reels = [];
@@ -295,7 +320,7 @@ async function fetchTikTok(previous, cacheMeta) {
 
   try {
     console.log(`[tiktok] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
-    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
+    const items = await runApifyActor(cfg.actorId, cfg.input);
 
     let followers = previous?.tiktok?.followers ?? 0;
     const videos = [];
@@ -355,7 +380,7 @@ async function fetchTikTokHashtag(previous, cacheMeta) {
 
   try {
     console.log(`[tiktok-hashtag] Fetching ${hashtagLabel} via Apify actor ${cfg.actorId}...`);
-    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 120 });
+    const items = await runApifyActor(cfg.actorId, cfg.input);
 
     const videos = [];
 
@@ -411,7 +436,7 @@ async function fetchX(previous, cacheMeta) {
 
   try {
     console.log(`[x] Fetching @${handle} via Apify actor ${cfg.actorId}...`);
-    const items = await runApifyActor(cfg.actorId, cfg.input, { timeoutSecs: 180 });
+    const items = await runApifyActor(cfg.actorId, cfg.input);
 
     let followers = previous?.x?.followers ?? 0;
     const tweets = [];
@@ -494,7 +519,7 @@ async function fetchReddit(previous, cacheMeta) {
 
   try {
     console.log(`[reddit] Fetching r/stemplayer via ${subCfg.actorId}...`);
-    const subItems = await runApifyActor(subCfg.actorId, subCfg.input, { timeoutSecs: 120 });
+    const subItems = await runApifyActor(subCfg.actorId, subCfg.input);
     subredditPosts = parseRedditPosts(subItems, 'subreddit').slice(0, 20);
     console.log(`[reddit] ${subredditPosts.length} subreddit posts`);
   } catch (err) {
@@ -505,7 +530,7 @@ async function fetchReddit(previous, cacheMeta) {
 
   try {
     console.log(`[reddit] Fetching mentions via ${mentionCfg.actorId}...`);
-    const mentionItems = await runApifyActor(mentionCfg.actorId, mentionCfg.input, { timeoutSecs: 120 });
+    const mentionItems = await runApifyActor(mentionCfg.actorId, mentionCfg.input);
     mentions = parseRedditPosts(mentionItems, 'mention').slice(0, 20);
     console.log(`[reddit] ${mentions.length} mentions`);
   } catch (err) {
