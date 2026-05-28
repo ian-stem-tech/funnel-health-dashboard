@@ -115,7 +115,7 @@ a {
   width: 42px;
   height: 42px;
   border-radius: 9px;
-  opacity: 0.95;
+  background-color: #000;
 }
 
 .dash-header h1 {
@@ -1065,7 +1065,7 @@ a {
   width: 42px;
   height: 42px;
   border-radius: 9px;
-  opacity: 0.95;
+  background-color: #000;
 }
 
 .detail-title-row h1 {
