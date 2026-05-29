@@ -7,6 +7,7 @@ import { YouTubeTile } from './components/YouTubeTile';
 import { XTile } from './components/XTile';
 import { RedditTile } from './components/RedditTile';
 import { MailchimpTile } from './components/MailchimpTile';
+import { WaitlistTile } from './components/WaitlistTile';
 import { LastUpdated } from './components/LastUpdated';
 import { computeContentDeltas } from './lib/computeDeltas';
 
@@ -92,6 +93,9 @@ export default async function Page() {
           </div>
           <div className="area-mailchimp">
             <MailchimpTile data={snapshot.mailchimp} />
+          </div>
+          <div className="area-waitlist">
+            <WaitlistTile data={snapshot.waitlist} />
           </div>
         </div>
 

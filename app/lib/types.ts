@@ -87,6 +87,18 @@ export type MailchimpLocation = {
   percent: number;
 };
 
+export type WaitlistDailySignup = {
+  date: string;
+  count: number;
+};
+
+export type WaitlistData = {
+  campaign: string;
+  totalEmails: number;
+  dailySignups: WaitlistDailySignup[];
+  error?: string;
+};
+
 export type Snapshot = {
   generatedAt: string;
   instagram: {
@@ -130,6 +142,7 @@ export type Snapshot = {
     mailchimpLocations?: MailchimpLocation[];
     error?: string;
   };
+  waitlist: WaitlistData;
 };
 
 export type HistoryEntry = {
@@ -163,6 +176,10 @@ export type HistoryEntry = {
     totalUpvotes: number;
     subredditPostCount: number;
     mentionCount: number;
+  };
+  waitlist?: {
+    totalEmails: number;
+    dailySignup: number;
   };
 };
 

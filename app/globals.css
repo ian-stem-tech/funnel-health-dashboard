@@ -153,6 +153,7 @@ a {
 .bento .area-reddit          { grid-column: span 4; }
 .bento .area-tiktok-hashtag  { grid-column: span 4; }
 .bento .area-mailchimp       { grid-column: span 12; }
+.bento .area-waitlist        { grid-column: span 12; }
 
 @media (max-width: 1024px) {
   .bento .area-instagram,
@@ -983,6 +984,78 @@ a {
   font-family: var(--font-stack);
   color: var(--gray-900);
   font-size: 0.86rem;
+}
+
+/* ============================================================
+   Waitlist tile
+   ============================================================ */
+
+.waitlist-stats-row {
+  display: flex;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.waitlist-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.waitlist-stat-value {
+  font-family: var(--font-stack);
+  font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+  color: var(--gray-900);
+  line-height: 1.05;
+}
+
+.waitlist-stat-label {
+  font-family: var(--font-stack);
+  font-size: 0.82rem;
+  color: var(--gray-700);
+  letter-spacing: 0.01em;
+}
+
+.waitlist-range-group {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.waitlist-range-btn {
+  background: transparent;
+  border: 1px solid rgb(31 31 31 / 0.18);
+  border-radius: 8px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.76rem;
+  font-family: var(--font-stack);
+  cursor: pointer;
+  color: var(--gray-700);
+  transition:
+    background var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+
+.waitlist-range-btn:hover {
+  border-color: rgb(31 31 31 / 0.4);
+}
+
+.waitlist-range-btn.active {
+  background: var(--gray-900);
+  color: var(--primary-cream);
+  border-color: var(--gray-900);
+}
+
+.waitlist-chart-wrap {
+  margin-top: 0.5rem;
+}
+
+.waitlist-empty {
+  font-family: var(--font-stack);
+  color: var(--gray-700);
+  font-size: 0.88rem;
+  padding: 2rem 0;
+  text-align: center;
 }
 
 /* ============================================================

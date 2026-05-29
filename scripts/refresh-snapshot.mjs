@@ -35,6 +35,9 @@ const THUMBS_DIR = path.join(ROOT, 'public', 'data', 'thumbnails');
 const APIFY_API_TOKEN = process.env.APIFY_API_TOKEN;
 const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
 const MAILCHIMP_SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX || 'us4';
+const ACCOUNTS_API_URL = process.env.ACCOUNTS_API_URL || 'https://api.stemplayer.com';
+const ACCOUNTS_API_KEY = process.env.ACCOUNTS_API_KEY || '';
+const WAITLIST_CAMPAIGN_SLUG = process.env.WAITLIST_CAMPAIGN_SLUG || 'stemfm-waitlist';
 
 const HISTORY_MAX_DAYS = 90;
 const CACHE_COOLDOWN_HOURS = parseInt(process.env.CACHE_COOLDOWN_HOURS ?? '4', 10);
@@ -764,9 +767,63 @@ function buildMailchimpFromSeed() {
 }
 
 /* ============================================================
+ * Waitlist signups via sp-accounts-api
+ * ============================================================ */
+async function fetchWaitlist(previous) {
+  if (!ACCOUNTS_API_URL) {
+    console.warn('[waitlist] ACCOUNTS_API_URL not set, using previous data');
+    return previous?.waitlist ?? { campaign: WAITLIST_CAMPAIGN_SLUG, totalEmails: 0, dailySignups: [] };
+  }
+
+  if (!ACCOUNTS_API_KEY) {
+    console.warn('[waitlist] ACCOUNTS_API_KEY not set, using previous data');
+    return previous?.waitlist ?? { campaign: WAITLIST_CAMPAIGN_SLUG, totalEmails: 0, dailySignups: [] };
+  }
+
+  try {
+    const url = `${ACCOUNTS_API_URL}/accounts/campaign/${WAITLIST_CAMPAIGN_SLUG}/stats`;
+    console.log(`[waitlist] Fetching stats from ${url}...`);
+    const res = await fetchWithRetry(
+      url,
+      { headers: { 'X-Api-Key': ACCOUNTS_API_KEY } },
+      { maxRetries: 2, baseDelay: 3000 },
+    );
+
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`${res.status} ${res.statusText}: ${body.slice(0, 200)}`);
+    }
+
+    const data = await res.json();
+    const totalEmails = data.total_emails ?? 0;
+    const dailySignups = (data.daily_signups ?? []).map((d) => ({
+      date: d.date,
+      count: d.count,
+    }));
+
+    console.log(`[waitlist] ${totalEmails} total emails, ${dailySignups.length} days of data`);
+    return { campaign: WAITLIST_CAMPAIGN_SLUG, totalEmails, dailySignups };
+  } catch (err) {
+    console.warn('[waitlist] Failed:', err.message);
+    return {
+      campaign: WAITLIST_CAMPAIGN_SLUG,
+      totalEmails: previous?.waitlist?.totalEmails ?? 0,
+      dailySignups: previous?.waitlist?.dailySignups ?? [],
+      error: err.message,
+    };
+  }
+}
+
+/* ============================================================
  * History accumulation
  * ============================================================ */
-async function appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddit) {
+function todaySignup(waitlist) {
+  const today = todayDateString();
+  const entry = (waitlist?.dailySignups ?? []).find((d) => d.date === today);
+  return entry?.count ?? 0;
+}
+
+async function appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddit, waitlist) {
   const history = await readHistory();
   const today = todayDateString();
 
@@ -841,6 +898,10 @@ async function appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddi
       subredditPostCount: (reddit.subredditPosts ?? []).length,
       mentionCount: (reddit.mentions ?? []).length,
     },
+    waitlist: {
+      totalEmails: waitlist?.totalEmails ?? 0,
+      dailySignup: todaySignup(waitlist),
+    },
   };
 
   const existing = history.entries.filter((e) => e.date !== today);
@@ -865,7 +926,7 @@ async function main() {
   console.log(`  Cache cooldown: ${CACHE_COOLDOWN_HOURS}h | Force refresh: ${FORCE_REFRESH}`);
   console.log('='.repeat(60));
 
-  const [instagram, tiktok, tiktokHashtag, youtube, x, reddit, mailchimp] = await Promise.all([
+  const [instagram, tiktok, tiktokHashtag, youtube, x, reddit, mailchimp, waitlist] = await Promise.all([
     fetchInstagram(previous, cacheMeta),
     fetchTikTok(previous, cacheMeta),
     fetchTikTokHashtag(previous, cacheMeta),
@@ -873,6 +934,7 @@ async function main() {
     fetchX(previous, cacheMeta),
     fetchReddit(previous, cacheMeta),
     fetchMailchimp(previous),
+    fetchWaitlist(previous),
   ]);
 
   const snapshot = {
@@ -884,6 +946,7 @@ async function main() {
     x,
     reddit,
     mailchimp,
+    waitlist,
   };
 
   await fs.mkdir(path.dirname(SNAPSHOT_PATH), { recursive: true });
@@ -903,6 +966,7 @@ async function main() {
     { channel: 'X/Twitter', ok: !x.error, detail: `${x.followers} followers, ${(x.tweets ?? []).length} tweets` },
     { channel: 'Reddit', ok: !reddit.error, detail: `${(reddit.subredditPosts ?? []).length} subreddit, ${(reddit.mentions ?? []).length} mentions` },
     { channel: 'Mailchimp', ok: !mailchimp.error, detail: `${mailchimp.cumulativeDisjoint} combined, ${mailchimp.audiences.length} audiences` },
+    { channel: 'Waitlist', ok: !waitlist.error, detail: `${waitlist.totalEmails} total emails, ${(waitlist.dailySignups ?? []).length} days tracked` },
   ];
 
   let hasErrors = false;
@@ -917,7 +981,7 @@ async function main() {
   }
 
   console.log(`\nWrote ${SNAPSHOT_PATH}`);
-  await appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddit);
+  await appendHistory(instagram, tiktok, tiktokHashtag, youtube, x, reddit, waitlist);
   console.log('='.repeat(60));
 }
 
