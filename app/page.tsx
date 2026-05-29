@@ -94,9 +94,11 @@ export default async function Page() {
           <div className="area-mailchimp">
             <MailchimpTile data={snapshot.mailchimp} />
           </div>
-          <div className="area-waitlist">
-            <WaitlistTile data={snapshot.waitlist} />
-          </div>
+          {snapshot.waitlist && (
+            <div className="area-waitlist">
+              <WaitlistTile data={snapshot.waitlist} />
+            </div>
+          )}
         </div>
 
         <LastUpdated iso={snapshot.generatedAt} workflowUrl={WORKFLOW_URL} />

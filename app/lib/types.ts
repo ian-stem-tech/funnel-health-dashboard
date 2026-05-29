@@ -142,7 +142,7 @@ export type Snapshot = {
     mailchimpLocations?: MailchimpLocation[];
     error?: string;
   };
-  waitlist: WaitlistData;
+  waitlist?: WaitlistData;
 };
 
 export type HistoryEntry = {
