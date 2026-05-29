@@ -190,6 +190,8 @@ function shortLabel(segment: Audience): string {
       return 'SP no-purchase';
     case 'stem2_product_interest':
       return 'Stem 2 interest';
+    case 'waitlist_signups':
+      return 'Waitlist signups';
     default:
       return segment.label;
   }

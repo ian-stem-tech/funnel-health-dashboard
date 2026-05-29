@@ -616,6 +616,12 @@ const SEED_AUDIENCES = [
     count: 27329,
     side: 'stemplayer',
   },
+  {
+    key: 'waitlist_signups',
+    label: 'Stem.fm Waitlist Signups',
+    count: 0,
+    side: 'stemplayer',
+  },
 ];
 
 function mailchimpAuthHeaders() {
