@@ -15204,12 +15204,28 @@
       "date": "2026-05-29",
       "instagram": {
         "followers": 90528,
-        "totalReelViews": 185065,
+        "totalReelViews": 185201,
         "reels": [
+          {
+            "shortcode": "DY2gyHSNpRU",
+            "thumbnail": "data/thumbnails/DY2gyHSNpRU.jpg",
+            "views": 4575,
+            "likes": 1000,
+            "comments": 35,
+            "url": "https://www.instagram.com/p/DY2gyHSNpRU/"
+          },
+          {
+            "shortcode": "DXpwp-gDNzo",
+            "thumbnail": "data/thumbnails/DXpwp-gDNzo.jpg",
+            "views": 9615,
+            "likes": 718,
+            "comments": 17,
+            "url": "https://www.instagram.com/p/DXpwp-gDNzo/"
+          },
           {
             "shortcode": "DYUyp9Bt9ge",
             "thumbnail": "data/thumbnails/DYUyp9Bt9ge.jpg",
-            "views": 3826,
+            "views": 3828,
             "likes": 634,
             "comments": 15,
             "url": "https://www.instagram.com/p/DYUyp9Bt9ge/"
@@ -15217,31 +15233,47 @@
           {
             "shortcode": "DYhyFJRtyOj",
             "thumbnail": "data/thumbnails/DYhyFJRtyOj.jpg",
-            "views": 3643,
+            "views": 3646,
             "likes": 260,
             "comments": 9,
             "url": "https://www.instagram.com/p/DYhyFJRtyOj/"
           },
           {
-            "shortcode": "DXpf4IrkiJI",
-            "thumbnail": "data/thumbnails/DXpf4IrkiJI.jpg",
-            "views": 6994,
-            "likes": 993,
-            "comments": 15,
-            "url": "https://www.instagram.com/p/DXpf4IrkiJI/"
+            "shortcode": "DP8FzLYFOqN",
+            "thumbnail": "data/thumbnails/DP8FzLYFOqN.jpg",
+            "views": 13311,
+            "likes": 1707,
+            "comments": 77,
+            "url": "https://www.instagram.com/p/DP8FzLYFOqN/"
           },
           {
             "shortcode": "DXzhXkwt0Cs",
             "thumbnail": "data/thumbnails/DXzhXkwt0Cs.jpg",
-            "views": 40818,
+            "views": 40823,
             "likes": 4525,
             "comments": 79,
             "url": "https://www.instagram.com/p/DXzhXkwt0Cs/"
           },
           {
+            "shortcode": "DP7ZP7RjApt",
+            "thumbnail": "data/thumbnails/DP7ZP7RjApt.jpg",
+            "views": 80471,
+            "likes": 12397,
+            "comments": 243,
+            "url": "https://www.instagram.com/p/DP7ZP7RjApt/"
+          },
+          {
+            "shortcode": "DXZrnjGjQu3",
+            "thumbnail": "data/thumbnails/DXZrnjGjQu3.jpg",
+            "views": 5681,
+            "likes": 680,
+            "comments": 20,
+            "url": "https://www.instagram.com/p/DXZrnjGjQu3/"
+          },
+          {
             "shortcode": "DXpJAghD0g6",
             "thumbnail": "data/thumbnails/DXpJAghD0g6.jpg",
-            "views": 7180,
+            "views": 7182,
             "likes": 763,
             "comments": 8,
             "url": "https://www.instagram.com/p/DXpJAghD0g6/"
@@ -15249,34 +15281,18 @@
           {
             "shortcode": "DYpO_RmN-fy",
             "thumbnail": "data/thumbnails/DYpO_RmN-fy.jpg",
-            "views": 4263,
-            "likes": 397,
+            "views": 4291,
+            "likes": 401,
             "comments": 23,
             "url": "https://www.instagram.com/p/DYpO_RmN-fy/"
           },
           {
-            "shortcode": "DY2gyHSNpRU",
-            "thumbnail": "data/thumbnails/DY2gyHSNpRU.jpg",
-            "views": 4491,
-            "likes": 990,
-            "comments": 35,
-            "url": "https://www.instagram.com/p/DY2gyHSNpRU/"
-          },
-          {
-            "shortcode": "DXZrnjGjQu3",
-            "thumbnail": "data/thumbnails/DXZrnjGjQu3.jpg",
-            "views": 5679,
-            "likes": 680,
-            "comments": 20,
-            "url": "https://www.instagram.com/p/DXZrnjGjQu3/"
-          },
-          {
-            "shortcode": "DP8FzLYFOqN",
-            "thumbnail": "data/thumbnails/DP8FzLYFOqN.jpg",
-            "views": 13309,
-            "likes": 1707,
-            "comments": 77,
-            "url": "https://www.instagram.com/p/DP8FzLYFOqN/"
+            "shortcode": "DXpf4IrkiJI",
+            "thumbnail": "data/thumbnails/DXpf4IrkiJI.jpg",
+            "views": 6996,
+            "likes": 993,
+            "comments": 15,
+            "url": "https://www.instagram.com/p/DXpf4IrkiJI/"
           },
           {
             "shortcode": "DX34l4cNKEN",
@@ -15285,34 +15301,18 @@
             "likes": 960,
             "comments": 17,
             "url": "https://www.instagram.com/p/DX34l4cNKEN/"
-          },
-          {
-            "shortcode": "DP7ZP7RjApt",
-            "thumbnail": "data/thumbnails/DP7ZP7RjApt.jpg",
-            "views": 80467,
-            "likes": 12397,
-            "comments": 243,
-            "url": "https://www.instagram.com/p/DP7ZP7RjApt/"
-          },
-          {
-            "shortcode": "DXpwp-gDNzo",
-            "thumbnail": "data/thumbnails/DXpwp-gDNzo.jpg",
-            "views": 9613,
-            "likes": 718,
-            "comments": 17,
-            "url": "https://www.instagram.com/p/DXpwp-gDNzo/"
           }
         ]
       },
       "tiktok": {
         "followers": 86100,
-        "totalVideoViews": 1489041,
+        "totalVideoViews": 1489991,
         "videos": [
           {
             "id": "7642381060474539286",
             "thumbnail": "data/thumbnails/7642381060474539286.jpg",
-            "views": 72100,
-            "likes": 4143,
+            "views": 72400,
+            "likes": 4165,
             "comments": 85,
             "shares": 144,
             "url": "https://www.tiktok.com/@stemplayer/video/7642381060474539286"
@@ -15320,16 +15320,16 @@
           {
             "id": "7641225083482262787",
             "thumbnail": "data/thumbnails/7641225083482262787.jpg",
-            "views": 718600,
-            "likes": 63000,
+            "views": 719200,
+            "likes": 63100,
             "comments": 404,
-            "shares": 7196,
+            "shares": 7199,
             "url": "https://www.tiktok.com/@stemplayer/video/7641225083482262787"
           },
           {
             "id": "7640046786425474326",
             "thumbnail": "data/thumbnails/7640046786425474326.jpg",
-            "views": 9528,
+            "views": 9544,
             "likes": 205,
             "comments": 12,
             "shares": 11,
@@ -15338,7 +15338,7 @@
           {
             "id": "7639821093435346198",
             "thumbnail": "data/thumbnails/7639821093435346198.jpg",
-            "views": 7275,
+            "views": 7289,
             "likes": 128,
             "comments": 20,
             "shares": 4,
@@ -15356,8 +15356,8 @@
           {
             "id": "7634634707241733378",
             "thumbnail": "data/thumbnails/7634634707241733378.jpg",
-            "views": 3795,
-            "likes": 124,
+            "views": 3799,
+            "likes": 125,
             "comments": 4,
             "shares": 0,
             "url": "https://www.tiktok.com/@stemplayer/video/7634634707241733378"
@@ -15365,7 +15365,7 @@
           {
             "id": "7634634693526293782",
             "thumbnail": "data/thumbnails/7634634693526293782.jpg",
-            "views": 3324,
+            "views": 3328,
             "likes": 85,
             "comments": 6,
             "shares": 2,
@@ -15374,7 +15374,7 @@
           {
             "id": "7633574194160241943",
             "thumbnail": "data/thumbnails/7633574194160241943.jpg",
-            "views": 3187,
+            "views": 3189,
             "likes": 139,
             "comments": 6,
             "shares": 14,
@@ -15383,7 +15383,7 @@
           {
             "id": "7633548662655733014",
             "thumbnail": "data/thumbnails/7633548662655733014.jpg",
-            "views": 2186,
+            "views": 2188,
             "likes": 73,
             "comments": 2,
             "shares": 2,
@@ -15392,7 +15392,7 @@
           {
             "id": "7633517019228425494",
             "thumbnail": "data/thumbnails/7633517019228425494.jpg",
-            "views": 2008,
+            "views": 2009,
             "likes": 85,
             "comments": 1,
             "shares": 2,
@@ -15401,7 +15401,7 @@
           {
             "id": "7633503465070742806",
             "thumbnail": "data/thumbnails/7633503465070742806.jpg",
-            "views": 1846,
+            "views": 1847,
             "likes": 83,
             "comments": 1,
             "shares": 0,
@@ -15410,7 +15410,7 @@
           {
             "id": "7633426386442652950",
             "thumbnail": "data/thumbnails/7633426386442652950.jpg",
-            "views": 1406,
+            "views": 1407,
             "likes": 66,
             "comments": 7,
             "shares": 1,
@@ -15419,7 +15419,7 @@
           {
             "id": "7632342056324713750",
             "thumbnail": "data/thumbnails/7632342056324713750.jpg",
-            "views": 1784,
+            "views": 1785,
             "likes": 90,
             "comments": 4,
             "shares": 4,
@@ -15428,7 +15428,7 @@
           {
             "id": "7629421310912793878",
             "thumbnail": "data/thumbnails/7629421310912793878.jpg",
-            "views": 3070,
+            "views": 3071,
             "likes": 202,
             "comments": 19,
             "shares": 3,
@@ -15437,7 +15437,7 @@
           {
             "id": "7628645744550890774",
             "thumbnail": "data/thumbnails/7628645744550890774.jpg",
-            "views": 1877,
+            "views": 1878,
             "likes": 108,
             "comments": 5,
             "shares": 1,
@@ -15446,7 +15446,7 @@
           {
             "id": "7620855639111109910",
             "thumbnail": "data/thumbnails/7620855639111109910.jpg",
-            "views": 4109,
+            "views": 4110,
             "likes": 249,
             "comments": 9,
             "shares": 16,
@@ -15554,7 +15554,7 @@
           {
             "id": "7519555163514785046",
             "thumbnail": "data/thumbnails/7519555163514785046.jpg",
-            "views": 9447,
+            "views": 9448,
             "likes": 45,
             "comments": 2,
             "shares": 3,
@@ -15585,7 +15585,7 @@
           "stemplayer",
           "stem2"
         ],
-        "totalVideoViews": 5704249,
+        "totalVideoViews": 12615936,
         "videoCount": 50
       },
       "youtube": {
@@ -15605,7 +15605,7 @@
       },
       "x": {
         "followers": 21631,
-        "totalTweetViews": 2580677,
+        "totalTweetViews": 2580676,
         "tweets": [
           {
             "id": "2057448148168040552",
@@ -15802,7 +15802,7 @@
             "likes": 32,
             "retweets": 4,
             "replies": 2,
-            "views": 3492,
+            "views": 3491,
             "url": "https://x.com/stemplayer/status/1937811631779533021"
           },
           {
@@ -15820,7 +15820,7 @@
             "likes": 45,
             "retweets": 2,
             "replies": 0,
-            "views": 4569,
+            "views": 4568,
             "url": "https://x.com/stemplayer/status/1924845007002915231"
           },
           {
@@ -15829,7 +15829,7 @@
             "likes": 43,
             "retweets": 2,
             "replies": 1,
-            "views": 3677,
+            "views": 3676,
             "url": "https://x.com/stemplayer/status/1923405757422182678"
           },
           {
@@ -15991,7 +15991,7 @@
             "likes": 238,
             "retweets": 15,
             "replies": 3,
-            "views": 27583,
+            "views": 27584,
             "url": "https://x.com/stemplayer/status/1687504535370047493"
           },
           {
@@ -16063,7 +16063,7 @@
             "likes": 83,
             "retweets": 6,
             "replies": 2,
-            "views": 10079,
+            "views": 10080,
             "url": "https://x.com/stemplayer/status/1619080979028807680"
           },
           {
@@ -16141,7 +16141,7 @@
           {
             "id": "1617979743235891202",
             "text": "BASED ON THE BODY\n\nhttps://t.co/VCyqz9LjpH https://t.co/naltqL9zb7",
-            "likes": 113,
+            "likes": 112,
             "retweets": 6,
             "replies": 8,
             "views": 13494,
@@ -16402,7 +16402,7 @@
           {
             "id": "1577404750693339140",
             "text": "CLEAR\n\nAVAILABLE NOW\n\nhttps://t.co/81me2iWKLs https://t.co/C6D4qsmr6s",
-            "likes": 1652,
+            "likes": 1651,
             "retweets": 157,
             "replies": 45,
             "views": 0,
