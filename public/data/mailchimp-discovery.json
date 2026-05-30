@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T12:17:03.655Z",
+  "generatedAt": "2026-05-30T10:48:24.211Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 458640,
+      "member_count": 458667,
       "tags": [
         {
           "id": 7006803,
@@ -109,13 +109,13 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 9233
+          "member_count": 9232
         },
         {
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5892
+          "member_count": 5891
         },
         {
           "id": 7006805,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27328
+          "member_count": 27327
         },
         {
           "id": 7006858,
@@ -223,19 +223,25 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 10354
+          "member_count": 10353
         },
         {
           "id": 7007300,
           "name": "Firmware_Updates",
           "type": "static",
-          "member_count": 360
+          "member_count": 356
         },
         {
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
           "member_count": 18521
+        },
+        {
+          "id": 7007469,
+          "name": "Campaign Pasted Segment - 29 May 2026 03:28:04 pm",
+          "type": "campaign_static",
+          "member_count": 404
         }
       ],
       "merge_fields": [
@@ -303,7 +309,7 @@
     {
       "id": "c5cfa9fc3c",
       "name": "STEM 2 CUSTOMERS",
-      "member_count": 32,
+      "member_count": 413,
       "tags": [
         {
           "id": 7006815,
