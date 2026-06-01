@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-31T10:59:51.190Z",
+  "generatedAt": "2026-06-01T15:24:44.686Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 458667,
+      "member_count": 458665,
       "tags": [
         {
           "id": 7006803,
@@ -109,7 +109,7 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 9232
+          "member_count": 9231
         },
         {
           "id": 7006803,
@@ -139,7 +139,7 @@
           "id": 7006808,
           "name": "chunk_5",
           "type": "static",
-          "member_count": 927
+          "member_count": 926
         },
         {
           "id": 7006809,
@@ -229,7 +229,7 @@
           "id": 7007300,
           "name": "Firmware_Updates",
           "type": "static",
-          "member_count": 356
+          "member_count": 355
         },
         {
           "id": 7007325,
@@ -241,7 +241,13 @@
           "id": 7007469,
           "name": "Campaign Pasted Segment - 29 May 2026 03:28:04 pm",
           "type": "campaign_static",
-          "member_count": 404
+          "member_count": 403
+        },
+        {
+          "id": 7007477,
+          "name": "Campaign Pasted Segment - 01 Jun 2026 10:54:00 am",
+          "type": "campaign_static",
+          "member_count": 5
         }
       ],
       "merge_fields": [
