@@ -26,6 +26,7 @@ export function WaitlistTile({ data }: { data: WaitlistData }) {
     const sliced = sorted.slice(-days);
     return sliced.map((d) => ({
       date: d.date.slice(5),
+      fullDate: d.date,
       count: d.count,
     }));
   }, [data.dailySignups, range]);
@@ -92,6 +93,15 @@ export function WaitlistTile({ data }: { data: WaitlistData }) {
                   fontSize: '0.82rem',
                 }}
                 labelStyle={{ color: '#d3d3d3' }}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                labelFormatter={(_label: any, payload: any) => {
+                  const item = payload?.[0]?.payload;
+                  if (!item?.fullDate) return _label;
+                  const d = new Date(item.fullDate + 'T00:00:00');
+                  return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                }}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={(value: any) => [`${value} emails`, 'Signups']}
               />
               <Bar
                 dataKey="count"
