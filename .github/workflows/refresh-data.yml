@@ -16,6 +16,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: refresh-data
@@ -24,6 +26,8 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    outputs:
+      data_changed: ${{ steps.commit.outputs.data_changed }}
     steps:
       - uses: actions/checkout@v5
 
@@ -45,14 +49,58 @@ jobs:
         run: node scripts/refresh-snapshot.mjs
 
       - name: Commit snapshot if changed
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data/snapshot.json public/data/history.json public/data/mailchimp-discovery.json public/data/cache-meta.json public/data/thumbnails/ 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No changes to snapshot."
+            echo "data_changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore(data): refresh snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase origin main
             git push
+            echo "data_changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+  build:
+    needs: refresh
+    if: needs.refresh.outputs.data_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Build static site
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_REPO_SLUG: ${{ github.repository }}
+        run: npm run build
+
+      - name: Disable Jekyll on Pages
+        run: touch out/.nojekyll
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
