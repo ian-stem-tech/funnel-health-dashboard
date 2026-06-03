@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-02T12:45:03.567Z",
+  "generatedAt": "2026-06-03T13:19:32.882Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -248,6 +248,18 @@
           "name": "Campaign Pasted Segment - 01 Jun 2026 10:54:00 am",
           "type": "campaign_static",
           "member_count": 5
+        },
+        {
+          "id": 7007482,
+          "name": "segment_v1_product_interest",
+          "type": "static",
+          "member_count": 1100
+        },
+        {
+          "id": 7007483,
+          "name": "sp2 product interest batch v1",
+          "type": "saved",
+          "member_count": 1100
         }
       ],
       "merge_fields": [
