@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-03T13:19:32.882Z",
+  "generatedAt": "2026-06-04T11:57:01.235Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 458665,
+      "member_count": 458649,
       "tags": [
         {
           "id": 7006803,
@@ -115,7 +115,7 @@
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5891
+          "member_count": 5890
         },
         {
           "id": 7006805,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27327
+          "member_count": 27310
         },
         {
           "id": 7006858,
@@ -253,13 +253,13 @@
           "id": 7007482,
           "name": "segment_v1_product_interest",
           "type": "static",
-          "member_count": 1100
+          "member_count": 1083
         },
         {
           "id": 7007483,
           "name": "sp2 product interest batch v1",
           "type": "saved",
-          "member_count": 1100
+          "member_count": 1083
         }
       ],
       "merge_fields": [
