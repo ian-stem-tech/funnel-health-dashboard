@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T11:57:01.235Z",
+  "generatedAt": "2026-06-04T15:16:16.005Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -115,7 +115,7 @@
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5890
+          "member_count": 5887
         },
         {
           "id": 7006805,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27310
+          "member_count": 27288
         },
         {
           "id": 7006858,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 10353
+          "member_count": 10351
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 18521
+          "member_count": 18519
         },
         {
           "id": 7007469,
@@ -253,13 +253,31 @@
           "id": 7007482,
           "name": "segment_v1_product_interest",
           "type": "static",
-          "member_count": 1083
+          "member_count": 1081
         },
         {
           "id": 7007483,
           "name": "sp2 product interest batch v1",
           "type": "saved",
-          "member_count": 1083
+          "member_count": 1081
+        },
+        {
+          "id": 7007484,
+          "name": "segment_v2_product_interest",
+          "type": "static",
+          "member_count": 985
+        },
+        {
+          "id": 7007485,
+          "name": "segment_v3_product_interest",
+          "type": "static",
+          "member_count": 993
+        },
+        {
+          "id": 7007486,
+          "name": "Internal_test",
+          "type": "static",
+          "member_count": 3
         }
       ],
       "merge_fields": [
