@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:16:16.005Z",
+  "generatedAt": "2026-06-05T12:10:12.685Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 458649,
+      "member_count": 458620,
       "tags": [
         {
           "id": 7006803,
@@ -115,7 +115,7 @@
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5887
+          "member_count": 5886
         },
         {
           "id": 7006805,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27288
+          "member_count": 27279
         },
         {
           "id": 7006858,
@@ -253,31 +253,43 @@
           "id": 7007482,
           "name": "segment_v1_product_interest",
           "type": "static",
-          "member_count": 1081
+          "member_count": 1078
         },
         {
           "id": 7007483,
           "name": "sp2 product interest batch v1",
           "type": "saved",
-          "member_count": 1081
+          "member_count": 1078
         },
         {
           "id": 7007484,
           "name": "segment_v2_product_interest",
           "type": "static",
-          "member_count": 985
+          "member_count": 983
         },
         {
           "id": 7007485,
           "name": "segment_v3_product_interest",
           "type": "static",
-          "member_count": 993
+          "member_count": 989
         },
         {
           "id": 7007486,
           "name": "Internal_test",
           "type": "static",
           "member_count": 3
+        },
+        {
+          "id": 7007487,
+          "name": "segment_v4_product_interest",
+          "type": "static",
+          "member_count": 1000
+        },
+        {
+          "id": 7007488,
+          "name": "segment_v5_product_interest",
+          "type": "static",
+          "member_count": 1000
         }
       ],
       "merge_fields": [
@@ -482,7 +494,7 @@
     {
       "id": "d9dde7fb06",
       "name": "Stem Tech product interest notifications",
-      "member_count": 27376,
+      "member_count": 27375,
       "tags": [],
       "segments": [],
       "merge_fields": [
