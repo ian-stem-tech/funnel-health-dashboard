@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T12:24:25.595Z",
+  "generatedAt": "2026-06-11T12:48:49.200Z",
   "instagram": {
     "handle": "stemplayer",
     "followers": 90528,
@@ -148,7 +148,8 @@
         "title": "very loud\nvery soft\nvery glowy\nvery much made for music \nvery STEM.FM \n\nwaitlist open now",
         "url": "https://www.instagram.com/p/DY7esEIN5Hm/"
       }
-    ]
+    ],
+    "error": "Apify xMc5Ga1oCONPmWJIa start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
   },
   "tiktok": {
     "handle": "stemplayer",
@@ -485,7 +486,7 @@
         "createdAt": "2025-06-24T16:34:34.000Z"
       }
     ],
-    "error": "Apify GdWCkxBtKWOsKjdch start failed 402: {\n  \"error\": {\n    \"type\": \"not-enough-usage-to-run-paid-actor\",\n    \"message\": \"By launching this job you will exceed your remaining usage of $0.278088.  Please consider upgrading at https://console.apify.com/billing/subscription to increase your limit.\"\n  }\n}"
+    "error": "Apify GdWCkxBtKWOsKjdch start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
   },
   "tiktokHashtag": {
     "hashtags": [
@@ -1093,7 +1094,8 @@
         "url": "https://www.tiktok.com/@stemplayer.wrld/video/7611854588190264598",
         "createdAt": "2026-02-28T10:03:31.000Z"
       }
-    ]
+    ],
+    "error": "Apify f1ZeP0K58iwlqG2pY start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
   },
   "youtube": {
     "channel": "thestemplayer",
@@ -2115,7 +2117,8 @@
         "url": "https://x.com/stemplayer/status/1511813857559429125",
         "createdAt": "Wed Apr 06 21:11:26 +0000 2022"
       }
-    ]
+    ],
+    "error": "Apify nfp1fpt5gUlBwPcor start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
   },
   "reddit": {
     "subredditPosts": [],
@@ -2320,7 +2323,8 @@
         "createdAt": "2026-02-16T23:40:57Z",
         "source": "mention"
       }
-    ]
+    ],
+    "error": "subreddit: Apify alex_claw~reddit-scraper start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}; mentions: Apify macrocosmos~reddit-scraper start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
   },
   "mailchimp": {
     "cumulativeRaw": 917282,

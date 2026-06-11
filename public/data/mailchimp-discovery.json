@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T12:23:33.834Z",
+  "generatedAt": "2026-06-11T12:48:32.940Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 458515,
+      "member_count": 458484,
       "tags": [
         {
           "id": 7006803,
@@ -115,7 +115,7 @@
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5872
+          "member_count": 5870
         },
         {
           "id": 7006805,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27174
+          "member_count": 27141
         },
         {
           "id": 7006858,
@@ -277,7 +277,7 @@
           "id": 7007486,
           "name": "Internal_test",
           "type": "static",
-          "member_count": 4
+          "member_count": 5
         },
         {
           "id": 7007487,
@@ -289,7 +289,7 @@
           "id": 7007488,
           "name": "segment_v5_product_interest",
           "type": "static",
-          "member_count": 979
+          "member_count": 977
         },
         {
           "id": 7007530,
@@ -313,19 +313,7 @@
           "id": 7007533,
           "name": "segment_v9_product_interest",
           "type": "static",
-          "member_count": 984
-        },
-        {
-          "id": 7007534,
-          "name": "segment_v10_product_interest",
-          "type": "static",
-          "member_count": 2000
-        },
-        {
-          "id": 7007535,
-          "name": "segment_v11_product_interest",
-          "type": "static",
-          "member_count": 2000
+          "member_count": 982
         },
         {
           "id": 7007537,
@@ -344,6 +332,18 @@
           "name": "segment_v14_product_interest",
           "type": "static",
           "member_count": 1000
+        },
+        {
+          "id": 7007546,
+          "name": "segment_v10_product_interest",
+          "type": "static",
+          "member_count": 985
+        },
+        {
+          "id": 7007547,
+          "name": "segment_v11_product_interest",
+          "type": "static",
+          "member_count": 986
         }
       ],
       "merge_fields": [
