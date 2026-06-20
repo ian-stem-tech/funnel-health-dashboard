@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T12:49:45.277Z",
+  "generatedAt": "2026-06-20T11:20:36.421Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 457325,
+      "member_count": 457321,
       "tags": [
         {
           "id": 7006803,
@@ -109,7 +109,7 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 9035
+          "member_count": 9034
         },
         {
           "id": 7006803,
@@ -145,7 +145,7 @@
           "id": 7006809,
           "name": "chunk_6",
           "type": "static",
-          "member_count": 927
+          "member_count": 926
         },
         {
           "id": 7006810,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27010
+          "member_count": 27009
         },
         {
           "id": 7006858,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7887
+          "member_count": 7886
         },
         {
           "id": 7006930,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17900
+          "member_count": 17899
         },
         {
           "id": 7007469,
@@ -253,13 +253,13 @@
           "id": 7007482,
           "name": "segment_v1_product_interest",
           "type": "static",
-          "member_count": 1072
+          "member_count": 1071
         },
         {
           "id": 7007483,
           "name": "sp2 product interest batch v1",
           "type": "saved",
-          "member_count": 1072
+          "member_count": 1071
         },
         {
           "id": 7007484,
@@ -349,7 +349,7 @@
           "id": 7007551,
           "name": "Stemplayer_segment_first_!0k",
           "type": "static",
-          "member_count": 9267
+          "member_count": 9266
         },
         {
           "id": 7007552,
