@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T11:47:10.066Z",
+  "generatedAt": "2026-06-22T14:43:29.991Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 457315,
+      "member_count": 457310,
       "tags": [
         {
           "id": 7006803,
@@ -109,19 +109,19 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 9031
+          "member_count": 9030
         },
         {
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5751
+          "member_count": 5750
         },
         {
           "id": 7006805,
           "name": "chunk_2",
           "type": "static",
-          "member_count": 908
+          "member_count": 907
         },
         {
           "id": 7006806,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27008
+          "member_count": 27005
         },
         {
           "id": 7006858,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7886
+          "member_count": 7884
         },
         {
           "id": 7006930,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 10069
+          "member_count": 10064
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17899
+          "member_count": 17892
         },
         {
           "id": 7007469,
@@ -253,13 +253,13 @@
           "id": 7007482,
           "name": "segment_v1_product_interest",
           "type": "static",
-          "member_count": 1071
+          "member_count": 1070
         },
         {
           "id": 7007483,
           "name": "sp2 product interest batch v1",
           "type": "saved",
-          "member_count": 1071
+          "member_count": 1070
         },
         {
           "id": 7007484,
@@ -289,7 +289,7 @@
           "id": 7007488,
           "name": "segment_v5_product_interest",
           "type": "static",
-          "member_count": 974
+          "member_count": 973
         },
         {
           "id": 7007530,
