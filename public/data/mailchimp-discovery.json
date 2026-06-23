@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T14:43:29.991Z",
+  "generatedAt": "2026-06-23T12:09:24.409Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 457310,
+      "member_count": 457297,
       "tags": [
         {
           "id": 7006803,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 27005
+          "member_count": 27002
         },
         {
           "id": 7006858,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7884
+          "member_count": 7883
         },
         {
           "id": 7006930,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 10064
+          "member_count": 10063
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17892
+          "member_count": 17890
         },
         {
           "id": 7007469,
@@ -283,7 +283,7 @@
           "id": 7007487,
           "name": "segment_v4_product_interest",
           "type": "static",
-          "member_count": 980
+          "member_count": 979
         },
         {
           "id": 7007488,
@@ -295,7 +295,7 @@
           "id": 7007530,
           "name": "segment_v6_product_interest",
           "type": "static",
-          "member_count": 988
+          "member_count": 987
         },
         {
           "id": 7007531,
@@ -313,7 +313,7 @@
           "id": 7007533,
           "name": "segment_v9_product_interest",
           "type": "static",
-          "member_count": 979
+          "member_count": 978
         },
         {
           "id": 7007537,
@@ -349,7 +349,7 @@
           "id": 7007551,
           "name": "Stemplayer_segment_first_!0k",
           "type": "static",
-          "member_count": 9262
+          "member_count": 9261
         },
         {
           "id": 7007552,
