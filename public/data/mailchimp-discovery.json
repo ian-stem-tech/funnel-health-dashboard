@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T11:41:29.833Z",
+  "generatedAt": "2026-06-26T11:45:42.990Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 457285,
+      "member_count": 457283,
       "tags": [
         {
           "id": 7006803,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7883
+          "member_count": 7882
         },
         {
           "id": 7006930,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 10062
+          "member_count": 10061
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17889
+          "member_count": 17887
         },
         {
           "id": 7007469,
@@ -560,9 +560,41 @@
     {
       "id": "d9dde7fb06",
       "name": "Stem Tech product interest notifications",
-      "member_count": 27375,
-      "tags": [],
-      "segments": [],
+      "member_count": 43200,
+      "tags": [
+        {
+          "id": 7007582,
+          "name": "Login with Shop"
+        },
+        {
+          "id": 7007584,
+          "name": "newsletter"
+        },
+        {
+          "id": 7007583,
+          "name": "Shop"
+        }
+      ],
+      "segments": [
+        {
+          "id": 7007582,
+          "name": "Login with Shop",
+          "type": "static",
+          "member_count": 96
+        },
+        {
+          "id": 7007583,
+          "name": "Shop",
+          "type": "static",
+          "member_count": 96
+        },
+        {
+          "id": 7007584,
+          "name": "newsletter",
+          "type": "static",
+          "member_count": 6
+        }
+      ],
       "merge_fields": [
         {
           "tag": "ADDRESS",
@@ -583,6 +615,11 @@
           "tag": "PHONE",
           "name": "Phone Number",
           "type": "phone"
+        },
+        {
+          "tag": "SHOPB2BCO",
+          "name": "Shopify B2B Company",
+          "type": "text"
         }
       ]
     }
