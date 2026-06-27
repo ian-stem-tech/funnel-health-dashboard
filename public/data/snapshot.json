@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T11:45:56.411Z",
+  "generatedAt": "2026-06-27T10:59:08.032Z",
   "instagram": {
     "handle": "stemplayer",
     "followers": 90528,
@@ -149,7 +149,7 @@
         "url": "https://www.instagram.com/p/DY7esEIN5Hm/"
       }
     ],
-    "error": "Apify xMc5Ga1oCONPmWJIa start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
+    "error": "Apify xMc5Ga1oCONPmWJIa start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Too many outstanding invoices\"\n  }\n}"
   },
   "tiktok": {
     "handle": "stemplayer",
@@ -486,7 +486,7 @@
         "createdAt": "2025-06-24T16:34:34.000Z"
       }
     ],
-    "error": "Apify GdWCkxBtKWOsKjdch start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
+    "error": "Apify GdWCkxBtKWOsKjdch start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Too many outstanding invoices\"\n  }\n}"
   },
   "tiktokHashtag": {
     "hashtags": [
@@ -1095,7 +1095,7 @@
         "createdAt": "2026-02-28T10:03:31.000Z"
       }
     ],
-    "error": "Apify f1ZeP0K58iwlqG2pY start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
+    "error": "Apify f1ZeP0K58iwlqG2pY start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Too many outstanding invoices\"\n  }\n}"
   },
   "youtube": {
     "channel": "thestemplayer",
@@ -2118,7 +2118,7 @@
         "createdAt": "Wed Apr 06 21:11:26 +0000 2022"
       }
     ],
-    "error": "Apify nfp1fpt5gUlBwPcor start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
+    "error": "Apify nfp1fpt5gUlBwPcor start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Too many outstanding invoices\"\n  }\n}"
   },
   "reddit": {
     "subredditPosts": [],
@@ -2324,7 +2324,7 @@
         "source": "mention"
       }
     ],
-    "error": "subreddit: Apify alex_claw~reddit-scraper start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}; mentions: Apify macrocosmos~reddit-scraper start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded\"\n  }\n}"
+    "error": "subreddit: Apify alex_claw~reddit-scraper start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Too many outstanding invoices\"\n  }\n}; mentions: Apify macrocosmos~reddit-scraper start failed 403: {\n  \"error\": {\n    \"type\": \"platform-feature-disabled\",\n    \"message\": \"Too many outstanding invoices\"\n  }\n}"
   },
   "mailchimp": {
     "cumulativeRaw": 917282,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T11:45:42.990Z",
+  "generatedAt": "2026-06-27T10:58:50.709Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 457283,
+      "member_count": 457278,
       "tags": [
         {
           "id": 7006803,
@@ -115,7 +115,7 @@
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5748
+          "member_count": 5745
         },
         {
           "id": 7006805,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26998
+          "member_count": 26995
         },
         {
           "id": 7006858,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 10061
+          "member_count": 10059
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17887
+          "member_count": 17885
         },
         {
           "id": 7007469,
@@ -277,13 +277,13 @@
           "id": 7007486,
           "name": "Internal_test",
           "type": "static",
-          "member_count": 5
+          "member_count": 6
         },
         {
           "id": 7007487,
           "name": "segment_v4_product_interest",
           "type": "static",
-          "member_count": 979
+          "member_count": 978
         },
         {
           "id": 7007488,
