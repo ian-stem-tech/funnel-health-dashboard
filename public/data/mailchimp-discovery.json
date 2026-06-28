@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T10:58:50.709Z",
+  "generatedAt": "2026-06-28T11:09:35.236Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 457278,
+      "member_count": 457275,
       "tags": [
         {
           "id": 7006803,
@@ -109,7 +109,7 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 9025
+          "member_count": 9024
         },
         {
           "id": 7006803,
@@ -127,7 +127,7 @@
           "id": 7006806,
           "name": "chunk_3",
           "type": "static",
-          "member_count": 906
+          "member_count": 905
         },
         {
           "id": 7006807,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26995
+          "member_count": 26994
         },
         {
           "id": 7006858,
@@ -319,7 +319,7 @@
           "id": 7007537,
           "name": "segment_v13_product_interest",
           "type": "static",
-          "member_count": 985
+          "member_count": 984
         },
         {
           "id": 7007538,
@@ -349,7 +349,7 @@
           "id": 7007551,
           "name": "Stemplayer_segment_first_!0k",
           "type": "static",
-          "member_count": 9259
+          "member_count": 9258
         },
         {
           "id": 7007552,
