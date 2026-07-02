@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T12:10:14.488Z",
+  "generatedAt": "2026-07-02T11:35:40.467Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 457190,
+      "member_count": 457127,
       "tags": [
         {
           "id": 7006803,
@@ -109,49 +109,49 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 8981
+          "member_count": 8966
         },
         {
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5695
+          "member_count": 5693
         },
         {
           "id": 7006805,
           "name": "chunk_2",
           "type": "static",
-          "member_count": 899
+          "member_count": 896
         },
         {
           "id": 7006806,
           "name": "chunk_3",
           "type": "static",
-          "member_count": 900
+          "member_count": 897
         },
         {
           "id": 7006807,
           "name": "chunk_4",
           "type": "static",
-          "member_count": 908
+          "member_count": 906
         },
         {
           "id": 7006808,
           "name": "chunk_5",
           "type": "static",
-          "member_count": 911
+          "member_count": 909
         },
         {
           "id": 7006809,
           "name": "chunk_6",
           "type": "static",
-          "member_count": 922
+          "member_count": 920
         },
         {
           "id": 7006810,
           "name": "chunk_7",
           "type": "static",
-          "member_count": 872
+          "member_count": 869
         },
         {
           "id": 7006811,
@@ -175,13 +175,13 @@
           "id": 7006824,
           "name": "projector purchasers",
           "type": "static",
-          "member_count": 119
+          "member_count": 118
         },
         {
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26952
+          "member_count": 26949
         },
         {
           "id": 7006858,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 10052
+          "member_count": 10044
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17876
+          "member_count": 17868
         },
         {
           "id": 7007469,
@@ -337,7 +337,7 @@
           "id": 7007546,
           "name": "segment_v10_product_interest",
           "type": "static",
-          "member_count": 976
+          "member_count": 975
         },
         {
           "id": 7007547,
@@ -349,7 +349,7 @@
           "id": 7007551,
           "name": "Stemplayer_segment_first_!0k",
           "type": "static",
-          "member_count": 9250
+          "member_count": 9204
         },
         {
           "id": 7007552,
