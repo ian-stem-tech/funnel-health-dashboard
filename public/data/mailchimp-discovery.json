@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T12:05:34.381Z",
+  "generatedAt": "2026-07-10T11:53:43.307Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 441880,
+      "member_count": 441817,
       "tags": [
         {
           "id": 7007617,
@@ -109,13 +109,13 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 8777
+          "member_count": 8775
         },
         {
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5636
+          "member_count": 5634
         },
         {
           "id": 7006805,
@@ -133,7 +133,7 @@
           "id": 7006807,
           "name": "chunk_4",
           "type": "static",
-          "member_count": 884
+          "member_count": 883
         },
         {
           "id": 7006808,
@@ -157,7 +157,7 @@
           "id": 7006811,
           "name": "chunk_8",
           "type": "static",
-          "member_count": 922
+          "member_count": 921
         },
         {
           "id": 7006812,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26595
+          "member_count": 26589
         },
         {
           "id": 7006858,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7765
+          "member_count": 7760
         },
         {
           "id": 7006930,
@@ -223,25 +223,25 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 9805
+          "member_count": 9795
         },
         {
           "id": 7007300,
           "name": "Firmware_Updates",
           "type": "static",
-          "member_count": 354
+          "member_count": 353
         },
         {
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17514
+          "member_count": 17499
         },
         {
           "id": 7007469,
           "name": "Campaign Pasted Segment - 29 May 2026 03:28:04 pm",
           "type": "campaign_static",
-          "member_count": 402
+          "member_count": 401
         },
         {
           "id": 7007477,
@@ -343,25 +343,25 @@
           "id": 7007547,
           "name": "segment_v11_product_interest",
           "type": "static",
-          "member_count": 973
+          "member_count": 972
         },
         {
           "id": 7007551,
           "name": "Stemplayer_segment_first_!0k",
           "type": "static",
-          "member_count": 9059
+          "member_count": 9056
         },
         {
           "id": 7007552,
           "name": "Stem2_customer_list",
           "type": "static",
-          "member_count": 412
+          "member_count": 411
         },
         {
           "id": 7007601,
           "name": "StemFM_Waitlist",
           "type": "static",
-          "member_count": 414
+          "member_count": 413
         },
         {
           "id": 7007604,
@@ -373,55 +373,55 @@
           "id": 7007605,
           "name": "stemfm_reactivation_unopened_15d_send_day_01",
           "type": "static",
-          "member_count": 9875
+          "member_count": 9860
         },
         {
           "id": 7007606,
           "name": "stemfm_reactivation_unopened_15d_send_day_02",
           "type": "static",
-          "member_count": 9975
+          "member_count": 9969
         },
         {
           "id": 7007607,
           "name": "stemfm_reactivation_unopened_15d_send_day_03",
           "type": "static",
-          "member_count": 9976
+          "member_count": 9974
         },
         {
           "id": 7007608,
           "name": "stemfm_reactivation_unopened_15d_send_day_04",
           "type": "static",
-          "member_count": 9977
+          "member_count": 9976
         },
         {
           "id": 7007609,
           "name": "stemfm_reactivation_unopened_15d_send_day_05",
           "type": "static",
-          "member_count": 9980
+          "member_count": 9978
         },
         {
           "id": 7007610,
           "name": "stemfm_reactivation_unopened_15d_send_day_06",
           "type": "static",
-          "member_count": 9975
+          "member_count": 9974
         },
         {
           "id": 7007611,
           "name": "stemfm_reactivation_unopened_15d_send_day_07",
           "type": "static",
-          "member_count": 9977
+          "member_count": 9976
         },
         {
           "id": 7007612,
           "name": "stemfm_reactivation_unopened_15d_send_day_08",
           "type": "static",
-          "member_count": 3299
+          "member_count": 3298
         },
         {
           "id": 7007615,
           "name": "kano_emailers_segment_1.csv",
           "type": "static",
-          "member_count": 5695
+          "member_count": 5691
         },
         {
           "id": 7007616,
@@ -439,13 +439,13 @@
           "id": 7007618,
           "name": "kano_emailers_segment_2.csv",
           "type": "static",
-          "member_count": 5681
+          "member_count": 5676
         },
         {
           "id": 7007619,
           "name": "kano_emailers_segment_3.",
           "type": "static",
-          "member_count": 5684
+          "member_count": 5677
         }
       ],
       "merge_fields": [
@@ -655,7 +655,7 @@
     {
       "id": "d9dde7fb06",
       "name": "Stem Tech product interest notifications",
-      "member_count": 43200,
+      "member_count": 2500,
       "tags": [
         {
           "id": 7007582,
@@ -675,19 +675,19 @@
           "id": 7007582,
           "name": "Login with Shop",
           "type": "static",
-          "member_count": 96
+          "member_count": 2
         },
         {
           "id": 7007583,
           "name": "Shop",
           "type": "static",
-          "member_count": 96
+          "member_count": 2
         },
         {
           "id": 7007584,
           "name": "newsletter",
           "type": "static",
-          "member_count": 6
+          "member_count": 0
         }
       ],
       "merge_fields": [
