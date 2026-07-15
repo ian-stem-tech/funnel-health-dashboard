@@ -1,31 +1,31 @@
 {
   "reddit": {
-    "lastFetchedAt": "2026-07-14T10:48:40.773Z",
+    "lastFetchedAt": "2026-07-15T10:52:02.851Z",
     "status": "error",
     "itemCount": 20
   },
   "x": {
-    "lastFetchedAt": "2026-07-14T10:48:40.682Z",
+    "lastFetchedAt": "2026-07-15T10:52:02.775Z",
     "status": "error",
     "itemCount": 0
   },
   "tiktok": {
-    "lastFetchedAt": "2026-07-14T10:48:40.671Z",
+    "lastFetchedAt": "2026-07-15T10:52:02.770Z",
     "status": "error",
     "itemCount": 0
   },
   "tiktokHashtag": {
-    "lastFetchedAt": "2026-07-14T10:48:40.674Z",
+    "lastFetchedAt": "2026-07-15T10:52:02.768Z",
     "status": "error",
     "itemCount": 0
   },
   "youtube": {
-    "lastFetchedAt": "2026-07-14T10:48:40.348Z",
+    "lastFetchedAt": "2026-07-15T10:52:02.428Z",
     "status": "ok",
     "itemCount": 1
   },
   "instagram": {
-    "lastFetchedAt": "2026-07-14T10:48:40.670Z",
+    "lastFetchedAt": "2026-07-15T10:52:02.773Z",
     "status": "error",
     "itemCount": 0
   }

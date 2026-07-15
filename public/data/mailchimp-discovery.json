@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T10:48:42.784Z",
+  "generatedAt": "2026-07-15T10:52:04.979Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 441788,
+      "member_count": 441778,
       "tags": [
         {
           "id": 7007617,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7747
+          "member_count": 7745
         },
         {
           "id": 7006930,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 9778
+          "member_count": 9776
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17469
+          "member_count": 17465
         },
         {
           "id": 7007469,
@@ -373,7 +373,7 @@
           "id": 7007605,
           "name": "stemfm_reactivation_unopened_15d_send_day_01",
           "type": "static",
-          "member_count": 9852
+          "member_count": 9851
         },
         {
           "id": 7007606,
@@ -391,7 +391,7 @@
           "id": 7007608,
           "name": "stemfm_reactivation_unopened_15d_send_day_04",
           "type": "static",
-          "member_count": 9971
+          "member_count": 9970
         },
         {
           "id": 7007609,
@@ -403,7 +403,7 @@
           "id": 7007610,
           "name": "stemfm_reactivation_unopened_15d_send_day_06",
           "type": "static",
-          "member_count": 9966
+          "member_count": 9965
         },
         {
           "id": 7007611,
@@ -421,7 +421,7 @@
           "id": 7007615,
           "name": "kano_emailers_segment_1.csv",
           "type": "static",
-          "member_count": 5683
+          "member_count": 5681
         },
         {
           "id": 7007616,
@@ -445,7 +445,7 @@
           "id": 7007619,
           "name": "kano_emailers_segment_3.",
           "type": "static",
-          "member_count": 5671
+          "member_count": 5670
         }
       ],
       "merge_fields": [
