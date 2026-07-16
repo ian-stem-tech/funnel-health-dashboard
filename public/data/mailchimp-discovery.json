@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T10:52:04.979Z",
+  "generatedAt": "2026-07-16T11:02:00.902Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 441778,
+      "member_count": 441759,
       "tags": [
         {
           "id": 7007617,
@@ -109,19 +109,19 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 8765
+          "member_count": 8763
         },
         {
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5631
+          "member_count": 5630
         },
         {
           "id": 7006805,
           "name": "chunk_2",
           "type": "static",
-          "member_count": 873
+          "member_count": 872
         },
         {
           "id": 7006806,
@@ -163,7 +163,7 @@
           "id": 7006812,
           "name": "chunk_9",
           "type": "static",
-          "member_count": 901
+          "member_count": 900
         },
         {
           "id": 7006813,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26580
+          "member_count": 26579
         },
         {
           "id": 7006858,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7745
+          "member_count": 7744
         },
         {
           "id": 7006930,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 9776
+          "member_count": 9775
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17465
+          "member_count": 17463
         },
         {
           "id": 7007469,
@@ -325,7 +325,7 @@
           "id": 7007538,
           "name": "segment_v12_product_interest",
           "type": "static",
-          "member_count": 966
+          "member_count": 965
         },
         {
           "id": 7007539,
@@ -373,7 +373,7 @@
           "id": 7007605,
           "name": "stemfm_reactivation_unopened_15d_send_day_01",
           "type": "static",
-          "member_count": 9851
+          "member_count": 9850
         },
         {
           "id": 7007606,
@@ -385,19 +385,19 @@
           "id": 7007607,
           "name": "stemfm_reactivation_unopened_15d_send_day_03",
           "type": "static",
-          "member_count": 9970
+          "member_count": 9967
         },
         {
           "id": 7007608,
           "name": "stemfm_reactivation_unopened_15d_send_day_04",
           "type": "static",
-          "member_count": 9970
+          "member_count": 9969
         },
         {
           "id": 7007609,
           "name": "stemfm_reactivation_unopened_15d_send_day_05",
           "type": "static",
-          "member_count": 9973
+          "member_count": 9971
         },
         {
           "id": 7007610,
@@ -409,19 +409,19 @@
           "id": 7007611,
           "name": "stemfm_reactivation_unopened_15d_send_day_07",
           "type": "static",
-          "member_count": 9971
+          "member_count": 9970
         },
         {
           "id": 7007612,
           "name": "stemfm_reactivation_unopened_15d_send_day_08",
           "type": "static",
-          "member_count": 3296
+          "member_count": 3293
         },
         {
           "id": 7007615,
           "name": "kano_emailers_segment_1.csv",
           "type": "static",
-          "member_count": 5681
+          "member_count": 5679
         },
         {
           "id": 7007616,
@@ -445,7 +445,7 @@
           "id": 7007619,
           "name": "kano_emailers_segment_3.",
           "type": "static",
-          "member_count": 5670
+          "member_count": 5669
         }
       ],
       "merge_fields": [
