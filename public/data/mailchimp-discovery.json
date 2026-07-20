@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T10:36:23.763Z",
+  "generatedAt": "2026-07-20T11:46:52.299Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 441729,
+      "member_count": 441719,
       "tags": [
         {
           "id": 7007617,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26573
+          "member_count": 26571
         },
         {
           "id": 7006858,
@@ -211,7 +211,7 @@
           "id": 7006929,
           "name": "Mailing list",
           "type": "static",
-          "member_count": 7743
+          "member_count": 7742
         },
         {
           "id": 7006930,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17457
+          "member_count": 17456
         },
         {
           "id": 7007469,
@@ -295,7 +295,7 @@
           "id": 7007530,
           "name": "segment_v6_product_interest",
           "type": "static",
-          "member_count": 971
+          "member_count": 970
         },
         {
           "id": 7007531,
@@ -349,7 +349,7 @@
           "id": 7007551,
           "name": "Stemplayer_segment_first_!0k",
           "type": "static",
-          "member_count": 9047
+          "member_count": 9046
         },
         {
           "id": 7007552,
@@ -373,19 +373,19 @@
           "id": 7007605,
           "name": "stemfm_reactivation_unopened_15d_send_day_01",
           "type": "static",
-          "member_count": 9850
+          "member_count": 9849
         },
         {
           "id": 7007606,
           "name": "stemfm_reactivation_unopened_15d_send_day_02",
           "type": "static",
-          "member_count": 9961
+          "member_count": 9960
         },
         {
           "id": 7007607,
           "name": "stemfm_reactivation_unopened_15d_send_day_03",
           "type": "static",
-          "member_count": 9964
+          "member_count": 9963
         },
         {
           "id": 7007608,
@@ -397,7 +397,7 @@
           "id": 7007609,
           "name": "stemfm_reactivation_unopened_15d_send_day_05",
           "type": "static",
-          "member_count": 9968
+          "member_count": 9967
         },
         {
           "id": 7007610,
@@ -409,7 +409,7 @@
           "id": 7007611,
           "name": "stemfm_reactivation_unopened_15d_send_day_07",
           "type": "static",
-          "member_count": 9968
+          "member_count": 9967
         },
         {
           "id": 7007612,
@@ -439,7 +439,7 @@
           "id": 7007618,
           "name": "kano_emailers_segment_2.csv",
           "type": "static",
-          "member_count": 5664
+          "member_count": 5663
         },
         {
           "id": 7007619,
