@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T11:30:23.928Z",
+  "generatedAt": "2026-08-01T10:42:29.154Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 441301,
+      "member_count": 441226,
       "tags": [
         {
           "id": 7007617,
@@ -109,19 +109,19 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 8725
+          "member_count": 8719
         },
         {
           "id": 7006803,
           "name": "chunk_1",
           "type": "static",
-          "member_count": 5619
+          "member_count": 5618
         },
         {
           "id": 7006805,
           "name": "chunk_2",
           "type": "static",
-          "member_count": 869
+          "member_count": 868
         },
         {
           "id": 7006806,
@@ -145,7 +145,7 @@
           "id": 7006809,
           "name": "chunk_6",
           "type": "static",
-          "member_count": 893
+          "member_count": 892
         },
         {
           "id": 7006810,
@@ -157,7 +157,7 @@
           "id": 7006811,
           "name": "chunk_8",
           "type": "static",
-          "member_count": 913
+          "member_count": 910
         },
         {
           "id": 7006812,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26541
+          "member_count": 26537
         },
         {
           "id": 7006858,
@@ -223,25 +223,25 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 9746
+          "member_count": 9745
         },
         {
           "id": 7007300,
           "name": "Firmware_Updates",
           "type": "static",
-          "member_count": 351
+          "member_count": 350
         },
         {
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17425
+          "member_count": 17424
         },
         {
           "id": 7007469,
           "name": "Campaign Pasted Segment - 29 May 2026 03:28:04 pm",
           "type": "campaign_static",
-          "member_count": 399
+          "member_count": 398
         },
         {
           "id": 7007477,
@@ -265,7 +265,7 @@
           "id": 7007484,
           "name": "segment_v2_product_interest",
           "type": "static",
-          "member_count": 952
+          "member_count": 951
         },
         {
           "id": 7007485,
@@ -295,7 +295,7 @@
           "id": 7007530,
           "name": "segment_v6_product_interest",
           "type": "static",
-          "member_count": 967
+          "member_count": 966
         },
         {
           "id": 7007531,
@@ -325,7 +325,7 @@
           "id": 7007538,
           "name": "segment_v12_product_interest",
           "type": "static",
-          "member_count": 963
+          "member_count": 962
         },
         {
           "id": 7007539,
@@ -349,13 +349,13 @@
           "id": 7007551,
           "name": "Stemplayer_segment_first_!0k",
           "type": "static",
-          "member_count": 9012
+          "member_count": 9007
         },
         {
           "id": 7007552,
           "name": "Stem2_customer_list",
           "type": "static",
-          "member_count": 409
+          "member_count": 408
         },
         {
           "id": 7007601,
@@ -373,13 +373,13 @@
           "id": 7007605,
           "name": "stemfm_reactivation_unopened_15d_send_day_01",
           "type": "static",
-          "member_count": 9833
+          "member_count": 9832
         },
         {
           "id": 7007606,
           "name": "stemfm_reactivation_unopened_15d_send_day_02",
           "type": "static",
-          "member_count": 9953
+          "member_count": 9951
         },
         {
           "id": 7007607,
@@ -391,25 +391,25 @@
           "id": 7007608,
           "name": "stemfm_reactivation_unopened_15d_send_day_04",
           "type": "static",
-          "member_count": 9958
+          "member_count": 9955
         },
         {
           "id": 7007609,
           "name": "stemfm_reactivation_unopened_15d_send_day_05",
           "type": "static",
-          "member_count": 9958
+          "member_count": 9957
         },
         {
           "id": 7007610,
           "name": "stemfm_reactivation_unopened_15d_send_day_06",
           "type": "static",
-          "member_count": 9951
+          "member_count": 9949
         },
         {
           "id": 7007611,
           "name": "stemfm_reactivation_unopened_15d_send_day_07",
           "type": "static",
-          "member_count": 9957
+          "member_count": 9956
         },
         {
           "id": 7007612,
@@ -439,13 +439,13 @@
           "id": 7007618,
           "name": "kano_emailers_segment_2.csv",
           "type": "static",
-          "member_count": 5657
+          "member_count": 5655
         },
         {
           "id": 7007619,
           "name": "kano_emailers_segment_3.",
           "type": "static",
-          "member_count": 5661
+          "member_count": 5660
         }
       ],
       "merge_fields": [
