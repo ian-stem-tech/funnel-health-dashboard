@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T10:41:55.137Z",
+  "generatedAt": "2026-08-03T12:26:32.904Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 441202,
+      "member_count": 441179,
       "tags": [
         {
           "id": 7007617,
@@ -109,7 +109,7 @@
           "id": 7006802,
           "name": "STEM2 FIRST 10K LIST (NO PROJECTOR BUYERS)",
           "type": "static",
-          "member_count": 8717
+          "member_count": 8716
         },
         {
           "id": 7006803,
@@ -127,7 +127,7 @@
           "id": 7006806,
           "name": "chunk_3",
           "type": "static",
-          "member_count": 874
+          "member_count": 873
         },
         {
           "id": 7006807,
@@ -181,7 +181,7 @@
           "id": 7006827,
           "name": "Product interest notifications",
           "type": "static",
-          "member_count": 26536
+          "member_count": 26535
         },
         {
           "id": 7006858,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 9745
+          "member_count": 9743
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17424
+          "member_count": 17422
         },
         {
           "id": 7007469,
@@ -373,19 +373,19 @@
           "id": 7007605,
           "name": "stemfm_reactivation_unopened_15d_send_day_01",
           "type": "static",
-          "member_count": 9831
+          "member_count": 9830
         },
         {
           "id": 7007606,
           "name": "stemfm_reactivation_unopened_15d_send_day_02",
           "type": "static",
-          "member_count": 9950
+          "member_count": 9949
         },
         {
           "id": 7007607,
           "name": "stemfm_reactivation_unopened_15d_send_day_03",
           "type": "static",
-          "member_count": 9956
+          "member_count": 9955
         },
         {
           "id": 7007608,
@@ -421,7 +421,7 @@
           "id": 7007615,
           "name": "kano_emailers_segment_1.csv",
           "type": "static",
-          "member_count": 5669
+          "member_count": 5667
         },
         {
           "id": 7007616,
@@ -445,7 +445,7 @@
           "id": 7007619,
           "name": "kano_emailers_segment_3.",
           "type": "static",
-          "member_count": 5660
+          "member_count": 5658
         }
       ],
       "merge_fields": [
