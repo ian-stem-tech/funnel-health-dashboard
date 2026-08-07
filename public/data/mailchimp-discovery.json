@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T11:24:13.624Z",
+  "generatedAt": "2026-08-07T10:02:34.117Z",
   "lists": [
     {
       "id": "0725c8f3be",
@@ -55,7 +55,7 @@
     {
       "id": "7f6fa1b57b",
       "name": "STEM TECH",
-      "member_count": 441109,
+      "member_count": 441104,
       "tags": [
         {
           "id": 7007617,
@@ -223,7 +223,7 @@
           "id": 7006931,
           "name": "Spent",
           "type": "static",
-          "member_count": 9734
+          "member_count": 9733
         },
         {
           "id": 7007300,
@@ -235,7 +235,7 @@
           "id": 7007325,
           "name": "Product interest no stem2 device owners",
           "type": "static",
-          "member_count": 17412
+          "member_count": 17411
         },
         {
           "id": 7007469,
